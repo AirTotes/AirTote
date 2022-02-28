@@ -21,5 +21,5 @@ public partial class MainPagexaml : ContentPage
     {
         Navigation.PushAsync(new FISJ.SubmitFormxaml());
     }
-}
+    }
 }
