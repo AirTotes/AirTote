@@ -15,6 +15,6 @@ public partial class SubmitFormxaml : ContentPage
     public SubmitFormxaml()
     {
         InitializeComponent();
+        }
     }
-}
 }

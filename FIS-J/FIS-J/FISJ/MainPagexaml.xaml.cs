@@ -20,6 +20,6 @@ public partial class MainPagexaml : ContentPage
     private void Submit_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new FISJ.SubmitFormxaml());
-    }
+        }
     }
 }

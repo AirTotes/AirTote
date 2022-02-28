@@ -27,6 +27,5 @@
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>
-
     </Grid>
 </ContentPage>
