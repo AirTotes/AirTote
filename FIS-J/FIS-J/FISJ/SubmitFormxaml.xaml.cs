@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FIS-J.FISJ
+namespace FIS_J.FISJ
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 public partial class SubmitFormxaml : ContentPage

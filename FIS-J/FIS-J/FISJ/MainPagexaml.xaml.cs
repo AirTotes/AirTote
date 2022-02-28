@@ -13,12 +13,13 @@ public partial class MainPagexaml : ContentPage
 {
     public MainPagexaml()
     { 
-        Submit.Clicked += Submit_Clicked;
+
+        // Submit.Clicked += Submit_Clicked;
     }
 
     private void Submit_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SubmitFormxaml());
+        //Navigation.PushAsync(new SubmitFormxaml());
     }
 }
 }
