@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FIS_J.Models
+﻿namespace FIS_J.Models
 {
 	public class Item
 	{

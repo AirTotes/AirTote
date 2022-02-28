@@ -1,7 +1,5 @@
 ﻿using FIS_J.ViewModels;
 
-using System.ComponentModel;
-
 using Xamarin.Forms;
 
 namespace FIS_J.Views

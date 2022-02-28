@@ -1,8 +1,6 @@
-﻿using FIS_J.ViewModels;
-using FIS_J.Views;
+﻿using FIS_J.Views;
 
 using System;
-using System.Collections.Generic;
 
 using Xamarin.Forms;
 
