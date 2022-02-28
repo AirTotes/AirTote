@@ -1,16 +1,6 @@
-﻿using FIS_J.Models;
-using FIS_J.ViewModels;
-using FIS_J.Views;
-
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using FIS_J.ViewModels;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace FIS_J.Views
 {
