@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS-J.MainPagexaml"
+             Title="FIS-J  -Flight Information Service-">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="Submit"
+                Text="飛行計画書の提出"
+                Grid.Row="2"
+                Grid.Column="0"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="25"/>
+        <Button Text="航空情報"
+                    Grid.Row="2"
+                    Grid.Column="1"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                FontSize="25"/>
+
+    </Grid>
+</ContentPage>

@@ -16,7 +16,7 @@ namespace FIS_J
 			InitializeComponent();
 
 			DependencyService.Register<MockDataStore>();
-			MainPage = new AppShell();
+			MainPage = new NavigationPage(new FIS_J.MainPagexaml());
 		}
 
 		protected override void OnStart()

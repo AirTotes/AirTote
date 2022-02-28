@@ -1,0 +1,214 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.SubmitFormxaml"
+             Title="飛行計画書の提出" >
+    <ContentPage.Content>
+        <StackLayout>
+            <TableView>
+                <TableView.Root>
+                    <TableRoot>
+                        <TableSection>
+                            <EntryCell Label="機長："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="メールアドレス："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="提出者："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="航空機識別："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="飛行方式："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="飛行の種類："/>
+                            <SwitchCell Text="S"
+                                        On="False"/>
+                            <SwitchCell Text="N"
+                                        On="False"/>
+                            <SwitchCell Text="G"
+                                        On="False"/>
+                            <SwitchCell Text="M"
+                                        On="False"/>
+                            <SwitchCell Text="X"
+                                        On="False"/>
+                            <!--  <Picker>
+                                <Picker.Items>
+                                    <x:String>S</x:String>
+                                    <x:String>N</x:String>
+                                    <x:String>G</x:String>
+                                    <x:String>M</x:String>
+                                    <x:String>X</x:String>
+                                </Picker.Items>
+                            </Picker> -->
+                            <EntryCell Label="航空機の型式："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="後方乱気流区分："/>
+                            <SwitchCell Text="J"
+                                        On="False"/>
+                            <SwitchCell Text="H"
+                                        On="False"/>
+                            <SwitchCell Text="M"
+                                        On="False"/>
+                            <SwitchCell Text="L"
+                                        On="False"/>
+                            <!-- <Picker>
+                            <Picker.Items>
+                            <x:String>J</x:String>
+                            <x:String>H</x:String>
+                            <x:String>M</x:String>
+                            <x:String>L</x:String>
+                            </Picker.Items>
+                            </Picker>-->
+                            <TextCell Text="使用する無線装備："/>
+                            <SwitchCell Text="N"
+                                        On="False"/>
+                            <SwitchCell Text="S"
+                                        On="False"/>
+                            <SwitchCell Text="A"
+                                        On="False"/>
+                            <SwitchCell Text="B"
+                                        On="False"/>
+                            <SwitchCell Text="C"
+                                        On="False"/>
+                            <SwitchCell Text="D"
+                                        On="False"/>
+                            <SwitchCell Text="E1"
+                                        On="False"/>
+                            <SwitchCell Text="E2"
+                                        On="False"/>
+                            <SwitchCell Text="E3"
+                                        On="False"/>
+                            <SwitchCell Text="F"
+                                        On="False"/>
+                            <SwitchCell Text="G"
+                                        On="False"/>
+                            <SwitchCell Text="H"
+                                        On="False"/>
+                            <SwitchCell Text="I"
+                                        On="False"/>
+                            <SwitchCell Text="J1"
+                                        On="False"/>
+                            <SwitchCell Text="J2"
+                                        On="False"/>
+                            <SwitchCell Text="J3"
+                                        On="False"/>
+                            <SwitchCell Text="J4"
+                                        On="False"/>
+                            <SwitchCell Text="J5"
+                                        On="False"/>
+                            <SwitchCell Text="J6"
+                                        On="False"/>
+                            <SwitchCell Text="J7"
+                                        On="False"/>
+                            <EntryCell Label="出発飛行場："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="移動開始時刻："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="巡航速度："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <SwitchCell Text="N"
+                                        On="False"/>
+                            <SwitchCell Text="M"
+                                        On="False"/>
+                            <!--   <Picker>
+                            <Picker.Items>
+                            <x:String>N</x:String>
+                            <x:String>M</x:String>
+                            </Picker.Items>
+                            </Picker>-->
+                            <EntryCell Label="巡航高度："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <SwitchCell Text="A"
+                                        On="False"/>
+                            <SwitchCell Text="FL"
+                                        On="False"/>
+                            <!--<Picker>
+                                <Picker.Items>
+                                    <x:String>A</x:String>
+                                    <x:String>FL</x:String>
+                                </Picker.Items>
+                            </Picker>-->
+                            <EntryCell Label="経路："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="目的飛行場："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="所要時間："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="1st代替飛行場："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="2nd代替飛行場："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="その他"
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="燃料搭載量："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="搭乗する総人数："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="航空機用救命無線機："/>
+                            <SwitchCell Text="U"
+                                        On="False"/>
+                            <SwitchCell Text="V"
+                                        On="False"/>
+                            <SwitchCell Text="E"
+                                        On="False"/>
+                            <!--<Picker>
+                                <Picker.Items>
+                                    <x:String>U</x:String>
+                                    <x:String>V</x:String>
+                                    <x:String>E</x:String>
+                                </Picker.Items>
+                            </Picker>-->
+                            <EntryCell Label="救命ボート："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="救命胴衣："/>
+                            <SwitchCell Text="J"
+                                        On="False"/>
+                            <SwitchCell Text="L"
+                                        On="False"/>
+                            <SwitchCell Text="F"
+                                        On="False"/>
+                            <SwitchCell Text="U"
+                                        On="False"/>
+                            <SwitchCell Text="V"
+                                        On="False"/>
+                            <!--<Picker>
+                                <Picker.Items>
+                                    <x:String>J</x:String>
+                                    <x:String>L</x:String>
+                                    <x:String>F</x:String>
+                                    <x:String>U</x:String>
+                                    <x:String>V</x:String>
+                                </Picker.Items>
+                            </Picker>-->
+                            <EntryCell Label="航空機の色及びマーキング："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                            <EntryCell Label="備考："
+                                       Placeholder=""
+                                       Keyboard="Text"/>
+                        </TableSection>
+                    </TableRoot>
+                </TableView.Root>
+            </TableView>
+            <Button Text="提出"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
