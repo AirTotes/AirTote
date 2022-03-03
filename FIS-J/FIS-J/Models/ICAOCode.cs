@@ -1,5 +1,11 @@
 ﻿namespace FIS_J.Models
 {
+	public static class ICAOCodes
+	{
+		public static readonly string[] Names = System.Enum.GetNames(typeof(ICAOCode));
+		public static readonly ICAOCode[] Codes = System.Enum.GetValues(typeof(ICAOCode)) as ICAOCode[];
+	}
+
 	/// <summary>International Civil Aviation Organization Location Inticators</summary>
 	public enum ICAOCode
 	{
