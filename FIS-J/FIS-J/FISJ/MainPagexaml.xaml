@@ -10,13 +10,18 @@
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1.5*"/>
+            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
+        <StackLayout>
+            <Image Source="JP_ENR_6_1_en_JP_min.png"
+                       HorizontalOptions="Fill"
+                       VerticalOptions="Fill"/>
+        </StackLayout>
         <Button x:Name="Submit"
-                Text="飛行計画書の提出"
+                Text="飛行計画の提出"
                 Grid.Row="2"
                 Grid.Column="0"
                 BackgroundColor="LightSteelBlue"
