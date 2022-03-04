@@ -10,10 +10,7 @@ using System.Threading.Tasks;
 
 namespace FIS_J.Services
 {
-	class DSanitized
-	{
-		public string sanitized;
-	}
+	public class NoContentException : Exception { }
 
 	internal class AVWX
 	{
@@ -46,6 +43,8 @@ namespace FIS_J.Services
 
 			if (!result.IsSuccessStatusCode)
 				return null;
+			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+				throw new NoContentException();
 
 			return JsonSerializer.Deserialize<METAR>(await result.Content.ReadAsStringAsync());
 		}
@@ -59,6 +58,8 @@ namespace FIS_J.Services
 			var result = await client.GetAsync(endpoint);
 			if (!result.IsSuccessStatusCode)
 				return null;
+			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+				throw new NoContentException();
 
 			return JsonSerializer.Deserialize<TAF>(await result.Content.ReadAsStringAsync());
 		}
