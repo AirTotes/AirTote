@@ -1,10 +1,6 @@
 ﻿using FIS_J.Services;
-using FIS_J.Views;
-
-using System;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace FIS_J
 {

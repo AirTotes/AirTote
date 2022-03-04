@@ -1,8 +1,6 @@
-﻿using FIS_J.Models;
-
+﻿
 using System;
 using System.Diagnostics;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
