@@ -9,8 +9,8 @@ namespace FIS_J.Components
 	{
 		public const double UNIT = 5;
 		const double BASE_RADIUS = 270;
-		const double BASE_RADIUS_MIN = 40;
-		const double BASE_WIDTH = 100;
+		const double BASE_RADIUS_MIN = 36;
+		const double BASE_WIDTH = 104;
 		const double Radius = BASE_RADIUS * UNIT;
 		const double E6BWidth = BASE_WIDTH * UNIT;
 
