@@ -38,6 +38,8 @@ namespace FIS_J.Components
 		{
 			Background = Brush.White;
 			Content = canvas;
+			HeightRequest = canvas.HeightRequest = E6BHeight;
+			WidthRequest = canvas.WidthRequest = E6BWidth;
 
 			DrawRadians();
 			DrawArcs();
