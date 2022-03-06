@@ -45,6 +45,10 @@ namespace FIS_J.Components
 			DrawArcs();
 			DrawRadTexts();
 			DrawArcTexts();
+			canvas.Children.Add(new FCS_Compass()
+			{
+				Margin = new(((BASE_WIDTH / 2) - 66.5) * UNIT, 240)
+			});
 		}
 
 		void DrawRadians()
