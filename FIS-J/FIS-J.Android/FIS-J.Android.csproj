@@ -99,5 +99,14 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\JP_ENR_6_1_en_JP_min.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\JP_ENR_6_1_en_JP_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\JP_ENR_6_1_en_JP_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\JP_ENR_6_1_en_JP_4.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

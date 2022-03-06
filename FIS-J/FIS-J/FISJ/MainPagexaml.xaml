@@ -1,43 +1,36 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FIS_J.MainPagexaml"
              Title="FIS-J  -Flight Information Service-">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="5*"/>
-        </Grid.RowDefinitions>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-
-        <StackLayout>
-            <Image Source="JP_ENR_6_1_en_JP_min.png"
-                       HorizontalOptions="Fill"
-                       VerticalOptions="Fill"/>
-        </StackLayout>
-        <Button x:Name="Submit"
+    <MasterDetailPage.Master>
+        <ContentPage Title="メニュー">
+            <StackLayout>
+                <Button x:Name="Submit"
                 Text="飛行計画の提出"
-                Grid.Row="2"
-                Grid.Column="0"
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 Font="25"/>
-        <Button Text="航空情報"
-                    Grid.Row="2"
-                    Grid.Column="1"
+                <Button Text="航空情報"
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>
-        <Button Text="気象情報"
-                    Grid.Row="2"
-                    Grid.Column="2"
+                <Button Text="気象情報"
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>
-    </Grid>
-</ContentPage>
+            </StackLayout>          
+        </ContentPage>
+    </MasterDetailPage.Master>
+    <MasterDetailPage.Detail>
+        
+    </MasterDetailPage.Detail>
+    <ContentPage>
+        <ScrollView>
+            <StackLayout>
+                <Image Source="JP_ENR_6_1_en_JP_4.png"
+                   Aspect="AspectFill"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage>
+</MasterDetailPage>

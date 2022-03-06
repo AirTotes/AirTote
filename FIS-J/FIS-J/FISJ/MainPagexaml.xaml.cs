@@ -9,7 +9,7 @@ using Xamarin.Forms.Xaml;
 
 namespace FIS_J
 {	[XamlCompilation(XamlCompilationOptions.Compile)]
-public partial class MainPagexaml : ContentPage
+public partial class MainPagexaml : MasterDetailPage
 {
         public MainPagexaml()
     {
