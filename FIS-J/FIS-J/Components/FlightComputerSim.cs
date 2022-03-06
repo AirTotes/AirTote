@@ -27,6 +27,11 @@ namespace FIS_J.Components
 		const double THICKNESS_SEMIBOLD = 2;
 		const double THICKNESS_NORMAL = 1;
 
+		const double LABEL_HEIGHT = 20;
+		const double LABEL_WIDTH = 40;
+		const double LABEL_HEIGHT_HALF = LABEL_HEIGHT / 2;
+		const double LABEL_WIDTH_HALF = LABEL_WIDTH / 2;
+
 		AbsoluteLayout canvas = new();
 
 		public FlightComputerSim()
@@ -36,6 +41,7 @@ namespace FIS_J.Components
 
 			DrawRadians();
 			DrawArcs();
+			DrawRadTexts();
 		}
 
 		void DrawRadians()
@@ -143,6 +149,47 @@ namespace FIS_J.Components
 				StrokeThickness = THICKNESS_BOLD,
 				Data = pathGeo_Bold,
 			});
+		}
+
+		void DrawRadTexts()
+		{
+			ContentView getElem(double deg, Thickness margin) => new()
+			{
+				HeightRequest = LABEL_HEIGHT,
+				WidthRequest = LABEL_WIDTH,
+				Margin = margin,
+				Content = new Label()
+				{
+					Text = $"{Math.Abs(deg)}°",
+					HorizontalOptions = LayoutOptions.Center,
+					VerticalOptions = LayoutOptions.Center,
+					HorizontalTextAlignment = TextAlignment.Center,
+					VerticalTextAlignment = TextAlignment.Center,
+					Background = Brush.White,
+					TextColor = Color.Black,
+				},
+				AnchorX = 0.5,
+				AnchorY = 0.5,
+				Rotation = deg,
+			};
+
+			for (double orig_radius = 55; orig_radius < BASE_RADIUS; orig_radius += 40)
+			{
+				for (double deg = 5; deg <= 40; deg += 5)
+				{
+					if (orig_radius <= 100 && (deg % 10) != 0)
+						continue;
+					if (HalfWidth <= (orig_radius * UNIT * Math.Tan(ToRad(deg))))
+						continue;
+
+					double radius = orig_radius * UNIT;
+					double move_x = radius * Math.Sin(ToRad(deg));
+					double new_center_from_bottom = radius * Math.Cos(ToRad(deg));
+
+					canvas.Children.Add(getElem(deg, new(HalfWidth + move_x - LABEL_WIDTH_HALF, Radius - new_center_from_bottom - LABEL_HEIGHT_HALF)));
+					canvas.Children.Add(getElem(-deg, new(HalfWidth - move_x - LABEL_WIDTH_HALF, Radius - new_center_from_bottom - LABEL_HEIGHT_HALF)));
+				}
+			}
 		}
 	}
 }
