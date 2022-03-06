@@ -44,6 +44,7 @@ namespace FIS_J.Components
 			DrawRadians();
 			DrawArcs();
 			DrawRadTexts();
+			DrawArcTexts();
 		}
 
 		void DrawRadians()
@@ -192,6 +193,26 @@ namespace FIS_J.Components
 					canvas.Children.Add(getTextElem($"{deg}°", deg, new(HalfWidth + move_x, Radius - new_center_from_bottom)));
 					canvas.Children.Add(getTextElem($"{deg}°", -deg, new(HalfWidth - move_x, Radius - new_center_from_bottom)));
 				}
+			}
+		}
+		void DrawArcTexts()
+		{
+			for (double orig_radius = 40; orig_radius < BASE_RADIUS; orig_radius += 10)
+			{
+				double deg =
+					orig_radius < 100 ? 25
+					: (orig_radius < 200 ? 12.5 : 7.5);
+
+				double radius = orig_radius * UNIT;
+				double move_x = radius * Math.Sin(ToRad(deg));
+				double new_center_from_bottom = radius * Math.Cos(ToRad(deg));
+
+				canvas.Children.Add(getTextElem(orig_radius.ToString(), 0, new(HalfWidth, Radius - radius)));
+				if (orig_radius <= 40)
+					continue;
+
+				canvas.Children.Add(getTextElem(orig_radius.ToString(), deg, new(HalfWidth + move_x, Radius - new_center_from_bottom)));
+				canvas.Children.Add(getTextElem(orig_radius.ToString(), -deg, new(HalfWidth - move_x, Radius - new_center_from_bottom)));
 			}
 		}
 	}
