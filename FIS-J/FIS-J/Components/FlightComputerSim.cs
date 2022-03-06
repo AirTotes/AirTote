@@ -7,16 +7,16 @@ namespace FIS_J.Components
 {
 	public partial class FlightComputerSim : ContentView
 	{
+		public const double UNIT = 5;
 		const double BASE_RADIUS = 270;
 		const double BASE_RADIUS_MIN = 40;
 		const double BASE_WIDTH = 100;
-		const double Radius = BASE_RADIUS * 5;
-		const double E6BWidth = BASE_WIDTH * 5;
+		const double Radius = BASE_RADIUS * UNIT;
+		const double E6BWidth = BASE_WIDTH * UNIT;
 
 		static double ToRad(double deg) => deg * Math.PI / 180;
 
 		const double HalfWidth = E6BWidth / 2;
-		const double UNIT = Radius / BASE_RADIUS;
 		const double Per2DegStartRadius = BASE_RADIUS_MIN * UNIT;
 		const double Per1DegStartRadius = 100 * UNIT;
 		const double MAX_DEG = 89.0;
