@@ -38,20 +38,23 @@ namespace FIS_J.Components
 		}
 
 		static ContentView getTextElem(string str, double deg, Point elemCenter)
+			=> getTextElem(deg, elemCenter, new()
+			{
+				Text = str,
+				HorizontalOptions = LayoutOptions.Center,
+				VerticalOptions = LayoutOptions.Center,
+				HorizontalTextAlignment = TextAlignment.Center,
+				VerticalTextAlignment = TextAlignment.Center,
+				TextColor = Color.Black,
+				FontSize = DIRECTION_LABEL_FONTSIZE_S,
+			});
+		static ContentView getTextElem(double deg, Point elemCenter, Label label)
 			=> new()
 			{
 				HeightRequest = LABEL_HEIGHT,
 				WidthRequest = LABEL_WIDTH,
 				Margin = new(elemCenter.X - LABEL_WIDTH_HALF, elemCenter.Y - LABEL_HEIGHT_HALF),
-				Content = new Label()
-				{
-					Text = str,
-					HorizontalOptions = LayoutOptions.Center,
-					VerticalOptions = LayoutOptions.Center,
-					HorizontalTextAlignment = TextAlignment.Center,
-					VerticalTextAlignment = TextAlignment.Center,
-					TextColor = Color.Black,
-				},
+				Content = label,
 				AnchorX = 0.5,
 				AnchorY = 0.5,
 				Rotation = deg,
