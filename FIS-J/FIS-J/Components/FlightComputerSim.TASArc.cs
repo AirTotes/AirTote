@@ -46,14 +46,6 @@ namespace FIS_J.Components
 			DrawArcs();
 			DrawRadTexts();
 			DrawArcTexts();
-			canvas.Children.Add(new FCS_TrueIndex()
-			{
-				Margin = new(((BASE_WIDTH / 2) - FCS_TrueIndex.ORIG_RADIUS) * UNIT, 240 - (FCS_TrueIndex.ORIG_ARC_THICKNESS * UNIT))
-			});
-			canvas.Children.Add(new FCS_Compass()
-			{
-				Margin = new(((BASE_WIDTH / 2) - 66.5) * UNIT, 240)
-			});
 			Content = canvas;
 		}
 
