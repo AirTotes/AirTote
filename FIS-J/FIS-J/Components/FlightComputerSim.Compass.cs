@@ -85,7 +85,7 @@ namespace FIS_J.Components
 			canvas.Children.Add(new Path()
 			{
 				Stroke = null,
-				Fill = Brush.Red,
+				Fill = Brush.White,
 				Data = new PathGeometry()
 				{
 					FillRule = FillRule.Nonzero,
