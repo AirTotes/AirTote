@@ -19,15 +19,16 @@ namespace FIS_J.Components
 		const double SCALE_LEN_S = 2 * UNIT;
 
 		const double LABEL_RADIUS = 61 * UNIT;
-		const double LABEL_HEIGHT = 5 * UNIT;
-		const double LABEL_WIDTH = 8 * UNIT;
+		const double LABEL_HEIGHT = 6 * UNIT;
+		const double LABEL_WIDTH = 16 * UNIT;
 		const double LABEL_HEIGHT_HALF = LABEL_HEIGHT / 2;
 		const double LABEL_WIDTH_HALF = LABEL_WIDTH / 2;
 
 		const double DIRECTION_LABEL_RADIUS_S = 55 * UNIT;
-		const double DIRECTION_LABEL_RADIUS_L = 57 * UNIT;
-		const double DIRECTION_LABEL_FONTSIZE_L = 3.6 * UNIT;
-		const double DIRECTION_LABEL_FONTSIZE_S = 2.8 * UNIT;
+		const double DIRECTION_LABEL_RADIUS_L = 56 * UNIT;
+
+		const double DIRECTION_LABEL_FONTSIZE_L = 5 * UNIT;
+		public const double DIRECTION_LABEL_FONTSIZE_S = 3.2 * UNIT;
 
 		const double DIRECTION_TRIANGLE_WIDTH_L = 3 * UNIT;
 		const double DIRECTION_TRIANGLE_HEIGHT_L = 2 * UNIT;
