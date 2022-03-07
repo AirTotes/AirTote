@@ -21,9 +21,19 @@
                             <EntryCell Label="航空機識別："
                                        Placeholder=""
                                        Keyboard="Text"/>
+                            
                             <EntryCell Label="飛行方式："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
+                             <SwitchCell Text="I"
+                                         on="False">
+                                </switchCell Text="V"
+                                         On="false">
+                                <switchcell Text="Y"
+                                             on="false">
+                                </switchcell Text="Z"
+                                            on="false">
+                                    
+
+                                </switchCell>
                             <EntryCell Label="飛行の種類："/>
                             <SwitchCell Text="S"
                                         On="False"/>
@@ -64,50 +74,133 @@
                             <x:String>L</x:String>
                             </Picker.Items>
                             </Picker>-->
-                            <TextCell Text="使用する無線装備："/>
+                                 
+                            <TextCell Text="義務無線機の有無："/>
+                                 
                             <SwitchCell Text="N"
                                         On="False"/>
                             <SwitchCell Text="S"
                                         On="False"/>
+
+                                <TextCell="使用可能な搭載機器種類および当該機器の性能並びに当該航空機の能力"
                             <SwitchCell Text="A"
                                         On="False"/>
-                            <SwitchCell Text="B"
+                                    <SwitchCell Text="B"
                                         On="False"/>
-                            <SwitchCell Text="C"
+                                    <SwitchCell Text="C"
                                         On="False"/>
-                            <SwitchCell Text="D"
+                                    <SwitchCell Text="D"
                                         On="False"/>
-                            <SwitchCell Text="E1"
+                                    <SwitchCell Text="E1"
                                         On="False"/>
-                            <SwitchCell Text="E2"
+                                    <SwitchCell Text="E2"
                                         On="False"/>
-                            <SwitchCell Text="E3"
+                                    <SwitchCell Text="E3"
                                         On="False"/>
-                            <SwitchCell Text="F"
+                                    <SwitchCell Text="F"
                                         On="False"/>
-                            <SwitchCell Text="G"
+                                    <SwitchCell Text="G"
                                         On="False"/>
-                            <SwitchCell Text="H"
+                                    <SwitchCell Text="H"
                                         On="False"/>
-                            <SwitchCell Text="I"
+                                    <SwitchCell Text="I"
                                         On="False"/>
-                            <SwitchCell Text="J1"
+                                    <SwitchCell Text="J1"
                                         On="False"/>
-                            <SwitchCell Text="J2"
+                                    <SwitchCell Text="J2"
                                         On="False"/>
-                            <SwitchCell Text="J3"
+                                    <SwitchCell Text="J3"
                                         On="False"/>
-                            <SwitchCell Text="J4"
+                                    <SwitchCell Text="J4"
                                         On="False"/>
-                            <SwitchCell Text="J5"
+                                    <SwitchCell Text="J5"
                                         On="False"/>
-                            <SwitchCell Text="J6"
+                                    <SwitchCell Text="J6"
                                         On="False"/>
-                            <SwitchCell Text="J7"
+                                    <SwitchCell Text="J7"
                                         On="False"/>
-                            <EntryCell Label="出発飛行場："
+                                    <SwitchCell Text="K"
+                                        On="False"/>
+                                    <SwitchCell Text="L"
+                                        On="False"/>
+                                    <SwitchCell Text="M1"
+                                        On="False"/>
+                                    <SwitchCell Text="M2"
+                                        On="False"/>
+                                    <SwitchCell Text="M3"
+                                        On="False"/>
+                                    <SwitchCell Text="O"
+                                        On="False"/>
+                                    <SwitchCell Text="P1"
+                                        On="False"/>
+                                    <SwitchCell Text="P2"
+                                        On="False"/>
+                                    <SwitchCell Text="P3"
+                                        On="False"/>
+                                    <SwitchCell Text="R"
+                                        On="False"/>
+                                    <SwitchCell Text="T"
+                                        On="False"/>
+                                    <SwitchCell Text="U"
+                                        On="False"/>
+                                    <SwitchCell Text="V"
+                                        On="False"/>
+                                    <SwitchCell Text="W"
+                                        On="False"/>
+                                    <SwitchCell Text="X"
+                                        On="False"/>
+                                    <SwitchCell Text="Y"
+                                        On="False"/>
+                                    <SwitchCell Text="Z"
+                                        On="False"/>
+                                </TextCell ="使用可能な搭載監視危機の種類および当該機器の性能並びに当該航空機の能力"
+                                    
+                                   <SwitchCell Text="N"
+                                        On="False"/>
+                                <SwitchCell Text="A"
+                                        On="False"/>
+                                <SwitchCell Text="C"
+                                        On="False"/>
+                                <SwitchCell Text="E"
+                                        On="False"/>
+                                <SwitchCell Text="H"
+                                        On="False"/>
+                                <SwitchCell Text="I"
+                                        On="False"/>
+                                <SwitchCell Text="L"
+                                        On="False"/>
+                                <SwitchCell Text="P"
+                                        On="False"/>
+                                <SwitchCell Text="S" 
+                                            On="False"/>
+                                <SwitchCell Text"X"
+                                        On="False"/>
+                                <SwitchCell Text="B1"
+                                        On="False"/>
+                                <SwitchCell Text="B2"
+                                        On="False"/>
+                                <SwitchCell Text="U1"
+                                        On="False"/>
+                                <SwitchCell Text="U2"
+                                        On="False"/>
+                                <SwitchCell Text="V1"
+                                        On="False"/>
+                                <SwitchCell Text="V2"
+                                        On="False"/>
+                                <SwitchCell Text="D1"
+                                        On="False"/>
+                                <SwitchCell Text="G1"
+                                        On="False"/>
+                               
+                                    
+//ここの出発飛行場　ICAOコードで選択できるように可能？
+
+                                <EntryCell Label="出発飛行場："
                                        Placeholder=""
                                        Keyboard="Text"/>
+                                    //移動開始時刻　00:00式でスクロールタイプで選択可能？
+                                    
+                                    
                             <EntryCell Label="移動開始時刻："
                                        Placeholder=""
                                        Keyboard="Text"/>
