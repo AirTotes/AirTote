@@ -10,7 +10,12 @@ namespace FIS_J.Components
 		{
 			HorizontalOptions = LayoutOptions.Center,
 		};
-		readonly AbsoluteLayout over_grid = new();
+		readonly AbsoluteLayout over_grid = new()
+		{
+			HeightRequest = FCS_TrueIndex.RADIUS * 2,
+			WidthRequest = FCS_TrueIndex.RADIUS * 2,
+			HorizontalOptions = LayoutOptions.Center,
+		};
 		readonly FCS_TASArc TASArc = new()
 		{
 			Margin = new(FCS_TrueIndex.RADIUS - FCS_TASArc.HalfWidth, 0),
