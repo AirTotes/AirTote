@@ -38,7 +38,7 @@ namespace FIS_J.Components
 
 		public FlightComputerSim()
 		{
-			Background = Brush.White;
+			Background = Brush.FloralWhite;
 			HeightRequest = canvas.HeightRequest = E6BHeight;
 			WidthRequest = canvas.WidthRequest = E6BWidth;
 
