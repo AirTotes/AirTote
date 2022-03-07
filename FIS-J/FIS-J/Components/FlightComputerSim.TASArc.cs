@@ -10,17 +10,17 @@ namespace FIS_J.Components
 		public const double UNIT = 5;
 		const double BASE_RADIUS = 270;
 		const double BASE_RADIUS_MIN = 36;
-		const double BASE_WIDTH = 104;
+		public const double BASE_WIDTH = 104;
 		const double Radius = BASE_RADIUS * UNIT;
 
 		static double ToRad(double deg) => deg * Math.PI / 180;
 
-		const double HalfWidth = E6BWidth / 2;
+		public const double HalfWidth = E6BWidth / 2;
 		const double Per2DegStartRadius = BASE_RADIUS_MIN * UNIT;
 		const double Per1DegStartRadius = 100 * UNIT;
 
 		const double E6BWidth = BASE_WIDTH * UNIT;
-		const double E6BHeight = Radius - Per2DegStartRadius;
+		public const double E6BHeight = Radius - Per2DegStartRadius;
 
 		const double MAX_DEG = 89.0;
 		static readonly double NON_FULL_ARC_RADIUS_LESS_THAN = Math.Sqrt(Math.Pow(Per2DegStartRadius, 2) + Math.Pow(HalfWidth, 2));
