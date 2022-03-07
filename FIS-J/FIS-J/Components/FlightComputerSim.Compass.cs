@@ -14,8 +14,8 @@ namespace FIS_J.Components
 		const double RADIUS = ORIG_RADIUS * UNIT;
 		const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
 
-		const double SCALE_THICKNESS = 0.5 * UNIT;
 		const double SCALE_LEN_L = 3.5 * UNIT;
+		const double SCALE_THICKNESS = FlightComputerSim.THICKNESS_BOLD;
 		const double SCALE_LEN_S = 2 * UNIT;
 
 		const double LABEL_RADIUS = 61 * UNIT;
