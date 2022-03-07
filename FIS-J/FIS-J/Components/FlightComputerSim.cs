@@ -25,9 +25,9 @@ namespace FIS_J.Components
 		const double MAX_DEG = 89.0;
 		static readonly double NON_FULL_ARC_RADIUS_LESS_THAN = Math.Sqrt(Math.Pow(Per2DegStartRadius, 2) + Math.Pow(HalfWidth, 2));
 
-		public const double THICKNESS_BOLD = 3;
-		const double THICKNESS_SEMIBOLD = 2;
-		const double THICKNESS_NORMAL = 1;
+		public const double THICKNESS_BOLD = 0.4 * UNIT;
+		public const double THICKNESS_SEMIBOLD = 0.3 * UNIT;
+		public const double THICKNESS_NORMAL = 0.15 * UNIT;
 
 		const double LABEL_HEIGHT = 20;
 		const double LABEL_WIDTH = 40;
