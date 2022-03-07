@@ -11,7 +11,7 @@ namespace FIS_J.Components
 		const double UNIT = FCS_TASArc.UNIT;
 		const double ORIG_ARC_THICKNESS = 14;
 		public const double ORIG_RADIUS = 66.5;
-		const double RADIUS = ORIG_RADIUS * UNIT;
+		public const double RADIUS = ORIG_RADIUS * UNIT;
 		public const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
 
 		const double SCALE_LEN_L = 3.5 * UNIT;
