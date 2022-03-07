@@ -9,6 +9,8 @@ namespace FIS_J.Components
 		readonly AbsoluteLayout base_grid = new()
 		{
 			HorizontalOptions = LayoutOptions.Center,
+			WidthRequest = FCS_TrueIndex.RADIUS * 2,
+			HeightRequest = FCS_TASArc.E6BHeight,
 		};
 		readonly AbsoluteLayout over_grid = new()
 		{
