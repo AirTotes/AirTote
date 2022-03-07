@@ -19,8 +19,8 @@ namespace FIS_J.Components
 		const double SCALE_LEN_S = 2 * UNIT;
 
 		const double LABEL_RADIUS = 61 * UNIT;
-		const double LABEL_HEIGHT = 20;
-		const double LABEL_WIDTH = 40;
+		const double LABEL_HEIGHT = 5 * UNIT;
+		const double LABEL_WIDTH = 8 * UNIT;
 		const double LABEL_HEIGHT_HALF = LABEL_HEIGHT / 2;
 		const double LABEL_WIDTH_HALF = LABEL_WIDTH / 2;
 
