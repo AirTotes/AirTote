@@ -7,7 +7,7 @@ namespace FIS_J.Components
 {
 	public class FCS_TrueIndex : ContentView
 	{
-		const double UNIT = FlightComputerSim.UNIT;
+		const double UNIT = FCS_TASArc.UNIT;
 
 		public const double ORIG_ARC_THICKNESS = 12;
 		public const double ORIG_RADIUS = FCS_Compass.ORIG_RADIUS + ORIG_ARC_THICKNESS;
@@ -18,7 +18,7 @@ namespace FIS_J.Components
 		public const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
 
 		const double SCALE_LEN_L = 3.5 * UNIT;
-		const double SCALE_THICKNESS = FlightComputerSim.THICKNESS_BOLD;
+		const double SCALE_THICKNESS = FCS_TASArc.THICKNESS_BOLD;
 		const double SCALE_LEN_S = 2 * UNIT;
 
 		const double LABEL_RADIUS = 73 * UNIT;
@@ -70,7 +70,7 @@ namespace FIS_J.Components
 			canvas.Children.Add(new Path()
 			{
 				Stroke = Brush.Black,
-				StrokeThickness = FlightComputerSim.THICKNESS_SEMIBOLD,
+				StrokeThickness = FCS_TASArc.THICKNESS_SEMIBOLD,
 				Fill = new SolidColorBrush(Color.FromRgba(0, 0, 0, 0.15)),
 				Data = new PathGeometry()
 				{

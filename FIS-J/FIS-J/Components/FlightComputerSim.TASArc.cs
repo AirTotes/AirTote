@@ -5,7 +5,7 @@ using Xamarin.Forms.Shapes;
 
 namespace FIS_J.Components
 {
-	public partial class FlightComputerSim : ContentView
+	public partial class FCS_TASArc : ContentView
 	{
 		public const double UNIT = 5;
 		const double BASE_RADIUS = 270;
@@ -36,7 +36,7 @@ namespace FIS_J.Components
 
 		AbsoluteLayout canvas = new();
 
-		public FlightComputerSim()
+		public FCS_TASArc()
 		{
 			Background = Brush.FloralWhite;
 			HeightRequest = canvas.HeightRequest = E6BHeight;

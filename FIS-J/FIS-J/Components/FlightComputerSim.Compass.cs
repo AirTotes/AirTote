@@ -8,14 +8,14 @@ namespace FIS_J.Components
 {
 	public class FCS_Compass : ContentView
 	{
-		const double UNIT = FlightComputerSim.UNIT;
+		const double UNIT = FCS_TASArc.UNIT;
 		const double ORIG_ARC_THICKNESS = 14;
 		public const double ORIG_RADIUS = 66.5;
 		const double RADIUS = ORIG_RADIUS * UNIT;
-		const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
+		public const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
 
 		const double SCALE_LEN_L = 3.5 * UNIT;
-		const double SCALE_THICKNESS = FlightComputerSim.THICKNESS_BOLD;
+		const double SCALE_THICKNESS = FCS_TASArc.THICKNESS_BOLD;
 		const double SCALE_LEN_S = 2 * UNIT;
 
 		const double LABEL_RADIUS = 61 * UNIT;
