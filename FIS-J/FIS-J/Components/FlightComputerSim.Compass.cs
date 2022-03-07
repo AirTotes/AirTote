@@ -10,7 +10,7 @@ namespace FIS_J.Components
 	{
 		const double UNIT = FlightComputerSim.UNIT;
 		const double ORIG_ARC_THICKNESS = 14;
-		const double ORIG_RADIUS = 66.5;
+		public const double ORIG_RADIUS = 66.5;
 		const double RADIUS = ORIG_RADIUS * UNIT;
 		const double ARC_THICKNESS = ORIG_ARC_THICKNESS * UNIT;
 
