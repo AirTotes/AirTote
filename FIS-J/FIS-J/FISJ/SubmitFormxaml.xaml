@@ -192,8 +192,8 @@
                                 <SwitchCell Text="G1"
                                         On="False"/>
                                
+<!--飛行場をICAOコードで選択式に-->
                                     
-//ここの出発飛行場　ICAOコードで選択できるように可能？
 
                                 <EntryCell Label="出発飛行場："
                                        Placeholder=""
