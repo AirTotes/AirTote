@@ -2,7 +2,7 @@
 <resources>
 
 
-	<style name=" SplashTheme" parent="MainTheme.Base"></style>
+	<style name="SplashTheme" parent="MainTheme.Base"></style>
 	<item name="android:windowBackground">@drawable/1</item>
 			
   <style name="MainTheme" parent="MainTheme.Base">
