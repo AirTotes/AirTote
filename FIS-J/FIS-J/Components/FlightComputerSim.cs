@@ -29,6 +29,10 @@ namespace FIS_J.Components
 		readonly FCS_Compass Compass = new()
 		{
 			Margin = new(FCS_TrueIndex.ARC_THICKNESS),
+			AnchorX = 0.5,
+			AnchorY = 0.5,
+			HeightRequest = FCS_Compass.RADIUS * 2,
+			WidthRequest = FCS_Compass.RADIUS * 2,
 		};
 
 		public FlightComputerSim()
