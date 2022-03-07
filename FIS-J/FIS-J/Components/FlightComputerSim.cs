@@ -39,7 +39,6 @@ namespace FIS_J.Components
 		public FlightComputerSim()
 		{
 			Background = Brush.White;
-			Content = canvas;
 			HeightRequest = canvas.HeightRequest = E6BHeight;
 			WidthRequest = canvas.WidthRequest = E6BWidth;
 
@@ -51,6 +50,7 @@ namespace FIS_J.Components
 			{
 				Margin = new(((BASE_WIDTH / 2) - 66.5) * UNIT, 240)
 			});
+			Content = canvas;
 		}
 
 		void DrawRadians()
