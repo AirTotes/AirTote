@@ -69,6 +69,9 @@ namespace FIS_J.Components
 
 		private void CompassRotationEffect_TouchAction(object sender, TouchActionEventArgs e)
 		{
+			if (e.Id != 0)
+				return;
+
 			if (e.Type == TouchActionType.Pressed)
 				OnOverGridTapped(e.Location);
 			else if (CurrentMode != TranslateMode.None)
