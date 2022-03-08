@@ -38,14 +38,6 @@ namespace FIS_J.Components
 		readonly double OverGrid_MinTop = -FCS_TrueIndex.RADIUS;
 		readonly double OverGrid_MaxTop = FCS_TASArc.E6BHeight - FCS_TrueIndex.RADIUS;
 
-		Thickness OverGridMargin = new();
-		double _CompassRotation = 0;
-		double CompassRotation
-		{
-			get => _CompassRotation;
-			set => _CompassRotation = value % 360;
-		}
-
 		enum TranslateMode
 		{
 			None,
@@ -66,16 +58,6 @@ namespace FIS_J.Components
 			TouchTracking.TouchEffect CompassRotationEffect = new();
 
 			CompassRotationEffect.TouchAction += CompassRotationEffect_TouchAction;
-
-			Device.StartTimer(new(0, 0, 0, 0, 20), () =>
-					{
-						if (over_grid.Margin.Top != OverGridMargin.Top)
-							over_grid.Margin = OverGridMargin;
-
-						if (Compass.Rotation != CompassRotation)
-							Compass.Rotation = CompassRotation;
-						return true;
-					});
 
 			over_grid.Effects.Add(CompassRotationEffect);
 
@@ -124,14 +106,14 @@ namespace FIS_J.Components
 
 		private void OverGridMoveFunction(TouchTracking.TouchActionEventArgs e)
 		{
-			double newTopTmp = OverGridMargin.Top + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
+			double newTopTmp = over_grid.Margin.Top + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
 
 			if (newTopTmp < OverGrid_MinTop)
 				newTopTmp = OverGrid_MinTop;
 			else if (newTopTmp > OverGrid_MaxTop)
 				newTopTmp = OverGrid_MaxTop;
 
-			OverGridMargin = new(0, newTopTmp, 0, 0);
+			over_grid.Margin = new(0, newTopTmp, 0, 0);
 		}
 
 		private void CompassRotationFunction(TouchTracking.TouchActionEventArgs e)
@@ -156,7 +138,8 @@ namespace FIS_J.Components
 			else
 				rad2 = Math.Atan(y2 / x2);
 
-			CompassRotation += (rad2 - rad1) * 180 / Math.PI;
+			double newRotation = Compass.Rotation + ((rad2 - rad1) * 180 / Math.PI);
+			Compass.Rotation = newRotation % 360;
 		}
 	}
 }
