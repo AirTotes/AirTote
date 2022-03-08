@@ -128,8 +128,9 @@ namespace FIS_J.Components
 			if ((x1 == 0 && x2 == 0) || (y1 == 0 && y2 == 0))
 				return;
 
-			double rad1 = 0;
-			double rad2 = 0;
+			double rad1;
+			double rad2;
+
 			if (x1 == 0)
 				rad1 = y1 > 0 ? Math.PI / 2 : Math.PI * 3 / 2;
 			else
