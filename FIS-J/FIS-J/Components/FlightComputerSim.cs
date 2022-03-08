@@ -60,6 +60,7 @@ namespace FIS_J.Components
 			TouchEffect CompassRotationEffect = new();
 
 			CompassRotationEffect.TouchAction += CompassRotationEffect_TouchAction;
+			CompassRotationEffect.Capture = true;
 
 			over_grid.Effects.Add(CompassRotationEffect);
 
