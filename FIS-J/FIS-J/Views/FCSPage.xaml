@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:components="clr-namespace:FIS_J.Components"
+	xmlns:viewmodels="clr-namespace:FIS_J.ViewModels"
+	x:DataType="viewmodels:FCSPageViewModel"
+	x:Class="FIS_J.Views.FCSPage"
+	Title="{Binding Title, Mode=OneWay}">
+	<ContentPage.Content>
+		<Grid
+			Padding="0">
+			<components:FlightComputerSim
+				AnchorX="{Binding AnchorX, Mode=OneWay}"
+				AnchorY="{Binding AnchorY, Mode=OneWay}"
+				Scale="{Binding Scale, Mode=OneWay}"/>
+		</Grid>
+	</ContentPage.Content>
+</ContentPage>
