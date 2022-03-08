@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="FIS_J.MainPagexaml"
              Title="FIS-J  -Flight Information Service-">
+  
     <MasterDetailPage.Master>
         <ContentPage Title="メニュー">
             <StackLayout>
@@ -19,18 +20,24 @@
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>
+                <Button  x:Name="ICAO"
+                Text="ICAO"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                FontSize="25"/>
             </StackLayout>          
         </ContentPage>
     </MasterDetailPage.Master>
     <MasterDetailPage.Detail>
-        
+       
     </MasterDetailPage.Detail>
     <ContentPage>
         <ScrollView>
             <StackLayout>
-                <Image Source="JP_ENR_6_1_en_JP_4.png"
+                <Image Source="JP_ENR_6_4_en_JP_2_2.png"
                    Aspect="AspectFill"/>
             </StackLayout>
         </ScrollView>
+
     </ContentPage>
 </MasterDetailPage>
