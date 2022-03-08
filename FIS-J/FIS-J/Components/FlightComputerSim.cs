@@ -109,14 +109,13 @@ namespace FIS_J.Components
 
 		private void OverGridMoveFunction(TouchActionEventArgs e)
 		{
-			double newTopTmp = over_grid.Margin.Top + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
-
+			double newTopTmp = over_grid.TranslationY + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
 			if (newTopTmp < OverGrid_MinTop)
 				newTopTmp = OverGrid_MinTop;
 			else if (newTopTmp > OverGrid_MaxTop)
 				newTopTmp = OverGrid_MaxTop;
 
-			over_grid.Margin = new(0, newTopTmp, 0, 0);
+			over_grid.TranslationY = newTopTmp;
 		}
 
 		private void CompassRotationFunction(TouchActionEventArgs e)
