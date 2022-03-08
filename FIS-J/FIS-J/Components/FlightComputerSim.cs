@@ -65,70 +65,7 @@ namespace FIS_J.Components
 
 			TouchTracking.TouchEffect CompassRotationEffect = new();
 
-			CompassRotationEffect.TouchAction += (s, e) =>
-			{
-				if (e.Type == TouchTracking.TouchActionType.Pressed)
-				{
-					Point loc = e.Location;
-					double radius = Math.Sqrt(Math.Pow(FCS_TrueIndex.RADIUS - loc.X, 2) + Math.Pow(FCS_TrueIndex.RADIUS - loc.Y, 2));
-					CurrentMode = radius switch
-					{
-						<= FCS_TrueIndex.RADIUS and > (FCS_TrueIndex.RADIUS - FCS_TrueIndex.ARC_THICKNESS) => TranslateMode.Move,
-						<= FCS_Compass.RADIUS and > (FCS_Compass.RADIUS - FCS_Compass.ARC_THICKNESS) => TranslateMode.Rotate,
-						_ => TranslateMode.None,
-					};
-				}
-				else if (CurrentMode != TranslateMode.None)
-				{
-					switch (CurrentMode)
-					{
-						case TranslateMode.Move:
-							double newTopTmp = OverGridMargin.Top + (e.AbsoluteLocation.Y - e.LastAbsLocation.Y);
-
-							if (newTopTmp < OverGrid_MinTop)
-								newTopTmp = OverGrid_MinTop;
-							else if (newTopTmp > OverGrid_MaxTop)
-								newTopTmp = OverGrid_MaxTop;
-
-							OverGridMargin = new(0, newTopTmp, 0, 0);
-							break;
-
-						case TranslateMode.Rotate:
-							double x1 = e.LastLocation.X - FCS_TrueIndex.RADIUS;
-							double y1 = e.LastLocation.Y - FCS_TrueIndex.RADIUS;
-							double x2 = e.Location.X - FCS_TrueIndex.RADIUS;
-							double y2 = e.Location.Y - FCS_TrueIndex.RADIUS;
-
-							if ((x1 == 0 && x2 == 0) || (y1 == 0 && y2 == 0))
-								break;
-
-							double rad1 = 0;
-							double rad2 = 0;
-							if (x1 == 0)
-								rad1 = y1 > 0 ? Math.PI / 2 : Math.PI * 3 / 2;
-							else
-								rad1 = Math.Atan(y1 / x1);
-
-							if (x2 == 0)
-								rad2 = y2 > 0 ? Math.PI / 2 : Math.PI * 3 / 2;
-							else
-								rad2 = Math.Atan(y2 / x2);
-
-							CompassRotation += (rad2 - rad1) * 180 / Math.PI;
-							break;
-					}
-
-					switch (e.Type)
-					{
-						case TouchTracking.TouchActionType.Cancelled:
-						case TouchTracking.TouchActionType.Entered:
-						case TouchTracking.TouchActionType.Exited:
-						case TouchTracking.TouchActionType.Released:
-							CurrentMode = TranslateMode.None;
-							break;
-					}
-				}
-			};
+			CompassRotationEffect.TouchAction += CompassRotationEffect_TouchAction;
 
 			Device.StartTimer(new(0, 0, 0, 0, 20), () =>
 					{
@@ -143,6 +80,83 @@ namespace FIS_J.Components
 			over_grid.Effects.Add(CompassRotationEffect);
 
 			Content = base_grid;
+		}
+
+		private void CompassRotationEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs e)
+		{
+			if (e.Type == TouchTracking.TouchActionType.Pressed)
+				OnOverGridTapped(e.Location);
+			else if (CurrentMode != TranslateMode.None)
+			{
+				switch (CurrentMode)
+				{
+					case TranslateMode.Move:
+						OverGridMoveFunction(e);
+						break;
+
+					case TranslateMode.Rotate:
+						CompassRotationFunction(e);
+						break;
+				}
+
+				switch (e.Type)
+				{
+					case TouchTracking.TouchActionType.Cancelled:
+					case TouchTracking.TouchActionType.Entered:
+					case TouchTracking.TouchActionType.Exited:
+					case TouchTracking.TouchActionType.Released:
+						CurrentMode = TranslateMode.None;
+						break;
+				}
+			}
+		}
+
+		private void OnOverGridTapped(in Point loc)
+		{
+			double radius = Math.Sqrt(Math.Pow(FCS_TrueIndex.RADIUS - loc.X, 2) + Math.Pow(FCS_TrueIndex.RADIUS - loc.Y, 2));
+			CurrentMode = radius switch
+			{
+				<= FCS_TrueIndex.RADIUS and > (FCS_TrueIndex.RADIUS - FCS_TrueIndex.ARC_THICKNESS) => TranslateMode.Move,
+				<= FCS_Compass.RADIUS and > (FCS_Compass.RADIUS - FCS_Compass.ARC_THICKNESS) => TranslateMode.Rotate,
+				_ => TranslateMode.None,
+			};
+		}
+
+		private void OverGridMoveFunction(TouchTracking.TouchActionEventArgs e)
+		{
+			double newTopTmp = OverGridMargin.Top + (e.AbsoluteLocation.Y - e.LastAbsLocation.Y);
+
+			if (newTopTmp < OverGrid_MinTop)
+				newTopTmp = OverGrid_MinTop;
+			else if (newTopTmp > OverGrid_MaxTop)
+				newTopTmp = OverGrid_MaxTop;
+
+			OverGridMargin = new(0, newTopTmp, 0, 0);
+		}
+
+		private void CompassRotationFunction(TouchTracking.TouchActionEventArgs e)
+		{
+			double x1 = e.LastLocation.X - FCS_TrueIndex.RADIUS;
+			double y1 = e.LastLocation.Y - FCS_TrueIndex.RADIUS;
+			double x2 = e.Location.X - FCS_TrueIndex.RADIUS;
+			double y2 = e.Location.Y - FCS_TrueIndex.RADIUS;
+
+			if ((x1 == 0 && x2 == 0) || (y1 == 0 && y2 == 0))
+				return;
+
+			double rad1 = 0;
+			double rad2 = 0;
+			if (x1 == 0)
+				rad1 = y1 > 0 ? Math.PI / 2 : Math.PI * 3 / 2;
+			else
+				rad1 = Math.Atan(y1 / x1);
+
+			if (x2 == 0)
+				rad2 = y2 > 0 ? Math.PI / 2 : Math.PI * 3 / 2;
+			else
+				rad2 = Math.Atan(y2 / x2);
+
+			CompassRotation += (rad2 - rad1) * 180 / Math.PI;
 		}
 	}
 }
