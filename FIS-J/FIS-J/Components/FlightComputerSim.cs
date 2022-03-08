@@ -1,5 +1,7 @@
 ﻿using System;
 
+using TouchTracking;
+
 using Xamarin.Forms;
 
 namespace FIS_J.Components
@@ -55,7 +57,7 @@ namespace FIS_J.Components
 			base_grid.Children.Add(TASArc);
 			base_grid.Children.Add(over_grid);
 
-			TouchTracking.TouchEffect CompassRotationEffect = new();
+			TouchEffect CompassRotationEffect = new();
 
 			CompassRotationEffect.TouchAction += CompassRotationEffect_TouchAction;
 
@@ -64,9 +66,9 @@ namespace FIS_J.Components
 			Content = base_grid;
 		}
 
-		private void CompassRotationEffect_TouchAction(object sender, TouchTracking.TouchActionEventArgs e)
+		private void CompassRotationEffect_TouchAction(object sender, TouchActionEventArgs e)
 		{
-			if (e.Type == TouchTracking.TouchActionType.Pressed)
+			if (e.Type == TouchActionType.Pressed)
 				OnOverGridTapped(e.Location);
 			else if (CurrentMode != TranslateMode.None)
 			{
@@ -83,10 +85,10 @@ namespace FIS_J.Components
 
 				switch (e.Type)
 				{
-					case TouchTracking.TouchActionType.Cancelled:
-					case TouchTracking.TouchActionType.Entered:
-					case TouchTracking.TouchActionType.Exited:
-					case TouchTracking.TouchActionType.Released:
+					case TouchActionType.Cancelled:
+					case TouchActionType.Entered:
+					case TouchActionType.Exited:
+					case TouchActionType.Released:
 						CurrentMode = TranslateMode.None;
 						break;
 				}
@@ -104,7 +106,7 @@ namespace FIS_J.Components
 			};
 		}
 
-		private void OverGridMoveFunction(TouchTracking.TouchActionEventArgs e)
+		private void OverGridMoveFunction(TouchActionEventArgs e)
 		{
 			double newTopTmp = over_grid.Margin.Top + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
 
@@ -116,7 +118,7 @@ namespace FIS_J.Components
 			over_grid.Margin = new(0, newTopTmp, 0, 0);
 		}
 
-		private void CompassRotationFunction(TouchTracking.TouchActionEventArgs e)
+		private void CompassRotationFunction(TouchActionEventArgs e)
 		{
 			double x1 = e.LastLocation.X - FCS_TrueIndex.RADIUS;
 			double y1 = e.LastLocation.Y - FCS_TrueIndex.RADIUS;
