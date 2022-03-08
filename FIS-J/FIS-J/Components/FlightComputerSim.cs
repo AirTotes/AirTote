@@ -124,7 +124,7 @@ namespace FIS_J.Components
 
 		private void OverGridMoveFunction(TouchTracking.TouchActionEventArgs e)
 		{
-			double newTopTmp = OverGridMargin.Top + (e.AbsoluteLocation.Y - e.LastAbsLocation.Y);
+			double newTopTmp = OverGridMargin.Top + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
 
 			if (newTopTmp < OverGrid_MinTop)
 				newTopTmp = OverGrid_MinTop;
