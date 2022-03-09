@@ -34,8 +34,6 @@
     <ContentPage>
         <ScrollView>
             <StackLayout>
-                <!-- <Image Source="JP_ENR_6_4_en_JP_2_2.png"
-                   Aspect="AspectFill"/> -->
                 <WebView Source="https://skyvector.com/"
                          VerticalOptions="FillAndExpand"/>
             </StackLayout>

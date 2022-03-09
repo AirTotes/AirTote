@@ -7,7 +7,6 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-
                 <Entry Text="機長："
                        Placeholder=""
                        Keyboard="Text"/>
@@ -23,6 +22,14 @@
                 <Entry Text="飛行方式："
                        Placeholder=""
                        Keyboard="Text"/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>I</x:String>
+                        <x:String>V</x:String>
+                        <x:String>Y</x:String>
+                        <x:String>Z</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Entry Text="飛行の種類："/>
                 <Picker>
                     <Picker.Items>
@@ -45,14 +52,20 @@
                         <x:String>L</x:String>
                     </Picker.Items>
                 </Picker>
-                <Label Text="使用する無線装備："
+                <Label Text="義務無線機の有無"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>N</x:String>
+                        <x:String>S</x:String>
+                    </Picker.Items>
+                </Picker>
+
+                <Label Text="使用可能な搭載監視危機の種類および当該機器の性能並びに当該航空機の能力："
                        FontSize="Medium"
                        TextColor="Black"/>
                 <Label Text="N"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="S"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
@@ -60,35 +73,11 @@
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="B"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
                 <Label Text="C"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="D"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="E1"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="E2"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="E3"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="F"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="G"
+                <Label Text="E"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
@@ -100,31 +89,55 @@
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J1"
+                <Label Text="L"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J2"
+                <Label Text="P"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J3"
+                <Label Text="S"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J4"
+                <Label Text="X"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J5"
+                <Label Text="B1"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J6"
+                <Label Text="B2"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Label Text="J7"
+                <Label Text="B2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="U1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="U2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="V1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="V2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="D1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="G1"
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
@@ -134,7 +147,11 @@
                 <Entry Text="移動開始時刻："
                        Placeholder=""
                        Keyboard="Text"/>
+                <!-- 00:00式でタイムピック-->
 
+                <Entry Text="移動開始時刻："
+                       Placeholder=""
+                       Keyboard="Text"/>
                 <Entry Text="巡航速度："
                        Placeholder=""
                        Keyboard="Text"/>
@@ -146,12 +163,6 @@
                        FontSize="Medium"
                        TextColor="Black"/>
                 <CheckBox/>
-                <Picker>
-                    <Picker.Items>
-                        <x:String>N</x:String>
-                        <x:String>M</x:String>
-                    </Picker.Items>
-                </Picker>
                 <Entry Text="巡航高度："
                        Placeholder=""
                        Keyboard="Text"/>
@@ -162,13 +173,10 @@
                 <Label Text="FL"
                        FontSize="Medium"
                        TextColor="Black"/>
+                <Label Text="VFR"
+                       FontSize="Medium"
+                       TextColor="Black"/>
                 <CheckBox/>
-                <Picker>
-                    <Picker.Items>
-                        <x:String>A</x:String>
-                        <x:String>FL</x:String>
-                    </Picker.Items>
-                </Picker>
                 <Entry Text="経路："
                        Placeholder=""
                        Keyboard="Text"/>
@@ -184,9 +192,151 @@
                 <Entry Text="2nd代替飛行場："
                        Placeholder=""
                        Keyboard="Text"/>
-                <Entry Text="その他"
+                <Entry Text="その他:航空交通上特別の処理を必要とする理由"
                        Placeholder=""
                        Keyboard="Text"/>
+                <Label Text="ALTRV"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="ATFMX"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="FFR"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="FLTCK"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="HAZMAT"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="HEAD"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="HOSP"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="HUM"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="MARSA"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="MEDEVAC"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="NONRVSM"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="SAR"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="STATE"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Entry Text="その他：RNAV，RNPの種別"
+                       Placeholder=""/>
+                <Label Text="A1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B3"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B4"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B5"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="B6"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="C1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="C2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="C3"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="C4"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="D1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="D2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="L1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="O1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="O2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="O3"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="O4"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="S1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="S2"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="T1"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
+                <Label Text="T2C"
+                       FontSize="Medium"
+                       TextColor="Black"/>
+                <CheckBox/>
                 <Entry Text="燃料搭載量："
                        Placeholder=""
                        Keyboard="Text"/>
@@ -194,18 +344,6 @@
                        Placeholder=""
                        Keyboard="Text"/>
                 <Entry Text="航空機用救命無線機："/>
-                <Label Text="U"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox />
-                <Label Text="V"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="E"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
                 <Picker>
                     <Picker.Items>
                         <x:String>U</x:String>
@@ -213,30 +351,16 @@
                         <x:String>E</x:String>
                     </Picker.Items>
                 </Picker>
-                <Entry Text="救命ボート："
-                       Placeholder=""
-                       Keyboard="Text"/>
+                <Entry Text="救命用具"/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>P</x:String>
+                        <x:String>D</x:String>
+                        <x:String>M</x:String>
+                        <x:String>J</x:String>
+                    </Picker.Items>
+                </Picker>
                 <Entry Text="救命胴衣："/>
-                <Label Text="J"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="L"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="F"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="U"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
-                <Label Text="V"
-                       FontSize="Medium"
-                       TextColor="Black"/>
-                <CheckBox/>
                 <Picker>
                     <Picker.Items>
                         <x:String>J</x:String>
@@ -244,6 +368,16 @@
                         <x:String>F</x:String>
                         <x:String>U</x:String>
                         <x:String>V</x:String>
+                    </Picker.Items>
+                </Picker>
+                <Entry Text="救命ボート："
+                       Placeholder=""
+                       Keyboard="Text"/>
+                <Picker>
+                    <Picker.Items>
+                        <x:String>D/Number</x:String>
+                        <x:String>D/Capacity</x:String>
+                        <x:String>C→</x:String>
                     </Picker.Items>
                 </Picker>
                 <Entry Text="航空機の色及びマーキング："
@@ -255,432 +389,5 @@
                 <Button Text="提出"/>
             </StackLayout>
         </ScrollView>
-        <StackLayout>
-            <TableView>
-                <TableView.Root>
-                    <TableRoot>
-                        <TableSection>
-                            <EntryCell Label="機長："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="メールアドレス："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="提出者："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="航空機識別："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-
-                            <EntryCell Label="飛行方式："/>
-                            <SwitchCell Text="I"
-                                         On="False"/>
-                            <SwitchCell Text="V"
-                                         On="false"/>
-                            <SwitchCell Text="Y"
-                                             On="false"/>
-                            <SwitchCell Text="Z"
-                                            On="false"/>
-
-                            <EntryCell Label="飛行の種類："/>
-                            <SwitchCell Text="S"
-                                        On="False"/>
-                            <SwitchCell Text="N"
-                                        On="False"/>
-                            <SwitchCell Text="G"
-                                        On="False"/>
-                            <SwitchCell Text="M"
-                                        On="False"/>
-                            <SwitchCell Text="X"
-                                        On="False"/>
-                            <!--  <Picker>
-                                <Picker.Items>
-                                    <x:String>S</x:String>
-                                    <x:String>N</x:String>
-                                    <x:String>G</x:String>
-                                    <x:String>M</x:String>
-                                    <x:String>X</x:String>
-                                </Picker.Items>
-                            </Picker> -->
-                            <EntryCell Label="航空機の型式："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="後方乱気流区分："/>
-                            <SwitchCell Text="J"
-                                        On="False"/>
-                            <SwitchCell Text="H"
-                                        On="False"/>
-                            <SwitchCell Text="M"
-                                        On="False"/>
-                            <SwitchCell Text="L"
-                                        On="False"/>
-                            <!-- <Picker>
-                            <Picker.Items>
-                            <x:String>J</x:String>
-                            <x:String>H</x:String>
-                            <x:String>M</x:String>
-                            <x:String>L</x:String>
-                            </Picker.Items>
-                            </Picker>-->
-
-                            <TextCell Text="義務無線機の有無："/>
-
-                            <SwitchCell Text="N"
-                                        On="False"/>
-                            <SwitchCell Text="S"
-                                        On="False"/>
-
-                            <TextCell Text="使用可能な搭載機器種類および当該機器の性能並びに当該航空機の能力"/>
-                            <SwitchCell Text="A"
-                                        On="False"/>
-                            <SwitchCell Text="B"
-                                        On="False"/>
-                            <SwitchCell Text="C"
-                                        On="False"/>
-                            <SwitchCell Text="D"
-                                        On="False"/>
-                            <SwitchCell Text="E1"
-                                        On="False"/>
-                            <SwitchCell Text="E2"
-                                        On="False"/>
-                            <SwitchCell Text="E3"
-                                        On="False"/>
-                            <SwitchCell Text="F"
-                                        On="False"/>
-                            <SwitchCell Text="G"
-                                        On="False"/>
-                            <SwitchCell Text="H"
-                                        On="False"/>
-                            <SwitchCell Text="I"
-                                        On="False"/>
-                            <SwitchCell Text="J1"
-                                        On="False"/>
-                            <SwitchCell Text="J2"
-                                        On="False"/>
-                            <SwitchCell Text="J3"
-                                        On="False"/>
-                            <SwitchCell Text="J4"
-                                        On="False"/>
-                            <SwitchCell Text="J5"
-                                        On="False"/>
-                            <SwitchCell Text="J6"
-                                        On="False"/>
-                            <SwitchCell Text="J7"
-                                        On="False"/>
-                            <SwitchCell Text="K"
-                                        On="False"/>
-                            <SwitchCell Text="L"
-                                        On="False"/>
-                            <SwitchCell Text="M1"
-                                        On="False"/>
-                            <SwitchCell Text="M2"
-                                        On="False"/>
-                            <SwitchCell Text="M3"
-                                        On="False"/>
-                            <SwitchCell Text="O"
-                                        On="False"/>
-                            <SwitchCell Text="P1"
-                                        On="False"/>
-                            <SwitchCell Text="P2"
-                                        On="False"/>
-                            <SwitchCell Text="P3"
-                                        On="False"/>
-                            <SwitchCell Text="R"
-                                        On="False"/>
-                            <SwitchCell Text="T"
-                                        On="False"/>
-                            <SwitchCell Text="U"
-                                        On="False"/>
-                            <SwitchCell Text="V"
-                                        On="False"/>
-                            <SwitchCell Text="W"
-                                        On="False"/>
-                            <SwitchCell Text="X"
-                                        On="False"/>
-                            <SwitchCell Text="Y"
-                                        On="False"/>
-                            <SwitchCell Text="Z"
-                                        On="False"/>
-
-
-                            <TextCell Text="使用可能な搭載監視危機の種類および当該機器の性能並びに当該航空機の能力"/>
-
-                            <SwitchCell Text="N"
-                                        On="False"/>
-                            <SwitchCell Text="A"
-                                        On="False"/>
-                            <SwitchCell Text="C"
-                                        On="False"/>
-                            <SwitchCell Text="E"
-                                        On="False"/>
-                            <SwitchCell Text="H"
-                                        On="False"/>
-                            <SwitchCell Text="I"
-                                        On="False"/>
-                            <SwitchCell Text="L"
-                                        On="False"/>
-                            <SwitchCell Text="P"
-                                        On="False"/>
-                            <SwitchCell Text="S" 
-                                            On="False"/>
-                            <SwitchCell Text="X"
-                                        On="False"/>
-                            <SwitchCell Text="B1"
-                                        On="False"/>
-                            <SwitchCell Text="B2"
-                                        On="False"/>
-                            <SwitchCell Text="U1"
-                                        On="False"/>
-                            <SwitchCell Text="U2"
-                                        On="False"/>
-                            <SwitchCell Text="V1"
-                                        On="False"/>
-                            <SwitchCell Text="V2"
-                                        On="False"/>
-                            <SwitchCell Text="D1"
-                                        On="False"/>
-                            <SwitchCell Text="G1"
-                                        On="False"/>
-
-                            <!--飛行場をICAOコードで選択式に-->
-
-
-                            <EntryCell Label="出発飛行場："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <!--移動開始時刻　00:00式でスクロールタイプで選択可能？-->
-
-
-                            <EntryCell Label="移動開始時刻："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-
-
-
-                            <EntryCell Label="巡航速度："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <SwitchCell Text="N"
-                                        On="False"/>
-                            <SwitchCell Text="M"
-                                        On="False"/>
-                            <!--   <Picker>
-                            <Picker.Items>
-                            <x:String>N</x:String>
-                            <x:String>M</x:String>
-                            </Picker.Items>
-                            </Picker>-->
-                            <EntryCell Label="巡航高度："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <SwitchCell Text="A"
-                                        On="False"/>
-                            <SwitchCell Text="FL"
-                                        On="False"/>
-                            <SwitchCell Text="VFR"
-                                                On="False"/>
-
-                            <!--<Picker>
-                                <Picker.Items>
-                                    <x:String>A</x:String>
-                                    <x:String>FL</x:String>
-                                </Picker.Items>
-                            </Picker>-->
-                            <EntryCell Label="経路："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="目的飛行場："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="所要時間："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="1st代替飛行場："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="2nd代替飛行場："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-
-                            <!--第１８項その他欄に"航空交通上特別の処理を必要とする理由"について追加、最初
-                                    にSTS/ｗｐ自動入力語に下記を複数選択可能にする-->
-
-
-                            <EntryCell Label="その他:航空交通上特別の処理を必要とする理由"
-                                       Placeholder=""/>
-
-
-                            <SwitchCell Text="ALTRV"
-                                        On="False"/>
-                            <SwitchCell Text="ATFMX"
-                                        On="False"/>
-                            <SwitchCell Text="FFR"
-                                        On="False"/>
-                            <SwitchCell Text="FLTCK"
-                                        On="False"/>
-                            <SwitchCell Text="HAZMAT"
-                                        On="False"/>
-                            <SwitchCell Text="HEAD"
-                                        On="False"/>
-                            <SwitchCell Text="HOSP"
-                                        On="False"/>
-                            <SwitchCell Text="HUM"
-                                        On="False"/>
-                            <SwitchCell Text="MARSA" 
-                                            On="False"/>
-                            <SwitchCell Text="MEDEVAC"
-                                        On="False"/>
-                            <SwitchCell Text="NONRVSM"
-                                        On="False"/>
-                            <SwitchCell Text="SAR"
-                                        On="False"/>
-                            <SwitchCell Text="STATE"
-                                        On="False"/>
-
-
-
-                            <!--第１８項その他:RNAV,RNPの種別の項目についても追加
-                                       PBN/を自動入力に-->
-
-
-                            <EntryCell Label="その他:RNAV,RNPの種別"
-                                       Placeholder=""/>
-
-
-                            <SwitchCell Text="A1"
-                                        On="False"/>
-                            <SwitchCell Text="B1"
-                                        On="False"/>
-                            <SwitchCell Text="B2"
-                                        On="False"/>
-                            <SwitchCell Text="B3"
-                                        On="False"/>
-                            <SwitchCell Text="B4"
-                                        On="False"/>
-                            <SwitchCell Text="B5"
-                                        On="False"/>
-                            <SwitchCell Text="B6"
-                                        On="False"/>
-                            <SwitchCell Text="C1"
-                                        On="False"/>
-                            <SwitchCell Text="C2" 
-                                            On="False"/>
-                            <SwitchCell Text="C3"
-                                        On="False"/>
-                            <SwitchCell Text="C4"
-                                        On="False"/>
-                            <SwitchCell Text="D1"
-                                        On="False"/>
-                            <SwitchCell Text="D2"
-                                        On="False"/>
-                            <SwitchCell Text="L1"
-                                        On="False"/>
-                            <SwitchCell Text="O1"
-                                        On="False"/>
-                            <SwitchCell Text="O2"
-                                        On="False"/>
-                            <SwitchCell Text="O3"
-                                        On="False"/>
-                            <SwitchCell Text="O4"
-                                        On="False"/>
-                            <SwitchCell Text="S1"
-                                        On="False"/>
-                            <SwitchCell Text="S2"
-                                        On="False"/>
-                            <SwitchCell Text="T1" 
-                                            On="False"/>
-                            <SwitchCell Text="T2C"
-                                        On="False"/>
-
-                            <!--On="False"/>-->
-                            <!--Keyboard="Text"/>-->
-                            <EntryCell Label="燃料搭載量："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="搭乗する総人数："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="航空機用救命無線機："/>
-                            <SwitchCell Text="U"
-                                        On="False"/>
-                            <SwitchCell Text="V"
-                                        On="False"/>
-                            <SwitchCell Text="E"
-                                        On="False"/>
-                            <!--<Picker>
-                                <Picker.Items>
-                                    <x:String>U</x:String>
-                                    <x:String>V</x:String>
-                                    <x:String>E</x:String>
-                                </Picker.Items>
-                            </Picker>-->
-                            <EntryCell Label="救命用具："/>
-                            <SwitchCell Text="S"/>
-                            On="False"/>
-                            <SwitchCell Text="P"
-                                        On="False"/>
-                            <SwitchCell Text="D"
-                                        On="False"/>
-                            <SwitchCell Text="M"
-                                        On="False"/>
-                            <SwitchCell Text="J"
-                                            On="False"/>
-                            <!--<Picker>
-                                    <Picker.Items>
-                                        <x:String>S/
-                                            <x:String>
-                                                <x:String>P
-                                                    <x:String>
-                                                        <x:String>D
-                                                            <x:String>
-                                                                <x:String>M
-                                                                    <x:String>
-                                                                        <x:String>J
-                                                                            <x:String>
-                                    </Picker.Items>
-                                    </Picker> -->
-
-                            <EntryCell Label="救命胴衣"    />
-                            <SwitchCell Text="J"
-                                        On="False"/>
-                            <SwitchCell Text="L"
-                                        On="False"/>
-                            <SwitchCell Text="F"
-                                        On="False"/>
-                            <SwitchCell Text="U"
-                                        On="False"/>
-                            <SwitchCell Text="V"
-                                        On="False"/>
-                            <!--<Picker>
-                                <Picker.Items>
-                                    <x:String>J</x:String>
-                                    <x:String>L</x:String>
-                                    <x:String>F</x:String>
-                                    <x:String>U</x:String>
-                                    <x:String>V</x:String>
-                                </Picker.Items>
-                            </Picker>-->
-
-                            <EntryCell Label="救命ボート"/>
-                            <SwitchCell Text="D/Number"
-                                                       On="False"/>
-                            <SwitchCell Text="D/Capacity"
-                                                       On="False"/>
-                            <SwitchCell Text="C→"
-                                                       On="False"/>
-
-                            <EntryCell Label="航空機の色及びマーキング："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            <EntryCell Label="備考："
-                                       Placeholder=""
-                                       Keyboard="Text"/>
-                            </TableSection>
-                    </TableRoot>
-                </TableView.Root>
-            </TableView>
-            <Button Text="提出"/>
-        </StackLayout>
     </ContentPage.Content>
 </ContentPage>
