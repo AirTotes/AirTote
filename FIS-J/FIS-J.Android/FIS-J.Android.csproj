@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIS-J\FIS-J.csproj">
-      <Project>{99C07E12-037A-4EC0-8B80-79259509AEFC}</Project>
+      <Project>{93A0B8C2-B818-4D74-8901-15058519FC4B}</Project>
       <Name>FIS-J</Name>
     </ProjectReference>
   </ItemGroup>
