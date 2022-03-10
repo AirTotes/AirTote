@@ -5,10 +5,8 @@
              Title="ICAO">
     <StackLayout>
         <SearchBar/>
-        
         <ScrollView>
             <!--ICAOをスクレイピング-->
         </ScrollView>
     </StackLayout>
-
 </ContentPage>

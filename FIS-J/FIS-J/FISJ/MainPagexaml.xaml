@@ -16,7 +16,8 @@
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>
-                <Button Text="気象情報"
+                <Button x:Name="Wether"
+                Text="気象情報"
                 BackgroundColor="LightSteelBlue"
                 TextColor="Black"
                 FontSize="25"/>

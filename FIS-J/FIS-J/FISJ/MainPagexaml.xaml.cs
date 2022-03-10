@@ -16,6 +16,7 @@ namespace FIS_J
             InitializeComponent();
             Submit.Clicked += Submit_Clicked;
             Icao.Clicked +=Icao_Clicked;
+            Wether.Clicked += Wether_Clicked;
         }
 
         private void Submit_Clicked(object sender, EventArgs e)
@@ -30,6 +31,10 @@ namespace FIS_J
         private void Icao_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new FISJ.IcaoPage());
+        }
+        private void Wether_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.WetherInformation());
         }
     }
 }

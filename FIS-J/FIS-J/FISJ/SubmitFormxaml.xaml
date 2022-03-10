@@ -7,7 +7,9 @@
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
-                <Entry Text="機長："
+                <WebView Source="https://docs.google.com/forms/d/e/1FAIpQLSchoJH3XalSlko5DgLbRVnJpV6ls-WBViqi4xYmb5KbuZnk_g/viewform?usp=sf_link"
+                         VerticalOptions="FillAndExpand"/>
+                <!--<Entry Text="機長："
                        Placeholder=""
                        Keyboard="Text"/>
                 <Entry Text="メールアドレス："
@@ -147,7 +149,8 @@
                 <Entry Text="移動開始時刻："
                        Placeholder=""
                        Keyboard="Text"/>
-                <!-- 00:00式でタイムピック-->
+                 00:00式でタイムピック
+                <TimePicker/>
 
                 <Entry Text="移動開始時刻："
                        Placeholder=""
@@ -386,7 +389,7 @@
                 <Entry Text="備考："
                        Placeholder=""
                        Keyboard="Text"/>
-                <Button Text="提出"/>
+                <Button Text="提出"/>-->
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
