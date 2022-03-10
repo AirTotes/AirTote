@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>FIS_J.Droid</RootNamespace>
     <AssemblyName>FIS-J.Android</AssemblyName>
-    <LangVersion>10</LangVersion>
+    <LangVersion>9</LangVersion>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
