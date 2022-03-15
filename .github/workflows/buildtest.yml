@@ -22,7 +22,7 @@ jobs:
         dotnet-version: ${{ env.NET_VERSION }}
 
     - name: Install dependencies
-      run: nuget restore ${{ env.SLN_PATH }}
+      run: dotnet restore ${{ env.SLN_PATH }}
 
     - name: Build
       run: msbuild ${{ env.UWP_PATH }} /p:Configuration=Release /p:Platform=x64 /t:Rebuild
@@ -38,7 +38,7 @@ jobs:
         dotnet-version: ${{ env.NET_VERSION }}
 
     - name: Install dependencies
-      run: nuget restore ${{ env.SLN_PATH }}
+      run: dotnet restore ${{ env.SLN_PATH }}
 
     - name: Build
       run: msbuild ${{ env.IOS_PATH }} /p:Configuration=Release /p:Platform=iPhoneSimulator /t:Rebuild
