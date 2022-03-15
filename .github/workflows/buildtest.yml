@@ -8,6 +8,7 @@ env:
   UWP_PATH: FIS-J\FIS-J.UWP\FIS-J.UWP.csproj
   IOS_PATH: FIS-J/FIS-J.iOS/FIS-J.iOS.csproj
   ANDROID_PATH: FIS-J/FIS-J.Android/FIS-J.Android.csproj
+  NET_VERSION: 6.0.x
 
 jobs:
   build-uwp:
@@ -15,10 +16,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Setup .NET Core SDK 5.0.x
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: ${{ env.NET_VERSION }}
 
     - name: Install dependencies
       run: nuget restore ${{ env.SLN_PATH }}
@@ -40,10 +41,10 @@ jobs:
         echo "MD_APPLE_SDK_ROOT=$XCODE_ROOT" >> $GITHUB_ENV
         sudo xcode-select -s $XCODE_ROOT
 
-    - name: Setup .NET Core SDK 5.0.x
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: ${{ env.NET_VERSION }}
 
     - name: Install dependencies
       run: nuget restore ${{ env.SLN_PATH }}
@@ -60,10 +61,10 @@ jobs:
       run: |
         $VM_ASSETS/select-xamarin-sdk-v2.sh --mono=6.10 --android=10.2
 
-    - name: Setup .NET Core SDK 5.0.x
+    - name: Setup .NET SDK
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: '5.0.x'
+        dotnet-version: ${{ env.NET_VERSION }}
 
     - name: Install dependencies
       run: dotnet restore ${{ env.SLN_PATH }}
