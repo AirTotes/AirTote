@@ -7,6 +7,7 @@
 	xmlns:pinchgesture="clr-namespace:PinchGesture"
 	x:DataType="viewmodels:FCSPageViewModel"
 	x:Class="FIS_J.Views.FCSPage"
+	Background="White"
 	Title="{Binding Title, Mode=OneWay}">
 	<ContentPage.Content>
 		<pinchgesture:PinchToZoomContainer>
