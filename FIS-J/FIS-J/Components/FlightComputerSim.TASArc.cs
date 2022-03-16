@@ -51,6 +51,21 @@ namespace FIS_J.Components
 
 		void DrawRadians()
 		{
+			static Path getPath(PathFigureCollection figs, double thickness)
+				=> new()
+				{
+					Stroke = Brush.Black,
+					StrokeThickness = thickness,
+					Data = new PathGeometry()
+					{
+						Figures = figs
+					}
+				};
+
+			PathFigureCollection figs_normal = new();
+			PathFigureCollection figs_semibold = new();
+			PathFigureCollection figs_bold = new();
+
 			for (double i = -MAX_DEG; i <= MAX_DEG; i += 1)
 			{
 				double RAD_THETA = ToRad(i);
@@ -84,24 +99,23 @@ namespace FIS_J.Components
 				double y1 = y1tmp <= 0 ? 0 : y1tmp;
 				double y2 = E6BHeight <= y2tmp ? E6BHeight : y2tmp;
 
-				Line line = new()
+				PathFigureCollection target =
+					(i % 10) == 0 ? figs_bold :
+					((i % 5) == 0 ? figs_semibold : figs_normal);
+
+				target.Add(new()
 				{
-					X1 = x1,
-					X2 = x2,
-					Y1 = y1,
-					Y2 = y2,
-					Stroke = Brush.Black,
-					StrokeThickness =
-						(i % 10) == 0
-						? THICKNESS_BOLD
-						: (
-							(i % 5) == 0
-							? THICKNESS_SEMIBOLD
-							: THICKNESS_NORMAL
-						),
-				};
-				canvas.Children.Add(line);
+					StartPoint = new(x1, y1),
+					Segments = new()
+					{
+						new LineSegment(new(x2, y2))
+					}
+				});
 			}
+
+			canvas.Children.Add(getPath(figs_bold, THICKNESS_BOLD));
+			canvas.Children.Add(getPath(figs_semibold, THICKNESS_SEMIBOLD));
+			canvas.Children.Add(getPath(figs_normal, THICKNESS_NORMAL));
 		}
 
 		void DrawArcs()
