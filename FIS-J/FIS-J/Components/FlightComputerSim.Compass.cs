@@ -137,6 +137,8 @@ namespace FIS_J.Components
 
 		void DrawScales()
 		{
+			PathFigureCollection figures = new();
+
 			for (double deg = 0; deg < 360; deg++)
 			{
 				double _width = (deg % 5) == 0 ? SCALE_LEN_L : SCALE_LEN_S;
@@ -148,16 +150,26 @@ namespace FIS_J.Components
 				double X2 = RADIUS + (RADIUS * Math.Cos(ToRad(deg)));
 				double Y2 = RADIUS - (RADIUS * Math.Sin(ToRad(deg)));
 
-				canvas.Children.Add(new Line()
+				figures.Add(new()
 				{
-					X1 = X1,
-					Y1 = Y1,
-					X2 = X2,
-					Y2 = Y2,
-					Stroke = Brush.Black,
-					StrokeThickness = SCALE_THICKNESS,
+					StartPoint = new(X1, Y1),
+					Segments = new()
+					{
+						new LineSegment(new(X2, Y2))
+					}
 				});
 			}
+
+			canvas.Children.Add(new Path()
+			{
+				Fill = null,
+				Stroke = Brush.Black,
+				StrokeThickness = SCALE_THICKNESS,
+				Data = new PathGeometry()
+				{
+					Figures = figures
+				}
+			});
 		}
 
 		static PointCollection getUpTriangleS() => new()
