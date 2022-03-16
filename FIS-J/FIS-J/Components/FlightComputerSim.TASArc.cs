@@ -29,10 +29,11 @@ namespace FIS_J.Components
 		public const double THICKNESS_SEMIBOLD = 0.3 * UNIT;
 		public const double THICKNESS_NORMAL = 0.15 * UNIT;
 
-		const double LABEL_HEIGHT = 20;
-		const double LABEL_WIDTH = 40;
+		const double LABEL_HEIGHT = 4 * UNIT;
+		const double LABEL_WIDTH = 8 * UNIT;
 		const double LABEL_HEIGHT_HALF = LABEL_HEIGHT / 2;
 		const double LABEL_WIDTH_HALF = LABEL_WIDTH / 2;
+		const double LABEL_FONTSIZE = 3 * UNIT;
 
 		AbsoluteLayout canvas = new();
 
@@ -185,6 +186,7 @@ namespace FIS_J.Components
 					VerticalTextAlignment = TextAlignment.Center,
 					Background = Brush.White,
 					TextColor = Color.Black,
+					FontSize = LABEL_FONTSIZE,
 				},
 				AnchorX = 0.5,
 				AnchorY = 0.5,
