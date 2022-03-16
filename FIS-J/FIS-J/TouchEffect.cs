@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace TouchTracking
@@ -47,15 +47,17 @@ namespace TouchTracking
 		}
 
 		public bool Capture { set; get; }
-		public Point LastLocation { private get; set; }
-		public Point LastAbsLocation { private get; set; }
+
+		readonly Dictionary<long, Point> LastLocationDic = new();
+		readonly Dictionary<long, Point> LastAbsLocationDic = new();
 
 		public void OnTouchAction(Element element, TouchActionEventArgs args)
 		{
-			args.LastLocation = LastLocation;
-			args.LastAbsLocation = LastAbsLocation;
-			LastLocation = args.Location;
-			LastAbsLocation = args.AbsoluteLocation;
+			long id = args.Id;
+			args.LastLocation = LastLocationDic.TryGetValue(id, out var p) ? p : new();
+			args.LastAbsLocation = LastAbsLocationDic.TryGetValue(id, out var p_abs) ? p_abs : new();
+			LastLocationDic[id] = args.Location;
+			LastAbsLocationDic[id] = args.AbsoluteLocation;
 			TouchAction?.Invoke(element, args);
 		}
 	}

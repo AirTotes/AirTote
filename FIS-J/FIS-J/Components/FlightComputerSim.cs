@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 using TouchTracking;
 
 using Xamarin.Forms;
@@ -47,7 +47,7 @@ namespace FIS_J.Components
 			Rotate,
 		}
 
-		TranslateMode CurrentMode = TranslateMode.None;
+		readonly Dictionary<long, TranslateMode> FingerControls = new();
 
 		public FlightComputerSim()
 		{
@@ -69,12 +69,13 @@ namespace FIS_J.Components
 
 		private void CompassRotationEffect_TouchAction(object sender, TouchActionEventArgs e)
 		{
-			if (e.Id != 0)
-				return;
-
 			if (e.Type == TouchActionType.Pressed)
+			{
 				OnOverGridTapped(e.Location);
-			else if (CurrentMode != TranslateMode.None)
+
+				FingerControls[e.Id] = OnOverGridTapped(e.Location);
+			}
+			else if (FingerControls.TryGetValue(e.Id, out var CurrentMode) && CurrentMode != TranslateMode.None)
 			{
 				switch (CurrentMode)
 				{
@@ -93,16 +94,16 @@ namespace FIS_J.Components
 					case TouchActionType.Entered:
 					case TouchActionType.Exited:
 					case TouchActionType.Released:
-						CurrentMode = TranslateMode.None;
+						FingerControls.Remove(e.Id);
 						break;
 				}
 			}
 		}
 
-		private void OnOverGridTapped(in Point loc)
+		private TranslateMode OnOverGridTapped(in Point loc)
 		{
 			double radius = Math.Sqrt(Math.Pow(FCS_TrueIndex.RADIUS - loc.X, 2) + Math.Pow(FCS_TrueIndex.RADIUS - loc.Y, 2));
-			CurrentMode = radius switch
+			return radius switch
 			{
 				<= FCS_TrueIndex.RADIUS and > (FCS_TrueIndex.RADIUS - FCS_TrueIndex.ARC_THICKNESS) => TranslateMode.Move,
 				<= FCS_Compass.RADIUS and > (FCS_Compass.RADIUS - FCS_Compass.ARC_THICKNESS) => TranslateMode.Rotate,
