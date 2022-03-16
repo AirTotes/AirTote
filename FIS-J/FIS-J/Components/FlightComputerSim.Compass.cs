@@ -180,9 +180,9 @@ namespace FIS_J.Components
 		};
 		static PointCollection getRightTriangleS() => new()
 		{
-			new (0, 0),
-			new (DIRECTION_TRIANGLE_HEIGHT_S, DIRECTION_TRIANGLE_WIDTH_S / 2),
-			new (0, DIRECTION_TRIANGLE_WIDTH_S),
+			new(0, 0),
+			new(DIRECTION_TRIANGLE_HEIGHT_S, DIRECTION_TRIANGLE_WIDTH_S / 2),
+			new(0, DIRECTION_TRIANGLE_WIDTH_S),
 		};
 		static PointCollection getDownTriangleS() => new()
 		{
@@ -192,9 +192,9 @@ namespace FIS_J.Components
 		};
 		static PointCollection getLeftTriangleS() => new()
 		{
-			new (DIRECTION_TRIANGLE_HEIGHT_S, 0),
-			new (0, DIRECTION_TRIANGLE_WIDTH_S / 2),
-			new (DIRECTION_TRIANGLE_HEIGHT_S, DIRECTION_TRIANGLE_WIDTH_S),
+			new(DIRECTION_TRIANGLE_HEIGHT_S, 0),
+			new(0, DIRECTION_TRIANGLE_WIDTH_S / 2),
+			new(DIRECTION_TRIANGLE_HEIGHT_S, DIRECTION_TRIANGLE_WIDTH_S),
 		};
 
 		void DrawScaleLabels()
@@ -281,7 +281,8 @@ namespace FIS_J.Components
 			// NNW
 			canvas.Children.Add(getUpPolygonElem(-22.5));
 			// North
-			canvas.Children.Add(new Polygon() {
+			canvas.Children.Add(new Polygon()
+			{
 				Points = {
 					new(0, DIRECTION_TRIANGLE_HEIGHT_L),
 					new(DIRECTION_TRIANGLE_WIDTH_L / 2, 0),
@@ -298,7 +299,8 @@ namespace FIS_J.Components
 			// ENE
 			canvas.Children.Add(getRightPolygonElem(-22.5));
 			// East
-			canvas.Children.Add(new Polygon() {
+			canvas.Children.Add(new Polygon()
+			{
 				Points = {
 					new(0, 0),
 					new(DIRECTION_TRIANGLE_HEIGHT_L, DIRECTION_TRIANGLE_WIDTH_L / 2),
@@ -315,7 +317,8 @@ namespace FIS_J.Components
 			// SSE
 			canvas.Children.Add(getDownPolygonElem(-22.5));
 			// South
-			canvas.Children.Add(new Polygon() {
+			canvas.Children.Add(new Polygon()
+			{
 				Points = {
 					new(0, 0),
 					new(DIRECTION_TRIANGLE_WIDTH_L / 2, DIRECTION_TRIANGLE_HEIGHT_L),
@@ -332,7 +335,8 @@ namespace FIS_J.Components
 			// WSW
 			canvas.Children.Add(getLeftPolygonElem(-22.5));
 			// West
-			canvas.Children.Add(new Polygon() {
+			canvas.Children.Add(new Polygon()
+			{
 				Points = {
 					new(DIRECTION_TRIANGLE_HEIGHT_L, 0),
 					new(DIRECTION_TRIANGLE_HEIGHT_L, DIRECTION_TRIANGLE_WIDTH_L),
