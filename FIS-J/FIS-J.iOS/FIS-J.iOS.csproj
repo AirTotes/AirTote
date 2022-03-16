@@ -12,7 +12,7 @@
     <RootNamespace>FIS_J.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>FIS-J.iOS</AssemblyName>
-    <LangVersion>10</LangVersion>
+    <LangVersion>9.0</LangVersion>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
