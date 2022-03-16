@@ -7,7 +7,7 @@ namespace FIS_J.Components
 {
 	public partial class FCS_TASArc : ContentView
 	{
-		public const double UNIT = 5;
+		public const double UNIT = 4;
 		const double BASE_RADIUS = 270;
 		const double BASE_RADIUS_MIN = 36;
 		public const double BASE_WIDTH = 104;
