@@ -67,6 +67,9 @@ namespace FIS_J.Components
 			Content = base_grid;
 		}
 
+		public new double Height => FCS_TASArc.E6BHeight;
+		public new double Width => FCS_TrueIndex.RADIUS * 2;
+
 		private void CompassRotationEffect_TouchAction(object sender, TouchActionEventArgs e)
 		{
 			if (e.Type == TouchActionType.Pressed)
