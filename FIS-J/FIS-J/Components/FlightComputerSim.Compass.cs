@@ -143,12 +143,17 @@ namespace FIS_J.Components
 
 				double r_in = RADIUS - _width;
 
+				double X1 = RADIUS + (r_in * Math.Cos(ToRad(deg)));
+				double Y1 = RADIUS - (r_in * Math.Sin(ToRad(deg)));
+				double X2 = RADIUS + (RADIUS * Math.Cos(ToRad(deg)));
+				double Y2 = RADIUS - (RADIUS * Math.Sin(ToRad(deg)));
+
 				canvas.Children.Add(new Line()
 				{
-					X1 = RADIUS + (r_in * Math.Cos(ToRad(deg))),
-					Y1 = RADIUS - (r_in * Math.Sin(ToRad(deg))),
-					X2 = RADIUS + (RADIUS * Math.Cos(ToRad(deg))),
-					Y2 = RADIUS - (RADIUS * Math.Sin(ToRad(deg))),
+					X1 = X1,
+					Y1 = Y1,
+					X2 = X2,
+					Y2 = Y2,
 					Stroke = Brush.Black,
 					StrokeThickness = SCALE_THICKNESS,
 				});
