@@ -4,16 +4,13 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:components="clr-namespace:FIS_J.Components"
 	xmlns:viewmodels="clr-namespace:FIS_J.ViewModels"
+	xmlns:pinchgesture="clr-namespace:PinchGesture"
 	x:DataType="viewmodels:FCSPageViewModel"
 	x:Class="FIS_J.Views.FCSPage"
 	Title="{Binding Title, Mode=OneWay}">
 	<ContentPage.Content>
-		<Grid
-			Padding="0">
-			<components:FlightComputerSim
-				AnchorX="{Binding AnchorX, Mode=OneWay}"
-				AnchorY="{Binding AnchorY, Mode=OneWay}"
-				Scale="{Binding Scale, Mode=OneWay}"/>
-		</Grid>
+		<pinchgesture:PinchToZoomContainer>
+			<components:FlightComputerSim/>
+		</pinchgesture:PinchToZoomContainer>
 	</ContentPage.Content>
 </ContentPage>
