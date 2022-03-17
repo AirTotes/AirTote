@@ -10,8 +10,10 @@
 	Background="White"
 	Title="{Binding Title, Mode=OneWay}">
 	<ContentPage.Content>
-		<pinchgesture:PinchToZoomContainer>
-			<components:FlightComputerSim/>
+		<pinchgesture:PinchToZoomContainer
+			Margin="-100,0">
+			<components:FlightComputerSim
+				Margin="-100,0"/>
 		</pinchgesture:PinchToZoomContainer>
 	</ContentPage.Content>
 </ContentPage>
