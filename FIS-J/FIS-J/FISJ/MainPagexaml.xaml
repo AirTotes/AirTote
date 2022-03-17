@@ -29,9 +29,7 @@
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
-    <MasterDetailPage.Detail>
-
-    </MasterDetailPage.Detail>
+    
     <ContentPage>
         <ScrollView>
             <StackLayout>

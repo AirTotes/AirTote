@@ -15,6 +15,21 @@ namespace FIS_J.FISJ
         public WetherInformation()
         {
             InitializeComponent();
+            Nomwether.Clicked += Nomwether_Clicked;
+            Upperwether.Clicked += Upperwether_Clicked;
+            SkyInformation.Clicked += SkyInformation_Clicked;
+        }
+        private void Nomwether_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.Nomwether());
+        }
+        private void Upperwether_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.Upperwether());
+        }
+        private void SkyInformation_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.SkyInformation());
         }
     }
 }

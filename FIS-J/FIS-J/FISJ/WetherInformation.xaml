@@ -4,8 +4,21 @@
              x:Class="FIS_J.FISJ.WetherInformation">
     <ContentPage.Content>
         <StackLayout>
-            <WebView Source="https://www.tono2.net/"
-                     VerticalOptions="FillAndExpand"/>
+            <Button x:Name="Nomwether"
+                Text="数値天気予報図"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="25"/>
+            <Button x:Name="Upperwether"
+                Text="高層天気図"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="25"/>
+            <Button x:Name="SkyInformation"
+                Text="空域の情報"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="25"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
