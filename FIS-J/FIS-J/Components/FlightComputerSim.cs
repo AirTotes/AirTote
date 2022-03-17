@@ -123,7 +123,7 @@ namespace FIS_J.Components
 
 		private void OverGridMoveFunction(TouchActionEventArgs e)
 		{
-			double newTopTmp = over_grid.TranslationY + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / Scale);
+			double newTopTmp = over_grid.TranslationY + ((e.AbsoluteLocation.Y - e.LastAbsLocation.Y) / (Scale * ViewBox.Scale));
 			if (newTopTmp < OverGrid_MinTop)
 				newTopTmp = OverGrid_MinTop;
 			else if (newTopTmp > OverGrid_MaxTop)
