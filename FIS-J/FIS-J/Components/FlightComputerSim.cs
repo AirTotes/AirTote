@@ -36,6 +36,11 @@ namespace FIS_J.Components
 			HeightRequest = FCS_Compass.RADIUS * 2,
 			WidthRequest = FCS_Compass.RADIUS * 2,
 		};
+		readonly ContentView ViewBox = new()
+		{
+			AnchorX = 0.5,
+			AnchorY = 0,
+		};
 
 		readonly double OverGrid_MinTop = -FCS_TrueIndex.RADIUS;
 		readonly double OverGrid_MaxTop = FCS_TASArc.E6BHeight - FCS_TrueIndex.RADIUS;
@@ -64,7 +69,9 @@ namespace FIS_J.Components
 
 			over_grid.Effects.Add(CompassRotationEffect);
 
-			Content = base_grid;
+			ViewBox.Content = base_grid;
+
+			Content = ViewBox;
 		}
 
 		public new double Height => FCS_TASArc.E6BHeight;
@@ -150,6 +157,19 @@ namespace FIS_J.Components
 
 			double newRotation = Compass.Rotation + ((rad2 - rad1) * 180 / Math.PI);
 			Compass.Rotation = newRotation % 360;
+		}
+
+		protected override void OnSizeAllocated(double width, double height)
+		{
+			base.OnSizeAllocated(width, height);
+
+			if (width <= 0 || height <= 0)
+				return;
+
+			double scaleX = width / FCS_TrueIndex.RADIUS * 2;
+			double scaleY = height / FCS_TASArc.E6BHeight;
+
+			ViewBox.Scale = Math.Min(scaleX, scaleY);
 		}
 	}
 }

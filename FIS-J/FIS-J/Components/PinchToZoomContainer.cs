@@ -14,7 +14,7 @@ namespace PinchGesture
 		double yOffset = 0;
 
 		static double ValueIn(double min, double value, double max)
-			=> value <= min ? min : (max <= value ? max : value);
+			=> Math.Min(max, Math.Max(value, min));
 
 		public PinchToZoomContainer()
 		{
@@ -22,21 +22,8 @@ namespace PinchGesture
 			pinchGesture.PinchUpdated += OnPinchUpdated;
 			GestureRecognizers.Add(pinchGesture);
 
-			AnchorX = 0.5;
+			AnchorX = 0;
 			AnchorY = 0;
-		}
-
-		double? _ContentHeight = null;
-		double ContentHeight
-		{
-			get => _ContentHeight ?? Content.Height;
-			set => _ContentHeight = value <= 0 ? null : value;
-		}
-		double? _ContentWidth = null;
-		double ContentWidth
-		{
-			get => _ContentWidth ?? Content.Width;
-			set => _ContentWidth = value <= 0 ? null : value;
 		}
 
 		void OnPinchUpdated(object sender, PinchGestureUpdatedEventArgs e)
@@ -55,19 +42,22 @@ namespace PinchGesture
 
 					double renderedX = Content.X + xOffset;
 					double deltaX = renderedX / Width;
-					double deltaWidth = Width / (ContentWidth * startScale);
+					double deltaWidth = Width / (Content.Width * startScale);
 					double originX = (e.ScaleOrigin.X - deltaX) * deltaWidth;
 
 					double renderedY = Content.Y + yOffset;
 					double deltaY = renderedY / Height;
-					double deltaHeight = Height / (ContentHeight * startScale);
+					double deltaHeight = Height / (Content.Height * startScale);
 					double originY = (e.ScaleOrigin.Y - deltaY) * deltaHeight;
 
-					double targetX = xOffset - (originX * ContentWidth) * (currentScale - startScale);
-					double targetY = yOffset - (originY * ContentHeight) * (currentScale - startScale);
+					double targetX = xOffset - (originX * Content.Width) * (currentScale - startScale);
+					double targetY = yOffset - (originY * Content.Height) * (currentScale - startScale);
 
-					Content.TranslationX = ValueIn(-ContentWidth * (currentScale - 1), targetX, 0);
-					Content.TranslationY = ValueIn(-ContentHeight * (currentScale - 1), targetY, 0);
+					double translationXMax = Content.Width * (currentScale - 1);
+					double translationYMax = Content.Height * (currentScale - 1);
+
+					Content.TranslationX = ValueIn(-translationXMax, targetX, 0);
+					Content.TranslationY = ValueIn(-translationYMax, targetY, 0);
 
 					Content.Scale = currentScale;
 					break;
@@ -77,30 +67,6 @@ namespace PinchGesture
 					yOffset = Content.TranslationY;
 					break;
 			}
-		}
-
-		protected override void OnChildAdded(Element child)
-		{
-			base.OnChildAdded(child);
-
-			if (child is FlightComputerSim fcs)
-			{
-				ContentHeight = fcs.Height;
-				ContentWidth = fcs.Width;
-			}
-		}
-
-		protected override void OnSizeAllocated(double width, double height)
-		{
-			base.OnSizeAllocated(width, height);
-
-			if (width <= 0 || height <= 0)
-				return;
-
-			double scaleX = width / ContentWidth;
-			double scaleY = height / ContentHeight;
-
-			Scale = Math.Min(scaleX, scaleY);
 		}
 	}
 }
