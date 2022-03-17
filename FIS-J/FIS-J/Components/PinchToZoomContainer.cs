@@ -2,7 +2,7 @@
 using FIS_J.Components;
 using Xamarin.Forms;
 
-//ref: https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithGestures/PinchGesture/PinchGesture/Extensions/DoubleExtensions.cs
+//ref: https://github.com/xamarin/xamarin-forms-samples/blob/main/WorkingWithGestures/PinchGesture/PinchGesture/PinchToZoomContainer.cs
 
 namespace PinchGesture
 {
