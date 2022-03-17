@@ -2,10 +2,10 @@
 
 using FIS_J.Models;
 
+using Newtonsoft.Json;
 
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FIS_J.Services
@@ -46,7 +46,7 @@ namespace FIS_J.Services
 			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
 				throw new NoContentException();
 
-			return JsonSerializer.Deserialize<METAR>(await result.Content.ReadAsStringAsync());
+			return JsonConvert.DeserializeObject<METAR>(await result.Content.ReadAsStringAsync());
 		}
 
 		public async Task<string> GetSanitizedTAF(ICAOCode code) => (await GetTAF(code)).sanitized;
@@ -61,7 +61,7 @@ namespace FIS_J.Services
 			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
 				throw new NoContentException();
 
-			return JsonSerializer.Deserialize<TAF>(await result.Content.ReadAsStringAsync());
+			return JsonConvert.DeserializeObject<TAF>(await result.Content.ReadAsStringAsync());
 		}
 
 		public class Meta
