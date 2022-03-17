@@ -37,8 +37,6 @@
 	<string>Assets.xcassets/AppIcon.appiconset</string>
 	<key>UIStatusBarHidden</key>
 	<true/>
-	<key>UIRequiresFullScreen</key>
-	<true/>
 	<key>UIApplicationSceneManifest</key>
 	<dict/>
 	<key>CFBundleShortVersionString</key>
