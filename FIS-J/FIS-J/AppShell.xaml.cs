@@ -13,6 +13,7 @@ namespace FIS_J
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
 			Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+			Routing.RegisterRoute(nameof(FCSPage), typeof(FCSPage));
 		}
 
 		private async void OnMenuItemClicked(object sender, EventArgs e)

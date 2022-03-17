@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>FIS_J.Droid</RootNamespace>
     <AssemblyName>FIS-J.Android</AssemblyName>
+    <LangVersion>9</LangVersion>
     <Deterministic>True</Deterministic>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
@@ -58,13 +59,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TouchEffect.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -89,7 +91,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FIS-J\FIS-J.csproj">
-      <Project>{99C07E12-037A-4EC0-8B80-79259509AEFC}</Project>
+      <Project>{93A0B8C2-B818-4D74-8901-15058519FC4B}</Project>
       <Name>FIS-J</Name>
     </ProjectReference>
   </ItemGroup>

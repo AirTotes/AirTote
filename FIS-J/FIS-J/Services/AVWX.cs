@@ -2,10 +2,10 @@
 
 using FIS_J.Models;
 
+using Newtonsoft.Json;
 
 using System;
 using System.Net.Http;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace FIS_J.Services
@@ -46,7 +46,7 @@ namespace FIS_J.Services
 			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
 				throw new NoContentException();
 
-			return JsonSerializer.Deserialize<METAR>(await result.Content.ReadAsStringAsync());
+			return JsonConvert.DeserializeObject<METAR>(await result.Content.ReadAsStringAsync());
 		}
 
 		public async Task<string> GetSanitizedTAF(ICAOCode code) => (await GetTAF(code)).sanitized;
@@ -61,7 +61,7 @@ namespace FIS_J.Services
 			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
 				throw new NoContentException();
 
-			return JsonSerializer.Deserialize<TAF>(await result.Content.ReadAsStringAsync());
+			return JsonConvert.DeserializeObject<TAF>(await result.Content.ReadAsStringAsync());
 		}
 
 		public class Meta
@@ -133,18 +133,18 @@ namespace FIS_J.Services
 		public class RemarksInfo
 		{
 			public ReprAndValueAndSpoken maximum_temperature_6 { get; set; }
-      public ReprAndValueAndSpoken minimum_temperature_6 { get; set; }
-      public ReprAndValueAndSpoken pressure_tendency { get; set; }
-      public ReprAndValueAndSpoken precip_36_hours { get; set; }
-      public ReprAndValueAndSpoken precip_24_hours { get; set; }
-      public ReprAndValueAndSpoken sunshine_minutes { get; set; }
+			public ReprAndValueAndSpoken minimum_temperature_6 { get; set; }
+			public ReprAndValueAndSpoken pressure_tendency { get; set; }
+			public ReprAndValueAndSpoken precip_36_hours { get; set; }
+			public ReprAndValueAndSpoken precip_24_hours { get; set; }
+			public ReprAndValueAndSpoken sunshine_minutes { get; set; }
 			public ReprAndValue[] codes { get; set; }
-      public ReprAndValueAndSpoken dewpoint_decimal { get; set; }
-      public ReprAndValueAndSpoken maximum_temperature_24 { get; set; }
-      public ReprAndValueAndSpoken minimum_temperature_24 { get; set; }
-      public object precip_hourly { get; set; }
-      public ReprAndValueAndSpoken sea_level_pressure { get; set; }
-      public ReprAndValueAndSpoken snow_depth { get; set; }
+			public ReprAndValueAndSpoken dewpoint_decimal { get; set; }
+			public ReprAndValueAndSpoken maximum_temperature_24 { get; set; }
+			public ReprAndValueAndSpoken minimum_temperature_24 { get; set; }
+			public object precip_hourly { get; set; }
+			public ReprAndValueAndSpoken sea_level_pressure { get; set; }
+			public ReprAndValueAndSpoken snow_depth { get; set; }
 			public ReprAndValueAndSpoken temperature_decimal { get; set; }
 		}
 
