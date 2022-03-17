@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="FIS_J.Page1">
+
+
+    <Grid>
+
+        <map:Map MapType="Street" HasScrollEnabled="True">
+            <map:Map.ItemTemplate>
+                <DataTemplate>
+                    <map:Pin  Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding PlaceName}"/>
+                    
+                </DataTemplate>
+                   
+            </map:Map.ItemTemplate>
+            
+        </map:Map>
+
+    </Grid>
+</ContentPage>

@@ -17,12 +17,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="mapsapp.xaml.cs">
+      <DependentUpon>mapsapp.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\Maps.xaml.cs">
       <DependentUpon>Maps.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="mapsapp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Maps.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
