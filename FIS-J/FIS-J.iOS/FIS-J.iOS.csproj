@@ -12,9 +12,11 @@
     <RootNamespace>FIS_J.iOS</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>FIS-J.iOS</AssemblyName>
+    <LangVersion>9.0</LangVersion>
     <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
     <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
     <ProvisioningType>automatic</ProvisioningType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
     <DebugSymbols>true</DebugSymbols>
@@ -58,13 +60,22 @@
     <OutputPath>bin\iPhone\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchArch>ARMv7, ARMv7s, ARM64</MtouchArch>
+    <CodesignKey>iPhone Distribution: Kazunori Fujita (JYXQMVT4FS)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>SdkOnly</MtouchLink>
+    <CodesignProvision>FIS-J Distribution</CodesignProvision>
+<MtouchUseLlvm>true</MtouchUseLlvm>
+<MtouchUseThumb>true</MtouchUseThumb>
+<MtouchI18n>cjk</MtouchI18n>
+<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
+<MtouchFloat32>true</MtouchFloat32>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="TouchEffect.cs" />
+    <Compile Include="TouchRecognizer.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -132,19 +143,13 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Apitron.PDF.Rasterizer">
-      <Version>3.0.167</Version>
-    </PackageReference>
-    <PackageReference Include="Syncfusion.Xamarin.SfPdfViewer">
-      <Version>19.4.0.55</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\FIS-J\FIS-J.csproj">
-      <Project>{99C07E12-037A-4EC0-8B80-79259509AEFC}</Project>
+      <Project>{93A0B8C2-B818-4D74-8901-15058519FC4B}</Project>
       <Name>FIS-J</Name>
     </ProjectReference>
   </ItemGroup>
