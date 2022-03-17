@@ -39,7 +39,7 @@ namespace FIS_J.Components
 		readonly ContentView ViewBox = new()
 		{
 			AnchorX = 0.5,
-			AnchorY = 0,
+			AnchorY = 0.5,
 		};
 
 		readonly double OverGrid_MinTop = -FCS_TrueIndex.RADIUS;
@@ -166,8 +166,17 @@ namespace FIS_J.Components
 			if (width <= 0 || height <= 0)
 				return;
 
-			double scaleX = width / FCS_TrueIndex.RADIUS * 2;
-			double scaleY = height / FCS_TASArc.E6BHeight;
+			VisualElement elem = Parent as View;
+			while (elem is not ContentPage)
+			{
+				if (elem.Parent is VisualElement _elem)
+					elem = _elem;
+				else
+					return;
+			}
+
+			double scaleX = elem.Width / FCS_TrueIndex.RADIUS * 2;
+			double scaleY = elem.Height / FCS_TASArc.E6BHeight;
 
 			ViewBox.Scale = Math.Min(scaleX, scaleY);
 		}

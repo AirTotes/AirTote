@@ -11,9 +11,9 @@
 	Title="{Binding Title, Mode=OneWay}">
 	<ContentPage.Content>
 		<pinchgesture:PinchToZoomContainer
-			Margin="-100,0">
+			Margin="-100">
 			<components:FlightComputerSim
-				Margin="-100,0"/>
+				Margin="-100"/>
 		</pinchgesture:PinchToZoomContainer>
 	</ContentPage.Content>
 </ContentPage>
