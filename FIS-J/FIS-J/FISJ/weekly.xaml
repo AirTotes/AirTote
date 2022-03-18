@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.weekly">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Button x:Name="weeklysuppoert"
+                Text="週間予報支援図"
+                Font="25"/>
+                <Button x:Name="weeklyensemble"
+                Text="週間予報支援図（アンサンブル）"
+                Font="25"/>
+                <Button x:Name="weeklyensembleforecast"
+                Text="週間アンサンブル予想図"
+                Font="25"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

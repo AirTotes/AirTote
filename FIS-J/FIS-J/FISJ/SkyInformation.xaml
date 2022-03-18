@@ -7,28 +7,18 @@
             <StackLayout>
                 <Button x:Name="badwetherforecast"
                 Text="国内悪天予想図"
-                BackgroundColor="LightSteelBlue"
-                
                 Font="20"/>
                 <Button x:Name="lowerbadwether"
                 Text="下層悪天予想図"
-                BackgroundColor="LightSteelBlue"
-                
                 Font="20"/>
                 <Button x:Name="signmet"
                 Text="シグメット情報"
-                BackgroundColor="LightSteelBlue"
-                
                 Font="20"/>
                 <Button x:Name="Internationalfukuoka"
                 Text="全国航空気象解説報(福岡FIR)"
-                BackgroundColor="LightSteelBlue"
-                
                 Font="20"/>
                 <Button x:Name="InternationalDomestic"
                 Text="全国航空気象解説報(国内空域)"
-                BackgroundColor="LightSteelBlue"
-                
                 Font="20"/>
             </StackLayout>
         </ScrollView>

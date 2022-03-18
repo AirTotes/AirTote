@@ -17,17 +17,12 @@ namespace FIS_J
             Submit.Clicked += Submit_Clicked;
             Icao.Clicked +=Icao_Clicked;
             Wether.Clicked += Wether_Clicked;
-            
+            aero.Clicked += aero_Clicked;
         }
 
         private void Submit_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new FISJ.SubmitFormxaml());
-        }
-
-        private void Image_SizeChanged(object sender, EventArgs e)
-        {
-
         }
         private void Icao_Clicked(object sender, EventArgs e)
         {
@@ -37,6 +32,10 @@ namespace FIS_J
         {
             Navigation.PushAsync(new FISJ.WetherInformation());
         }
-       
+        private void aero_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.aero());
+        }
+
     }
 }

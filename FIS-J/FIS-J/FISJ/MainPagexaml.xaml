@@ -6,34 +6,29 @@
 
     <MasterDetailPage.Master>
         <ContentPage Title="メニュー">
-            <StackLayout>
-                <Button x:Name="Submit"
-                Text="飛行計画の提出"
-                BackgroundColor="LightSteelBlue"
-                
-                Font="25"/>
-                <Button Text="航空情報"
-                BackgroundColor="LightSteelBlue"
-                
-                FontSize="25"/>
-                <Button x:Name="Wether"
-                Text="気象情報"
-                BackgroundColor="LightSteelBlue"
-                
-                FontSize="25"/>
-                <Button  x:Name="Icao"
-                Text="ICAO"
-                BackgroundColor="LightSteelBlue"
-                
-                FontSize="25"/>
-            </StackLayout>
+            <ScrollView>
+                <StackLayout>
+                    <Button x:Name="Submit"
+                        Text="飛行計画の提出"
+                        Font="25"/>
+                    <Button x:Name="aero"
+                        Text="航空情報"
+                        FontSize="25"/>
+                    <Button x:Name="Wether"
+                        Text="気象情報"                
+                        FontSize="25"/>
+                    <Button  x:Name="Icao"
+                        Text="ICAO"
+                        FontSize="25"/>
+                </StackLayout>
+            </ScrollView>
         </ContentPage>
     </MasterDetailPage.Master>
-    
+
     <ContentPage>
         <ScrollView>
             <StackLayout>
-                <WebView Source="https://skyvector.com/"
+                <WebView Source="https://skyvector.com/?ll=37.23382726820305,139.76806642633312&amp;chart=301&amp;zoom=13"
                          VerticalOptions="FillAndExpand"/>
             </StackLayout>
         </ScrollView>
