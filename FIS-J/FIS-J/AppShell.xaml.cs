@@ -1,4 +1,5 @@
-﻿using FIS_J.Views;
+﻿using FIS_J.FISJ;
+using FIS_J.Views;
 
 using System;
 
@@ -6,19 +7,17 @@ using Xamarin.Forms;
 
 namespace FIS_J
 {
-	public partial class AppShell : Xamarin.Forms.Shell
+	public partial class AppShell : Shell
 	{
 		public AppShell()
 		{
 			InitializeComponent();
-			Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
-			Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+			Routing.RegisterRoute(nameof(MainPagexaml), typeof(MainPagexaml));
+			Routing.RegisterRoute(nameof(SubmitFormxaml), typeof(SubmitFormxaml));
+			Routing.RegisterRoute(nameof(SkyInformation), typeof(SkyInformation));
+			Routing.RegisterRoute(nameof(WetherInformation), typeof(WetherInformation));
+			Routing.RegisterRoute(nameof(IcaoPage), typeof(IcaoPage));
 			Routing.RegisterRoute(nameof(FCSPage), typeof(FCSPage));
-		}
-
-		private async void OnMenuItemClicked(object sender, EventArgs e)
-		{
-			await Shell.Current.GoToAsync("//LoginPage");
 		}
 	}
 }

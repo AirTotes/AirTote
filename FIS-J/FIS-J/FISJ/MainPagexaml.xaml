@@ -1,41 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.MainPagexaml"
-             Title="FIS-J  -Flight Information Service-">
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.MainPagexaml"
+	Title="FIS-J  -Flight Information Service-">
 
-    <MasterDetailPage.Master>
-        <ContentPage Title="メニュー">
-            <StackLayout>
-                <Button x:Name="Submit"
-                Text="飛行計画の提出"
-                BackgroundColor="LightSteelBlue"
-                TextColor="Black"
-                Font="25"/>
-                <Button Text="航空情報"
-                BackgroundColor="LightSteelBlue"
-                TextColor="Black"
-                FontSize="25"/>
-                <Button x:Name="Wether"
-                Text="気象情報"
-                BackgroundColor="LightSteelBlue"
-                TextColor="Black"
-                FontSize="25"/>
-                <Button  x:Name="Icao"
-                Text="ICAO"
-                BackgroundColor="LightSteelBlue"
-                TextColor="Black"
-                FontSize="25"/>
-            </StackLayout>
-        </ContentPage>
-    </MasterDetailPage.Master>
-    
-    <ContentPage>
-        <ScrollView>
-            <StackLayout>
-                <WebView Source="https://skyvector.com/"
-                         VerticalOptions="FillAndExpand"/>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage>
-</MasterDetailPage>
+	<WebView
+		Source="https://skyvector.com/"
+		VerticalOptions="FillAndExpand"/>
+</ContentPage>
