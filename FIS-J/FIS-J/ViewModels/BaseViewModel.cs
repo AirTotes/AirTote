@@ -1,19 +1,12 @@
-﻿using FIS_J.Models;
-using FIS_J.Services;
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
 
 namespace FIS_J.ViewModels
 {
 	public class BaseViewModel : INotifyPropertyChanged
 	{
-		public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
-
 		bool isBusy = false;
 		public bool IsBusy
 		{

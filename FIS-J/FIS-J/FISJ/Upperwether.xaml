@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.Upperwether">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="アジア太平洋200hPa高度・気温・風・圏界面天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="upperasia200"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia200_Clicked"/>
+                <Button x:Name="upperasia200hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia200hpa12_Clicked"/>
+                <Label Text="アジア太平洋250hPa高度・気温・風天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="upperasia250hpa"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia250hpa_Clicked"/>
+                <Button x:Name="upperasia250hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia250hpa12_Clicked"/>
+                <Label Text="北太平洋300hPa高度・気温・風天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="upperasia300hpa00"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia300hpa00_Clicked"/>
+                <Button x:Name="upperasia300hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia300hpa12_Clicked"/>
+                <Label Text="アジア500hPa・300hPa高度・気温・風・等風速線天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="upperasia500hpa00"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia500hpa00_Clicked"/>
+                <Button x:Name="upperasia500hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia500hpa12_Clicked"/>
+                <Label Text="アジア850hPa・700hPa高度・気温・風・湿数天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="upperasia850hpa00"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia850hpa00_Clicked"/>
+                <Button x:Name="upperasia850hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperasia850hpa12_Clicked"/>
+                <Label Text="" FontSize="Medium"/>
+                <Button x:Name="upperNorthhemi00"
+                Text="北半球500hPa高度・気温天気図"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="upperNorthhemi00_Clicked"/>
+                <Label Text="" FontSize="Medium"/>
+                <Label Text="極東850hPa気温・風、700hPa上昇流／500hPa高度・渦度天気図" FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="uppereast850hpa00"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="uppereast850hpa00_Clicked"/>
+                <Button x:Name="uppereast850hpa12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="uppereast850hpa12_Clicked"/>
+                <Label Text="" FontSize="Medium"/>
+                <Button x:Name="asiaGround850"
+                Text="アジア地上気圧、850hPa気温／500hPa高度・渦度天気図"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="asiaGround850_Clicked"/>
+                <Label Text="" FontSize="Medium"/>
+                <Label Text="高層断面図（風・気温・露点等）東経130度／140度解析"  FontSize="Medium" TextColor="Black"/>
+                <Button x:Name="uppercut00"
+                Text="00UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="uppercut00_Clicked"/>
+                <Button x:Name="uppercut12"
+                Text="12UTC"
+                BackgroundColor="LightSteelBlue"
+                TextColor="Black"
+                Font="20"
+                Clicked="uppercut12_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
