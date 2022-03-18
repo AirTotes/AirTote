@@ -1,6 +1,4 @@
-﻿using FIS_J.Services;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace FIS_J
 {
@@ -11,8 +9,7 @@ namespace FIS_J
 		{
 			InitializeComponent();
 
-			DependencyService.Register<MockDataStore>();
-			MainPage = new NavigationPage(new FIS_J.MainPagexaml());
+			MainPage = new AppShell();
 		}
 
 		protected override void OnStart()
