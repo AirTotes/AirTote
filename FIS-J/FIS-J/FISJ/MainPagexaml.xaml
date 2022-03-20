@@ -1,16 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage
+<ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="FIS_J.FISJ.MainPagexaml"
 	Title="FIS-J  -Flight Information Service-">
 
-    <ContentPage>
-        <ScrollView>
-            <StackLayout>
-                <WebView Source="https://skyvector.com/?ll=37.23382726820305,139.76806642633312&amp;chart=301&amp;zoom=13"
-                         VerticalOptions="FillAndExpand"/>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage>
-</MasterDetailPage>
+	<WebView
+		Source="https://skyvector.com/"
+		VerticalOptions="FillAndExpand"/>
+</ContentPage>
