@@ -5,27 +5,6 @@
 	x:Class="FIS_J.FISJ.MainPagexaml"
 	Title="FIS-J  -Flight Information Service-">
 
-    <MasterDetailPage.Master>
-        <ContentPage Title="メニュー">
-            <ScrollView>
-                <StackLayout>
-                    <Button x:Name="Submit"
-                        Text="飛行計画の提出"
-                        Font="25"/>
-                    <Button x:Name="aero"
-                        Text="航空情報"
-                        FontSize="25"/>
-                    <Button x:Name="Wether"
-                        Text="気象情報"                
-                        FontSize="25"/>
-                    <Button  x:Name="Icao"
-                        Text="ICAO"
-                        FontSize="25"/>
-                </StackLayout>
-            </ScrollView>
-        </ContentPage>
-    </MasterDetailPage.Master>
-
     <ContentPage>
         <ScrollView>
             <StackLayout>
