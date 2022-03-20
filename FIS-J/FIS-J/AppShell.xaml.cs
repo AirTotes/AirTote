@@ -13,7 +13,7 @@ namespace FIS_J
 		{
 			InitializeComponent();
 			Routing.RegisterRoute(nameof(MainPagexaml), typeof(MainPagexaml));
-			Routing.RegisterRoute(nameof(SubmitFormxaml), typeof(SubmitFormxaml));
+			Routing.RegisterRoute(nameof(FlightPlan), typeof(FlightPlan));
 			Routing.RegisterRoute(nameof(SkyInformation), typeof(SkyInformation));
 			Routing.RegisterRoute(nameof(WetherInformation), typeof(WetherInformation));
 			Routing.RegisterRoute(nameof(IcaoPage), typeof(IcaoPage));
