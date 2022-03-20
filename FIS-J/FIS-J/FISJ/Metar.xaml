@@ -4,9 +4,14 @@
              x:Class="FIS_J.FISJ.Metar">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text="METAR"
+                   FontSize="Medium"/>
+            <Label Text="{Binding Metar}"
+                   FontSize="Medium"/>
+            <Label Text="TAF"
+                   FontSize="Medium"/>
+            <Label Text="{Binding taf}"
+                   FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

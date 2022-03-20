@@ -98,4 +98,7 @@
 	<FlyoutItem Title="FlightComputer">
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
 	</FlyoutItem>
+	<FlyoutItem Title="Metar">
+		<ShellContent Route="Metar" ContentTemplate="{DataTemplate fisj:Metar}" />
+	</FlyoutItem>
 </Shell>
