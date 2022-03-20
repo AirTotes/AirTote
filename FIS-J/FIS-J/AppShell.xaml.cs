@@ -19,6 +19,7 @@ namespace FIS_J
 			Routing.RegisterRoute(nameof(IcaoPage), typeof(IcaoPage));
 			Routing.RegisterRoute(nameof(FCSPage), typeof(FCSPage));
 			Routing.RegisterRoute(nameof(Metar), typeof(Metar));
+			Routing.RegisterRoute(nameof(aero), typeof(aero));
 		}
 	}
 }

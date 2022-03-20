@@ -87,7 +87,7 @@
 		<ShellContent Route="SubmitFormxaml" ContentTemplate="{DataTemplate fisj:SubmitFormxaml}" />
 	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
-		<ShellContent Route="SkyInformation" ContentTemplate="{DataTemplate fisj:SkyInformation}" />
+		<ShellContent Route="aero" ContentTemplate="{DataTemplate fisj:aero}" />
 	</FlyoutItem>
 	<FlyoutItem Title="気象情報">
 		<ShellContent Route="WetherInformation" ContentTemplate="{DataTemplate fisj:WetherInformation}" />

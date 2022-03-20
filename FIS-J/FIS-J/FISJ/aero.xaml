@@ -5,7 +5,15 @@
              Title="航空情報">
     <ContentPage.Content>
         <StackLayout>
-            <!--航空情報を表示-->
+            <Button x:Name="AIPView"
+                    Text="AIP"
+                    FontSize="Medium"/>
+            <Button x:Name="SUPsView"
+                    Text="SUPs"
+                    FontSize="Medium"/>
+            <Button x:Name="AICsView"
+                    Text="AICs"
+                    FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
