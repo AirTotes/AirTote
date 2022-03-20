@@ -56,34 +56,34 @@
     <EmbeddedResource Update="FISJ\kyuusyuminami.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\live.xaml">
+    <EmbeddedResource Update="FISJ\live\live.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveasia200.xaml">
+    <EmbeddedResource Update="FISJ\live\liveasia200.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveasia300.xaml">
+    <EmbeddedResource Update="FISJ\live\liveasia300.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveasia500.xaml">
+    <EmbeddedResource Update="FISJ\live\liveasia500.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveasia850.xaml">
+    <EmbeddedResource Update="FISJ\live\liveasia850.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveasiaground.xaml">
+    <EmbeddedResource Update="FISJ\live\liveasiaground.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveeast850.xaml">
+    <EmbeddedResource Update="FISJ\live\liveeast850.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\livenews.xaml">
+    <EmbeddedResource Update="FISJ\live\livenews.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\livenorthhemi.xaml">
+    <EmbeddedResource Update="FISJ\live\livenorthhemi.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\liveuppercut.xaml">
+    <EmbeddedResource Update="FISJ\live\liveuppercut.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\longterm.xaml">
@@ -96,6 +96,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\MainPagexaml.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\Metar.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\monthcirculate.xaml">

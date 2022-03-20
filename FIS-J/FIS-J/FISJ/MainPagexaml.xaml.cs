@@ -1,5 +1,10 @@
-﻿using Xamarin.Forms;
+﻿using System;
+using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace FIS_J
 {	[XamlCompilation(XamlCompilationOptions.Compile)]
@@ -9,7 +14,7 @@ namespace FIS_J
         {
             InitializeComponent();
             Submit.Clicked += Submit_Clicked;
-            Icao.Clicked +=Icao_Clicked;
+            Icao.Clicked += Icao_Clicked;
             Wether.Clicked += Wether_Clicked;
             aero.Clicked += aero_Clicked;
         }
