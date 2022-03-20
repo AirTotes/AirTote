@@ -48,5 +48,6 @@
             </StackLayout>
         </ScrollView>
     </Grid>
+				<WebView x:Name="webView" VerticalOptions="FillAndExpand"/>
 
 </ContentPage>
