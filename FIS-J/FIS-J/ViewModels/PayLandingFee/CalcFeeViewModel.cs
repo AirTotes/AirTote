@@ -125,7 +125,7 @@ namespace FIS_J.ViewModels.PayLandingFee
 			if (weight <= 6)
 				return 1000;
 			else
-				return 700 + (590 * weight - 6);
+				return 700 + (590 * (weight - 6));
 		}
 
 		int getParkingCharge()
