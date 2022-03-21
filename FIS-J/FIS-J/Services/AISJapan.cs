@@ -52,5 +52,11 @@ namespace FIS_J.Services
 
 			return await (menu_aip_list[0] as IHtmlImageElement).GetAncestor<IHtmlAnchorElement>().NavigateAsync();
 		}
+
+		public async Task<string> GetPage(string url)
+		{
+			var result = await Ctx.OpenAsync(url);
+			return result.ToHtml();
+		}
 	}
 }
