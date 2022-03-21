@@ -2,7 +2,8 @@
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.FlightPlan">
+	x:Class="FIS_J.FISJ.FlightPlan"
+    Title="飛行計画書の提出">
 	<WebView
 		x:Name="webView"
 		Source="https://fis-j.github.io/FlightPlanGenerator/flight_plan_sheet.html"

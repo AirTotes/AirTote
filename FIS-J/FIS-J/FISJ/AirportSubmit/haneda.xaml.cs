@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FIS_J.Components
+namespace FIS_J.FISJ
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AICsView : ContentPage
+    public partial class haneda : ContentPage
     {
-        public AICsView()
+        public haneda()
         {
             InitializeComponent();
         }

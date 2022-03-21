@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.weeklyensemble">
+             x:Class="FIS_J.FISJ.weeklyensemble"
+             Title="週間予報支援図（アンサンブル）">
+    
     <ContentPage.Content>
         <StackLayout>
             <WebView Source="https://n-kishou.com/ee/exp/exp01.html?cd=fzcx50&amp;cat=e3"

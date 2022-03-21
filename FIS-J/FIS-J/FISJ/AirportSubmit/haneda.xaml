@@ -1,10 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.AIPView">
+             x:Class="FIS_J.FISJ.haneda"
+             Title="RJAA　羽田空港">
     <ContentPage.Content>
         <StackLayout>
-            <WebView Source="https://aisjapan.mlit.go.jp/html/AIP/html/20220224/eAIP/20220301/JP-menu-en-JP.html"
+            <WebView Source=""
                      HorizontalOptions="FillAndExpand"
                      VerticalOptions="FillAndExpand"/>
         </StackLayout>

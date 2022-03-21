@@ -30,6 +30,9 @@
                 <Button x:Name="emagram"
                 Text="エマグラム"                                
                 Font="25"/>
+                <Button x:Name="windy"
+                Text="Windy"                                
+                Font="25"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.SubmitReport"
+             Title="書類提出">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Button x:Name="FlightPlan"
+                    Text="飛行計画書の提出"
+                    FontSize="Medium"/>
+
+                <Button x:Name="AirportUse"
+                    Text="空港使用届"
+                    FontSize="Medium"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

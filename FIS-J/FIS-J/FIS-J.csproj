@@ -18,19 +18,28 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="FISJ\AICsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="FISJ\aero.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\AIPView.xaml">
+    <EmbeddedResource Update="FISJ\AirportSubmit\AirportUse.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\SUPsView.xaml">
+    <EmbeddedResource Update="FISJ\AirportSubmit\haneda.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\Badwetherforecast.xaml">
+    <EmbeddedResource Update="FISJ\AirportSubmit\hirosima.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\AirportSubmit\kounan.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\AirportSubmit\SubmitReport.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\AirportSubmit\takamatu.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\SKyInformation\Badwetherforecast.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\emagram\emagram.xaml">
@@ -45,10 +54,10 @@
     <EmbeddedResource Update="FISJ\IcaoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\InternationalDomestic.xaml">
+    <EmbeddedResource Update="FISJ\SKyInformation\InternationalDomestic.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\Internationalfukuoka.xaml">
+    <EmbeddedResource Update="FISJ\SKyInformation\Internationalfukuoka.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\Japansatellite.xaml">
@@ -99,10 +108,10 @@
     <EmbeddedResource Update="FISJ\weather\longterm\longterm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\lowerbadwether.xaml">
+    <EmbeddedResource Update="FISJ\SKyInformation\lowerbadwether.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\lvieasia250.xaml">
+    <EmbeddedResource Update="FISJ\weather\live\lvieasia250.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\MainPagexaml.xaml">
@@ -132,16 +141,16 @@
     <EmbeddedResource Update="FISJ\weather\satellite.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\signmet.xaml">
+    <EmbeddedResource Update="FISJ\SKyInformation\signmet.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\emagram\sikoku.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\weather\SkyInformation.xaml">
+    <EmbeddedResource Update="FISJ\SKyInformation\SkyInformation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\SubmitFormxaml.xaml">
+    <EmbeddedResource Update="FISJ\AirportSubmit\SubmitFormxaml.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\longterm\torrid.xaml">
@@ -175,6 +184,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\emagram\zenkoku.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="FISJ\weather\Windy.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
