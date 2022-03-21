@@ -98,4 +98,7 @@
 	<FlyoutItem Title="FlightComputer">
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
 	</FlyoutItem>
+	<FlyoutItem Title="設定">
+		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
+	</FlyoutItem>
 </Shell>
