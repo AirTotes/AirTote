@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.kounan"
+             Title="RJBK　岡南空港">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="kounanAirportUse"
+                    Text="飛行場施設使用届"
+                    FontSize="Medium"
+                    Clicked="kounanAirportUse_Clicked"/>
+            <Button x:Name="kounandepart"
+                    Text="離着陸訓練許可申請書"
+                    FontSize="Medium"
+                    Clicked="kounandepart_Clicked"/>
+            <Button x:Name="landingdiscount"
+                    Text="着陸料等減免申請書"
+                    FontSize="Medium"
+                    Clicked="landingdiscount_Clicked"/>
+            <Button x:Name="AirportCheck"
+                    Text="空港施設の仕様に係る条件の確認書"
+                    FontSize="Medium"
+                    Clicked="AirportCheck_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

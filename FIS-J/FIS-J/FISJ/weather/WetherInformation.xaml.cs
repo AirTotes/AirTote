@@ -23,7 +23,14 @@ namespace FIS_J.FISJ
             longterm.Clicked += longterm_Clicked;
             satellite.Clicked += satellite_Clicked;
             emagram.Clicked += emagram_Clicked;
+            windy.Clicked += Windy_Clicked;
         }
+
+        private void Windy_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new FISJ.weather.Windy());
+        }
+
         private void Nomwether_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new FISJ.Nomwether());

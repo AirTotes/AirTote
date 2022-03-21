@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace FIS_J.FISJ
+namespace FIS_J.FISJ.weather
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SUPsView : ContentPage
+    public partial class Windy : ContentPage
     {
-        public SUPsView()
+        public Windy()
         {
             InitializeComponent();
         }

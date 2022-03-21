@@ -83,8 +83,8 @@
 	<FlyoutItem Title="TOP">
 		<ShellContent Route="MainPagexaml" ContentTemplate="{DataTemplate fisj:MainPagexaml}"/>
 	</FlyoutItem>
-	<FlyoutItem Title="飛行計画の提出">
-		<ShellContent Route="FlightPlan" ContentTemplate="{DataTemplate fisj:FlightPlan}" />
+	<FlyoutItem Title="書類提出">
+        <ShellContent Route="SubmitReport" ContentTemplate="{DataTemplate fisj:SubmitReport}" />
 	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
 		<ShellContent Route="aero" ContentTemplate="{DataTemplate fisj:aero}" />
