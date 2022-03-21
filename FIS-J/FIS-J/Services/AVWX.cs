@@ -64,6 +64,20 @@ namespace FIS_J.Services
 			return JsonConvert.DeserializeObject<TAF>(await result.Content.ReadAsStringAsync());
 		}
 
+		public async Task<Station> GetStationInformation(ICAOCode code)
+		{
+			string endpoint = $"{BASE_URL}station/{code}";
+			using HttpClient client = new();
+			client.DefaultRequestHeaders.Authorization = new(API_TOKEN);
+			var result = await client.GetAsync(endpoint);
+			if (!result.IsSuccessStatusCode)
+				return null;
+			if (result.StatusCode == System.Net.HttpStatusCode.NoContent)
+				throw new NoContentException();
+
+			return JsonConvert.DeserializeObject<Station>(await result.Content.ReadAsStringAsync());
+		}
+
 		public class Meta
 		{
 			public string timestamp { get; set; }
@@ -193,6 +207,34 @@ namespace FIS_J.Services
 			public object temps { get; set; }
 			public object remarks_info { get; set; }
 			public Units units { get; set; }
+		}
+
+		public class Station
+		{
+			public string city { get; set; }
+			public string country { get; set; }
+			public int elevation_ft { get; set; }
+			public int elevation_m { get; set; }
+			public string iata { get; set; }
+			public string icao { get; set; }
+			public double latitude { get; set; }
+			public double longitude { get; set; }
+			public string name { get; set; }
+			public string note { get; set; }
+			public bool reporting { get; set; }
+			public Runway[] runways { get; set; }
+			public string state { get; set; }
+			public string type { get; set; }
+			public string website { get; set; }
+			public string wiki { get; set; }
+		}
+
+		public class Runway
+		{
+			public int length_ft { get; set; }
+			public int length_m { get; set; }
+			public string ident1 { get; set; }
+			public string ident2 { get; set; }
 		}
 	}
 }
