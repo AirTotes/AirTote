@@ -4,6 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:local="clr-namespace:FIS_J.Views"
 	xmlns:fisj="clr-namespace:FIS_J.FISJ"
+	xmlns:PayLandingFee="clr-namespace:FIS_J.FISJ.PayLandingFee"
 	Title="FIS_J"
 	x:Class="FIS_J.AppShell">
 
@@ -97,6 +98,9 @@
 	</FlyoutItem>
 	<FlyoutItem Title="FlightComputer">
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
+	</FlyoutItem>
+	<FlyoutItem Title="空港使用料 支払い">
+		<ShellContent Route="SelectAirport" ContentTemplate="{DataTemplate PayLandingFee:SelectAirport}" />
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
 		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
