@@ -1,9 +1,140 @@
 ﻿<?xml version="1.0" encoding="UTF-8" ?>
 <ContentPage
-  xmlns="http://xamarin.com/schemas/2014/forms"
-  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:PayLandingFee="clr-namespace:FIS_J.ViewModels.PayLandingFee"
+	xmlns:valueconverters="clr-namespace:FIS_J.ValueConverters"
 	x:DataType="PayLandingFee:CalcFeeViewModel"
-  Title="{Binding Title}"
-  x:Class="FIS_J.FISJ.PayLandingFee.CalcFee">
+	Title="{Binding Title}"
+	x:Class="FIS_J.FISJ.PayLandingFee.CalcFee">
+	<ContentPage.Resources>
+		<valueconverters:StringToDoubleConverter x:Key="StrToDouble"/>
+		<valueconverters:StringToIntegerConverter x:Key="StrToInt"/>
+	</ContentPage.Resources>
+	<StackLayout Orientation="Horizontal" Margin="10">
+		<Grid WidthRequest="300" Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+			</Grid.RowDefinitions>
+
+			<Label
+				Text="ジェット機かどうか"
+				Grid.Row="0" Grid.Column="0"
+				/>
+			<Switch
+				IsToggled="{Binding IsJet}"
+				Grid.Row="0" Grid.Column="1"
+				IsEnabled="False"
+				/>
+
+			<Label
+				Text="機体重量 (t)"
+				Grid.Row="1" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding Weight, Converter={StaticResource StrToDouble}, Mode=TwoWay}"
+				Grid.Row="1" Grid.Column="1" Keyboard="Numeric"
+				/>
+
+			<Label
+				Text="騒音値 (EPNdB)"
+				Grid.Row="2" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding Noise, Converter={StaticResource StrToDouble}, Mode=TwoWay}"
+				Grid.Row="2" Grid.Column="1" Keyboard="Numeric"
+				IsEnabled="False"
+				/>
+
+			<Label
+				Text="停留時間 (時間)"
+				Grid.Row="3" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding StationaryTime, Converter={StaticResource StrToDouble}, Mode=TwoWay}"
+				Grid.Row="3" Grid.Column="1" Keyboard="Numeric"
+				/>
+		</Grid>
+
+		<Grid WidthRequest="500" Margin="10">
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+				<RowDefinition Height="50"/>
+			</Grid.RowDefinitions>
+
+			<Label
+				Text="空港 (ICAO Code)"
+				Grid.Row="0" Grid.Column="0"
+				/>
+			<Label
+				Text="{Binding Station.icao}"
+				Grid.Row="0" Grid.Column="1"
+				/>
+			<Button
+				Text="Select from Map..."
+				Grid.Row="0" Grid.Column="1"
+				HorizontalOptions="End"
+				Clicked="Button_Clicked"
+				/>
+
+			<Label
+				Text="着陸料 (日本円 税抜)"
+				Grid.Row="1" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding LandingCharge, Converter={StaticResource StrToInt}, Mode=TwoWay}"
+				Grid.Row="1" Grid.Column="1"
+				/>
+
+			<Label
+				Text="停留料 (日本円 税抜き)"
+				Grid.Row="2" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding ParkingCharge, Converter={StaticResource StrToInt}, Mode=TwoWay}"
+				Grid.Row="2" Grid.Column="1" Keyboard="Numeric"
+				/>
+
+			<Label
+				Text="保安料 (日本円 税抜き)"
+				Grid.Row="3" Grid.Column="0"
+				/>
+			<Entry
+				Text="{Binding SecurityCharge, Converter={StaticResource StrToInt}, Mode=TwoWay}"
+				Grid.Row="3" Grid.Column="1" Keyboard="Numeric"
+				/>
+
+			<Label
+				Text="消費税額 (日本円)"
+				Grid.Row="4" Grid.Column="0"
+				/>
+			<Label
+				Text="{Binding ConsumptionTax, Converter={StaticResource StrToInt}, Mode=OneWay}"
+				Grid.Row="4" Grid.Column="1"
+				/>
+
+			<Label
+				Text="合計 (日本円)"
+				Grid.Row="5" Grid.Column="0"
+				/>
+			<Label
+				Text="{Binding TotalCharge, Converter={StaticResource StrToInt}, Mode=OneWay}"
+				Grid.Row="5" Grid.Column="1"
+				/>
+		</Grid>
+	</StackLayout>
 </ContentPage>

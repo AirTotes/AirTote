@@ -12,7 +12,7 @@ namespace FIS_J.Services
 {
 	public class NoContentException : Exception { }
 
-	internal class AVWX
+	public class AVWX
 	{
 		string API_TOKEN { get; }
 

@@ -13,6 +13,7 @@ namespace FIS_J.FISJ.PayLandingFee
 	public partial class SelectAirport : ContentPage
 	{
 		SelectAirportViewModel viewModel { get; } = new();
+		CalcFeeViewModel CalcFeeViewModel { get; } = null;
 		Dictionary<string, AVWX.Station> StationsDic { get; } = new();
 
 		public SelectAirport()
@@ -20,6 +21,20 @@ namespace FIS_J.FISJ.PayLandingFee
 			InitializeComponent();
 			BindingContext = viewModel;
 
+			SetAirportPins();
+		}
+
+		public SelectAirport(CalcFeeViewModel calcFeeViewModel)
+		{
+			InitializeComponent();
+			BindingContext = viewModel;
+			CalcFeeViewModel = calcFeeViewModel;
+
+			SetAirportPins();
+		}
+
+		private void SetAirportPins()
+		{
 			AVWX avwx = new("KQuqTZ1D1BfSsuXu4eN2lc3DnC46-tGsU-l023G6q0w");
 			List<Task<AVWX.Station>> tasks = new();
 			foreach (var code in ICAOCodes.Codes)
@@ -55,20 +70,12 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			if (StationsDic.TryGetValue(pin.Label, out AVWX.Station value) && value is not null)
 			{
-				string action = await DisplayActionSheet($"Do you want to pay for the use of {value.name} (ICAO:{value.icao})?", "Cancel", null,
-					"Type1: 10000 JPY",
-					"Type2:  5000 JPY",
-					"Type3:  1000 JPY");
-
-				if (action is null || action == "Cancel")
-					return;
-
-				try
+				if (CalcFeeViewModel is null)
+					await Navigation.PushAsync(new CalcFee(value));
+				else
 				{
-					await Browser.OpenAsync($"https://www.google.com/search?q={value.icao}", BrowserLaunchMode.SystemPreferred);
-				}
-				catch (Exception ex)
-				{
+					CalcFeeViewModel.Station = value;
+					await Navigation.PopAsync();
 				}
 			}
 		}

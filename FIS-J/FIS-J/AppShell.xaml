@@ -29,6 +29,9 @@
 			</Style>
 			<Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
 			<Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+			<Style TargetType="Button" BasedOn="{StaticResource Xamarin.Forms.Button}">
+				<Setter Property="Padding" Value="10,4"/>
+			</Style>
 
 			<!--
 			Default Styles for all Flyout Items
@@ -100,7 +103,7 @@
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="オンライン支払い">
-		<ShellContent Route="SelectAirport" ContentTemplate="{DataTemplate PayLandingFee:SelectAirport}" />
+		<ShellContent Route="CalcFee" ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
 		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
