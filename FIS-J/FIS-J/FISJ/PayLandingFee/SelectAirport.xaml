@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:paylandingfee="clr-namespace:FIS_J.ViewModels.PayLandingFee"
+	x:DataType="paylandingfee:SelectAirportViewModel"
+	x:Class="FIS_J.FISJ.PayLandingFee.SelectAirport"
+	Title="{Binding Title}"
+	xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps">
+	<maps:Map x:Name="map">
+		<x:Arguments>
+			<maps:MapSpan>
+				<x:Arguments>
+					<maps:Position>
+						<x:Arguments>
+							<x:Double>35.5469298</x:Double>
+							<x:Double>139.7719668</x:Double>
+						</x:Arguments>
+					</maps:Position>
+					<x:Double>1.0</x:Double>
+					<x:Double>1.0</x:Double>
+				</x:Arguments>
+			</maps:MapSpan>
+		</x:Arguments>
+	</maps:Map>
+</ContentPage>

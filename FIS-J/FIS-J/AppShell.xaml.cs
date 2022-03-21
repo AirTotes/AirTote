@@ -1,4 +1,5 @@
 ﻿using FIS_J.FISJ;
+using FIS_J.FISJ.PayLandingFee;
 using FIS_J.Views;
 
 using System;
@@ -18,6 +19,8 @@ namespace FIS_J
 			Routing.RegisterRoute(nameof(WetherInformation), typeof(WetherInformation));
 			Routing.RegisterRoute(nameof(IcaoPage), typeof(IcaoPage));
 			Routing.RegisterRoute(nameof(FCSPage), typeof(FCSPage));
+			Routing.RegisterRoute(nameof(SelectAirport), typeof(SelectAirport));
+			Routing.RegisterRoute(nameof(SettingPage), typeof(SettingPage));
 		}
 	}
 }
