@@ -115,6 +115,7 @@ namespace FIS_J.ViewModels.PayLandingFee
 			SetProperty(ref local, value, propertyName);
 
 			OnPropertyChanged(nameof(ConsumptionTax));
+			OnPropertyChanged(nameof(TotalCharge));
 		}
 
 		int getLandingCharge()
