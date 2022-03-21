@@ -100,7 +100,7 @@
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="オンライン支払い">
-		<ShellContent Route="SelectAirport" ContentTemplate="{DataTemplate PayLandingFee:SelectAirport}" />
+		<ShellContent Route="CalcFee" ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
 		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
