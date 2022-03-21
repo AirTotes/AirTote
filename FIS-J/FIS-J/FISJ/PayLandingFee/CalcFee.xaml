@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:PayLandingFee="clr-namespace:FIS_J.ViewModels.PayLandingFee"
+	x:DataType="PayLandingFee:CalcFeeViewModel"
+  Title="{Binding Title}"
+  x:Class="FIS_J.FISJ.PayLandingFee.CalcFee">
+</ContentPage>
