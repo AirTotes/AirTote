@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.live">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Button x:Name="liveuppercut"
+                Text="高層断面図"
+                Font="25"/>
+                <Button x:Name="livenews"
+                Text="速報天気図"
+                Font="25"/>
+                <Button x:Name="liveasia200"
+                Text="アジア太平洋200hPa高度・気温・風・圏界面"
+                Font="25"/>
+                <Button x:Name="lvieasia250"
+                Text="アジア太平洋250hPa高度・気温・風・圏界面"
+                Font="25"/>
+                <Button x:Name="liveasia300"
+                Text="アジア太平洋300hPa高度・気温・風"
+                Font="25"
+                />
+                <Button x:Name="liveasia500"
+                Text="アジア500hPa 300hPa解析図"
+                Font="25"/>
+                <Button x:Name="liveasia850"
+                Text="アジア850hPa 700hPa解析図"
+                Font="25"/>
+                <Button x:Name="liveasiaground"
+                Text="アジア地上解析図"
+                Font="25"/>
+                <Button x:Name="livenorthhemi"
+                Text="北半球500hPa高度・気温"
+                Font="25"/>
+                <Button x:Name="liveeast850"
+                Text="極東850hPa気温・風/700hPa上昇流/500hPa高度・渦度"
+                Font="25"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.longterm">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Button x:Name="monthcirculate"
+                Text="1ヵ月予報資料 循環場解析図"
+                Font="25"/>
+                <Button x:Name="monthensemble"
+                Text="1ヵ月予報資料 アンサンブル平均図"
+                Font="25"/>
+                <Button x:Name="monthspread"
+                Text="1ヵ月予報資料 スプレット図"
+                Font="25"/>
+                <Button x:Name="monthevery"
+                Text="1ヵ月予報資料 各種時系列図"
+                Font="25"/>
+                <Button x:Name="torrid"
+                Text="熱帯・中緯度予想図"
+                Font="25"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

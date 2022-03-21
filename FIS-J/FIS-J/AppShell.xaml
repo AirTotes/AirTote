@@ -88,7 +88,7 @@
 		<ShellContent Route="FlightPlan" ContentTemplate="{DataTemplate fisj:FlightPlan}" />
 	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
-		<ShellContent Route="SkyInformation" ContentTemplate="{DataTemplate fisj:SkyInformation}" />
+		<ShellContent Route="aero" ContentTemplate="{DataTemplate fisj:aero}" />
 	</FlyoutItem>
 	<FlyoutItem Title="気象情報">
 		<ShellContent Route="WetherInformation" ContentTemplate="{DataTemplate fisj:WetherInformation}" />
@@ -104,5 +104,8 @@
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
 		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
+	</FlyoutItem>
+	<FlyoutItem Title="Metar">
+		<ShellContent Route="Metar" ContentTemplate="{DataTemplate fisj:Metar}" />
 	</FlyoutItem>
 </Shell>

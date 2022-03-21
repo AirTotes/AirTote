@@ -21,6 +21,8 @@ namespace FIS_J
 			Routing.RegisterRoute(nameof(FCSPage), typeof(FCSPage));
 			Routing.RegisterRoute(nameof(SelectAirport), typeof(SelectAirport));
 			Routing.RegisterRoute(nameof(SettingPage), typeof(SettingPage));
+			Routing.RegisterRoute(nameof(Metar), typeof(Metar));
+			Routing.RegisterRoute(nameof(aero), typeof(aero));
 		}
 	}
 }
