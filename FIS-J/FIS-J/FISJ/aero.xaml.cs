@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using FIS_J.Services;
 
 namespace FIS_J.FISJ
 {
@@ -19,20 +20,47 @@ namespace FIS_J.FISJ
             AIPView.Clicked += AIPView_Clicked;
             SUPsView.Clicked += SUPsView_Clicked;
         }
-
         private void SUPsView_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FISJ.SUPsView());
+            Task.Run(async () =>
+            {
+                var ais = new AISJapan("kojdai", "Kojdai0510");
+                System.Diagnostics.Debug.WriteLine("PASS Running");
+                var result = await ais.GetPage("https://aisjapan.mlit.go.jp/html/AIP/html/20220224/eSUP/JP-eSUPs-en-JP.html");
+                System.Diagnostics.Debug.WriteLine(result);
+                webView.Source = new HtmlWebViewSource()
+                {
+                    Html = result
+                };
+            });
         }
-
         private void AIPView_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FISJ.AIPView());
+            Task.Run(async () =>
+            {
+                var ais = new AISJapan("kojdai", "Kojdai0510");
+                System.Diagnostics.Debug.WriteLine("PASS Running");
+                var result = await ais.GetPage("https://aisjapan.mlit.go.jp/html/AIP/html/20220224/eAIP/20220301/JP-menu-en-JP.html");
+                System.Diagnostics.Debug.WriteLine(result);
+                webView.Source = new HtmlWebViewSource()
+                {
+                    Html = result
+                };
+            });
         }
         private void AICsView_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FIS_J.Components.AICsView());
+            Task.Run(async () =>
+            {
+                var ais = new AISJapan("kojdai", "Kojdai0510");
+                System.Diagnostics.Debug.WriteLine("PASS Running");
+                var result = await ais.GetPage("https://aisjapan.mlit.go.jp/html/AIP/html/20220324/eAIC/JP-eAICs-jp-JP.html");
+                System.Diagnostics.Debug.WriteLine(result);
+                webView.Source = new HtmlWebViewSource()
+                {
+                    Html = result
+                };
+            });
         }
     }
-   
 }

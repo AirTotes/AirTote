@@ -8,6 +8,7 @@
             <Button x:Name="AIPView"
                     Text="AIP"
                     FontSize="Medium"/>
+            <WebView/>
             <Button x:Name="SUPsView"
                     Text="SUPs"
                     FontSize="Medium"/>
@@ -17,3 +18,4 @@
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
+
