@@ -15,6 +15,7 @@
             <Button x:Name="AICsView"
                     Text="AICs"
                     FontSize="Medium"/>
+            <WebView x:Name="webView" VerticalOptions="FillAndExpand"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
