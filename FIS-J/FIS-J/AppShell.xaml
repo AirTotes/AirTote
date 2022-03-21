@@ -29,6 +29,9 @@
 			</Style>
 			<Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
 			<Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+			<Style TargetType="Button" BasedOn="{StaticResource Xamarin.Forms.Button}">
+				<Setter Property="Padding" Value="10,4"/>
+			</Style>
 
 			<!--
 			Default Styles for all Flyout Items
