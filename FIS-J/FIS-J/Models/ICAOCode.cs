@@ -52,7 +52,7 @@
 		// RJBH,
 
 		// /// <summary>Kohnan</summary>
-		// RJBK,
+		RJBK,
 
 		/// <summary>Tajima</summary>
 		RJBT,
