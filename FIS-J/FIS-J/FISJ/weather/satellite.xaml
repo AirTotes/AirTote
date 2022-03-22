@@ -7,7 +7,8 @@
         <StackLayout>
             <Button x:Name="Japansatellite"
                 Text="日本全国の衛生画像"
-                Font="25"/>
+                Font="25"
+                Clicked="Japansatellite_Clicked_1"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
