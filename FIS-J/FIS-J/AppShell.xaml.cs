@@ -2,8 +2,6 @@
 using FIS_J.FISJ.PayLandingFee;
 using FIS_J.Views;
 
-using System;
-
 using Xamarin.Forms;
 
 namespace FIS_J
