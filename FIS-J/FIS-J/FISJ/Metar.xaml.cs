@@ -26,6 +26,9 @@ namespace FIS_J.FISJ
 
 		async Task SetMetarAndTaf(ICAOCode code)
 		{
+			ViewModel.Metar = "Please wait...";
+			ViewModel.taf = "Please wait...";
+
 			try
 			{
 				ViewModel.Metar = await api.GetSanitizedMETAR(code);
