@@ -36,11 +36,16 @@ namespace FIS_J.FISJ.PayLandingFee
 				map = new(new(new(latlng.latitude, latlng.longitude), 1, 1));
 			}
 
-			SetAirportPins();
+			Appearing += SelectAirport_Appearing;
 
 			Content = map;
 
 			Title = "Please Select Airport";
+		}
+
+		private async void SelectAirport_Appearing(object sender, EventArgs e)
+		{
+			await SetAirportPins();
 		}
 
 		private async Task SetAirportPins()
