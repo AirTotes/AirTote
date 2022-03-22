@@ -16,13 +16,6 @@ namespace FIS_J.FISJ.PayLandingFee
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
-		public SelectAirport()
-		{
-			InitializeComponent();
-			BindingContext = viewModel;
-
-			SetAirportPins();
-		}
 
 		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
