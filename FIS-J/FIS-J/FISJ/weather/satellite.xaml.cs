@@ -15,12 +15,20 @@ namespace FIS_J.FISJ
         public satellite()
         {
             InitializeComponent();
-            Japansatellite.Clicked += Japansatellite_Clicked;
         }
 
-        private void Japansatellite_Clicked(object sender, EventArgs e)
+
+        [Obsolete]
+        private void Japansatellite_Clicked_1(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FISJ.Japansatellite());
+            if (Device.OS == TargetPlatform.iOS)
+            {
+                Device.OpenUri(new Uri("http://www.micosfit.jp/wakayama08/satellite/"));
+            }
+            else
+            {
+                Device.OpenUri(new Uri("http://www.micosfit.jp/wakayama08/satellite/"));
+            }
         }
     }
 }

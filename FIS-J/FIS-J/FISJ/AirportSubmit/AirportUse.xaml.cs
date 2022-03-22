@@ -28,7 +28,7 @@ namespace FIS_J.FISJ
 
         private void Haneda_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FISJ.hirosima());
+            Navigation.PushAsync(new FISJ.haneda());
         }
 
         private void Takamatu_Clicked(object sender, EventArgs e)
@@ -38,7 +38,7 @@ namespace FIS_J.FISJ
 
         private void Hirosima_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new FISJ.haneda());
+            Navigation.PushAsync(new FISJ.hirosima());
         }
     }
 }
