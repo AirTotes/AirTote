@@ -1,5 +1,6 @@
 ﻿using FIS_J.FISJ;
 using FIS_J.FISJ.PayLandingFee;
+using FIS_J.FISJ.ReservePages;
 using FIS_J.Views;
 
 using Xamarin.Forms;
@@ -20,6 +21,7 @@ namespace FIS_J
 			Routing.RegisterRoute(nameof(SelectAirport), typeof(SelectAirport));
 			Routing.RegisterRoute(nameof(CalcFee), typeof(CalcFee));
 			Routing.RegisterRoute(nameof(SettingPage), typeof(SettingPage));
+			Routing.RegisterRoute(nameof(ReserveSpotAndFuel), typeof(ReserveSpotAndFuel));
 		}
 	}
 }
