@@ -1,0 +1,2837 @@
+[
+	{
+		"aid": "APT-F0EL-AH7J",
+		"icao": "RJAA",
+		"iata": "NRT",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.7652778,
+			"longitude": 140.3855556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Narita",
+		"servedCity": "Narita"
+	},
+	{
+		"aid": "APT-P8NM-1D23",
+		"icao": "RJAF",
+		"iata": "MMJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.1666667,
+			"longitude": 137.9227778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Matsumoto Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-98P6-G0KK",
+		"icao": "RJAH",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.1816667,
+			"longitude": 140.4147222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Ibaraki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ZVX1-BH6K",
+		"icao": "RJAK",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.0347222,
+			"longitude": 140.1927778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kasumigaura Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ZP2T-C7SN",
+		"icao": "RJAM",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.2897222,
+			"longitude": 153.9791667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Minami Torishima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-AZT7-Q4L2",
+		"icao": "RJAN",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.3694444,
+			"longitude": 139.2686111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Niijima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-GM5Y-4ICD",
+		"icao": "RJAW",
+		"iata": "IWO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.7841667,
+			"longitude": 141.3227778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Central Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-1BP2-YLYJ",
+		"icao": "RJAZ",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.1894444,
+			"longitude": 139.1336111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kōzushima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-YR37-4PE4",
+		"icao": "RJBB",
+		"iata": "KIX",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.4341667,
+			"longitude": 135.2327778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kansai International Airport",
+		"servedCity": "Osaka"
+	},
+	{
+		"aid": "APT-VMMS-REME",
+		"icao": "RJBD",
+		"iata": "SHM",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.6622222,
+			"longitude": 135.3644444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Nanki–Shirahama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-Y05D-GGZQ",
+		"icao": "RJBE",
+		"iata": "UKB",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.6327778,
+			"longitude": 135.2238889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kobe Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-EZER-58CW",
+		"icao": "RJBK",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.5913889,
+			"longitude": 133.9333333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kōnan Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-Z3N0-1EJB",
+		"icao": "RJBM",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.4905556,
+			"longitude": 135.3772222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Maizuru Heliport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-PG2S-SSM0",
+		"icao": "RJBT",
+		"iata": "TJH",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.5127778,
+			"longitude": 134.7869444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tajima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-2CZS-FGO2",
+		"icao": "RJCA",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.7944444,
+			"longitude": 142.365
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Asahikawa Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XLD8-RDOJ",
+		"icao": "RJCB",
+		"iata": "OBO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.7333333,
+			"longitude": 143.2172222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokachi–Obihiro Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-GLWF-AWT9",
+		"icao": "RJCC",
+		"iata": "CTS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.7752778,
+			"longitude": 141.6925
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Sapporo New Chitose",
+		"servedCity": "Chitose"
+	},
+	{
+		"aid": "APT-UTZ9-VZRC",
+		"icao": "RJCH",
+		"iata": "HKD",
+		"faa": null,
+		"coordinates": {
+			"latitude": 41.77,
+			"longitude": 140.8219444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hakodate Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-W4DQ-STGK",
+		"icao": "RJCJ",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.7944444,
+			"longitude": 141.6663889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Chitose Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6TKA-ZSVW",
+		"icao": "RJCK",
+		"iata": "KUH",
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.0408333,
+			"longitude": 144.1930556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kushiro Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ZDP7-3VG5",
+		"icao": "RJCM",
+		"iata": "MMB",
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.8805556,
+			"longitude": 144.1641667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Memanbetsu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-4KYA-2NFN",
+		"icao": "RJCN",
+		"iata": "SHB",
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.5775,
+			"longitude": 144.96
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Nakashibetsu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-N044-2COS",
+		"icao": "RJCO",
+		"iata": "OKD",
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.1175,
+			"longitude": 141.3813889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Okadama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BKTF-44JW",
+		"icao": "RJCR",
+		"iata": "RBJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 45.4502778,
+			"longitude": 141.0344444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Rebun Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-3H34-UOFU",
+		"icao": "RJCS",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.0333333,
+			"longitude": 144.2
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kushiro/kenebetsu",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-U92Z-XCDD",
+		"icao": "RJCT",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.8902778,
+			"longitude": 143.1583333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokachi Airfield",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-B51U-1JZP",
+		"icao": "RJCW",
+		"iata": "WKJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 45.4044444,
+			"longitude": 141.8022222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Wakkanai Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XA89-QFR8",
+		"icao": "RJCY",
+		"iata": "QRN",
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.3166667,
+			"longitude": 140.9833333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Muroran/yakumo",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-KD6S-XSSE",
+		"icao": "RJDA",
+		"iata": "AXJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.4822222,
+			"longitude": 130.1588889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Amakusa Airfield",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-IWFD-IK8V",
+		"icao": "RJDB",
+		"iata": "IKI",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.7491667,
+			"longitude": 129.7858333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Iki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-1O0F-RM0N",
+		"icao": "RJDC",
+		"iata": "UBJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.93,
+			"longitude": 131.2786111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yamaguchi Ube Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-UHDC-PH6P",
+		"icao": "RJDK",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.0136111,
+			"longitude": 129.1925
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kamigoto Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-A9R9-3QJN",
+		"icao": "RJDM",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.3252778,
+			"longitude": 130.4136111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Metabaru Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-L37P-LZJ6",
+		"icao": "RJDO",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.1908333,
+			"longitude": 129.0902778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Ojika Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-VMSX-47DN",
+		"icao": "RJDT",
+		"iata": "TSJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.285,
+			"longitude": 129.3305556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tsushima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-K7XM-VM4Y",
+		"icao": "RJDU",
+		"iata": "OMJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.9280556,
+			"longitude": 129.9341667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Omura",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-OBUB-K90X",
+		"icao": "RJEB",
+		"iata": "MBE",
+		"faa": null,
+		"coordinates": {
+			"latitude": 44.3041667,
+			"longitude": 143.4041667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Monbetsu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-13S8-A818",
+		"icao": "RJEC",
+		"iata": "AKJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 43.6708333,
+			"longitude": 142.4475
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Asahikawa Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ETEZ-CC8D",
+		"icao": "RJEO",
+		"iata": "OIR",
+		"faa": null,
+		"coordinates": {
+			"latitude": 42.0716667,
+			"longitude": 139.4327778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Okushiri Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-IPXW-QLK5",
+		"icao": "RJER",
+		"iata": "RIS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 45.2419444,
+			"longitude": 141.1875
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Rishiri Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6VHG-GDWF",
+		"icao": "RJFA",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.8813889,
+			"longitude": 130.6516667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Ashiya Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-0WJ3-3RE8",
+		"icao": "RJFC",
+		"iata": "KUM",
+		"faa": null,
+		"coordinates": {
+			"latitude": 30.3855556,
+			"longitude": 130.6591667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yakushima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-QL35-T66Y",
+		"icao": "RJFE",
+		"iata": "FUJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.6663889,
+			"longitude": 128.8327778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Fukue Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-V1GU-HECU",
+		"icao": "RJFF",
+		"iata": "FUK",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.5844444,
+			"longitude": 130.4516667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Fukuoka Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-GEDL-ZG5B",
+		"icao": "RJFG",
+		"iata": "TNE",
+		"faa": null,
+		"coordinates": {
+			"latitude": 30.605,
+			"longitude": 130.9916667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "New Tanegashima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XVPT-656J",
+		"icao": "RJFK",
+		"iata": "KOJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 31.8033333,
+			"longitude": 130.7194444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kagoshima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-P1Z0-55LH",
+		"icao": "RJFM",
+		"iata": "KMI",
+		"faa": null,
+		"coordinates": {
+			"latitude": 31.8772222,
+			"longitude": 131.4486111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Miyazaki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-WSV7-QUT3",
+		"icao": "RJFN",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.0836111,
+			"longitude": 131.4513889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Nyutabaru Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-NQD9-CNJK",
+		"icao": "RJFO",
+		"iata": "OIT",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.4794444,
+			"longitude": 131.7372222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Oita Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-45BC-SHZ5",
+		"icao": "RJFR",
+		"iata": "KKJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.8455556,
+			"longitude": 131.035
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kitakyushu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XQUC-CZD2",
+		"icao": "RJFS",
+		"iata": "HSG",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.1497222,
+			"longitude": 130.3022222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Saga Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-WT6G-RWQW",
+		"icao": "RJFT",
+		"iata": "KMJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.8372222,
+			"longitude": 130.8552778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kumamoto Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BIAI-A9SA",
+		"icao": "RJFU",
+		"iata": "NGS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 32.9169444,
+			"longitude": 129.9136111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Nagasaki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-W9ZG-G1XJ",
+		"icao": "RJFY",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 31.3680556,
+			"longitude": 130.8380556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kanoya Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-MYGC-88G3",
+		"icao": "RJFZ",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.685,
+			"longitude": 131.0402778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tsuiki Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-VKFJ-ODMF",
+		"icao": "RJGG",
+		"iata": "NGO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.8583333,
+			"longitude": 136.8052778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Chubu Centrair International Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6EVB-Q9QM",
+		"icao": "RJKA",
+		"iata": "ASJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 28.4308333,
+			"longitude": 129.7125
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Amami Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-42TO-5PBV",
+		"icao": "RJKB",
+		"iata": "OKE",
+		"faa": null,
+		"coordinates": {
+			"latitude": 27.4316667,
+			"longitude": 128.7055556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Okinoerabu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-R50T-L3QU",
+		"icao": "RJKI",
+		"iata": "KKX",
+		"faa": null,
+		"coordinates": {
+			"latitude": 28.3213889,
+			"longitude": 129.9280556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kikai Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-3542-BUPL",
+		"icao": "RJKN",
+		"iata": "TKN",
+		"faa": null,
+		"coordinates": {
+			"latitude": 27.8363889,
+			"longitude": 128.8813889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokunoshima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-5U44-C66N",
+		"icao": "RJNA",
+		"iata": "NKM",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.255,
+			"longitude": 136.9244444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Nagoya Airfield",
+		"servedCity": "Nagoya"
+	},
+	{
+		"aid": "APT-2APY-02R7",
+		"icao": "RJNF",
+		"iata": "FKJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.1427778,
+			"longitude": 136.2238889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Fukui Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-3AN0-0G4N",
+		"icao": "RJNG",
+		"iata": "QGU",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.3944444,
+			"longitude": 136.8694444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Gifu Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-Z9K1-UY33",
+		"icao": "RJNH",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.7502778,
+			"longitude": 137.7030556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hamamatsu Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-KF7Z-FT60",
+		"icao": "RJNK",
+		"iata": "KMQ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.3938889,
+			"longitude": 136.4075
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Komatsu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-0WEW-JDN0",
+		"icao": "RJNO",
+		"iata": "OKI",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.1783333,
+			"longitude": 133.3233333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Oki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6786-CAGI",
+		"icao": "RJNS",
+		"iata": "FSZ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.7961111,
+			"longitude": 138.1894444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Shizuoka Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-8GQQ-MFHP",
+		"icao": "RJNT",
+		"iata": "TOY",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.6483333,
+			"longitude": 137.1875
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Toyama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-VPNY-3X7C",
+		"icao": "RJNW",
+		"iata": "NTQ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 37.2933333,
+			"longitude": 136.9622222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Noto Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-F1TI-ZBUN",
+		"icao": "RJNY",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.8127778,
+			"longitude": 138.2980556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Shizuhama Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ITFA-CBM5",
+		"icao": "RJOA",
+		"iata": "HIJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.4361111,
+			"longitude": 132.9194444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hiroshima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-EICN-4B6I",
+		"icao": "RJOB",
+		"iata": "OKJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.7569444,
+			"longitude": 133.8552778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Okayama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-P08R-DNB3",
+		"icao": "RJOC",
+		"iata": "IZO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.4136111,
+			"longitude": 132.89
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Izumo Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-4280-52OJ",
+		"icao": "RJOE",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.5333333,
+			"longitude": 136.6722222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Akeno Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-VKVC-S4VI",
+		"icao": "RJOF",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.0344444,
+			"longitude": 131.5463889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hōfu Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6XN8-7YGL",
+		"icao": "RJOH",
+		"iata": "YGJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.4933333,
+			"longitude": 133.2391667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Miho-Yonago Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-J3IZ-B4Y7",
+		"icao": "RJOI",
+		"iata": "IWK",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.1449167,
+			"longitude": 132.246975
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Marine Corps Air Station Iwakuni",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-HN8D-RP4K",
+		"icao": "RJOK",
+		"iata": "KCZ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.5461111,
+			"longitude": 133.6694444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kōchi Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-FYO5-PBZK",
+		"icao": "RJOM",
+		"iata": "MYJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.8272222,
+			"longitude": 132.6997222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Matsuyama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-69KD-FNJW",
+		"icao": "RJOO",
+		"iata": "ITM",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.7844444,
+			"longitude": 135.4391667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Itami Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-KP93-1POS",
+		"icao": "RJOP",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.0052778,
+			"longitude": 134.6263889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Komatsushima Heliport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BDJD-VQYL",
+		"icao": "RJOR",
+		"iata": "TTJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.53,
+			"longitude": 134.165
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tottori Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-2UAG-P4HF",
+		"icao": "RJOS",
+		"iata": "TKS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.1322222,
+			"longitude": 134.6091667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokushima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-UD7L-2ETM",
+		"icao": "RJOT",
+		"iata": "TAK",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.2141667,
+			"longitude": 134.0155556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Takamatsu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6RDV-3ZMR",
+		"icao": "RJOW",
+		"iata": "IWJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.6763889,
+			"longitude": 131.7902778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Iwami Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-RCF4-9DFQ",
+		"icao": "RJOY",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.5966667,
+			"longitude": 135.6005556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yao Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-0WUI-9Z72",
+		"icao": "RJOZ",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.0469444,
+			"longitude": 131.0522222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Ozuki Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-O6MZ-FWFU",
+		"icao": "RJSA",
+		"iata": "AOJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 40.7333333,
+			"longitude": 140.6886111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Aomori Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-NER6-SH3W",
+		"icao": "RJSC",
+		"iata": "GAJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.4119444,
+			"longitude": 140.3711111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yamagata Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-TULW-TGGW",
+		"icao": "RJSD",
+		"iata": "SDS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.0611111,
+			"longitude": 138.4141667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Sado Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-8TW3-IMU4",
+		"icao": "RJSF",
+		"iata": "FKS",
+		"faa": null,
+		"coordinates": {
+			"latitude": 37.2275,
+			"longitude": 140.4280556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Fukushima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-AAS6-6FG0",
+		"icao": "RJSH",
+		"iata": "HHE",
+		"faa": null,
+		"coordinates": {
+			"latitude": 40.5519444,
+			"longitude": 141.4672222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "JMSDF Hachinohe Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-VNIO-SAKJ",
+		"icao": "RJSI",
+		"iata": "HNA",
+		"faa": null,
+		"coordinates": {
+			"latitude": 39.4286111,
+			"longitude": 141.1352778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hanamaki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-KBZH-Q5FY",
+		"icao": "RJSK",
+		"iata": "AXT",
+		"faa": null,
+		"coordinates": {
+			"latitude": 39.6155556,
+			"longitude": 140.2186111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Akita Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-TO1W-PY6V",
+		"icao": "RJSM",
+		"iata": "MSJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 40.7032139,
+			"longitude": 141.3683639
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Misawa Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-ECKR-2O13",
+		"icao": "RJSN",
+		"iata": "KIJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 37.9558333,
+			"longitude": 139.1116667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Niigata Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-V3R3-ZFJV",
+		"icao": "RJSO",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 41.2327778,
+			"longitude": 141.1322222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Ōminato Guard District",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-6FKR-F6W5",
+		"icao": "RJSR",
+		"iata": "ONJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 40.1919444,
+			"longitude": 140.3716667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Odate–Noshiro Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-FW4Z-8E6C",
+		"icao": "RJSS",
+		"iata": "SDJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.1397222,
+			"longitude": 140.9169444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Sendai Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-T25R-5D4T",
+		"icao": "RJST",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.4030556,
+			"longitude": 141.2119444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Matsushima Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-5YVX-ABHK",
+		"icao": "RJSU",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.2355556,
+			"longitude": 140.9230556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kasuminome Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-FE1M-SWII",
+		"icao": "RJSY",
+		"iata": "SYO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 38.8122222,
+			"longitude": 139.7872222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Shonai Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-GFMH-SF58",
+		"icao": "RJTA",
+		"iata": "NJA",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.4547222,
+			"longitude": 139.45
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Naval Air Facility Atsugi",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-Q01W-TAU0",
+		"icao": "RJTC",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.7108333,
+			"longitude": 139.4030556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tachikawa Airfield",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-W34X-SBRZ",
+		"icao": "RJTD",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.763889,
+			"longitude": 140.3911113
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokyo (city)",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-O5L3-VXR2",
+		"icao": "RJTE",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.9869444,
+			"longitude": 139.8291667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "JMSDF Tateyama Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-2T4V-MES1",
+		"icao": "RJTF",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.6716667,
+			"longitude": 139.5280556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Chōfu Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XTHF-DI1V",
+		"icao": "RJTH",
+		"iata": "HAC",
+		"faa": null,
+		"coordinates": {
+			"latitude": 33.115,
+			"longitude": 139.7858333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hachijojima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-PH7X-FEPL",
+		"icao": "RJTI",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.6361111,
+			"longitude": 139.8394444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tokyo Heliport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-7PLL-ECF6",
+		"icao": "RJTJ",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.8419444,
+			"longitude": 139.4105556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Iruma Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-TG1H-FQJ6",
+		"icao": "RJTK",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.3982806,
+			"longitude": 139.9098167
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kisarazu Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-8NSY-1FJF",
+		"icao": "RJTL",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.7988889,
+			"longitude": 140.0122222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Shimofusa Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-8VCE-3JPB",
+		"icao": "RJTO",
+		"iata": "OIM",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.7819444,
+			"longitude": 139.3602778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Oshima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XZ5R-V7JN",
+		"icao": "RJTQ",
+		"iata": "MYE",
+		"faa": null,
+		"coordinates": {
+			"latitude": 34.0736111,
+			"longitude": 139.5602778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Miyakejima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-XEVC-3437",
+		"icao": "RJTR",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.5136667,
+			"longitude": 139.3936667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Camp Zama",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-SQS8-KY4M",
+		"icao": "RJTS",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.4347222,
+			"longitude": 138.9530556
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Soumagahara Heliport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-1ZBD-SONM",
+		"icao": "RJTT",
+		"iata": "HND",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.5533333,
+			"longitude": 139.7811111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Haneda Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-UZIL-ZHFF",
+		"icao": "RJTU",
+		"iata": "QUT",
+		"faa": null,
+		"coordinates": {
+			"latitude": 36.5144444,
+			"longitude": 139.8708333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Utsunomiya Air Field",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-0W6R-6GHQ",
+		"icao": "RJTY",
+		"iata": "OKO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 35.7484917,
+			"longitude": 139.3484833
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yokota Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-KRKJ-55TZ",
+		"icao": "ROAH",
+		"iata": "OKA",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.1958333,
+			"longitude": 127.6458333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Naha Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-RWBS-T63Z",
+		"icao": "RODN",
+		"iata": "DNA",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.3556111,
+			"longitude": 127.7676389
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kadena Air Base",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BZOQ-LZ3N",
+		"icao": "ROIG",
+		"iata": "ISG",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.3963889,
+			"longitude": 124.245
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "New Ishigaki Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BUF5-0IZ1",
+		"icao": "ROKJ",
+		"iata": "UEO",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.3636111,
+			"longitude": 126.7138889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kumejima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-YBYL-ORHG",
+		"icao": "ROKR",
+		"iata": "KJP",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.1683333,
+			"longitude": 127.2933333
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kerama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-IN0L-0MDL",
+		"icao": "ROMD",
+		"iata": "MMD",
+		"faa": null,
+		"coordinates": {
+			"latitude": 25.8466667,
+			"longitude": 131.2636111
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Minami-Daito Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-P1WU-W18E",
+		"icao": "ROMY",
+		"iata": "MMY",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.7827778,
+			"longitude": 125.295
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Miyako Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-5IS5-53DV",
+		"icao": "RORA",
+		"iata": "AGJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.5927778,
+			"longitude": 127.2402778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Aguni Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-1T49-XCOQ",
+		"icao": "RORE",
+		"iata": "IEJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.7225,
+			"longitude": 127.7869444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Iejima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-UGU2-LM1W",
+		"icao": "RORH",
+		"iata": "HTR",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.0583333,
+			"longitude": 123.8038889
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Hateruma Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-SZ3P-91AI",
+		"icao": "RORK",
+		"iata": "KTD",
+		"faa": null,
+		"coordinates": {
+			"latitude": 25.9447222,
+			"longitude": 131.3269444
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Kitadaito Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-NEHM-3JVL",
+		"icao": "RORS",
+		"iata": "SHI",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.8266667,
+			"longitude": 125.1447222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Shimojishima Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-CGZM-CKU2",
+		"icao": "RORT",
+		"iata": "TRA",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.6538889,
+			"longitude": 124.6752778
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Tarama Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-BTOI-TOV7",
+		"icao": "RORY",
+		"iata": "RNJ",
+		"faa": null,
+		"coordinates": {
+			"latitude": 27.0438889,
+			"longitude": 128.4016667
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yoron Airport",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-052F-Y4ZC",
+		"icao": "ROTM",
+		"iata": null,
+		"faa": null,
+		"coordinates": {
+			"latitude": 26.2742722,
+			"longitude": 127.7565
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Marine Corps Air Station Futenma",
+		"servedCity": null
+	},
+	{
+		"aid": "APT-V90X-PS12",
+		"icao": "ROYN",
+		"iata": "OGN",
+		"faa": null,
+		"coordinates": {
+			"latitude": 24.4675,
+			"longitude": 122.9797222
+		},
+		"country": {
+			"iso2": "JP",
+			"iso3": "JPN",
+			"isoNumeric": 392,
+			"name": "Japan",
+			"officialName": null,
+			"locationIdentifierName": null
+		},
+		"timezone": "Asia/Tokyo",
+		"name": "Yonaguni Airport",
+		"servedCity": null
+	}
+]
