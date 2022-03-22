@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 using FIS_J.Models;
-using FIS_J.ViewModels.PayLandingFee;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
@@ -15,7 +14,6 @@ namespace FIS_J.FISJ.PayLandingFee
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		SelectAirportViewModel viewModel { get; } = new();
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
@@ -23,7 +21,6 @@ namespace FIS_J.FISJ.PayLandingFee
 
 		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
-			BindingContext = viewModel;
 			this.airportInfo = airportInfo;
 
 			if (airportInfo?.AirportInfo?.coordinates is null)
