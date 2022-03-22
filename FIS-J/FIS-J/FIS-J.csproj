@@ -51,6 +51,10 @@
     <EmbeddedResource Update="FISJ\weather\emagram\hokuriku.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Include="Models\airport_list.json" />
+    <EmbeddedResource Update="FISJ\Badwetherforecast.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="FISJ\IcaoPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -194,5 +198,8 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Maps\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Models\airport_list.json" />
   </ItemGroup>
 </Project>

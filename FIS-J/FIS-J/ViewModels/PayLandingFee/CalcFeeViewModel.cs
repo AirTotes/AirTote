@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using FIS_J.Models;
 using FIS_J.Services;
 
 namespace FIS_J.ViewModels.PayLandingFee
 {
-	public class CalcFeeViewModel : BaseViewModel
+	public class CalcFeeViewModel : BaseViewModel, IContainsAirportInfo
 	{
 		public CalcFeeViewModel()
 		{
@@ -78,11 +79,11 @@ namespace FIS_J.ViewModels.PayLandingFee
 			}
 		}
 
-		AVWX.Station _Station = null;
-		public AVWX.Station Station
+		AirportInfo.APInfo _AirportInfo = null;
+		public AirportInfo.APInfo AirportInfo
 		{
-			get => _Station;
-			set => SetProperty(ref _Station, value);
+			get => _AirportInfo;
+			set => SetProperty(ref _AirportInfo, value);
 		}
 
 		int _LandingCharge;

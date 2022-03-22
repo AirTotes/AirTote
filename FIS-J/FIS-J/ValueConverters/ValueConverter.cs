@@ -40,4 +40,23 @@ namespace FIS_J.ValueConverters
 		}
 
 	}
+
+	public class IntToENumConverter : IValueConverter
+	{
+		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (value is Enum)
+				return (int)value;
+			else
+				return 0;
+		}
+
+		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+		{
+			if (value is int i_value)
+				return Enum.ToObject(targetType, i_value);
+			else
+				return 0;
+		}
+	}
 }

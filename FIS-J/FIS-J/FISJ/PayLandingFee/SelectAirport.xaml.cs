@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using FIS_J.Models;
-using FIS_J.Services;
-using FIS_J.ViewModels.PayLandingFee;
-using Xamarin.Essentials;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -12,55 +11,59 @@ namespace FIS_J.FISJ.PayLandingFee
 {
 	public partial class SelectAirport : ContentPage
 	{
-		SelectAirportViewModel viewModel { get; } = new();
-		CalcFeeViewModel CalcFeeViewModel { get; } = null;
-		Dictionary<string, AVWX.Station> StationsDic { get; } = new();
+		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
+		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		public SelectAirport()
+		IContainsAirportInfo airportInfo { get; } = null;
+		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
+
+		Map map { get; }
+
+		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
-			InitializeComponent();
-			BindingContext = viewModel;
+			this.airportInfo = airportInfo;
 
-			SetAirportPins();
-		}
-
-		public SelectAirport(CalcFeeViewModel calcFeeViewModel)
-		{
-			InitializeComponent();
-			BindingContext = viewModel;
-			CalcFeeViewModel = calcFeeViewModel;
-
-			SetAirportPins();
-		}
-
-		private void SetAirportPins()
-		{
-			AVWX avwx = new("KQuqTZ1D1BfSsuXu4eN2lc3DnC46-tGsU-l023G6q0w");
-			List<Task<AVWX.Station>> tasks = new();
-			foreach (var code in ICAOCodes.Codes)
+			if (airportInfo?.AirportInfo?.coordinates is null)
+				map = new(new(
+					new(DEFAULT_CENTER_LATITUDE, DEFAULT_CENTER_LONGITUDE)
+					, 1, 1));
+			else
 			{
-				tasks.Add(avwx.GetStationInformation(code));
+				var latlng = airportInfo.AirportInfo.coordinates;
+				map = new(new(new(latlng.latitude, latlng.longitude), 1, 1));
 			}
 
-			Task.Run(async () =>
+			Appearing += SelectAirport_Appearing;
+
+			Content = map;
+
+			Title = "Please Select Airport";
+		}
+
+		private async void SelectAirport_Appearing(object sender, EventArgs e)
+		{
+			await SetAirportPins();
+		}
+
+		private async Task SetAirportPins()
+		{
+			StationsDic ??= await AirportInfo.getAPInfoDic();
+			map.Pins.Clear();
+
+			foreach (var ap in StationsDic.Values)
 			{
-				var results = await Task.WhenAll(tasks);
-				foreach (var result in results)
+				Pin pin = new()
 				{
-					StationsDic.Add(result.icao, result);
-					Pin pin = new()
-					{
-						Address = result.name,
-						Label = result.icao,
-						Type = PinType.SearchResult,
-						Position = new(result.latitude, result.longitude)
-					};
+					Address = ap.name,
+					Label = ap.icao,
+					Type = PinType.SearchResult,
+					Position = new(ap.coordinates.latitude, ap.coordinates.longitude)
+				};
 
-					pin.InfoWindowClicked += Pin_InfoWindowClicked;
+				pin.InfoWindowClicked += Pin_InfoWindowClicked;
 
-					map.Pins.Add(pin);
-				}
-			});
+				map.Pins.Add(pin);
+			}
 		}
 
 		private async void Pin_InfoWindowClicked(object sender, PinClickedEventArgs e)
@@ -68,15 +71,10 @@ namespace FIS_J.FISJ.PayLandingFee
 			if (sender is not Pin pin)
 				return;
 
-			if (StationsDic.TryGetValue(pin.Label, out AVWX.Station value) && value is not null)
+			if (StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo value) && value is not null)
 			{
-				if (CalcFeeViewModel is null)
-					await Navigation.PushAsync(new CalcFee(value));
-				else
-				{
-					CalcFeeViewModel.Station = value;
-					await Navigation.PopAsync();
-				}
+				airportInfo.AirportInfo = value;
+				await Navigation.PopAsync();
 			}
 		}
 	}

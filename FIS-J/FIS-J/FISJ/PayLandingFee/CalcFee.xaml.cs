@@ -1,4 +1,5 @@
-﻿using FIS_J.Services;
+﻿using FIS_J.Models;
+using FIS_J.Services;
 using FIS_J.ViewModels.PayLandingFee;
 using Xamarin.Forms;
 
@@ -13,16 +14,16 @@ namespace FIS_J.FISJ.PayLandingFee
 			InitializeComponent();
 			BindingContext = viewModel;
 
-			viewModel.Station = new()
+			viewModel.AirportInfo = new()
 			{
 				icao = "RJTT"
 			};
 		}
 
-		public CalcFee(AVWX.Station station)
+		public CalcFee(AirportInfo.APInfo station)
 		{
 			InitializeComponent();
-			viewModel.Station = station;
+			viewModel.AirportInfo = station;
 			BindingContext = viewModel;
 		}
 
