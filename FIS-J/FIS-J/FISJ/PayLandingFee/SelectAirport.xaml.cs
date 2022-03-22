@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
 using FIS_J.Models;
-using FIS_J.Services;
 using FIS_J.ViewModels.PayLandingFee;
-using Xamarin.Essentials;
+
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
