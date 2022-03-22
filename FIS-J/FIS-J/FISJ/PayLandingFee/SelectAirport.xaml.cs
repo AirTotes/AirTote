@@ -64,7 +64,7 @@ namespace FIS_J.FISJ.PayLandingFee
 					await Navigation.PushAsync(new CalcFee(value));
 				else
 				{
-					CalcFeeViewModel.Station = value;
+					CalcFeeViewModel.AirportInfo = value;
 					await Navigation.PopAsync();
 				}
 			}

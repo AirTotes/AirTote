@@ -81,7 +81,7 @@
 				Grid.Row="0" Grid.Column="0"
 				/>
 			<Label
-				Text="{Binding Station.icao}"
+				Text="{Binding AirportInfo.icao}"
 				Grid.Row="0" Grid.Column="1"
 				/>
 			<Button

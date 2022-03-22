@@ -14,7 +14,7 @@ namespace FIS_J.FISJ.PayLandingFee
 			InitializeComponent();
 			BindingContext = viewModel;
 
-			viewModel.Station = new()
+			viewModel.AirportInfo = new()
 			{
 				icao = "RJTT"
 			};
@@ -23,7 +23,7 @@ namespace FIS_J.FISJ.PayLandingFee
 		public CalcFee(AirportInfo.APInfo station)
 		{
 			InitializeComponent();
-			viewModel.Station = station;
+			viewModel.AirportInfo = station;
 			BindingContext = viewModel;
 		}
 
