@@ -24,18 +24,13 @@ namespace FIS_J.FISJ
 			InitializeComponent();
 			BindingContext = ViewModel;
 
-			Task.Run(async () =>
-			{
-				string _metar = await api.GetSanitizedMETAR(ICAOCode.RJAA);
-				System.Diagnostics.Debug.WriteLine($"METAR: {_metar}");
-				ViewModel.Metar = _metar;
-			});
-			Task.Run(async () =>
-			{
-				string _taf = await api.GetSanitizedTAF(ICAOCode.RJAA);
-				System.Diagnostics.Debug.WriteLine($"TAF: {_taf}");
-				ViewModel.taf = _taf;
-			});
+			Task.Run(async () => await SetMetarAndTaf(ViewModel.CurrentICAOCode));
+		}
+
+		async Task SetMetarAndTaf(ICAOCode code)
+		{
+			ViewModel.Metar = await api.GetSanitizedMETAR(code);
+			ViewModel.taf = await api.GetSanitizedTAF(code);
 		}
 	}
 }
