@@ -13,8 +13,8 @@ namespace FIS_J.FISJ.PayLandingFee
 	public partial class SelectAirport : ContentPage
 	{
 		SelectAirportViewModel viewModel { get; } = new();
-		CalcFeeViewModel CalcFeeViewModel { get; } = null;
-		Dictionary<string, AirportInfo.APInfo> StationsDic { get; } = new();
+		IContainsAirportInfo airportInfo { get; } = null;
+		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
 		public SelectAirport()
 		{
@@ -24,21 +24,22 @@ namespace FIS_J.FISJ.PayLandingFee
 			SetAirportPins();
 		}
 
-		public SelectAirport(CalcFeeViewModel calcFeeViewModel)
+		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
 			InitializeComponent();
 			BindingContext = viewModel;
-			CalcFeeViewModel = calcFeeViewModel;
+			this.airportInfo = airportInfo;
 
 			SetAirportPins();
 		}
 
 		private async Task SetAirportPins()
 		{
-			var dic = await AirportInfo.getAPInfoDic();
-			foreach (var ap in dic.Values)
+			StationsDic ??= await AirportInfo.getAPInfoDic();
+			map.Pins.Clear();
+
+			foreach (var ap in StationsDic.Values)
 			{
-				StationsDic.Add(ap.icao, ap);
 				Pin pin = new()
 				{
 					Address = ap.name,
@@ -60,13 +61,8 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			if (StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo value) && value is not null)
 			{
-				if (CalcFeeViewModel is null)
-					await Navigation.PushAsync(new CalcFee(value));
-				else
-				{
-					CalcFeeViewModel.AirportInfo = value;
-					await Navigation.PopAsync();
-				}
+				airportInfo.AirportInfo = value;
+				await Navigation.PopAsync();
 			}
 		}
 	}
