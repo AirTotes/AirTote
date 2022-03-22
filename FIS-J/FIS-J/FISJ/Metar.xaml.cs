@@ -26,8 +26,22 @@ namespace FIS_J.FISJ
 
 		async Task SetMetarAndTaf(ICAOCode code)
 		{
-			ViewModel.Metar = await api.GetSanitizedMETAR(code);
-			ViewModel.taf = await api.GetSanitizedTAF(code);
+			try
+			{
+				ViewModel.Metar = await api.GetSanitizedMETAR(code);
+			}
+			catch (Exception ex)
+			{
+				ViewModel.Metar = $"{code}: FAILED to get METAR (Error Message ... {ex.Message})";
+			}
+			try
+			{
+				ViewModel.taf = await api.GetSanitizedTAF(code);
+			}
+			catch (Exception ex)
+			{
+				ViewModel.taf = $"{code}: FAILED to get TAF (Error Message ... {ex.Message})";
+			}
 		}
 
 		async void Picker_SelectedIndexChanged(object sender, EventArgs e)
