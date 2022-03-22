@@ -32,5 +32,10 @@ namespace FIS_J.FISJ
 			ViewModel.Metar = await api.GetSanitizedMETAR(code);
 			ViewModel.taf = await api.GetSanitizedTAF(code);
 		}
+
+		async void Picker_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			await SetMetarAndTaf(ViewModel.CurrentICAOCode);
+		}
 	}
 }
