@@ -1,4 +1,5 @@
-﻿using FIS_J.Services;
+﻿using FIS_J.Models;
+using FIS_J.Services;
 using FIS_J.ViewModels.PayLandingFee;
 using Xamarin.Forms;
 
@@ -19,7 +20,7 @@ namespace FIS_J.FISJ.PayLandingFee
 			};
 		}
 
-		public CalcFee(AVWX.Station station)
+		public CalcFee(AirportInfo.APInfo station)
 		{
 			InitializeComponent();
 			viewModel.Station = station;

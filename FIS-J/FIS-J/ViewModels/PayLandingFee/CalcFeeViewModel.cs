@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using FIS_J.Models;
 using FIS_J.Services;
 
 namespace FIS_J.ViewModels.PayLandingFee
@@ -78,8 +79,8 @@ namespace FIS_J.ViewModels.PayLandingFee
 			}
 		}
 
-		AVWX.Station _Station = null;
-		public AVWX.Station Station
+		AirportInfo.APInfo _Station = null;
+		public AirportInfo.APInfo Station
 		{
 			get => _Station;
 			set => SetProperty(ref _Station, value);

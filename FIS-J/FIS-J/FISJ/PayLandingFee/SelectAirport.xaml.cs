@@ -14,7 +14,7 @@ namespace FIS_J.FISJ.PayLandingFee
 	{
 		SelectAirportViewModel viewModel { get; } = new();
 		CalcFeeViewModel CalcFeeViewModel { get; } = null;
-		Dictionary<string, AVWX.Station> StationsDic { get; } = new();
+		Dictionary<string, AirportInfo.APInfo> StationsDic { get; } = new();
 
 		public SelectAirport()
 		{
@@ -33,34 +33,24 @@ namespace FIS_J.FISJ.PayLandingFee
 			SetAirportPins();
 		}
 
-		private void SetAirportPins()
+		private async Task SetAirportPins()
 		{
-			AVWX avwx = new("KQuqTZ1D1BfSsuXu4eN2lc3DnC46-tGsU-l023G6q0w");
-			List<Task<AVWX.Station>> tasks = new();
-			foreach (var code in ICAOCodes.Codes)
+			var dic = await AirportInfo.getAPInfoDic();
+			foreach (var ap in dic.Values)
 			{
-				tasks.Add(avwx.GetStationInformation(code));
-			}
-
-			Task.Run(async () =>
-			{
-				var results = await Task.WhenAll(tasks);
-				foreach (var result in results)
+				StationsDic.Add(ap.icao, ap);
+				Pin pin = new()
 				{
-					StationsDic.Add(result.icao, result);
-					Pin pin = new()
-					{
-						Address = result.name,
-						Label = result.icao,
-						Type = PinType.SearchResult,
-						Position = new(result.latitude, result.longitude)
-					};
+					Address = ap.name,
+					Label = ap.icao,
+					Type = PinType.SearchResult,
+					Position = new(ap.coordinates.latitude, ap.coordinates.longitude)
+				};
 
-					pin.InfoWindowClicked += Pin_InfoWindowClicked;
+				pin.InfoWindowClicked += Pin_InfoWindowClicked;
 
-					map.Pins.Add(pin);
-				}
-			});
+				map.Pins.Add(pin);
+			}
 		}
 
 		private async void Pin_InfoWindowClicked(object sender, PinClickedEventArgs e)
@@ -68,7 +58,7 @@ namespace FIS_J.FISJ.PayLandingFee
 			if (sender is not Pin pin)
 				return;
 
-			if (StationsDic.TryGetValue(pin.Label, out AVWX.Station value) && value is not null)
+			if (StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo value) && value is not null)
 			{
 				if (CalcFeeViewModel is null)
 					await Navigation.PushAsync(new CalcFee(value));
