@@ -12,18 +12,35 @@ namespace FIS_J.FISJ.PayLandingFee
 {
 	public partial class SelectAirport : ContentPage
 	{
+		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
+		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
+
 		SelectAirportViewModel viewModel { get; } = new();
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
+		Map map { get; }
 
 		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
-			InitializeComponent();
 			BindingContext = viewModel;
 			this.airportInfo = airportInfo;
 
+			if (airportInfo?.AirportInfo?.coordinates is null)
+				map = new(new(
+					new(DEFAULT_CENTER_LATITUDE, DEFAULT_CENTER_LONGITUDE)
+					, 1, 1));
+			else
+			{
+				var latlng = airportInfo.AirportInfo.coordinates;
+				map = new(new(new(latlng.latitude, latlng.longitude), 1, 1));
+			}
+
 			SetAirportPins();
+
+			Content = map;
+
+			Title = "Please Select Airport";
 		}
 
 		private async Task SetAirportPins()
