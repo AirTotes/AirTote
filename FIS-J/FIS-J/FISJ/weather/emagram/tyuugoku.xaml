@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.tyuugoku"
-             Title="エマグラム>中国地方">
-    <ContentPage.Content>
-        <StackLayout>
-            <WebView Source="https://www.sunny-spot.net/emagram/index.html?area=7"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"/>
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.tyuugoku"
+	Title="エマグラム>中国地方">
+	<WebView
+		Source="https://www.sunny-spot.net/emagram/index.html?area=7"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"/>
 </ContentPage>

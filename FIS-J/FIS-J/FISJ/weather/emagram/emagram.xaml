@@ -1,48 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.emagram"
-             Title="エマグラム">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Button x:Name="zenkoku"
-                Text="全国"            
-                Font="25"/>
-                <Button x:Name="hokkaido"
-                Text="北海道"                                
-                Font="25"/>
-                <Button x:Name="touhoku"
-                Text="東北"                                
-                Font="25"/>
-                <Button x:Name="kanto"
-                Text="関東甲信"                                
-                Font="25"/>
-                <Button x:Name="hokuriku"
-                Text="北陸"                                
-                Font="25"/>
-                <Button x:Name="toukai"
-                Text="東海"                                
-                Font="25"/>
-                <Button x:Name="kinki"
-                Text="近畿"                                
-                Font="25"/>
-                <Button x:Name="tyuugoku"
-                Text="中国"                                
-                Font="25"/>
-                <Button x:Name="sikoku"
-                Text="四国"                                
-                Font="25"/>
-                <Button x:Name="kyuusyukita"
-                Text="九州北部"                                
-                Font="25"/>
-                <Button x:Name="kyuusyuminami"
-                Text="九州南部"                                
-                Font="25"/>
-                <Button x:Name="nansei"
-                Text="南西諸島"                                
-                Font="25"/>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.emagram"
+	Title="エマグラム">
+	<ScrollView>
+		<StackLayout>
+			<Button
+				Clicked="Zenkoku_Clicked"
+				Text="全国"/>
+			<Button
+				Clicked="Hokkaido_Clicked"
+				Text="北海道"/>
+			<Button
+				Clicked="Touhoku_Clicked"
+				Text="東北"/>
+			<Button
+				Clicked="Kanto_Clicked"
+				Text="関東甲信"/>
+			<Button
+				Clicked="Hokuriku_Clicked"
+				Text="北陸"/>
+			<Button
+				Clicked="Toukai_Clicked"
+				Text="東海"/>
+			<Button
+				Clicked="Kinki_Clicked"
+				Text="近畿"/>
+			<Button
+				Clicked="Tyuugoku_Clicked"
+				Text="中国"/>
+			<Button
+				Clicked="Sikoku_Clicked"
+				Text="四国"/>
+			<Button
+				Clicked="Kyuusyukita_Clicked"
+				Text="九州北部"/>
+			<Button
+				Clicked="Kyuusyuminami_Clicked"
+				Text="九州南部"/>
+			<Button
+				Clicked="Nansei_Clicked"
+				Text="南西諸島"/>
+		</StackLayout>
+	</ScrollView>
 </ContentPage>
