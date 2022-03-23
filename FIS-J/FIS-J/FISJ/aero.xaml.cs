@@ -20,6 +20,7 @@ namespace FIS_J.FISJ
 			AIPView.Clicked += AIPView_Clicked;
 			SUPsView.Clicked += SUPsView_Clicked;
 		}
+
 		private void SUPsView_Clicked(object sender, EventArgs e)
 		{
 			Task.Run(async () =>
@@ -34,6 +35,7 @@ namespace FIS_J.FISJ
 				};
 			});
 		}
+
 		private void AIPView_Clicked(object sender, EventArgs e)
 		{
 			Task.Run(async () =>
@@ -48,6 +50,7 @@ namespace FIS_J.FISJ
 				};
 			});
 		}
+
 		private void AICsView_Clicked(object sender, EventArgs e)
 		{
 			Task.Run(async () =>
