@@ -9,18 +9,42 @@
 	<Application.Resources>
 		<ResourceDictionary>
 			<Color x:Key="Primary">#2196F3</Color>
+
+			<!-- Light colors -->
+			<Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
+			<Color x:Key="LightSecondaryColor">Black</Color>
+
+			<!-- Dark colors -->
+			<Color x:Key="DarkPrimaryColor">#2196F3</Color>
+			<Color x:Key="DarkSecondaryColor">White</Color>
+
 			<Style TargetType="Label">
 				<Setter Property="FontFamily" Value="BIZ UDPGothic" />
+				<Setter
+					Property="TextColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
 			</Style>
 			<Style TargetType="Button">
-				<Setter Property="TextColor" Value="White"></Setter>
-				<Setter Property="FontFamily" Value="BIZ UDPGothic" />
+				<Setter
+					Property="Margin"
+					Value="10"/>
+				<Setter
+					Property="TextColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+				<Setter
+					Property="BackgroundColor"
+					Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+				<Setter
+					Property="FontFamily"
+					Value="BIZ UDPGothic" />
 				<Setter Property="VisualStateManager.VisualStateGroups">
 					<VisualStateGroupList>
 						<VisualStateGroup x:Name="CommonStates">
 							<VisualState x:Name="Normal">
 								<VisualState.Setters>
-									<Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+									<Setter
+										Property="BackgroundColor"
+										Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
 								</VisualState.Setters>
 							</VisualState>
 							<VisualState x:Name="Disabled">
