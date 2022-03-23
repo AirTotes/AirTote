@@ -1,39 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.WetherInformation"
-             Title="気象情報">
-    <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <Button x:Name="Nomwether"
-                Text="数値天気予報図"                                
-                Font="25"/>
-                <Button x:Name="Upperwether"
-                Text="高層天気図"                                
-                Font="25"/>
-                <Button x:Name="SkyInformation"
-                Text="空域の情報"                                
-                Font="25"/>
-                <Button x:Name="live"
-                Text="実況"                               
-                Font="25"/>
-                <Button x:Name="weekly"
-                Text="週間"                                
-                Font="25"/>
-                <Button x:Name="longterm"
-                Text="長期"                                
-                Font="25"/>
-                <Button x:Name="satellite"
-                Text="衛生画像"                                
-                Font="25"/>
-                <Button x:Name="emagram"
-                Text="エマグラム"                                
-                Font="25"/>
-                <Button x:Name="windy"
-                Text="Windy"                                
-                Font="25"/>
-            </StackLayout>
-        </ScrollView>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.WetherInformation"
+	Title="気象情報">
+	<ScrollView>
+		<StackLayout>
+			<Button
+				Clicked="Nomwether_Clicked"
+				Text="数値天気予報図"/>
+			<Button
+				Clicked="Upperwether_Clicked"
+				Text="高層天気図"/>
+			<Button
+				Clicked="SkyInformation_Clicked"
+				Text="空域の情報"/>
+			<Button
+				Clicked="live_Clicked"
+				Text="実況"/>
+			<Button
+				Clicked="weekly_Clicked"
+				Text="週間"/>
+			<Button
+				Clicked="longterm_Clicked"
+				Text="長期"/>
+			<Button
+				Clicked="satellite_Clicked"
+				Text="衛生画像"/>
+			<Button
+				Clicked="emagram_Clicked"
+				Text="エマグラム"/>
+			<Button
+				Clicked="Windy_Clicked"
+				Text="Windy"/>
+		</StackLayout>
+	</ScrollView>
 </ContentPage>
