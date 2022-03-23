@@ -146,9 +146,6 @@
     <EmbeddedResource Update="FISJ\SKyInformation\SkyInformation.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\AirportSubmit\SubmitFormxaml.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="FISJ\weather\longterm\torrid.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
