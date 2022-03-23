@@ -7,19 +7,18 @@
 	<ContentPage.Content>
 		<StackLayout>
 			<Button
-				x:Name="AIPView"
+				Clicked="AIPView_Clicked"
 				Text="AIP"
 				FontSize="Medium"/>
 			<Button
-				x:Name="SUPsView"
+				Clicked="SUPsView_Clicked"
 				Text="SUPs"
 				FontSize="Medium"/>
 			<Button
-				x:Name="AICsView"
+				Clicked="AICsView_Clicked"
 				Text="AICs"
 				FontSize="Medium"/>
 			<WebView
-				x:Name="webView"
 				VerticalOptions="FillAndExpand"
 				Source="{Binding HTML}"/>
 		</StackLayout>

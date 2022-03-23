@@ -16,9 +16,6 @@ namespace FIS_J.FISJ
 		{
 			InitializeComponent();
 			BindingContext = html;
-			AICsView.Clicked += AICsView_Clicked;
-			AIPView.Clicked += AIPView_Clicked;
-			SUPsView.Clicked += SUPsView_Clicked;
 		}
 
 		private void SUPsView_Clicked(object sender, EventArgs e)
