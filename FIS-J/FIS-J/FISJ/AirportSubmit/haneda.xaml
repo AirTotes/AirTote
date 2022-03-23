@@ -5,9 +5,39 @@
              Title="RJAA　羽田空港">
     <ContentPage.Content>
         <StackLayout>
-            <WebView Source=""
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"/>
+            <Button x:Name="hanedaAirportuse"
+                    Text="空港使用届出書"
+                    FontSize="Medium"
+                    Clicked="hanedaAirportuse_Clicked"/>
+            <Button x:Name="hanedaAirportusepermittion"
+                    Text="空港使用許可申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaAirportusepermittion_Clicked"/>
+            <Button x:Name="hanedaWeightOverpermittion"
+                    Text="制限重量超過許可申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaWeightOverpermittion_Clicked"/>
+            <Button x:Name="hanedaUseInstitutionpermmition_1"
+                    Text="空港内土地・建物・設備使用許可申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaUseInstitutionpermmition_1_Clicked"/>
+            <Button x:Name="hanedaUseInstitutionpermmition_2"
+                    Text="施設・設備設置許可申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaUseInstitutionpermmition_2_Clicked"/>
+            <Button x:Name="hanedaUseInstitutionpermmition_3"
+                    Text="施設・設備設置許可変更申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaUseInstitutionpermmition_3_Clicked"/>
+            <Button x:Name="hanedaDiscount"
+                    Text="空港使用料減免申請書"
+                    FontSize="Medium"
+                    Clicked="hanedaDiscount_Clicked"/>
+            <Button x:Name="hanedarestrictmap"
+                    Text="調布飛行場制限表面図"
+                    FontSize="Medium"
+                    Clicked="hanedarestrictmap_Clicked"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
