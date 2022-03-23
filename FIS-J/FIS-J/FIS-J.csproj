@@ -17,6 +17,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Regular.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Bold.ttf" />
+    <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Regular.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Maps\" />
   </ItemGroup>
