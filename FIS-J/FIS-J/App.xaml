@@ -11,7 +11,7 @@
 			<Color x:Key="Primary">#2196F3</Color>
 
 			<!-- Light colors -->
-			<Color x:Key="LightPrimaryColor">WhiteSmoke</Color>
+			<Color x:Key="LightPrimaryColor">#99ccff</Color>
 			<Color x:Key="LightSecondaryColor">Black</Color>
 
 			<!-- Dark colors -->
