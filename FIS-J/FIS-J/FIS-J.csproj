@@ -20,43 +20,8 @@
   <ItemGroup>
     <EmbeddedResource Include="Models\airport_list.json" />
   </ItemGroup>
+
   <ItemGroup>
-    <EmbeddedResource Update="FISJ\Badwetherforecast.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\IcaoPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\InternationalDomestic.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\Internationalfukuoka.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\lowerbadwether.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\MainPagexaml.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\Nomwether.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\signmet.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\SkyInformation.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\SubmitFormxaml.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\Upperwether.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="FISJ\WetherInformation.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Bold.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Regular.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Bold.ttf" />
