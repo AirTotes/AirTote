@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.Metar"
+             Title="METAR/TAF">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="METAR"
+                   FontSize="Medium"/>
+            <Label Text="{Binding Metar}"
+                   FontSize="Medium"/>
+            <Label Text="TAF"
+                   FontSize="Medium"/>
+            <Label Text="{Binding taf}"
+                   FontSize="Medium"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

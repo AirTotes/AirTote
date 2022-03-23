@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FIS_J.FISJ.AirportUse"
+             Title="空港使用届">
+    <ContentPage.Content>
+        <StackLayout>
+            <Button x:Name="kounan"
+                    Text="RJBK　岡南空港"
+                    FontSize="Medium"/>
+            <Button x:Name="hirosima"
+                   Text="RJOA　広島空港"
+                   FontSize="Medium"/>
+            <Button x:Name="takamatu"
+                    Text="高松空港"
+                    FontSize="Medium"/>
+            <Button x:Name="haneda"
+                    Text="羽田空港"
+                    FontSize="Medium"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
