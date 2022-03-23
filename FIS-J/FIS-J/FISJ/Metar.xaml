@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:conv="clr-namespace:FIS_J.ValueConverters"
+	xmlns:ViewModels="clr-namespace:FIS_J.ViewModels"
+	xmlns:Models="clr-namespace:FIS_J.Models"
+	x:DataType="ViewModels:MetarPageViewModel"
+	x:Class="FIS_J.FISJ.Metar"
+	Title="METAR/TAF">
+	<ContentPage.Resources>
+		<conv:IntToENumConverter x:Key="IntToEnumConv"/>
+	</ContentPage.Resources>
+	<StackLayout Spacing="10">
+		<Picker
+			ItemsSource="{x:Static Models:ICAOCodes.Names}"
+			SelectedIndexChanged="Picker_SelectedIndexChanged"
+			SelectedIndex="{Binding CurrentICAOCode, Converter={StaticResource IntToEnumConv}, Mode=TwoWay}"/>
+		<Label
+			Text="METAR"
+			FontFamily="BIZ UDGothic Bold"
+			FontAttributes="Bold"
+			FontSize="Large"/>
+		<Label
+			Text="{Binding Metar}"
+			FontFamily="BIZ UDGothic"
+			FontSize="Medium"/>
+		<Line
+			X1="0"
+			Y1="0"
+			X2="1000"
+			Y2="0"
+			Background="#555"/>
+		<Label
+			Text="TAF"
+			FontFamily="BIZ UDGothic Bold"
+			FontAttributes="Bold"
+			FontSize="Large"/>
+		<Label
+			Text="{Binding taf}"
+			FontFamily="BIZ UDGothic"
+			FontSize="Medium"/>
+	</StackLayout>
+</ContentPage>

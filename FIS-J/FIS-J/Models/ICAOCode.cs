@@ -12,8 +12,8 @@
 		/// <summary>Tokyo/New Tokyo (Narita)</summary>
 		RJAA,
 
-		// /// <summary>Matsumoto</summary>
-		// RJAF,
+		/// <summary>Matsumoto</summary>
+		RJAF,
 
 		/// <summary>Hyakuri (Ibaraki)</summary>
 		RJAH,
@@ -24,14 +24,14 @@
 		/// <summary>Kasumigaura</summary>
 		RJAK,
 
-		// /// <summary>Minamitorishima</summary>
-		// RJAM,
+		/// <summary>Minamitorishima</summary>
+		RJAM,
 
-		// /// <summary>Niijima</summary>
-		// RJAN,
+		/// <summary>Niijima</summary>
+		RJAN,
 
-		// /// <summary>Chichijima</summary>
-		// RJAO,
+		/// <summary>Chichijima</summary>
+		RJAO,
 
 		/// <summary>Takigahara</summary>
 		RJAT,
@@ -39,8 +39,8 @@
 		/// <summary>Iwojima</summary>
 		RJAW,
 
-		// /// <summary>Kozushima</summary>
-		// RJAZ,
+		/// <summary>Kozushima</summary>
+		RJAZ,
 
 		/// <summary>Kansai intl</summary>
 		RJBB,
@@ -48,10 +48,10 @@
 		/// <summary>Nanki-shirahama</summary>
 		RJBD,
 
-		// /// <summary>Hiroshimanishi</summary>
-		// RJBH,
+		/// <summary>Hiroshimanishi</summary>
+		RJBH,
 
-		// /// <summary>Kohnan</summary>
+		/// <summary>Kohnan</summary>
 		RJBK,
 
 		/// <summary>Tajima</summary>
@@ -66,14 +66,14 @@
 		/// <summary>Sapporo/New Chitose</summary>
 		RJCC,
 
-		// /// <summary>Sapporo (Area Control Center)</summary>
-		// RJCG,
+		/// <summary>Sapporo (Area Control Center)</summary>
+		RJCG,
 
 		/// <summary>Hakodate</summary>
 		RJCH,
 
-		// /// <summary>Chitose</summary>
-		// RJCJ,
+		/// <summary>Chitose</summary>
+		RJCJ,
 
 		/// <summary>Kushiro</summary>
 		RJCK,
@@ -87,11 +87,11 @@
 		/// <summary>Sapporo/Okadama</summary>
 		RJCO,
 
-		// /// <summary>Rebun</summary>
-		// RJCR,
+		/// <summary>Rebun</summary>
+		RJCR,
 
-		// /// <summary>Kushiro/Kenebetsu</summary>
-		// RJCS,
+		/// <summary>Kushiro/Kenebetsu</summary>
+		RJCS,
 
 		/// <summary>Tokachi</summary>
 		RJCT,
@@ -99,11 +99,11 @@
 		/// <summary>Wakkanai</summary>
 		RJCW,
 
-		// /// <summary>Muroran/Yakumo</summary>
-		// RJCY,
+		/// <summary>Muroran/Yakumo</summary>
+		RJCY,
 
-		// /// <summary>Amakusa</summary>
-		// RJDA,
+		/// <summary>Amakusa</summary>
+		RJDA,
 
 		/// <summary>Iki</summary>
 		RJDB,
@@ -111,8 +111,8 @@
 		/// <summary>Yamaguchi-Ube</summary>
 		RJDC,
 
-		// /// <summary>Fukuoka (Area Control Center)</summary>
-		// RJDG,
+		/// <summary>Fukuoka (Area Control Center)</summary>
+		RJDG,
 
 		/// <summary>Kamigoto</summary>
 		RJDK,
@@ -120,8 +120,8 @@
 		/// <summary>Metabaru</summary>
 		RJDM,
 
-		// /// <summary>Ojika</summary>
-		// RJDO,
+		/// <summary>Ojika</summary>
+		RJDO,
 
 		/// <summary>Tsushima</summary>
 		RJDT,
@@ -132,17 +132,17 @@
 		/// <summary>Asahikawa (Civil)</summary>
 		RJEC,
 
-		// /// <summary>Okushiri</summary>
-		// RJEO,
+		/// <summary>Okushiri</summary>
+		RJEO,
 
-		// /// <summary>Rishiri Island</summary>
-		// RJER,
+		/// <summary>Rishiri Island</summary>
+		RJER,
 
-		// /// <summary>Ashiya</summary>
-		// RJFA,
+		/// <summary>Ashiya</summary>
+		RJFA,
 
-		// /// <summary>Yakushima</summary>
-		// RJFC,
+		/// <summary>Yakushima</summary>
+		RJFC,
 
 		/// <summary>Fukue</summary>
 		RJFE,
@@ -159,8 +159,8 @@
 		/// <summary>Miyazaki</summary>
 		RJFM,
 
-		// /// <summary>Nyutabaru</summary>
-		// RJFN,
+		/// <summary>Nyutabaru</summary>
+		RJFN,
 
 		/// <summary>Oita</summary>
 		RJFO,
@@ -177,23 +177,23 @@
 		/// <summary>Nagasaki</summary>
 		RJFU,
 
-		// /// <summary>Sasebo usn base</summary>
-		// RJFW,
+		/// <summary>Sasebo usn base</summary>
+		RJFW,
 
 		/// <summary>Kanoya</summary>
 		RJFY,
 
-		// /// <summary>Tsuiki</summary>
-		// RJFZ,
+		/// <summary>Tsuiki</summary>
+		RJFZ,
 
-		// /// <summary>Fukuoka/Jcab Air Traffic</summary>
-		// RJJJ,
+		/// <summary>Fukuoka/Jcab Air Traffic</summary>
+		RJJJ,
 
 		/// <summary>Amami</summary>
 		RJKA,
 
-		// /// <summary>Okierabu</summary>
-		// RJKB,
+		/// <summary>Okierabu</summary>
+		RJKB,
 
 		/// <summary>Kikai/Kikaigashima Island</summary>
 		RJKI,
@@ -201,23 +201,23 @@
 		/// <summary>Tokunoshima Island</summary>
 		RJKN,
 
-		// /// <summary>Fukui</summary>
-		// RJNF,
+		/// <summary>Fukui</summary>
+		RJNF,
 
 		/// <summary>Gifu</summary>
 		RJNG,
 
-		// /// <summary>Hamamatsu</summary>
-		// RJNH,
+		/// <summary>Hamamatsu</summary>
+		RJNH,
 
 		/// <summary>Kanazawa/Komatsu</summary>
 		RJNK,
 
-		// /// <summary>Nagoya</summary>
-		// RJNN,
+		/// <summary>Nagoya</summary>
+		RJNN,
 
-		// /// <summary>Oki</summary>
-		// RJNO,
+		/// <summary>Oki</summary>
+		RJNO,
 
 		/// <summary>Toyama</summary>
 		RJNT,
@@ -243,8 +243,8 @@
 		/// <summary>Miho</summary>
 		RJOH,
 
-		// /// <summary>Iwakuni</summary>
-		// RJOI,
+		/// <summary>Iwakuni</summary>
+		RJOI,
 
 		/// <summary>Kochi</summary>
 		RJOK,
@@ -312,8 +312,8 @@
 		/// <summary>Sendai</summary>
 		RJSS,
 
-		// /// <summary>Matsushima</summary>
-		// RJST,
+		/// <summary>Matsushima</summary>
+		RJST,
 
 		/// <summary>Kasuminome</summary>
 		RJSU,
@@ -321,14 +321,14 @@
 		/// <summary>Shonai</summary>
 		RJSY,
 
-		// /// <summary>Atsugi</summary>
-		// RJTA,
+		/// <summary>Atsugi</summary>
+		RJTA,
 
 		/// <summary>Tachikawa</summary>
 		RJTC,
 
-		// /// <summary>Tokyo (City)</summary>
-		// RJTD,
+		/// <summary>Tokyo (City)</summary>
+		RJTD,
 
 		/// <summary>Tateyama</summary>
 		RJTE,
@@ -336,17 +336,17 @@
 		/// <summary>Chofu</summary>
 		RJTF,
 
-		// /// <summary>Tokyo (Area Control Center)</summary>
-		// RJTG,
+		/// <summary>Tokyo (Area Control Center)</summary>
+		RJTG,
 
-		// /// <summary>Hachiojima</summary>
-		// RJTH,
+		/// <summary>Hachiojima</summary>
+		RJTH,
 
 		/// <summary>Tokyo (Hel)</summary>
 		RJTI,
 
-		// /// <summary>Iruma</summary>
-		// RJTJ,
+		/// <summary>Iruma</summary>
+		RJTJ,
 
 		/// <summary>Kisarazu</summary>
 		RJTK,
@@ -357,11 +357,11 @@
 		/// <summary>Oshima</summary>
 		RJTO,
 
-		// /// <summary>Miyakehima</summary>
-		// RJTQ,
+		/// <summary>Miyakehima</summary>
+		RJTQ,
 
-		// /// <summary>Zama/Kastner</summary>
-		// RJTR,
+		/// <summary>Zama/Kastner</summary>
+		RJTR,
 
 		/// <summary>Tokyo/Intl</summary>
 		RJTT,
@@ -369,35 +369,35 @@
 		/// <summary>Utsunomiya</summary>
 		RJTU,
 
-		// /// <summary>Zama</summary>
-		// RJTW,
+		/// <summary>Zama</summary>
+		RJTW,
 
-		// /// <summary>Yokota</summary>
-		// RJTY,
+		/// <summary>Yokota</summary>
+		RJTY,
 
-		// /// <summary>Fuchu</summary>
-		// RJTZ,
+		/// <summary>Fuchu</summary>
+		RJTZ,
 
 		/// <summary>Naha</summary>
 		ROAH,
 
-		// /// <summary>Iejima (Usaf Base)</summary>
-		// RODE,
+		/// <summary>Iejima (Usaf Base)</summary>
+		RODE,
 
-		// /// <summary>Kadena ab</summary>
-		// RODN,
+		/// <summary>Kadena ab</summary>
+		RODN,
 
 		/// <summary>Ishigaki jima</summary>
 		ROIG,
 
-		// /// <summary>Kumejima</summary>
-		// ROKJ,
+		/// <summary>Kumejima</summary>
+		ROKJ,
 
-		// /// <summary>Kerama</summary>
-		// ROKR,
+		/// <summary>Kerama</summary>
+		ROKR,
 
-		// /// <summary>Yomitan</summary>
-		// ROKW,
+		/// <summary>Yomitan</summary>
+		ROKW,
 
 		/// <summary>Minamidaito jima</summary>
 		ROMD,
@@ -405,17 +405,17 @@
 		/// <summary>Miyako</summary>
 		ROMY,
 
-		// /// <summary>Aguni</summary>
-		// RORA,
+		/// <summary>Aguni</summary>
+		RORA,
 
-		// /// <summary>Iejima (Civil)</summary>
-		// RORE,
+		/// <summary>Iejima (Civil)</summary>
+		RORE,
 
-		// /// <summary>Naha (Area Control Center)</summary>
-		// RORG,
+		/// <summary>Naha (Area Control Center)</summary>
+		RORG,
 
-		// /// <summary>Hateruma</summary>
-		// RORH,
+		/// <summary>Hateruma</summary>
+		RORH,
 
 		/// <summary>Kitadaito</summary>
 		RORK,
@@ -423,14 +423,14 @@
 		/// <summary>Shimojishima</summary>
 		RORS,
 
-		// /// <summary>Tarama</summary>
-		// RORT,
+		/// <summary>Tarama</summary>
+		RORT,
 
 		/// <summary>Yoron</summary>
 		RORY,
 
-		// /// <summary>Futema</summary>
-		// ROTM,
+		/// <summary>Futema</summary>
+		ROTM,
 
 		/// <summary>Yonaguni jima</summary>
 		ROYN,

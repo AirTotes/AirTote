@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.monthevery"
+	Title="1ヵ月予報資料 各種時系列図">
+	<WebView
+		Source="https://n-kishou.com/ee/exp/exp01.html?cd=fcvx14&amp;cat=e4"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"/>
+</ContentPage>
