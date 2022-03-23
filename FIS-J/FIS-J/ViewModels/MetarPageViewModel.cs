@@ -1,3 +1,5 @@
+using FIS_J.Models;
+
 namespace FIS_J.ViewModels
 {
 	internal class MetarPageViewModel : BaseViewModel
@@ -18,6 +20,13 @@ namespace FIS_J.ViewModels
 		{
 			get => _taf;
 			set => SetProperty(ref _taf, value);
+		}
+
+		private ICAOCode _CurrentICAOCode = ICAOCode.RJAA;
+		public ICAOCode CurrentICAOCode
+		{
+			get => _CurrentICAOCode;
+			set => SetProperty(ref _CurrentICAOCode, value);
 		}
 	}
 }

@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.weather.Windy"
-             Title="Windy">
-    <ContentPage.Content>
-        <StackLayout>
-            <WebView Source="https://www.windy.com/35.685/139.751?35.175,139.751,8"
-                     VerticalOptions="FillAndExpand"
-                     HorizontalOptions="FillAndExpand"/>
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.weather.Windy"
+	Title="Windy">
+	<WebView
+		Source="https://www.windy.com/35.685/139.751?35.175,139.751,8"
+		VerticalOptions="FillAndExpand"
+		HorizontalOptions="FillAndExpand"/>
 </ContentPage>

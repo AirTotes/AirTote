@@ -1,13 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.liveasia300"
-             Title="アジア太平洋300hPa高度・気温・風">
-    <ContentPage.Content>
-        <StackLayout>
-            <WebView Source="https://n-kishou.com/ee/exp/exp01.html?cd=aupn30&amp;cat=e1"
-                     HorizontalOptions="FillAndExpand"
-                     VerticalOptions="FillAndExpand"/>
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.liveasia300"
+	Title="アジア太平洋300hPa高度・気温・風">
+	<WebView
+		Source="https://n-kishou.com/ee/exp/exp01.html?cd=aupn30&amp;cat=e1"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"/>
 </ContentPage>

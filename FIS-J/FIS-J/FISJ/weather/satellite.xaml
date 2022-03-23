@@ -1,14 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FIS_J.FISJ.satellite"
-             Title="衛生画像">
-    <ContentPage.Content>
-        <StackLayout>
-            <Button x:Name="Japansatellite"
-                Text="日本全国の衛生画像"
-                Font="25"
-                Clicked="Japansatellite_Clicked_1"/>
-        </StackLayout>
-    </ContentPage.Content>
+<ContentPage
+	xmlns="http://xamarin.com/schemas/2014/forms"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.FISJ.satellite"
+	Title="衛生画像">
+	<StackLayout>
+		<Button
+			Text="日本全国の衛生画像"
+			Clicked="Japansatellite_Clicked_1"/>
+	</StackLayout>
 </ContentPage>
