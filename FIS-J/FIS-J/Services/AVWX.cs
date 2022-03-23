@@ -86,7 +86,7 @@ namespace FIS_J.Services
 		public class ReprAndValueAndSpoken
 		{
 			public string repr { get; set; }
-			public int? value { get; set; }
+			public double? value { get; set; }
 			public string spoken { get; set; }
 		}
 		public class ReprAndValue

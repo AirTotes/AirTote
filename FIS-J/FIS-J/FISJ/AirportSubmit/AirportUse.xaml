@@ -7,19 +7,19 @@
 	<ScrollView>
 		<StackLayout>
 			<Button
-				Text="RJBK　岡南空港"
+				Text="RJBK 岡南空港"
 				Clicked="Kounan_Clicked"
 				FontSize="Medium"/>
 			<Button
-				Text="RJOA　広島空港"
+				Text="RJOA 広島空港"
 				Clicked="Hirosima_Clicked"
 				FontSize="Medium"/>
 			<Button
-				Text="高松空港"
+				Text="RJOT 高松空港"
 				Clicked="Takamatu_Clicked"
 				FontSize="Medium"/>
 			<Button
-				Text="羽田空港"
+				Text="RJAA 羽田空港"
 				Clicked="Haneda_Clicked"
 				FontSize="Medium"/>
 		</StackLayout>
