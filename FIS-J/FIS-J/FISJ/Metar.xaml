@@ -18,15 +18,27 @@
 			SelectedIndex="{Binding CurrentICAOCode, Converter={StaticResource IntToEnumConv}, Mode=TwoWay}"/>
 		<Label
 			Text="METAR"
-			FontSize="Medium"/>
+			FontFamily="BIZ UDGothic Bold"
+			FontAttributes="Bold"
+			FontSize="Large"/>
 		<Label
 			Text="{Binding Metar}"
+			FontFamily="BIZ UDGothic"
 			FontSize="Medium"/>
+		<Line
+			X1="0"
+			Y1="0"
+			X2="1000"
+			Y2="0"
+			Background="#555"/>
 		<Label
 			Text="TAF"
-			FontSize="Medium"/>
+			FontFamily="BIZ UDGothic Bold"
+			FontAttributes="Bold"
+			FontSize="Large"/>
 		<Label
 			Text="{Binding taf}"
+			FontFamily="BIZ UDGothic"
 			FontSize="Medium"/>
 	</StackLayout>
 </ContentPage>
