@@ -4,6 +4,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:local="clr-namespace:FIS_J.Views"
 	xmlns:fisj="clr-namespace:FIS_J.FISJ"
+	xmlns:ReservePages="clr-namespace:FIS_J.FISJ.ReservePages"
+	xmlns:PayLandingFee="clr-namespace:FIS_J.FISJ.PayLandingFee"
 	Title="FIS_J"
 	x:Class="FIS_J.AppShell">
 
@@ -28,6 +30,9 @@
 			</Style>
 			<Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
 			<Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+			<Style TargetType="Button" BasedOn="{StaticResource Xamarin.Forms.Button}">
+				<Setter Property="Padding" Value="10,4"/>
+			</Style>
 
 			<!--
 			Default Styles for all Flyout Items
@@ -86,6 +91,9 @@
 	<FlyoutItem Title="書類提出">
         <ShellContent Route="SubmitReport" ContentTemplate="{DataTemplate fisj:SubmitReport}" />
 	</FlyoutItem>
+	<FlyoutItem Title="PPR (書類提出)">
+		<ShellContent Route="ReserveSpotAndFuel" ContentTemplate="{DataTemplate ReservePages:ReserveSpotAndFuel}" />
+	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
 		<ShellContent Route="aero" ContentTemplate="{DataTemplate fisj:aero}" />
 	</FlyoutItem>
@@ -97,6 +105,12 @@
 	</FlyoutItem>
 	<FlyoutItem Title="FlightComputer">
 		<ShellContent Route="FCSPage" ContentTemplate="{DataTemplate local:FCSPage}" />
+	</FlyoutItem>
+	<FlyoutItem Title="オンライン支払い">
+		<ShellContent Route="CalcFee" ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
+	</FlyoutItem>
+	<FlyoutItem Title="設定">
+		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="Metar">
 		<ShellContent Route="Metar" ContentTemplate="{DataTemplate fisj:Metar}" />
