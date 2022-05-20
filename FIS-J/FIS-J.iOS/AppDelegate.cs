@@ -21,7 +21,7 @@ namespace FIS_J.iOS
 		public override bool FinishedLaunching(UIApplication app, NSDictionary options)
 		{
 			global::Xamarin.Forms.Forms.Init();
-			Xamarin.FormsMaps.Init();
+			Xamarin.FormsGoogleMaps.Init("AIzaSyCiXegudTGTZFp3gJBBCajNgDaSCcyKPgs");
 			LoadApplication(new App());
 
 			return base.FinishedLaunching(app, options);
