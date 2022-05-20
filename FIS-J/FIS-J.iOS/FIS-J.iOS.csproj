@@ -65,11 +65,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <CodesignProvision>FIS-J Distribution</CodesignProvision>
-<MtouchUseLlvm>true</MtouchUseLlvm>
-<MtouchUseThumb>true</MtouchUseThumb>
-<MtouchI18n>cjk</MtouchI18n>
-<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
-<MtouchFloat32>true</MtouchFloat32>
+    <MtouchUseLlvm>true</MtouchUseLlvm>
+    <MtouchUseThumb>true</MtouchUseThumb>
+    <MtouchI18n>cjk</MtouchI18n>
+    <MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
+    <MtouchFloat32>true</MtouchFloat32>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
