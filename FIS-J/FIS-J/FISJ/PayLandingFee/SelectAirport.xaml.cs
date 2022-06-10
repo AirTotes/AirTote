@@ -17,6 +17,8 @@ namespace FIS_J.FISJ.PayLandingFee
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
+		const double EARTH_RADIUS_M = 6378137;
+
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
@@ -38,8 +40,13 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			map.MapClicked += OnMapClicked;
 
-			//var latlng = airportInfo?.AirportInfo?.coordinates
-			//	?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
+			var latlng = airportInfo?.AirportInfo?.coordinates
+				?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
+
+			var reso = map.Map.Resolutions[6];
+			var x = (EARTH_RADIUS_M * latlng.longitude / 360) / reso;
+			var y = (EARTH_RADIUS_M * latlng.latitude / 360) / reso;
+			map.Map.Home = n => n.NavigateTo(new(x, y), reso);
 
 			Appearing += SelectAirport_Appearing;
 			Disappearing += SelectAirport_Disappearing;
