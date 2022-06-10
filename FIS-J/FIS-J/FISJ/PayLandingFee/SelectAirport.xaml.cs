@@ -33,6 +33,8 @@ namespace FIS_J.FISJ.PayLandingFee
 			map.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 			map.IsMyLocationButtonVisible = false;
 			map.MyLocationLayer.Enabled = false;
+			map.UnSnapRotationDegrees = 15;
+			map.ReSnapRotationDegrees = 5;
 
 			map.MapClicked += OnMapClicked;
 
