@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using FIS_J.Models;
 
 using Xamarin.Forms;
-using Xamarin.Forms.Maps;
+using Xamarin.Forms.GoogleMaps;
 
 namespace FIS_J.FISJ.PayLandingFee
 {
@@ -23,14 +23,14 @@ namespace FIS_J.FISJ.PayLandingFee
 		{
 			this.airportInfo = airportInfo;
 
+			map = new();
+
 			if (airportInfo?.AirportInfo?.coordinates is null)
-				map = new(new(
-					new(DEFAULT_CENTER_LATITUDE, DEFAULT_CENTER_LONGITUDE)
-					, 1, 1));
+				map.InitialCameraUpdate = CameraUpdateFactory.NewPosition(new(DEFAULT_CENTER_LATITUDE, DEFAULT_CENTER_LONGITUDE));
 			else
 			{
 				var latlng = airportInfo.AirportInfo.coordinates;
-				map = new(new(new(latlng.latitude, latlng.longitude), 1, 1));
+				map.InitialCameraUpdate = CameraUpdateFactory.NewPosition(new(latlng.latitude, latlng.longitude));
 			}
 
 			Appearing += SelectAirport_Appearing;
@@ -60,15 +60,15 @@ namespace FIS_J.FISJ.PayLandingFee
 					Position = new(ap.coordinates.latitude, ap.coordinates.longitude)
 				};
 
-				pin.InfoWindowClicked += Pin_InfoWindowClicked;
+				map.InfoWindowClicked += Pin_InfoWindowClicked;
 
 				map.Pins.Add(pin);
 			}
 		}
 
-		private async void Pin_InfoWindowClicked(object sender, PinClickedEventArgs e)
+		private async void Pin_InfoWindowClicked(object sender, InfoWindowClickedEventArgs e)
 		{
-			if (sender is not Pin pin)
+			if (e.Pin is not Pin pin)
 				return;
 
 			if (StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo value) && value is not null)
