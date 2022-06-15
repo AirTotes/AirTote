@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 
 using FIS_J.Models;
 
+using Mapsui.Projection;
 using Mapsui.Rendering.Skia;
 using Mapsui.UI.Forms;
 using Mapsui.Utilities;
@@ -43,10 +44,9 @@ namespace FIS_J.FISJ.PayLandingFee
 			var latlng = airportInfo?.AirportInfo?.coordinates
 				?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
 
-			var reso = map.Map.Resolutions[6];
-			var x = (EARTH_RADIUS_M * latlng.longitude / 360) / reso;
-			var y = (EARTH_RADIUS_M * latlng.latitude / 360) / reso;
-			map.Map.Home = n => n.NavigateTo(new(x, y), reso);
+			var reso = map.Map.Resolutions[Math.Min(map.Map.Resolutions.Count - 1, 9)];
+
+			map.Map.Home = n => n.NavigateTo(SphericalMercator.FromLonLat(latlng.longitude, latlng.latitude), reso);
 
 			Appearing += SelectAirport_Appearing;
 			Disappearing += SelectAirport_Disappearing;
@@ -123,15 +123,19 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			e.Handled = true;
 
+			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+				return;
+
 			if (!e.Pin.IsCalloutVisible())
 			{
 				pin.ShowCallout();
 				SelectedPin = pin;
+				map.Navigator.CenterOn(SphericalMercator.FromLonLat(apinfo.coordinates.longitude, apinfo.coordinates.latitude));
 				return;
 			}
-			else if (StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo value) && value is not null)
+			else
 			{
-				airportInfo.AirportInfo = value;
+				airportInfo.AirportInfo = apinfo;
 				await Navigation.PopAsync();
 			}
 		}
