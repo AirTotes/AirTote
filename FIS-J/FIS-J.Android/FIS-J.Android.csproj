@@ -17,7 +17,7 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v12.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
     <AndroidHttpClientHandlerType>Xamarin.Android.Net.AndroidClientHandler</AndroidHttpClientHandlerType>
@@ -58,9 +58,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2478" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -98,6 +97,14 @@
     <ProjectReference Include="..\FIS-J\FIS-J.csproj">
       <Project>{93A0B8C2-B818-4D74-8901-15058519FC4B}</Project>
       <Name>FIS-J</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms.GoogleMaps\Xamarin.Forms.GoogleMaps\Xamarin.Forms.GoogleMaps.Android\Xamarin.Forms.GoogleMaps.Android.csproj">
+      <Project>{D12EADE4-1457-4126-8EA7-9BEDF5393409}</Project>
+      <Name>Xamarin.Forms.GoogleMaps.Android</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Xamarin.Forms.GoogleMaps\Xamarin.Forms.GoogleMaps\Xamarin.Forms.GoogleMaps\Xamarin.Forms.GoogleMaps.csproj">
+      <Project>{BD3E021F-AE25-48C5-A211-AAD23FBA65F9}</Project>
+      <Name>Xamarin.Forms.GoogleMaps</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
