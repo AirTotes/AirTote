@@ -18,6 +18,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Models\airport_list.json" />
+    <EmbeddedResource Include="Assets\MapIcons\flight.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Bold.ttf" />
@@ -28,6 +29,7 @@
   <ItemGroup>
     <Folder Include="Images\" />
     <Folder Include="Maps\" />
+    <Folder Include="Assets\MapIcons\" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\airport_list.json" />
