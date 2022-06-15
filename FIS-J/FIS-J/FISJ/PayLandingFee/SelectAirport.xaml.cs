@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Reflection;
 using System.Threading.Tasks;
 
 using FIS_J.Models;
@@ -17,6 +19,8 @@ namespace FIS_J.FISJ.PayLandingFee
 	{
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
+
+		const string AP_ICON_SVG = "FIS_J.Assets.MapIcons.flight.svg";
 
 		const double EARTH_RADIUS_M = 6378137;
 
@@ -75,17 +79,24 @@ namespace FIS_J.FISJ.PayLandingFee
 			StationsDic ??= await AirportInfo.getAPInfoDic();
 			map.Pins.Clear();
 
+			string svg_str = "";
+			using (var stream = typeof(SelectAirport).GetTypeInfo().Assembly.GetManifestResourceStream(AP_ICON_SVG))
+			using (var reader = new StreamReader(stream))
+				svg_str = await reader.ReadToEndAsync();
+
 			foreach (var ap in StationsDic.Values)
 			{
 				Pin pin = new(map)
 				{
 					Address = ap.name,
 					Label = ap.icao,
-					Type = PinType.Pin,
+					Type = PinType.Svg,
 
 					Position = new(ap.coordinates.latitude, ap.coordinates.longitude),
 
 					Scale = 0.5f,
+
+					Svg = svg_str,
 				};
 
 				pin.Callout.Anchor = new Point(0, pin.Height * pin.Scale);
