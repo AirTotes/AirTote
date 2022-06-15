@@ -109,10 +109,22 @@ namespace FIS_J.FISJ.PayLandingFee
 				pin.Callout.TitleFontSize = 16;
 				pin.Callout.SubtitleFontSize = 12;
 
+				pin.Callout.CalloutClicked += Callout_CalloutClicked;
+
 				pin.Callout.Type = CalloutType.Detail;
 
 				map.Pins.Add(pin);
 			}
+		}
+
+		private async void Callout_CalloutClicked(object sender, CalloutClickedEventArgs e)
+		{
+			e.Callout.Pin.HideCallout();
+			if (!StationsDic.TryGetValue(e.Callout.Pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+				return;
+
+			airportInfo.AirportInfo = apinfo;
+			await Navigation.PopAsync();
 		}
 
 		private async void OnPinClicked(object sender, PinClickedEventArgs e)
