@@ -65,11 +65,11 @@
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>SdkOnly</MtouchLink>
     <CodesignProvision>FIS-J Distribution</CodesignProvision>
-    <MtouchUseLlvm>true</MtouchUseLlvm>
-    <MtouchUseThumb>true</MtouchUseThumb>
-    <MtouchI18n>cjk</MtouchI18n>
-    <MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
-    <MtouchFloat32>true</MtouchFloat32>
+<MtouchUseLlvm>true</MtouchUseLlvm>
+<MtouchUseThumb>true</MtouchUseThumb>
+<MtouchI18n>cjk</MtouchI18n>
+<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
+<MtouchFloat32>true</MtouchFloat32>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
@@ -135,9 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
-    <PackageReference Include="Xamarin.Forms.GoogleMaps" Version="3.3.0" />
-    <PackageReference Include="Xamarin.Google.iOS.Maps" Version="3.9.0" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.1" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
