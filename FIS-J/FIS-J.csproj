@@ -34,10 +34,9 @@
 		<DeviceSpecificBuild>true</DeviceSpecificBuild>
 		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
 		<MonoSymbolArchive>True</MonoSymbolArchive>
-		<MtouchLink>SdkOnly</MtouchLink>
+		<MtouchLink>none</MtouchLink>
 		<MtouchDebug>true</MtouchDebug>
 		<MtouchFastDev>true</MtouchFastDev>
-		<MtouchExtraArgs>--linksdkonly</MtouchExtraArgs>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
