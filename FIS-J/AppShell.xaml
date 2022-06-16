@@ -91,30 +91,30 @@
 	https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
 	-->
 	<FlyoutItem Title="TOP">
-		<ShellContent Route="MainPagexaml" ContentTemplate="{DataTemplate fisj:MainPagexaml}"/>
+		<ShellContent ContentTemplate="{DataTemplate fisj:MainPagexaml}"/>
 	</FlyoutItem>
 	<FlyoutItem Title="書類提出">
-        <ShellContent Route="SubmitReport" ContentTemplate="{DataTemplate fisj:SubmitReport}" />
+		<ShellContent ContentTemplate="{DataTemplate fisj:SubmitReport}" />
 	</FlyoutItem>
 	<FlyoutItem Title="PPR (書類提出)">
-		<ShellContent Route="ReserveSpotAndFuel" ContentTemplate="{DataTemplate ReservePages:ReserveSpotAndFuel}" />
+		<ShellContent ContentTemplate="{DataTemplate ReservePages:ReserveSpotAndFuel}" />
 	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
-		<ShellContent Route="aero" ContentTemplate="{DataTemplate fisj:aero}" />
+		<ShellContent ContentTemplate="{DataTemplate fisj:aero}" />
 	</FlyoutItem>
 	<FlyoutItem Title="気象情報">
-		<ShellContent Route="WetherInformation" ContentTemplate="{DataTemplate fisj:WetherInformation}" />
+		<ShellContent ContentTemplate="{DataTemplate fisj:WetherInformation}" />
 	</FlyoutItem>
 	<FlyoutItem Title="ICAO">
-		<ShellContent Route="IcaoPage" ContentTemplate="{DataTemplate fisj:IcaoPage}" />
+		<ShellContent ContentTemplate="{DataTemplate fisj:IcaoPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="オンライン支払い">
-		<ShellContent Route="CalcFee" ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
+		<ShellContent ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
-		<ShellContent Route="SettingPage" ContentTemplate="{DataTemplate local:SettingPage}" />
+		<ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="Metar">
-		<ShellContent Route="Metar" ContentTemplate="{DataTemplate fisj:Metar}" />
+		<ShellContent ContentTemplate="{DataTemplate fisj:Metar}" />
 	</FlyoutItem>
 </Shell>
