@@ -25,7 +25,9 @@ namespace FIS_J.Models
 
 			var asm = IntrospectionExtensions.GetTypeInfo(typeof(AirportInfo)).Assembly;
 
-			using var stream = asm.GetManifestResourceStream("FIS_J.Models.airport_list.json");
+			using var stream = await FileSystem.OpenAppPackageFileAsync("airport_list.json");
+			if (stream is null)
+				return new();
 			using StreamReader reader = new(stream);
 
 			string json = await reader.ReadToEndAsync();
