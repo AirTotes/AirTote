@@ -28,8 +28,6 @@ namespace FIS_J.FISJ.PayLandingFee
 
 		const string AP_ICON_SVG = "FIS_J.Assets.MapIcons.flight.svg";
 
-		const double EARTH_RADIUS_M = 6378137;
-
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
