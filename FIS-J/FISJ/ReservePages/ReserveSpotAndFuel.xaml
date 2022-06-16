@@ -2,7 +2,6 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:sys="clr-namespace:System;assembly=mscorlib"
 	xmlns:reservepages="clr-namespace:FIS_J.ViewModels.ReservePages"
 	xmlns:convs="clr-namespace:FIS_J.ValueConverters"
 	x:DataType="reservepages:ReserveSpotAndFuelViewModel"
@@ -20,7 +19,7 @@
 			Clicked="ShowAirportSelectPage"
 			Text="Change Airport"/>
 		<DatePicker
-			MinimumDate="{x:Static sys:DateTime.Today}"
+			MinimumDate="{x:Static reservepages:ReserveSpotAndFuelViewModel.Today}"
 			Date="{Binding SpotReserveTimeBegin_Date}"/>
 		<TimePicker
 			Time="{Binding SpotReserveTimeBegin_Time}"/>

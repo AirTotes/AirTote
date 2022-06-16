@@ -11,6 +11,8 @@ namespace FIS_J.ViewModels.ReservePages
 			Title = "スポット予約 / 給油調整";
 		}
 
+		public static DateTime Today => DateTime.Today;
+
 		DateTime _SpotReserveTimeBegin_Date = DateTime.Today;
 		public DateTime SpotReserveTimeBegin_Date
 		{
