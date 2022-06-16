@@ -11,6 +11,11 @@
 
 	<!--
 	The overall app visual hierarchy is defined here, along with navigation.
+	<Shell.FlyoutFooter>
+		<Label
+			Text="Version 1.0.10"
+			HorizontalOptions="Center" />
+	</Shell.FlyoutFooter>
 
 	https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
 	-->
