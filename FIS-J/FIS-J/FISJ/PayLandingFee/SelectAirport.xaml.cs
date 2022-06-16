@@ -4,15 +4,14 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
+using FIS_J.Maps;
 using FIS_J.Models;
 
-using Mapsui.Extensions;
 using Mapsui.Layers;
 using Mapsui.Nts;
 using Mapsui.Nts.Extensions;
 using Mapsui.Projections;
 using Mapsui.Styles;
-using Mapsui.Tiling;
 using Mapsui.UI.Forms;
 
 using NetTopologySuite.Geometries;
@@ -31,7 +30,7 @@ namespace FIS_J.FISJ.PayLandingFee
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
 
-		MapView map { get; }
+		AirMap map { get; }
 
 		private Pin SelectedPin { get; set; }
 		private Pin _SelectedPin { get; set; }
@@ -40,22 +39,14 @@ namespace FIS_J.FISJ.PayLandingFee
 		{
 			this.airportInfo = airportInfo;
 
-			map = new();
-			map.Map.Layers.Add(OpenStreetMap.CreateTileLayer());
-			map.Map.Layers.Add(CreateLatLngLayer());
-			map.IsMyLocationButtonVisible = false;
-			map.MyLocationLayer.Enabled = false;
-			map.UnSnapRotationDegrees = 15;
-			map.ReSnapRotationDegrees = 5;
-
-			map.MapClicked += OnMapClicked;
-
 			var latlng = airportInfo?.AirportInfo?.coordinates
 				?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
 
-			var reso = map.Map.Resolutions[Math.Min(map.Map.Resolutions.Count - 1, 9)];
+			map = new(latlng.longitude, latlng.latitude);
 
-			map.Map.Home = n => n.NavigateTo(SphericalMercator.FromLonLat(latlng.longitude, latlng.latitude).ToMPoint(), reso);
+			map.Map.Layers.Add(CreateLatLngLayer());
+
+			map.MapClicked += OnMapClicked;
 
 			Appearing += SelectAirport_Appearing;
 			Disappearing += SelectAirport_Disappearing;
@@ -154,11 +145,11 @@ namespace FIS_J.FISJ.PayLandingFee
 			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
 				return;
 
-			if (!e.Pin.IsCalloutVisible())
+			if (!pin.IsCalloutVisible())
 			{
 				pin.ShowCallout();
 				SelectedPin = pin;
-				map.Navigator.CenterOn(SphericalMercator.FromLonLat(apinfo.coordinates.longitude, apinfo.coordinates.latitude).ToMPoint());
+				map.MoveTo(pin.Position);
 				return;
 			}
 			else
