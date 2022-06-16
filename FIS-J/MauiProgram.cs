@@ -1,3 +1,5 @@
+using SkiaSharp.Views.Maui.Controls.Hosting;
+
 namespace FIS_J;
 
 public static class MauiProgram
@@ -7,6 +9,7 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
+			.UseSkiaSharp()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("BIZUDGothic-Bold.ttf", "BIZ UDGothic Bold");
