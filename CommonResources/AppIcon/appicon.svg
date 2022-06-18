@@ -1,0 +1,35 @@
+<svg
+	fill="none"
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 256 256">
+	<circle
+		cx="128"
+		cy="128"
+		stroke="#2ba9e1"
+		stroke-width="2"
+		r="120.5"/>
+	<circle
+		cx="128"
+		cy="128"
+		stroke="#2ba9e1"
+		stroke-width="2"
+		r="116.2"/>
+	<circle
+		cx="128"
+		cy="128"
+		stroke="#2ba9e1"
+		stroke-width="2"
+		r="111.9"/>
+	<circle
+		cx="128"
+		cy="128"
+		stroke="#2ba9e1"
+		stroke-width="2"
+		r="107.6"/>
+	<circle
+		cx="128"
+		cy="128"
+		stroke="#2ba9e1"
+		stroke-width="2"
+		r="103.3"/>
+</svg>
