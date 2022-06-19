@@ -25,12 +25,4 @@
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Bold.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Regular.ttf" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-    <Folder Include="Maps\" />
-    <Folder Include="Assets\MapIcons\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Models\airport_list.json" />
-  </ItemGroup>
 </Project>
