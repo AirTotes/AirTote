@@ -7,14 +7,8 @@ using System.Threading.Tasks;
 using FIS_J.Maps;
 using FIS_J.Models;
 
-using Mapsui.Layers;
-using Mapsui.Nts;
-using Mapsui.Nts.Extensions;
-using Mapsui.Projections;
 using Mapsui.Styles;
 using Mapsui.UI.Forms;
-
-using NetTopologySuite.Geometries;
 
 using Xamarin.Forms;
 
@@ -44,7 +38,7 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			map = new(latlng.longitude, latlng.latitude);
 
-			map.Map.Layers.Add(CreateLatLngLayer());
+			map.Map.Layers.Add(LatLngLayerGenerator.Generate());
 
 			map.MapClicked += OnMapClicked;
 
@@ -164,43 +158,6 @@ namespace FIS_J.FISJ.PayLandingFee
 			_SelectedPin = SelectedPin;
 			SelectedPin?.HideCallout();
 			SelectedPin = null;
-		}
-
-		const int LAT_LINE_MAX = 86;
-		private static ILayer CreateLatLngLayer()
-		{
-			List<GeometryFeature> latlngLines = new();
-
-			for (int i = -180; i <= 180; i++)
-			{
-				Coordinate[] line = new[]
-				{
-					SphericalMercator.FromLonLat(i, -LAT_LINE_MAX).ToCoordinate(),
-					SphericalMercator.FromLonLat(i, LAT_LINE_MAX).ToCoordinate()
-				};
-				latlngLines.Add(new(new LineString(line)));
-			}
-			for (int i = -LAT_LINE_MAX; i <= LAT_LINE_MAX; i++)
-			{
-				Coordinate[] line = new[]
-				{
-					SphericalMercator.FromLonLat(-180, i).ToCoordinate(),
-					SphericalMercator.FromLonLat(180, i).ToCoordinate()
-				};
-				latlngLines.Add(new(new LineString(line)));
-			}
-
-			return new MemoryLayer()
-			{
-				Features = latlngLines,
-				Name = "LatLngLines",
-				Style = new VectorStyle()
-				{
-					Fill = null,
-					Outline = null,
-					Line = new(Mapsui.Styles.Color.FromArgb(180, 0, 0, 0))
-				}
-			};
 		}
 	}
 }
