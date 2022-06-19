@@ -26,9 +26,6 @@ namespace FIS_J.FISJ.PayLandingFee
 
 		AirMap map { get; }
 
-		private Pin SelectedPin { get; set; }
-		private Pin _SelectedPin { get; set; }
-
 		public SelectAirport(IContainsAirportInfo airportInfo)
 		{
 			this.airportInfo = airportInfo;
@@ -39,8 +36,6 @@ namespace FIS_J.FISJ.PayLandingFee
 			map = new(latlng.longitude, latlng.latitude);
 
 			map.Map.Layers.Add(LatLngLayerGenerator.Generate());
-
-			map.MapClicked += OnMapClicked;
 
 			Appearing += SelectAirport_Appearing;
 			Disappearing += SelectAirport_Disappearing;
@@ -124,17 +119,6 @@ namespace FIS_J.FISJ.PayLandingFee
 			if (pin is null)
 				return;
 
-			if (pin != SelectedPin)
-			{
-				SelectedPin?.HideCallout();
-				SelectedPin = null;
-			}
-			if (pin != _SelectedPin)
-			{
-				_SelectedPin?.HideCallout();
-				_SelectedPin = null;
-			}
-
 			e.Handled = true;
 
 			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
@@ -143,7 +127,6 @@ namespace FIS_J.FISJ.PayLandingFee
 			if (!pin.IsCalloutVisible())
 			{
 				pin.ShowCallout();
-				SelectedPin = pin;
 				map.MoveTo(pin.Position);
 				return;
 			}
@@ -152,13 +135,6 @@ namespace FIS_J.FISJ.PayLandingFee
 				airportInfo.AirportInfo = apinfo;
 				await Navigation.PopAsync();
 			}
-		}
-
-		private void OnMapClicked(object sender, MapClickedEventArgs e)
-		{
-			_SelectedPin = SelectedPin;
-			SelectedPin?.HideCallout();
-			SelectedPin = null;
 		}
 	}
 }
