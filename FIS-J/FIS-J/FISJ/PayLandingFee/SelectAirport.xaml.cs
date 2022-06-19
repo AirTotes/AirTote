@@ -89,7 +89,8 @@ namespace FIS_J.FISJ.PayLandingFee
 					Svg = svg_str,
 				};
 
-				pin.Callout.Anchor = new(0, pin.Height * pin.Scale);
+				// アイコンは、マークの周りにEllipseを配置しているため、その分の高さを除いてあげる
+				pin.Callout.Anchor = new(0, pin.Height * pin.Scale * 0.5);
 				pin.Callout.RectRadius = 5;
 				pin.Callout.ArrowHeight = 8;
 				pin.Callout.ArrowWidth = 24;
