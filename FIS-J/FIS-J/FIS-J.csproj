@@ -13,23 +13,16 @@
     <PackageReference Include="Xamarin.Forms" Version="5.0.0.2337" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="Xamarin.Forms.Maps" Version="5.0.0.2337" />
-    <PackageReference Include="Mapsui.Forms" Version="3.0.2" />
+    <PackageReference Include="Mapsui.Forms" Version="4.0.0-beta.4" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Models\airport_list.json" />
+    <EmbeddedResource Include="Assets\MapIcons\flight.svg" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Bold.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDGothic-Regular.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Bold.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Regular.ttf" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Images\" />
-    <Folder Include="Maps\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Remove="Models\airport_list.json" />
   </ItemGroup>
 </Project>
