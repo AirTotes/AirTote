@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <svg
 	fill="none"
 	xmlns="http://www.w3.org/2000/svg"
@@ -7,31 +8,31 @@
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
-		r="120.5"/>
+		r="120.5" />
 	<circle
 		cx="128"
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
-		r="116.2"/>
+		r="116.2" />
 	<circle
 		cx="128"
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
-		r="111.9"/>
+		r="111.9" />
 	<circle
 		cx="128"
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
-		r="107.6"/>
+		r="107.6" />
 	<circle
 		cx="128"
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
-		r="103.3"/>
+		r="103.3" />
 	<!-- Airplane from https://pixabay.com/vectors/airplane-fly-jet-silhouette-2029257/ -->
 	<path
 		transform="translate(110,0) rotate(45) scale(0.062,0.072)"
