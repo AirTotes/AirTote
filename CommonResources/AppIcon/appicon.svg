@@ -8,6 +8,7 @@
 		cy="128"
 		stroke="#2ba9e1"
 		stroke-width="2"
+		fill="white"
 		r="120.5" />
 	<circle
 		cx="128"
