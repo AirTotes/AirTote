@@ -32,7 +32,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>com.technotter.fis-j</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.10</string>
+	<string>1.0.11</string>
 	<key>CFBundleName</key>
 	<string>FIS-J</string>
 	<key>XSAppIconAssets</key>
