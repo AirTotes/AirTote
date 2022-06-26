@@ -6,8 +6,6 @@ using System.Threading.Tasks;
 
 using FIS_J.Maps;
 using FIS_J.Models;
-using Mapsui.Extensions;
-using Mapsui.Projections;
 using Mapsui.Styles;
 using Mapsui.Tiling;
 using Mapsui.UI.Maui;
@@ -36,7 +34,6 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			map = new(latlng.longitude, latlng.latitude);
 
-			map.Map.Home = n => n.NavigateTo(SphericalMercator.FromLonLat(latlng.longitude, latlng.latitude).ToMPoint(), reso);
 			map.Map.Layers.Add(LatLngLayerGenerator.Generate());
 
 			Appearing += SelectAirport_Appearing;
