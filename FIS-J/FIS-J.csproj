@@ -25,18 +25,33 @@
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
 		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
-	<PropertyGroup Condition="'$(TargetFramework)'=='net6.0-ios'">
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios'))">
 		<ProvisioningType>manual</ProvisioningType>
-		<CodesignKey>iPhone Developer</CodesignKey>
 		<CodesignEntitlements>iOS/Entitlements.plist</CodesignEntitlements>
 		<CodesignExtraArgs />
 		<CodesignResourceRules />
 		<DeviceSpecificBuild>true</DeviceSpecificBuild>
 		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
 		<MonoSymbolArchive>True</MonoSymbolArchive>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Debug'">
+		<CodesignKey>iPhone Developer</CodesignKey>
 		<MtouchLink>none</MtouchLink>
 		<MtouchDebug>true</MtouchDebug>
 		<MtouchFastDev>true</MtouchFastDev>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
+		<CodesignKey>iPhone Distribution: Kazunori Fujita (JYXQMVT4FS)</CodesignKey>
+		<CodesignProvision>FIS-J Distribution</CodesignProvision>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
+		<DebugType>none</DebugType>
+		<MtouchDebug>false</MtouchDebug>
+		<Optimize>true</Optimize>
+		<MtouchUseLlvm>true</MtouchUseLlvm>
+		<MtouchUseThumb>true</MtouchUseThumb>
+		<MtouchI18n>cjk</MtouchI18n>
+		<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
+		<MtouchFloat32>true</MtouchFloat32>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
