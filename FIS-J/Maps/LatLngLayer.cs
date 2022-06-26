@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Collections.Generic;
-
-using Mapsui.Layers;
+﻿using Mapsui.Layers;
 using Mapsui.Nts;
 using Mapsui.Nts.Extensions;
 using Mapsui.Projections;
@@ -117,7 +114,7 @@ namespace FIS_J.Maps
 				{
 					Fill = null,
 					Outline = null,
-					Line = new(Color.Black, Width),
+					Line = new(Mapsui.Styles.Color.Black, Width),
 				},
 				MaxVisible = MaxVisibleResolution,
 				MinVisible = MinVisibleResolution,

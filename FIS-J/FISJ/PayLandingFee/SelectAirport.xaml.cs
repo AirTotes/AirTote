@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
-using System.Threading.Tasks;
-
-using FIS_J.Maps;
+﻿using FIS_J.Maps;
 using FIS_J.Models;
+
 using Mapsui.Styles;
-using Mapsui.Tiling;
 using Mapsui.UI.Maui;
 using Color = Microsoft.Maui.Graphics.Color;
 
@@ -18,7 +12,7 @@ namespace FIS_J.FISJ.PayLandingFee
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		const string AP_ICON_SVG = "FIS_J.Assets.MapIcons.flight.svg";
+		const string AP_ICON_SVG = "MapIcons/flight.svg";
 
 		IContainsAirportInfo airportInfo { get; } = null;
 		Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
@@ -64,8 +58,7 @@ namespace FIS_J.FISJ.PayLandingFee
 			map.Pins.Clear();
 
 			string svg_str = "";
-			using (var stream = typeof(SelectAirport).GetTypeInfo().Assembly.GetManifestResourceStream(AP_ICON_SVG))
-			using (var reader = new StreamReader(stream))
+			using (var reader = new StreamReader(await FileSystem.OpenAppPackageFileAsync(AP_ICON_SVG)))
 				svg_str = await reader.ReadToEndAsync();
 
 			foreach (var ap in StationsDic.Values)

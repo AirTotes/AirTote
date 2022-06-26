@@ -1,12 +1,10 @@
-﻿using System;
-
-using FIS_J.Models;
+﻿using FIS_J.Models;
 
 using Mapsui;
 using Mapsui.Extensions;
 using Mapsui.Projections;
 using Mapsui.Tiling;
-using Mapsui.UI.Forms;
+using Mapsui.UI.Maui;
 using Mapsui.Utilities;
 
 namespace FIS_J.Maps
@@ -48,7 +46,7 @@ namespace FIS_J.Maps
 		public void MoveTo(in Position latlng)
 			=> MoveTo(longitude: latlng.Longitude, latitude: latlng.Latitude);
 		public void MoveTo(in double longitude, in double latitude)
-			=> Navigator.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Easing.SinInOut);
+			=> Navigator.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
 	}
 }
 
