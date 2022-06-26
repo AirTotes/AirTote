@@ -23,12 +23,12 @@
 		<RuntimeIdentifier Condition="'$(TargetFramework)' == 'net6.0-ios'">ios-arm64</RuntimeIdentifier>
 	</PropertyGroup>
 	<PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-	  <WarningLevel>4</WarningLevel>
+		<WarningLevel>4</WarningLevel>
 	</PropertyGroup>
 	<PropertyGroup Condition="'$(TargetFramework)'=='net6.0-ios'">
-		<ProvisioningType>manual</ProvisioningType>    
+		<ProvisioningType>manual</ProvisioningType>
 		<CodesignKey>iPhone Developer</CodesignKey>
-		<CodesignEntitlements>iOS/Entitlements.plist</CodesignEntitlements>    
+		<CodesignEntitlements>iOS/Entitlements.plist</CodesignEntitlements>
 		<CodesignExtraArgs />
 		<CodesignResourceRules />
 		<DeviceSpecificBuild>true</DeviceSpecificBuild>
