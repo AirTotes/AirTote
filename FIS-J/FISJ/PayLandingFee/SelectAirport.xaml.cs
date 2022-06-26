@@ -1,9 +1,6 @@
 ﻿using FIS_J.Maps;
 using FIS_J.Models;
-
-using Mapsui.Styles;
 using Mapsui.UI.Maui;
-using Color = Microsoft.Maui.Graphics.Color;
 
 namespace FIS_J.FISJ.PayLandingFee
 {
@@ -63,7 +60,7 @@ namespace FIS_J.FISJ.PayLandingFee
 
 			foreach (var ap in StationsDic.Values)
 			{
-				Pin pin = new(map)
+				CustomTextCalloutPin pin = new(map)
 				{
 					Address = ap.name,
 					Label = ap.icao,
@@ -78,18 +75,12 @@ namespace FIS_J.FISJ.PayLandingFee
 
 				// アイコンは、マークの周りにEllipseを配置しているため、その分の高さを除いてあげる
 				pin.Callout.Anchor = new(0, pin.Height * pin.Scale * 0.5);
-				pin.Callout.RectRadius = 5;
-				pin.Callout.ArrowHeight = 8;
-				pin.Callout.ArrowWidth = 24;
-				pin.Callout.ArrowAlignment = ArrowAlignment.Top;
-				pin.Callout.ArrowPosition = 1;
-				pin.Callout.BackgroundColor = Color.FromRgb(0xff, 0xff, 0xff);
-				pin.Callout.TitleFontSize = 16;
-				pin.Callout.SubtitleFontSize = 12;
 
 				pin.Callout.CalloutClicked += Callout_CalloutClicked;
 
-				pin.Callout.Type = CalloutType.Detail;
+				using CalloutText icaoCode = new($"ICAO Code: {ap.icao}");
+				using CalloutText staName = new($"Name: {ap.name}", icaoCode);
+				pin.SetCalloutText(new CalloutText[] { icaoCode, staName });
 
 				map.Pins.Add(pin);
 			}
