@@ -31,7 +31,7 @@
 			<Style TargetType="Button">
 				<Setter
 					Property="Margin"
-					Value="4,2"/>
+					Value="5"/>
 				<Setter
 					Property="Padding"
 					Value="12"/>
