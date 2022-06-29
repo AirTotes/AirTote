@@ -33,6 +33,9 @@
 					Property="Margin"
 					Value="4,2"/>
 				<Setter
+					Property="Padding"
+					Value="12"/>
+				<Setter
 					Property="TextColor"
 					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
 				<Setter
