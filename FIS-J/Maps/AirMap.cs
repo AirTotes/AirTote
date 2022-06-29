@@ -39,6 +39,16 @@ namespace FIS_J.Maps
 			MyLocationLayer.Enabled = false;
 
 			UniqueCallout = true;
+
+			// MapのPinやCallout以外をタップされた時に、開いているCalloutを閉じる
+			Info += (s, e) =>
+			{
+				if (s is not MapView map || map.SelectedPin is not Pin pin)
+					return;
+
+				pin.HideCallout();
+				e.Handled = true;
+			};
 		}
 
 		public void MoveTo(AirportInfo.LatLng latlng)
