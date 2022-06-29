@@ -36,6 +36,9 @@
 					Property="Padding"
 					Value="12"/>
 				<Setter
+					Property="CornerRadius"
+					Value="6"/>
+				<Setter
 					Property="TextColor"
 					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
 				<Setter
