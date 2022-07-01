@@ -35,8 +35,8 @@ namespace FIS_J.Maps
 
 			MemoryStream memStream = new();
 			using (SKBitmap bitmap = new(
-				(int)(texts.Max(v => v.X + v.TextBounds.Width) + 1),
-				(int)(texts.Max(v => v.TextBounds.Top + v.TextBounds.Height) + 1))
+				(int)texts.Max(v => v.X + v.TextBounds.Width) + 8,
+				(int)texts.Max(v => v.TextBounds.Top + v.TextBounds.Height))
 			)
 			using (SKCanvas canvas = new(bitmap))
 			{

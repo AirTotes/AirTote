@@ -61,8 +61,6 @@ namespace FIS_J.Maps
 
 			if (upper is null)
 				Y -= TextBounds.Top;
-
-			X -= TextBounds.Left;
 		}
 
 		public void DrawTo(SKCanvas canvas)
