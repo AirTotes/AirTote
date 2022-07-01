@@ -28,7 +28,7 @@ public class CalloutText : IDisposable
 			if (_Typeface is null)
 			{
 
-				using var stream = typeof(CalloutText).GetTypeInfo().Assembly.GetManifestResourceStream("FIS_J.Assets.Fonts.BIZUDGothic-Regular.ttf");
+				using var stream = FileSystem.OpenAppPackageFileAsync("Fonts/BIZUDGothic-Regular.ttf").Result;
 				_Typeface = SKTypeface.FromStream(stream);
 			}
 
