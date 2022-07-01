@@ -20,6 +20,22 @@ public class CalloutText : IDisposable
 	private SKRect _TextBounds;
 	public SKRect TextBounds => _TextBounds;
 
+	private static SKTypeface _Typeface = null;
+	private SKTypeface Typeface
+	{
+		get
+		{
+			if (_Typeface is null)
+			{
+
+				using var stream = typeof(CalloutText).GetTypeInfo().Assembly.GetManifestResourceStream("FIS_J.Assets.Fonts.BIZUDGothic-Regular.ttf");
+				_Typeface = SKTypeface.FromStream(stream);
+			}
+
+			return _Typeface;
+		}
+	}
+
 	public CalloutText(in string text = "", in CalloutText upper = null, in float linePadding = 2f)
 	{
 		Text ??= text;
@@ -27,7 +43,7 @@ public class CalloutText : IDisposable
 		Paint = new()
 		{
 			Color = FontColor,
-			Typeface = SKTypeface.FromFamilyName("BIZ UDGothic"),
+			Typeface = Typeface,
 			TextSize = FontSize,
 			IsLinearText = true,
 			LcdRenderText = true,
@@ -44,8 +60,6 @@ public class CalloutText : IDisposable
 
 		if (upper is null)
 			Y -= TextBounds.Top;
-
-		X -= TextBounds.Left;
 	}
 
 	public void DrawTo(SKCanvas canvas)
@@ -68,4 +82,3 @@ public class CalloutText : IDisposable
 		GC.SuppressFinalize(this);
 	}
 }
-

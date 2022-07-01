@@ -1,4 +1,4 @@
-﻿using Mapsui.Styles;
+using Mapsui.Styles;
 using Mapsui.UI.Maui;
 
 using SkiaSharp;
@@ -16,7 +16,12 @@ public class CustomTextCalloutPin : Pin
 		Callout.ArrowPosition = 1;
 		Callout.BackgroundColor = Microsoft.Maui.Graphics.Color.FromRgb(0xff, 0xff, 0xff);
 
-		Callout.Content = -1;
+		Callout.TitleFontSize = 16;
+		Callout.SubtitleFontSize = 12;
+
+		Callout.Type = CalloutType.Detail;
+
+		//Callout.Content = -1;
 	}
 
 	public void SetCalloutText(in IEnumerable<CalloutText> texts)
@@ -27,8 +32,8 @@ public class CustomTextCalloutPin : Pin
 
 		MemoryStream memStream = new();
 		using (SKBitmap bitmap = new(
-			(int)(texts.Max(v => v.X + v.TextBounds.Width) + 1),
-			(int)(texts.Max(v => v.TextBounds.Top + v.TextBounds.Height) + 1))
+			(int)texts.Max(v => v.X + v.TextBounds.Width) + 8,
+			(int)texts.Max(v => v.TextBounds.Top + v.TextBounds.Height))
 		)
 		using (SKCanvas canvas = new(bitmap))
 		{
@@ -44,4 +49,3 @@ public class CustomTextCalloutPin : Pin
 		Callout.Type = CalloutType.Custom;
 	}
 }
-
