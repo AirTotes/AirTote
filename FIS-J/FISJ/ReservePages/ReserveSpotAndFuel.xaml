@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:reservepages="clr-namespace:FIS_J.ViewModels.ReservePages"
+	xmlns:convs="clr-namespace:FIS_J.ValueConverters"
+	x:DataType="reservepages:ReserveSpotAndFuelViewModel"
+	Title="{Binding Title}"
+	x:Class="FIS_J.FISJ.ReservePages.ReserveSpotAndFuel">
+	<ContentPage.Resources>
+		<convs:StringToIntegerConverter x:Key="StrToIntConv" />
+		<convs:IntToENumConverter x:Key="IntToEnum"/>
+	</ContentPage.Resources>
+
+	<StackLayout>
+		<Label
+			Text="{Binding AirportName}"/>
+		<Button
+			Clicked="ShowAirportSelectPage"
+			Text="Change Airport"/>
+		<DatePicker
+			MinimumDate="{x:Static reservepages:ReserveSpotAndFuelViewModel.Today}"
+			Date="{Binding SpotReserveTimeBegin_Date}"/>
+		<TimePicker
+			Time="{Binding SpotReserveTimeBegin_Time}"/>
+		<Entry
+			Text="{Binding SpotStayTime_HH, Converter={StaticResource StrToIntConv}}"
+			Keyboard="Numeric"/>
+		<Entry
+			Text="{Binding SpotStayTime_MM, Converter={StaticResource StrToIntConv}}"
+			Keyboard="Numeric"/>
+
+		<Label
+			Text="{Binding FuelType}"/>
+		<Picker
+			ItemsSource="{x:Static reservepages:ReserveSpotAndFuelViewModel.FuelNames}"
+			SelectedIndex="{Binding FuelType, Converter={StaticResource IntToEnum}, Mode=TwoWay}"/>
+
+		<DatePicker
+			MinimumDate="{Binding SpotReserveTimeBegin_Date}"
+			Date="{Binding ChargeFuelBegin_Date}"/>
+		<TimePicker
+			Time="{Binding ChargeFuelBegin_Time}"/>
+
+		<Entry
+			Text="{Binding FuelToCharge_gal, Converter={StaticResource StrToIntConv}}"
+			Keyboard="Numeric"/>
+	</StackLayout>
+</ContentPage>
