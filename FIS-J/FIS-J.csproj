@@ -53,6 +53,15 @@
 		<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
 		<MtouchFloat32>true</MtouchFloat32>
 	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidLinkMode>full</AndroidLinkMode>
+		<RunAOTCompilation>true</RunAOTCompilation>
+		<AndroidEnableProfiledAot>false</AndroidEnableProfiledAot>
+		<EnableLLVM>true</EnableLLVM>
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>fisj.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>key</AndroidSigningKeyAlias>
+	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="..\CommonResources\AppIcon\appicon.svg" ForegroundFile="..\CommonResources\AppIcon\appiconfore.svg" ForegroundScale="1.5" Color="White" />
