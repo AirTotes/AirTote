@@ -88,7 +88,7 @@
 	https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
 	-->
 	<FlyoutItem Title="TOP">
-		<ShellContent ContentTemplate="{DataTemplate fisj:MainPagexaml}"/>
+		<ShellContent ContentTemplate="{DataTemplate fisj:TopPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="書類提出">
 		<ShellContent ContentTemplate="{DataTemplate fisj:SubmitReport}" />
