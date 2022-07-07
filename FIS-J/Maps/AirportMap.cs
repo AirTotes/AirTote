@@ -55,15 +55,34 @@ public class AirportMap : AirMap
 
 			pin.Callout.CalloutClicked += OnCalloutClicked;
 
-			using CalloutText baseText = new($"{ap.icao} ({ap.name})");
-			CalloutText[] baseTextArr = new[] { baseText };
-
-			IEnumerable<CalloutText> calloutTexts = setCalloutText?.Invoke(ap, baseTextArr) ?? baseTextArr;
-
-			pin.SetCalloutText(calloutTexts);
+			SetCalloutText(pin, ap, setCalloutText);
 
 			Pins.Add(pin);
 		}
+	}
+
+	public void SetCalloutText(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText = null)
+	{
+		foreach (var pin in Pins)
+		{
+			if (pin is not CustomTextCalloutPin cpin)
+				continue;
+
+			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+				return;
+
+			SetCalloutText(cpin, apinfo, setCalloutText);
+		}
+	}
+
+	private void SetCalloutText(CustomTextCalloutPin pin, AirportInfo.APInfo ap, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText)
+	{
+		using CalloutText baseText = new($"{ap.icao} ({ap.name})");
+		CalloutText[] baseTextArr = new[] { baseText };
+
+		IEnumerable<CalloutText> calloutTexts = setCalloutText?.Invoke(ap, baseTextArr) ?? baseTextArr;
+
+		pin.SetCalloutText(calloutTexts);
 	}
 
 	private void OnPinClicked(object sender, PinClickedEventArgs e)
