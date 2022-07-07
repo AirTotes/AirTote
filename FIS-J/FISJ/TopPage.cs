@@ -22,11 +22,19 @@ public class TopPage : ContentPage
 
 	private async void ResetCalloutText()
 	{
-		bool getMetarResult = await METAR.ReLoad();
-		bool getTafResult = await TAF.ReLoad();
+		try
+		{
+			bool getMetarResult = await METAR.ReLoad();
+			bool getTafResult = await TAF.ReLoad();
 
-		if (getMetarResult != true && getTafResult != true)
+			if (getMetarResult != true && getTafResult != true)
+				return;
+		}
+		catch (Exception ex)
+		{
+			await DisplayAlert("Failed to get Remote Resource", "METAR/TAFの更新に失敗しました。表示されている情報は、前回までに取得した情報です。\n" + ex.Message, "OK");
 			return;
+		}
 
 		Map.SetCalloutText(setCalloutTextAction);
 	}
