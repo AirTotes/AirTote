@@ -20,8 +20,12 @@ public class TopPage : ContentPage
 		ResetCalloutText();
 	}
 
+	bool ResetCalloutTextRunning = false;
 	private async void ResetCalloutText()
 	{
+		if (ResetCalloutTextRunning)
+			return;
+		ResetCalloutTextRunning = true;
 		try
 		{
 			bool getMetarResult = await METAR.ReLoad();
@@ -29,14 +33,18 @@ public class TopPage : ContentPage
 
 			if (getMetarResult != true && getTafResult != true)
 				return;
+
+			Map.SetCalloutText(setCalloutTextAction);
 		}
 		catch (Exception ex)
 		{
 			await DisplayAlert("Failed to get Remote Resource", "METAR/TAFの更新に失敗しました。表示されている情報は、前回までに取得した情報です。\n" + ex.Message, "OK");
 			return;
 		}
-
-		Map.SetCalloutText(setCalloutTextAction);
+		finally
+		{
+			ResetCalloutTextRunning = false;
+		}
 	}
 
 	private IEnumerable<CalloutText> setCalloutTextAction(AirportInfo.APInfo ap, IEnumerable<CalloutText> upper)
