@@ -22,7 +22,10 @@ public class TopPage : ContentPage
 
 	private async void ResetCalloutText()
 	{
-		if (await METAR.ReLoad() != true && await TAF.ReLoad() != true)
+		bool getMetarResult = await METAR.ReLoad();
+		bool getTafResult = await TAF.ReLoad();
+
+		if (getMetarResult != true && getTafResult != true)
 			return;
 
 		Map.SetCalloutText(setCalloutTextAction);
