@@ -52,8 +52,10 @@ public class CalloutText : IDisposable
 			SubpixelText = true,
 		};
 
+		Y += Paint.FontSpacing;
+
 		if (upper is not null)
-			Y += upper.Y + linePadding + Paint.FontSpacing;
+			Y += upper.Y + linePadding;
 
 		using var textPath = Paint.GetTextPath(Text, X, Y);
 		textPath.GetTightBounds(out _TextBounds);
