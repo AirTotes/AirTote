@@ -13,7 +13,7 @@ public class CustomTextCalloutPin : Pin
 		Callout.ArrowHeight = 8;
 		Callout.ArrowWidth = 24;
 		Callout.ArrowAlignment = ArrowAlignment.Top;
-		Callout.ArrowPosition = 1;
+		Callout.ArrowPosition = 0.5;
 		Callout.BackgroundColor = Microsoft.Maui.Graphics.Color.FromRgb(0xff, 0xff, 0xff);
 
 		Callout.TitleFontSize = 16;
