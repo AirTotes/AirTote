@@ -17,6 +17,8 @@ public class TopPage : ContentPage
 
 		Appearing += (_, _) => ResetCalloutText();
 
+		Map.Map.Layers.Add(MinimumVectoringAltitude.CreateLayer());
+
 		ResetCalloutText();
 	}
 
