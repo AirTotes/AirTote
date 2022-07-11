@@ -1,6 +1,7 @@
 ﻿using FIS_J.Maps;
 using FIS_J.Models;
 using FIS_J.Services;
+using Mapsui.Layers;
 
 namespace FIS_J.FISJ;
 
@@ -10,6 +11,8 @@ public class TopPage : ContentPage
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
+	ILayer MVA { get; set; }
+
 	public TopPage()
 	{
 		Content = Map;
@@ -17,9 +20,41 @@ public class TopPage : ContentPage
 
 		Appearing += (_, _) => ResetCalloutText();
 
-		Map.Map.Layers.Add(MinimumVectoringAltitude.CreateLayer());
-
 		ResetCalloutText();
+
+		Task.Run(async () =>
+		{
+			try
+			{
+				MVA = await MinimumVectoringAltitude.CreateLayer();
+			}
+			catch (Exception ex)
+			{
+				await DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK");
+				Console.WriteLine(ex);
+			}
+
+			Map.Map.Layers.Add(MVA);
+
+			while (true)
+			{
+				try
+				{
+					if (MVA is Layer mva)
+					{
+						mva.DataSource = await MinimumVectoringAltitude.GetProvider();
+						Console.WriteLine("MVA DataSource Updated");
+					}
+				}
+				catch (Exception ex)
+				{
+					await DisplayAlert("Failed to get Remote Resource", "MVAの更新に失敗しました。" + ex.Message, "OK");
+					Console.WriteLine(ex);
+				}
+
+				await Task.Delay(2000);
+			}
+		});
 	}
 
 	bool ResetCalloutTextRunning = false;
