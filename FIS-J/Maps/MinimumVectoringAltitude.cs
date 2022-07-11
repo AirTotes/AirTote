@@ -13,7 +13,7 @@ public static class MinimumVectoringAltitude
 	{
 		return new Layer("MinimumVectoringAltitude")
 		{
-			DataSource = new MemoryProvider(CreatePolygon().ToFeatures()),
+			DataSource = GetProvider(),
 			Style = new VectorStyle
 			{
 				Fill = null,
@@ -25,6 +25,9 @@ public static class MinimumVectoringAltitude
 			}
 		};
 	}
+
+	public static MemoryProvider GetProvider()
+		=> new(CreatePolygon().ToFeatures());
 
 	private static List<Geometry> CreatePolygon()
 	{
