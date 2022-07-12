@@ -55,7 +55,7 @@ public static class MinimumVectoringAltitude
 	{
 		var result = new List<Geometry>();
 
-		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/RJTT.txt");
+		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/mva.txt");
 
 		var polygon = new WKTReader().Read(stream);
 		result.Add(polygon);
@@ -67,7 +67,7 @@ public static class MinimumVectoringAltitude
 	{
 		var result = new List<Geometry>();
 
-		using var stream = await FileSystem.OpenAppPackageFileAsync("RJTT.txt");
+		using var stream = await FileSystem.OpenAppPackageFileAsync("mva.txt");
 
 		var polygon = new WKTReader().Read(stream);
 		result.Add(polygon);
