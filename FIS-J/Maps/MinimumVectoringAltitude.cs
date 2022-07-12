@@ -18,7 +18,11 @@ namespace FIS_J.Maps;
 
 public static class MinimumVectoringAltitude
 {
+#if DEBUG
 	const string SERVER_URL = @"http://192.168.63.22:8080";
+#else
+	const string SERVER_URL = @"https://fis-j.technotter.com/mva";
+#endif
 
 	public static Layer CreateLayer()
 	{
@@ -41,6 +45,7 @@ public static class MinimumVectoringAltitude
 	{
 		return new Layer("MinimumVectoringAltitudeText")
 		{
+			DataSource = null,
 			Style = null
 		};
 	}
