@@ -30,8 +30,9 @@ public class TopPage : ContentPage
 			}
 			catch (Exception ex)
 			{
-				await DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK");
 				Console.WriteLine(ex);
+				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK"));
+				return;
 			}
 
 			Map.Map.Layers.Add(MVA);
@@ -45,8 +46,9 @@ public class TopPage : ContentPage
 				}
 				catch (Exception ex)
 				{
-					await DisplayAlert("Failed to get Remote Resource", "MVAの更新に失敗しました。" + ex.Message, "OK");
 					Console.WriteLine(ex);
+					await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの更新に失敗しました。" + ex.Message, "OK"));
+					return;
 				}
 
 				await Task.Delay(2000);
