@@ -28,17 +28,23 @@ public class TopPage : ContentPage
 			try
 			{
 				MVA = MinimumVectoringAltitude.CreateLayer();
-				MVA.DataSource = await MinimumVectoringAltitude.GetProvider(true);
+				MVA.DataSource = await MinimumVectoringAltitude.GetProvider();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
 				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK"));
-				return;
 			}
 
 			Map.Map.Layers.Add(MVA);
 
+			if (MVA.DataSource is null)
+			{
+				MVA.DataSource = await MinimumVectoringAltitude.GetProvider(true);
+				return;
+			}
+
+#if DEBUG
 			while (true)
 			{
 				try
@@ -49,12 +55,16 @@ public class TopPage : ContentPage
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
-					await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの更新に失敗しました。" + ex.Message, "OK"));
-					return;
+					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVAの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
+					if (!response)
+						return;
 				}
 
 				await Task.Delay(2000);
 			}
+#else
+			return;
+#endif
 		});
 
 		Task.Run(async () =>
@@ -62,17 +72,23 @@ public class TopPage : ContentPage
 			try
 			{
 				MVAText = MinimumVectoringAltitude.CreateTextLayer();
-				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider(true);
+				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
 				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA TextDataの取得に失敗しました。" + ex.Message, "OK"));
-				return;
 			}
 
 			Map.Map.Layers.Add(MVAText);
 
+			if (MVAText.DataSource is null)
+			{
+				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider(true);
+				return;
+			}
+
+#if DEBUG
 			while (true)
 			{
 				try
@@ -83,12 +99,16 @@ public class TopPage : ContentPage
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
-					await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA TextDataの更新に失敗しました。" + ex.Message, "OK"));
-					return;
+					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVA TextDataの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
+					if (!response)
+						return;
 				}
 
 				await Task.Delay(2000);
 			}
+#else
+			return;
+#endif
 		});
 	}
 
