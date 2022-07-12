@@ -26,7 +26,8 @@ public class TopPage : ContentPage
 		{
 			try
 			{
-				MVA = await MinimumVectoringAltitude.CreateLayer();
+				MVA = MinimumVectoringAltitude.CreateLayer();
+				MVA.DataSource = await MinimumVectoringAltitude.GetProvider(true);
 			}
 			catch (Exception ex)
 			{
