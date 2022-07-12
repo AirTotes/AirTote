@@ -49,7 +49,7 @@ public static class MinimumVectoringAltitude
 		=> new((await (isLocal ? CreateLocalPolygon() : CreatePolygon())).ToFeatures());
 
 	public static async Task<MemoryProvider> GetTextProvider(bool isLocal = false)
-		=> new(await (isLocal ? CreateTexts() : CreateTexts()));
+		=> new(await (isLocal ? CreateLocalTexts() : CreateTexts()));
 
 	public static async Task<List<Geometry>> CreatePolygon()
 	{
@@ -101,9 +101,21 @@ public static class MinimumVectoringAltitude
 
 	public static async Task<List<IFeature>> CreateTexts()
 	{
-		List<IFeature> texts = new();
+		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/mva.text.json");
 
-		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/RJTT.text.json");
+		return await CreateTexts(stream);
+	}
+
+	public static async Task<List<IFeature>> CreateLocalTexts()
+	{
+		using var stream = await FileSystem.OpenAppPackageFileAsync("mva.text.json");
+
+		return await CreateTexts(stream);
+	}
+
+	private static async Task<List<IFeature>> CreateTexts(Stream stream)
+	{
+		List<IFeature> texts = new();
 
 		var result = await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, LabelTextsRecord[]>));
 
