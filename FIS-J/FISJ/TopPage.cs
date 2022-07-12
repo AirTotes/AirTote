@@ -11,7 +11,7 @@ public class TopPage : ContentPage
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
-	ILayer MVA { get; set; }
+	Layer MVA { get; set; }
 
 	public TopPage()
 	{
@@ -40,11 +40,8 @@ public class TopPage : ContentPage
 			{
 				try
 				{
-					if (MVA is Layer mva)
-					{
-						mva.DataSource = await MinimumVectoringAltitude.GetProvider();
-						Console.WriteLine("MVA DataSource Updated");
-					}
+					MVA.DataSource = await MinimumVectoringAltitude.GetProvider();
+					Console.WriteLine("MVA DataSource Updated");
 				}
 				catch (Exception ex)
 				{

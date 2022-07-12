@@ -12,11 +12,11 @@ public static class MinimumVectoringAltitude
 {
 	const string SERVER_URL = @"http://192.168.63.22:8080";
 
-	public static async Task<ILayer> CreateLayer()
+	public static Layer CreateLayer()
 	{
 		return new Layer("MinimumVectoringAltitude")
 		{
-			DataSource = await GetProvider(),
+			DataSource = null,
 			Style = new VectorStyle
 			{
 				Fill = null,
