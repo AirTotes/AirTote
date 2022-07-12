@@ -29,30 +29,29 @@ public static class MinimumVectoringAltitude
 		};
 	}
 
-	public static async Task<MemoryProvider> GetProvider()
-		=> new((await CreatePolygon()).ToFeatures());
-
-	static public bool? IsOffline { get; set; } = false;
+	public static async Task<MemoryProvider> GetProvider(bool isLocal = false)
+		=> new((await (isLocal ? CreateLocalPolygon() : CreatePolygon())).ToFeatures());
 
 	public static async Task<List<Geometry>> CreatePolygon()
 	{
 		var result = new List<Geometry>();
 
-		if (IsOffline is null)
-			return result;
+		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/RJTT.txt");
 
-		try
-		{
-			using var stream = await (IsOffline == true ? FileSystem.OpenAppPackageFileAsync("RJTT.txt") : HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/RJTT.txt"));
+		var polygon = new WKTReader().Read(stream);
+		result.Add(polygon);
 
-			var polygon = new WKTReader().Read(stream);
-			result.Add(polygon);
-		}
-		catch
-		{
-			IsOffline = IsOffline == true ? null : true;
-			throw;
-		}
+		return result;
+	}
+
+	public static async Task<List<Geometry>> CreateLocalPolygon()
+	{
+		var result = new List<Geometry>();
+
+		using var stream = await FileSystem.OpenAppPackageFileAsync("RJTT.txt");
+
+		var polygon = new WKTReader().Read(stream);
+		result.Add(polygon);
 
 		return result;
 	}
