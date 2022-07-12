@@ -12,6 +12,7 @@ public class TopPage : ContentPage
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
 	Layer MVA { get; set; }
+	Layer MVAText { get; set; }
 
 	public TopPage()
 	{
@@ -49,6 +50,40 @@ public class TopPage : ContentPage
 				{
 					Console.WriteLine(ex);
 					await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの更新に失敗しました。" + ex.Message, "OK"));
+					return;
+				}
+
+				await Task.Delay(2000);
+			}
+		});
+
+		Task.Run(async () =>
+		{
+			try
+			{
+				MVAText = MinimumVectoringAltitude.CreateTextLayer();
+				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider(true);
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA TextDataの取得に失敗しました。" + ex.Message, "OK"));
+				return;
+			}
+
+			Map.Map.Layers.Add(MVAText);
+
+			while (true)
+			{
+				try
+				{
+					MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider();
+					Console.WriteLine("MVA Text DataSource Updated");
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine(ex);
+					await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA TextDataの更新に失敗しました。" + ex.Message, "OK"));
 					return;
 				}
 
