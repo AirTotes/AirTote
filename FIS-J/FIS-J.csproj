@@ -68,12 +68,6 @@
 		<MauiAsset Include="Assets\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 	<ItemGroup>
-		<None Remove="AngleSharp" />
-		<None Remove="Mapsui.Maui" />
-		<None Remove="Components\" />
-		<None Remove="Newtonsoft.Json" />
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.4" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
