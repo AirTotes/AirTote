@@ -97,10 +97,10 @@ public static class MinimumVectoringAltitude
 		[JsonPropertyName("y")]
 		public double? Y { get; set; }
 
-		[JsonPropertyName("min-visible")]
+		[JsonPropertyName("minVisible")]
 		public double? MinVisible { get; set; }
 
-		[JsonPropertyName("max-visible")]
+		[JsonPropertyName("maxVisible")]
 		public double? MaxVisible { get; set; }
 	}
 
