@@ -11,8 +11,8 @@ public class TopPage : ContentPage
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
-	Layer MVA { get; set; }
-	Layer MVAText { get; set; }
+	MVALayer MVA { get; set; } = new();
+	MVALabelLayer MVAText { get; set; } = new();
 
 	public TopPage()
 	{
@@ -23,33 +23,29 @@ public class TopPage : ContentPage
 
 		ResetCalloutText();
 
+		Map.Map.Layers.Add(MVA);
+		Map.Map.Layers.Add(MVAText);
+
 		Task.Run(async () =>
 		{
 			try
 			{
-				MVA = MinimumVectoringAltitude.CreateLayer();
-				MVA.DataSource = await MinimumVectoringAltitude.GetProvider();
+				await MVA.ReloadAsync();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
 				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK"));
-			}
-
-			Map.Map.Layers.Add(MVA);
-
-			if (MVA.DataSource is null)
-			{
-				MVA.DataSource = await MinimumVectoringAltitude.GetProvider(true);
 				return;
 			}
+
 
 #if DEBUG
 			while (true)
 			{
 				try
 				{
-					MVA.DataSource = await MinimumVectoringAltitude.GetProvider();
+					await MVA.ReloadAsync();
 					Console.WriteLine("MVA DataSource Updated");
 				}
 				catch (Exception ex)
@@ -71,35 +67,28 @@ public class TopPage : ContentPage
 		{
 			try
 			{
-				MVAText = MinimumVectoringAltitude.CreateTextLayer();
-				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider();
+				await MVAText.ReloadAsync();
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
-				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA TextDataの取得に失敗しました。" + ex.Message, "OK"));
-			}
-
-			Map.Map.Layers.Add(MVAText);
-
-			if (MVAText.DataSource is null)
-			{
-				MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider(true);
+				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA Textの取得に失敗しました。" + ex.Message, "OK"));
 				return;
 			}
+
 
 #if DEBUG
 			while (true)
 			{
 				try
 				{
-					MVAText.DataSource = await MinimumVectoringAltitude.GetTextProvider();
-					Console.WriteLine("MVA Text DataSource Updated");
+					await MVAText.ReloadAsync();
+					Console.WriteLine("MVA-Text DataSource Updated");
 				}
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
-					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVA TextDataの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
+					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVA Textの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
 					if (!response)
 						return;
 				}

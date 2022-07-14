@@ -1,14 +1,13 @@
-﻿using System.Text.Json;
+﻿using System.Collections.Concurrent;
+using System.Text.Json;
 using System.Text.Json.Serialization;
-
-using FIS_J.Services;
 
 using Mapsui;
 using Mapsui.Extensions;
 using Mapsui.Layers;
+using Mapsui.Nts;
 using Mapsui.Nts.Extensions;
 using Mapsui.Projections;
-using Mapsui.Providers;
 using Mapsui.Styles;
 
 using NetTopologySuite.Geometries;
@@ -19,65 +18,86 @@ namespace FIS_J.Services;
 public static class MinimumVectoringAltitude
 {
 #if DEBUG
-	const string SERVER_URL = @"http://192.168.63.22:8080";
+	const string SERVER_URL = @"http://192.168.63.23:8080";
 #else
 	const string SERVER_URL = @"https://fis-j.technotter.com/mva";
 #endif
+	const string OFFLINE_BASE_PATH = "";
 
-	public static Layer CreateLayer()
+	class MVASourceRecord
 	{
-		return new Layer("MinimumVectoringAltitude")
+		[JsonPropertyName("chart")]
+		public string? Chart { get; set; }
+
+		[JsonPropertyName("label")]
+		public string? Label { get; set; }
+	}
+
+	static Dictionary<string, MVASourceRecord> _OnlineSourceRecordDic { get; set; } = null;
+	static Dictionary<string, MVASourceRecord> _OfflineSourceRecordDic { get; set; } = null;
+	static async Task<Dictionary<string, MVASourceRecord>> GetSourceRecordDic(bool isOffline)
+	{
+		if (isOffline)
 		{
-			DataSource = null,
-			Style = new VectorStyle
+			if (_OfflineSourceRecordDic is not null)
+				return _OfflineSourceRecordDic;
+		}
+		else
+		{
+			if (_OnlineSourceRecordDic is not null)
+				return _OnlineSourceRecordDic;
+		}
+
+		using var stream = await GetAssetStreamAsync(isOffline, "mva.json");
+		return await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, MVASourceRecord>)) as Dictionary<string, MVASourceRecord>;
+	}
+
+	static WKTReader WKTReader { get; } = new();
+	static WKBReader WKBReader { get; } = new();
+
+	static Task<Stream> GetAssetStreamAsync(bool isOffline, string fileName)
+		=> isOffline ? FileSystem.OpenAppPackageFileAsync(Path.Combine(OFFLINE_BASE_PATH, fileName))
+		: HttpService.HttpClient.GetStreamAsync($"{SERVER_URL}/{fileName}");
+	static Task<Stream> GetAssetStreamAsync(bool isOffline, string fileName, CancellationToken cToken)
+		=> isOffline ? FileSystem.OpenAppPackageFileAsync(Path.Combine(OFFLINE_BASE_PATH, fileName))
+		: HttpService.HttpClient.GetStreamAsync($"{SERVER_URL}/{fileName}", cToken);
+
+	public static async Task<Dictionary<string, GeometryFeature>> GetMVALines(bool isOffline = false)
+	{
+		ConcurrentBag<KeyValuePair<string, GeometryFeature>> MVALines = new();
+
+		Dictionary<string, MVASourceRecord> SourceList = await GetSourceRecordDic(isOffline);
+
+		if (SourceList is null)
+			return null;
+
+		await Parallel.ForEachAsync(SourceList, async (kvp, cToken) =>
+		{
+			Geometry geometry = null;
+
+			if (string.IsNullOrWhiteSpace(kvp.Value.Chart))
+				return;
+
+			using (var stream = await GetAssetStreamAsync(isOffline, kvp.Value.Chart, cToken))
 			{
-				Fill = null,
-				Outline = new Pen
+				try
 				{
-					Color = Mapsui.Styles.Color.Black,
-					Width = 1,
+					if (kvp.Value.Chart.EndsWith(".bin"))
+						geometry = WKBReader.Read(stream);
+					else
+						geometry = WKTReader.Read(stream);
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Failed to load '{kvp.Key}' Texts (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
+					return;
 				}
 			}
-		};
-	}
 
-	public static Layer CreateTextLayer()
-	{
-		return new Layer("MinimumVectoringAltitudeText")
-		{
-			DataSource = null,
-			Style = null
-		};
-	}
+			MVALines.Add(new(kvp.Key, geometry.ToFeature()));
+		});
 
-	public static async Task<MemoryProvider> GetProvider(bool isLocal = false)
-		=> new((await (isLocal ? CreateLocalPolygon() : CreatePolygon())).ToFeatures());
-
-	public static async Task<MemoryProvider> GetTextProvider(bool isLocal = false)
-		=> new(await (isLocal ? CreateLocalTexts() : CreateTexts()));
-
-	public static async Task<List<Geometry>> CreatePolygon()
-	{
-		var result = new List<Geometry>();
-
-		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/mva.txt");
-
-		var polygon = new WKTReader().Read(stream);
-		result.Add(polygon);
-
-		return result;
-	}
-
-	public static async Task<List<Geometry>> CreateLocalPolygon()
-	{
-		var result = new List<Geometry>();
-
-		using var stream = await FileSystem.OpenAppPackageFileAsync("mva.txt");
-
-		var polygon = new WKTReader().Read(stream);
-		result.Add(polygon);
-
-		return result;
+		return MVALines.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
 	}
 
 	class LabelTextsRecord
@@ -104,37 +124,51 @@ public static class MinimumVectoringAltitude
 		public double? MaxVisible { get; set; }
 	}
 
-	public static async Task<List<IFeature>> CreateTexts()
+	public static async Task<PointFeature[]> GetMVALabels(bool isOffline = false)
 	{
-		using var stream = await HttpService.HttpClient.GetStreamAsync(SERVER_URL + "/mva.text.json");
+		ConcurrentBag<PointFeature> MVALabels = new();
 
-		return await CreateTexts(stream);
-	}
+		Dictionary<string, MVASourceRecord> SourceList = await GetSourceRecordDic(isOffline);
 
-	public static async Task<List<IFeature>> CreateLocalTexts()
-	{
-		using var stream = await FileSystem.OpenAppPackageFileAsync("mva.text.json");
+		if (SourceList is null)
+			return null;
 
-		return await CreateTexts(stream);
-	}
-
-	private static async Task<List<IFeature>> CreateTexts(Stream stream)
-	{
-		List<IFeature> texts = new();
-
-		var result = await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, LabelTextsRecord[]>));
-
-		if (result is Dictionary<string, LabelTextsRecord[]> dic)
+		await Parallel.ForEachAsync(SourceList, async (kvp, cToken) =>
 		{
-			foreach (var arr in dic)
-				foreach (var v in arr.Value)
-					texts.Add(CreateLabelFeature(v));
-		}
+			LabelTextsRecord[] labelsRecord = null;
 
-		return texts;
+			if (string.IsNullOrWhiteSpace(kvp.Value.Label))
+				return;
+
+			using (var stream = await GetAssetStreamAsync(isOffline, kvp.Value.Label, cToken))
+			{
+				try
+				{
+					labelsRecord = await JsonSerializer.DeserializeAsync(stream, typeof(LabelTextsRecord[])) as LabelTextsRecord[];
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine($"Failed to load '{kvp.Key}' Labels JSON (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
+					return;
+				}
+
+				await Parallel.ForEachAsync(labelsRecord, (v, cToken) =>
+				{
+					var feature = CreateLabelFeature(v);
+
+					feature["ICAO"] = kvp.Key;
+
+					MVALabels.Add(feature);
+					return ValueTask.CompletedTask;
+				});
+
+			}
+		});
+
+		return MVALabels.ToArray();
 	}
 
-	private static IFeature CreateLabelFeature(LabelTextsRecord d)
+	private static PointFeature CreateLabelFeature(LabelTextsRecord d)
 	{
 		MPoint pt = new();
 
@@ -148,7 +182,7 @@ public static class MinimumVectoringAltitude
 		else
 			throw new ArgumentNullException("X-Y or Lon-Lat", "one of X-Y and Lon-Lat pairs must contain value");
 
-		return new PointFeature(pt)
+		return new(pt)
 		{
 			Styles = new List<IStyle>()
 			{
