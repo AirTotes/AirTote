@@ -1,6 +1,7 @@
 ﻿using FIS_J.Maps;
 using FIS_J.Models;
 using FIS_J.Services;
+using Mapsui.Extensions;
 using Mapsui.Layers;
 
 namespace FIS_J.FISJ;
@@ -25,6 +26,9 @@ public class TopPage : ContentPage
 
 		Map.Map.Layers.Add(MVA);
 		Map.Map.Layers.Add(MVAText);
+
+		Map.Map.Widgets.Add(new InfoWidget());
+		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 
 		Task.Run(async () =>
 		{
