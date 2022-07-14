@@ -14,7 +14,7 @@ using Mapsui.Styles;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Services;
 
 public static class MinimumVectoringAltitude
 {
