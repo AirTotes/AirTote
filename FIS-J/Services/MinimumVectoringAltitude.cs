@@ -48,8 +48,16 @@ public static class MinimumVectoringAltitude
 				return _OnlineSourceRecordDic;
 		}
 
-		using var stream = await GetAssetStreamAsync(isOffline, "mva.json");
-		return await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, MVASourceRecord>)) as Dictionary<string, MVASourceRecord>;
+		Dictionary<string, MVASourceRecord> result;
+		using (var stream = await GetAssetStreamAsync(isOffline, "mva.json"))
+			result = await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, MVASourceRecord>)) as Dictionary<string, MVASourceRecord>;
+
+		if (isOffline)
+			_OfflineSourceRecordDic = result;
+		else
+			_OnlineSourceRecordDic = result;
+
+		return result;
 	}
 
 	static WKTReader WKTReader { get; } = new();
