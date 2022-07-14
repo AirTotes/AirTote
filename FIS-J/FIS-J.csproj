@@ -40,10 +40,8 @@
 		<MtouchDebug>true</MtouchDebug>
 		<MtouchFastDev>true</MtouchFastDev>
 	</PropertyGroup>
-	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Release'">
-		<CodesignKey>iPhone Distribution: Kazunori Fujita (JYXQMVT4FS)</CodesignKey>
-		<CodesignProvision>FIS-J Distribution</CodesignProvision>
-		<ArchiveOnBuild>true</ArchiveOnBuild>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'Publish')">
+		<CodesignKey>iPhone Developer</CodesignKey>
 		<DebugType>none</DebugType>
 		<MtouchDebug>false</MtouchDebug>
 		<Optimize>true</Optimize>
@@ -52,6 +50,11 @@
 		<MtouchI18n>cjk</MtouchI18n>
 		<MtouchExtraArgs>--nowarn:109</MtouchExtraArgs>
 		<MtouchFloat32>true</MtouchFloat32>
+	</PropertyGroup>
+	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Publish'">
+		<CodesignKey>iPhone Distribution: Kazunori Fujita (JYXQMVT4FS)</CodesignKey>
+		<CodesignProvision>FIS-J Distribution</CodesignProvision>
+		<ArchiveOnBuild>true</ArchiveOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
 		<!-- App Icon -->
