@@ -31,6 +31,7 @@ public class TopPage : ContentPage
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 
 		Shell.SetNavBarIsVisible(this, false);
+		Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
 
 		Task.Run(async () =>
 		{
