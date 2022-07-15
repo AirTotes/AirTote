@@ -24,10 +24,10 @@ public class TopPage : ContentPage
 
 		ResetCalloutText();
 
-		Map.Map.Layers.Add(MVA);
-		Map.Map.Layers.Add(MVAText);
+		Map.Map?.Layers.Add(MVA);
+		Map.Map?.Layers.Add(MVAText);
 
-		Map.Map.Widgets.Add(new InfoWidget());
+		Map.Map?.Widgets.Add(new InfoWidget());
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 
 		Task.Run(async () =>

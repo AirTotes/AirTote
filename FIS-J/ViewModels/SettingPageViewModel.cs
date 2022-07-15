@@ -9,8 +9,8 @@ namespace FIS_J.ViewModels
 			Title = "Settings";
 		}
 
-		HtmlWebViewSource _page = null;
-		public HtmlWebViewSource WebPage
+		HtmlWebViewSource? _page = null;
+		public HtmlWebViewSource? WebPage
 		{
 			get => _page;
 			set => SetProperty(ref _page, value);

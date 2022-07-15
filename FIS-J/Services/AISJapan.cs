@@ -36,13 +36,13 @@ namespace FIS_J.Services
 			Ctx.Dispose();
 		}
 
-		public async Task<IHtmlTableRowElement> GetWhatsNewAsync()
+		public async Task<IHtmlTableRowElement?> GetWhatsNewAsync()
 		{
 			var whatsnew = await WhatsNew;
 			return whatsnew.QuerySelector<IHtmlTableRowElement>("body > table > tbody > tr:nth-child(3)");
 		}
 
-		public async Task<IDocument> GetAIPAsync()
+		public async Task<IDocument?> GetAIPAsync()
 		{
 			var whatsnew = await WhatsNew;
 
@@ -50,7 +50,11 @@ namespace FIS_J.Services
 			if (menu_aip_list is null || menu_aip_list.Length < 1)
 				throw new Exception("cannot find menu-aip");
 
-			return await (menu_aip_list[0] as IHtmlImageElement).GetAncestor<IHtmlAnchorElement>().NavigateAsync();
+			var ancestor = (menu_aip_list[0] as IHtmlImageElement)?.GetAncestor<IHtmlAnchorElement>();
+			if (ancestor is null)
+				return null;
+
+			return await ancestor.NavigateAsync();
 		}
 
 		public async Task<string> GetPage(string url)

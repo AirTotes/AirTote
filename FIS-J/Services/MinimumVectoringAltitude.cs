@@ -33,9 +33,9 @@ public static class MinimumVectoringAltitude
 		public string? Label { get; set; }
 	}
 
-	static Dictionary<string, MVASourceRecord> _OnlineSourceRecordDic { get; set; } = null;
-	static Dictionary<string, MVASourceRecord> _OfflineSourceRecordDic { get; set; } = null;
-	static async Task<Dictionary<string, MVASourceRecord>> GetSourceRecordDic(bool isOffline)
+	static Dictionary<string, MVASourceRecord>? _OnlineSourceRecordDic { get; set; } = null;
+	static Dictionary<string, MVASourceRecord>? _OfflineSourceRecordDic { get; set; } = null;
+	static async Task<Dictionary<string, MVASourceRecord>?> GetSourceRecordDic(bool isOffline)
 	{
 		if (isOffline)
 		{
@@ -48,7 +48,7 @@ public static class MinimumVectoringAltitude
 				return _OnlineSourceRecordDic;
 		}
 
-		Dictionary<string, MVASourceRecord> result;
+		Dictionary<string, MVASourceRecord>? result;
 		using (var stream = await GetAssetStreamAsync(isOffline, "mva.json"))
 			result = await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, MVASourceRecord>)) as Dictionary<string, MVASourceRecord>;
 
@@ -70,18 +70,18 @@ public static class MinimumVectoringAltitude
 		=> isOffline ? FileSystem.OpenAppPackageFileAsync(Path.Combine(OFFLINE_BASE_PATH, fileName))
 		: HttpService.HttpClient.GetStreamAsync($"{SERVER_URL}/{fileName}", cToken);
 
-	public static async Task<Dictionary<string, GeometryFeature>> GetMVALines(bool isOffline = false)
+	public static async Task<Dictionary<string, GeometryFeature>?> GetMVALines(bool isOffline = false)
 	{
 		ConcurrentBag<KeyValuePair<string, GeometryFeature>> MVALines = new();
 
-		Dictionary<string, MVASourceRecord> SourceList = await GetSourceRecordDic(isOffline);
+		Dictionary<string, MVASourceRecord>? SourceList = await GetSourceRecordDic(isOffline);
 
 		if (SourceList is null)
 			return null;
 
 		await Parallel.ForEachAsync(SourceList, async (kvp, cToken) =>
 		{
-			Geometry geometry = null;
+			Geometry geometry;
 
 			if (string.IsNullOrWhiteSpace(kvp.Value.Chart))
 				return;
@@ -111,7 +111,7 @@ public static class MinimumVectoringAltitude
 	class LabelTextsRecord
 	{
 		[JsonPropertyName("text")]
-		public string Text { get; set; }
+		public string Text { get; set; } = String.Empty;
 
 		[JsonPropertyName("lon")]
 		public double? Lon { get; set; }
@@ -132,18 +132,18 @@ public static class MinimumVectoringAltitude
 		public double? MaxVisible { get; set; }
 	}
 
-	public static async Task<PointFeature[]> GetMVALabels(bool isOffline = false)
+	public static async Task<PointFeature[]?> GetMVALabels(bool isOffline = false)
 	{
 		ConcurrentBag<PointFeature> MVALabels = new();
 
-		Dictionary<string, MVASourceRecord> SourceList = await GetSourceRecordDic(isOffline);
+		Dictionary<string, MVASourceRecord>? SourceList = await GetSourceRecordDic(isOffline);
 
 		if (SourceList is null)
 			return null;
 
 		await Parallel.ForEachAsync(SourceList, async (kvp, cToken) =>
 		{
-			LabelTextsRecord[] labelsRecord = null;
+			LabelTextsRecord[]? labelsRecord = null;
 
 			if (string.IsNullOrWhiteSpace(kvp.Value.Label))
 				return;
@@ -152,13 +152,16 @@ public static class MinimumVectoringAltitude
 			{
 				try
 				{
-					labelsRecord = await JsonSerializer.DeserializeAsync(stream, typeof(LabelTextsRecord[])) as LabelTextsRecord[];
+					labelsRecord = await JsonSerializer.DeserializeAsync(stream, typeof(LabelTextsRecord[]), cancellationToken: cToken) as LabelTextsRecord[];
 				}
 				catch (Exception ex)
 				{
 					Console.WriteLine($"Failed to load '{kvp.Key}' Labels JSON (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
 					return;
 				}
+
+				if (labelsRecord is null)
+					return;
 
 				await Parallel.ForEachAsync(labelsRecord, (v, cToken) =>
 				{

@@ -3,7 +3,7 @@
 	public static class ICAOCodes
 	{
 		public static readonly string[] Names = System.Enum.GetNames(typeof(ICAOCode));
-		public static readonly ICAOCode[] Codes = System.Enum.GetValues(typeof(ICAOCode)) as ICAOCode[];
+		public static readonly ICAOCode[] Codes = System.Enum.GetValues(typeof(ICAOCode)) as ICAOCode[] ?? Array.Empty<ICAOCode>();
 	}
 
 	/// <summary>International Civil Aviation Organization Location Inticators</summary>

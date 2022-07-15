@@ -9,28 +9,32 @@ public class AirportMap : AirMap
 {
 	const string AP_ICON_SVG = "MapIcons/flight.svg";
 
-	static Dictionary<string, AirportInfo.APInfo> StationsDic { get; set; } = null;
+	static Dictionary<string, AirportInfo.APInfo> StationsDic { get; } = new();
 
-	public event EventHandler<AirportSelectedEventArgs> AirportSelected;
-	public event EventHandler<AirportSelectedEventArgs> AirportClicked;
+	public event EventHandler<AirportSelectedEventArgs>? AirportSelected;
+	public event EventHandler<AirportSelectedEventArgs>? AirportClicked;
 
-	public AirportMap(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText = null)
+	public AirportMap(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
 	{
 		Init(setCalloutText);
 	}
 
-	public AirportMap(double longitude, double latitude, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText = null)
+	public AirportMap(double longitude, double latitude, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
 		: base(longitude, latitude)
 	{
 		Init(setCalloutText);
 	}
 
-	private async void Init(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText)
+	private async void Init(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText)
 	{
-		Map.Layers.Add(LatLngLayerGenerator.Generate());
+		Map?.Layers.Add(LatLngLayerGenerator.Generate());
 		PinClicked += OnPinClicked;
 
-		StationsDic ??= await AirportInfo.getAPInfoDic();
+		if (StationsDic.Count <= 0)
+		{
+			foreach (var kvp in await AirportInfo.getAPInfoDic())
+				StationsDic[kvp.Key] = kvp.Value;
+		}
 
 		Pins.Clear();
 
@@ -61,21 +65,21 @@ public class AirportMap : AirMap
 		}
 	}
 
-	public void SetCalloutText(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText = null)
+	public void SetCalloutText(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
 	{
 		foreach (var pin in Pins)
 		{
 			if (pin is not CustomTextCalloutPin cpin)
 				continue;
 
-			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+			if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo? apinfo) || apinfo is null)
 				return;
 
 			SetCalloutText(cpin, apinfo, setCalloutText);
 		}
 	}
 
-	private void SetCalloutText(CustomTextCalloutPin pin, AirportInfo.APInfo ap, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>> setCalloutText)
+	private void SetCalloutText(CustomTextCalloutPin pin, AirportInfo.APInfo ap, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText)
 	{
 		using CalloutText baseText = new($"{ap.icao} ({ap.name})");
 		CalloutText[] baseTextArr = new[] { baseText };
@@ -85,7 +89,7 @@ public class AirportMap : AirMap
 		pin.SetCalloutText(calloutTexts);
 	}
 
-	private void OnPinClicked(object sender, PinClickedEventArgs e)
+	private void OnPinClicked(object? sender, PinClickedEventArgs e)
 	{
 		var pin = e.Pin;
 		if (pin is null)
@@ -95,7 +99,7 @@ public class AirportMap : AirMap
 
 		e.Handled = true;
 
-		if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+		if (!StationsDic.TryGetValue(pin.Label, out AirportInfo.APInfo? apinfo) || apinfo is null)
 			return;
 
 		if (pin.IsCalloutVisible())
@@ -108,10 +112,13 @@ public class AirportMap : AirMap
 		}
 	}
 
-	private void OnCalloutClicked(object sender, CalloutClickedEventArgs e)
+	private void OnCalloutClicked(object? sender, CalloutClickedEventArgs e)
 	{
-		e.Callout.Pin.HideCallout();
-		if (!StationsDic.TryGetValue(e.Callout.Pin.Label, out AirportInfo.APInfo apinfo) || apinfo is null)
+		if (e.Callout is not Callout callout)
+			return;
+
+		callout.Pin.HideCallout();
+		if (!StationsDic.TryGetValue(callout.Pin.Label, out AirportInfo.APInfo? apinfo) || apinfo is null)
 			return;
 
 		AirportSelected?.Invoke(this, new(apinfo));

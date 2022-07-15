@@ -7,9 +7,9 @@ namespace FIS_J.Maps;
 
 public class MVALabelLayer : Layer
 {
-	new MemoryProvider DataSource { get => base.DataSource as MemoryProvider; set => base.DataSource = value; }
+	new MemoryProvider? DataSource { get => base.DataSource as MemoryProvider; set => base.DataSource = value; }
 
-	PointFeature[] Features { get; set; }
+	//PointFeature[] Features { get; set; }
 
 	public MVALabelLayer()
 	{
@@ -19,9 +19,13 @@ public class MVALabelLayer : Layer
 
 		Style = null;
 
-		Task.Run(async () => DataSource = new(await MinimumVectoringAltitude.GetMVALabels(true)));
+		Task.Run(async () => await ReloadAsync(true));
 	}
 
-	public async Task ReloadAsync()
-		=> DataSource = new(await MinimumVectoringAltitude.GetMVALabels());
+	public async Task ReloadAsync(bool isOffline = false)
+	{
+		var result = await MinimumVectoringAltitude.GetMVALabels(isOffline);
+		if (result is not null)
+			DataSource = new(result);
+	}
 }

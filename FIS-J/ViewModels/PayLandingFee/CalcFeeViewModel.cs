@@ -79,7 +79,7 @@ namespace FIS_J.ViewModels.PayLandingFee
 			}
 		}
 
-		AirportInfo.APInfo _AirportInfo = null;
+		AirportInfo.APInfo _AirportInfo = new();
 		public AirportInfo.APInfo AirportInfo
 		{
 			get => _AirportInfo;

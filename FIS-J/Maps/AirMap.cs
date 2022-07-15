@@ -14,10 +14,7 @@ namespace FIS_J.Maps
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		public AirMap()
-		{
-			Init(DEFAULT_CENTER_LONGITUDE, DEFAULT_CENTER_LATITUDE);
-		}
+		public AirMap() : this(DEFAULT_CENTER_LONGITUDE, DEFAULT_CENTER_LATITUDE) { }
 
 		public AirMap(double longitude, double latitude)
 		{
@@ -26,6 +23,9 @@ namespace FIS_J.Maps
 
 		private void Init(double longitude, double latitude)
 		{
+			if (Map is null)
+				throw new NullReferenceException("Cannot use NULL Map");
+
 			Map.Layers.Add(OpenStreetMap.CreateTileLayer());
 
 			var reso = Map.Resolutions[Math.Min(Map.Resolutions.Count - 1, 9)];
@@ -56,7 +56,7 @@ namespace FIS_J.Maps
 		public void MoveTo(in Position latlng)
 			=> MoveTo(longitude: latlng.Longitude, latitude: latlng.Latitude);
 		public void MoveTo(in double longitude, in double latitude)
-			=> Navigator.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
+			=> Navigator?.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
 	}
 }
 

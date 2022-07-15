@@ -27,7 +27,7 @@ public class GetRemoteCsv
 			while (!csvParser.EndOfData)
 			{
 				var fields = csvParser.ReadFields();
-				if (csvParser.LineNumber == 0 || fields.Length < 2)
+				if (csvParser.LineNumber == 0 || fields is null || fields.Length < 2)
 					continue;
 
 				_Data[fields[0]] = fields[1..].ToArray();

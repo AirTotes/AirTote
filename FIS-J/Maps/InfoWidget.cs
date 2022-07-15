@@ -9,9 +9,9 @@ namespace FIS_J.Maps;
 
 public class InfoWidget : Widget, INotifyPropertyChanged
 {
-	public event PropertyChangedEventHandler PropertyChanged;
+	public event PropertyChangedEventHandler? PropertyChanged;
 
-	private MPoint _TapPos;
+	private MPoint _TapPos = new();
 	public MPoint TapPos
 	{
 		get => _TapPos;

@@ -11,7 +11,7 @@ namespace FIS_J.Models
 	{
 		static Dictionary<string, APInfo> AirportInfoDic { get; } = new();
 
-		public static async Task<APInfo> GetAPInfoAsync(string icao)
+		public static async Task<APInfo?> GetAPInfoAsync(string icao)
 		{
 			var dic = await getAPInfoDic();
 
@@ -43,15 +43,15 @@ namespace FIS_J.Models
 
 		public class APInfo
 		{
-			public string aid { get; set; }
-			public string icao { get; set; }
-			public string iata { get; set; }
-			public string faa { get; set; }
-			public LatLng coordinates { get; set; }
-			public Country country { get; set; }
-			public string timezone { get; set; }
-			public string name { get; set; }
-			public string servedCity { get; set; }
+			public string aid { get; set; } = string.Empty;
+			public string icao { get; set; } = string.Empty;
+			public string iata { get; set; } = string.Empty;
+			public string faa { get; set; } = string.Empty;
+			public LatLng coordinates { get; set; } = new();
+			public Country country { get; set; } = new();
+			public string timezone { get; set; } = string.Empty;
+			public string name { get; set; } = string.Empty;
+			public string servedCity { get; set; } = string.Empty;
 		}
 
 		public class LatLng
@@ -62,12 +62,12 @@ namespace FIS_J.Models
 
 		public class Country
 		{
-			public string iso2 { get; set; }
-			public string iso3 { get; set; }
+			public string iso2 { get; set; } = string.Empty;
+			public string iso3 { get; set; } = string.Empty;
 			public int isoNumeric { get; set; }
-			public string name { get; set; }
-			public string officialName { get; set; }
-			public string locationIdentifierName { get; set; }
+			public string name { get; set; } = string.Empty;
+			public string officialName { get; set; } = string.Empty;
+			public string locationIdentifierName { get; set; } = string.Empty;
 		}
 	}
 }

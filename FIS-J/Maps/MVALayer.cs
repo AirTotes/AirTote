@@ -39,7 +39,7 @@ public class MVALayer : Layer
 		}
 	};
 
-	new MemoryProvider DataSource { get => base.DataSource as MemoryProvider; set => base.DataSource = value; }
+	new MemoryProvider? DataSource { get => base.DataSource as MemoryProvider; set => base.DataSource = value; }
 
 	Dictionary<string, GeometryFeature> Geometries { get; } = new();
 
@@ -54,6 +54,9 @@ public class MVALayer : Layer
 		Task.Run(async () =>
 		{
 			var geometries = await MinimumVectoringAltitude.GetMVALines(true);
+
+			if (geometries is null)
+				return;
 
 			ApplyStyle(geometries.Values, NormalStyle);
 
@@ -70,6 +73,9 @@ public class MVALayer : Layer
 	public async Task ReloadAsync()
 	{
 		var geometries = await MinimumVectoringAltitude.GetMVALines();
+
+		if (geometries is null)
+			return;
 
 		ApplyStyle(geometries.Values, NormalStyle);
 
