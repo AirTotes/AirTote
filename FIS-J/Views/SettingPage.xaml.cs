@@ -30,6 +30,11 @@ abcde
 				System.Diagnostics.Debug.WriteLine("Start");
 
 				var result = await ais.GetWhatsNewAsync();
+				if (result is null)
+				{
+					System.Diagnostics.Debug.WriteLine("result is NULL");
+					return;
+				}
 				viewModel.WebPage = new HtmlWebViewSource()
 				{
 					Html = result.ToHtml()

@@ -8,7 +8,7 @@ public class CalloutText : IDisposable
 
 	public SKPaint Paint { get; }
 
-	public string Text { get; init; } = null;
+	public string Text { get; init; } = string.Empty;
 
 	public SKColor FontColor { get; init; } = SKColors.Black;
 	public string FontFamily { get; init; } = "BIZUDGothic-Regular";
@@ -20,7 +20,7 @@ public class CalloutText : IDisposable
 	private SKRect _TextBounds;
 	public SKRect TextBounds => _TextBounds;
 
-	private static SKTypeface _Typeface = null;
+	private static SKTypeface? _Typeface = null;
 	private SKTypeface Typeface
 	{
 		get
@@ -36,9 +36,10 @@ public class CalloutText : IDisposable
 		}
 	}
 
-	public CalloutText(in string text = "", in CalloutText upper = null, in float linePadding = 2f)
+	public CalloutText(in string text = "", in CalloutText? upper = null, in float linePadding = 2f)
 	{
-		Text ??= text;
+		if (string.IsNullOrEmpty(Text))
+			Text = text;
 
 		Paint = new()
 		{
