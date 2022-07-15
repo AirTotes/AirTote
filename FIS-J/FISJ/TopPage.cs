@@ -30,6 +30,8 @@ public class TopPage : ContentPage
 		Map.Map?.Widgets.Add(new InfoWidget());
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 
+		Shell.SetNavBarIsVisible(this, false);
+
 		Task.Run(async () =>
 		{
 			try
