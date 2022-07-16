@@ -54,6 +54,8 @@ public class AirportMap : AirMap
 
 				Scale = 0.5f,
 
+				Anchor = new(0, 0),
+
 				Svg = svg_str,
 			};
 
