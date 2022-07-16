@@ -27,8 +27,13 @@ public class TopPage : ContentPage
 		Map.Map?.Layers.Add(MVA);
 		Map.Map?.Layers.Add(MVAText);
 
-		Map.Map?.Widgets.Add(new InfoWidget());
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
+
+		Map.Map?.Widgets.Add(new InfoWidget()
+		{
+			VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom,
+			HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
+		});
 
 		Shell.SetNavBarIsVisible(this, false);
 		Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
