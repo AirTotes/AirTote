@@ -28,6 +28,41 @@ public class TopPage : ContentPage
 		Map.Map?.Layers.Add(MVAText);
 
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
+		Map.Renderer.WidgetRenders[typeof(ButtonWidget)] = new ButtonWidgetRenderer();
+
+		Map.Map?.Widgets.Add(new InfoWidget()
+		{
+			VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom,
+			HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
+		});
+
+		Task.Run(async () =>
+		{
+			ButtonWidget widget;
+
+			try
+			{
+				using (var stream = await FileSystem.OpenAppPackageFileAsync("menu_FILL0_wght700_GRAD0_opsz48.svg"))
+					widget = new(await new StreamReader(stream).ReadToEndAsync())
+					{
+						MarginX = 4,
+						MarginY = 8,
+					};
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+				return;
+			}
+
+			widget.WidgetTouched += (s, e) =>
+			{
+				OnMenuButtonClicked();
+				e.Handled = true;
+			};
+
+			Map.Map?.Widgets.Add(widget);
+		});
 
 		Map.Map?.Widgets.Add(new InfoWidget()
 		{
@@ -111,6 +146,20 @@ public class TopPage : ContentPage
 			return;
 #endif
 		});
+	}
+
+	private void OnMenuButtonClicked()
+	{
+		if (MainThread.IsMainThread)
+		{
+			Shell.SetFlyoutBehavior(this, Shell.GetFlyoutBehavior(this) switch
+			{
+				FlyoutBehavior.Disabled or FlyoutBehavior.Flyout => FlyoutBehavior.Locked,
+				_ => FlyoutBehavior.Disabled
+			});
+		}
+		else
+			MainThread.BeginInvokeOnMainThread(OnMenuButtonClicked);
 	}
 
 	bool ResetCalloutTextRunning = false;
