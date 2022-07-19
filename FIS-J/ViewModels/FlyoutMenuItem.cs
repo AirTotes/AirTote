@@ -18,6 +18,9 @@ public class FlyoutMenuItem : BaseViewModel
 			_Page = new(RootPage);
 		}
 		Title = _RootPage.Title;
+
+		Page.Pushed += PageHost.OnNavigated;
+		Page.Popped += PageHost.OnNavigated;
 	}
 
 	private Page _RootPage;

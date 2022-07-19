@@ -1,13 +1,13 @@
 ﻿using System.Collections.ObjectModel;
-
 using FIS_J.ViewModels;
-
 namespace FIS_J;
 
 public partial class FlyoutMenuPage : ContentPage
 {
 	ObservableCollection<FlyoutMenuItem> _MenuItems { get; } = new();
 	public IReadOnlyCollection<FlyoutMenuItem> MenuItems => _MenuItems;
+
+	public SwipeGestureRecognizer CloseSwipeGesture { get; } = new SwipeGestureRecognizer { Direction = SwipeDirection.Left };
 
 	public FlyoutMenuPage(NavigationPage topNavPage)
 	{
@@ -28,5 +28,7 @@ public partial class FlyoutMenuPage : ContentPage
 			_MenuItems.Add(new(new FISJ.PayLandingFee.CalcFee()));
 			_MenuItems.Add(new(new Views.SettingPage()));
 		});
+
+		Content.GestureRecognizers.Add(CloseSwipeGesture);
 	}
 }
