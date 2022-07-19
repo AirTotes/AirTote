@@ -32,12 +32,15 @@ public class TopPage : ContentPage, IDisableFlyoutGesture, IContainFlyoutPageIns
 
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 		Map.Renderer.WidgetRenders[typeof(ButtonWidget)] = new ButtonWidgetRenderer();
+		Map.Renderer.WidgetRenders[typeof(StatusBarBGWidget)] = new StatusBarBGWidgetRenderer();
 
 		Map.Map?.Widgets.Add(new InfoWidget()
 		{
 			VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom,
 			HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
 		});
+
+		Map.Map?.Widgets.Add(new StatusBarBGWidget());
 
 		Task.Run(async () =>
 		{
@@ -49,7 +52,7 @@ public class TopPage : ContentPage, IDisableFlyoutGesture, IContainFlyoutPageIns
 					widget = new(await new StreamReader(stream).ReadToEndAsync())
 					{
 						MarginX = 4,
-						MarginY = 8,
+						MarginY = StatusBarBGWidgetRenderer.Height,
 					};
 			}
 			catch (Exception ex)
