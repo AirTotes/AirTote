@@ -64,11 +64,6 @@ public class TopPage : ContentPage
 			Map.Map?.Widgets.Add(widget);
 		});
 
-		Map.Map?.Widgets.Add(new InfoWidget()
-		{
-			VerticalAlignment = Mapsui.Widgets.VerticalAlignment.Bottom,
-			HorizontalAlignment = Mapsui.Widgets.HorizontalAlignment.Left,
-		});
 
 		Shell.SetNavBarIsVisible(this, false);
 		Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
