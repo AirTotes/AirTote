@@ -4,6 +4,8 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="FIS_J.FlyoutMenuPage"
 	Title="Menu"
+	BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+	Opacity="0.9"
 	IconImageSource="hamburger_icon.png">
 	<Grid>
 		<CollectionView
