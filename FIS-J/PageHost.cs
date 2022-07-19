@@ -28,6 +28,7 @@ public class PageHost : FlyoutPage
 			return;
 
 		ChangeRootPage(menuItem.Page);
+		MenuPage.PageListView.SelectedItem = null;
 	}
 
 	void ChangeRootPage(Page page)
