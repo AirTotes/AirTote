@@ -13,6 +13,8 @@ namespace FIS_J.FISJ.PayLandingFee
 			var latlng = airportInfo?.AirportInfo?.coordinates
 				?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
 
+			PageHost.SetIsGestureEnabled(typeof(SelectAirport), false);
+
 			AirportMap map = new(latlng.longitude, latlng.latitude);
 			map.AirportSelected += async (_, e) =>
 			{

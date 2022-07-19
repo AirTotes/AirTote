@@ -9,9 +9,34 @@ public class PageHost : FlyoutPage
 	TopPage topPage { get; }
 	NavigationPage topNavPage { get; }
 	FlyoutMenuPage MenuPage { get; }
+	static FlyoutPage? _this { get; set; }
+
+	static Dictionary<Type, bool> IsGestureEnabledDic { get; } = new();
+	public static void SetIsGestureEnabled(Type target, bool value)
+	 => IsGestureEnabledDic[target] = value;
+
+	static public void OnNavigated(object? sender, NavigationEventArgs e)
+	{
+		if (sender is not NavigationPage navP)
+			return;
+
+		OnPageChanged(navP.CurrentPage);
+	}
+
+	static public void OnPageChanged(Page newPage)
+	{
+		if (_this is null)
+			return;
+
+		if (IsGestureEnabledDic.TryGetValue(newPage.GetType(), out bool value))
+			_this.IsGestureEnabled = value;
+		else
+			_this.IsGestureEnabled = true;
+	}
 
 	public PageHost()
 	{
+		_this = this;
 		topPage = new();
 		topNavPage = new(topPage);
 		MenuPage = new(topNavPage);
@@ -21,6 +46,9 @@ public class PageHost : FlyoutPage
 			if (!IsGestureEnabled)
 				IsPresented = false;
 		};
+
+		topNavPage.Popped += OnNavigated;
+		topNavPage.Pushed += OnNavigated;
 
 		Flyout = MenuPage;
 
@@ -47,7 +75,6 @@ public class PageHost : FlyoutPage
 	{
 		IsPresented = false;
 
-		IsGestureEnabled = contentP is not IDisableFlyoutGesture;
 		if (contentP is IContainFlyoutPageInstance i)
 			i.FlyoutPage = this;
 
@@ -57,6 +84,9 @@ public class PageHost : FlyoutPage
 
 		await navP.PopToRootAsync();
 
+		OnPageChanged(navP.CurrentPage);
+
 		Detail = navP;
 	}
+
 }

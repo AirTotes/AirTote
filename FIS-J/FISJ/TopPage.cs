@@ -7,7 +7,7 @@ using Mapsui.Layers;
 
 namespace FIS_J.FISJ;
 
-public class TopPage : ContentPage, IDisableFlyoutGesture, IContainFlyoutPageInstance
+public class TopPage : ContentPage, IContainFlyoutPageInstance
 {
 	AirportMap Map { get; } = new();
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
@@ -71,6 +71,7 @@ public class TopPage : ContentPage, IDisableFlyoutGesture, IContainFlyoutPageIns
 		});
 
 		NavigationPage.SetHasNavigationBar(this, false);
+		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
 
 		Task.Run(async () =>
 		{
