@@ -1,4 +1,5 @@
 ﻿using FIS_J.FISJ;
+using FIS_J.Interfaces;
 using FIS_J.ViewModels;
 
 namespace FIS_J;
@@ -39,6 +40,10 @@ public class PageHost : FlyoutPage
 	async void ChangeRootPage(NavigationPage navP, Page contentP)
 	{
 		IsPresented = false;
+
+		IsGestureEnabled = contentP is not IDisableFlyoutGesture;
+		if (contentP is IContainFlyoutPageInstance i)
+			i.FlyoutPage = this;
 
 #if !IOS
 		navP = new(contentP);

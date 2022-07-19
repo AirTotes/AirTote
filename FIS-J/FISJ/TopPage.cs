@@ -1,4 +1,5 @@
-﻿using FIS_J.Maps;
+﻿using FIS_J.Interfaces;
+using FIS_J.Maps;
 using FIS_J.Models;
 using FIS_J.Services;
 using Mapsui.Extensions;
@@ -6,7 +7,7 @@ using Mapsui.Layers;
 
 namespace FIS_J.FISJ;
 
-public class TopPage : ContentPage
+public class TopPage : ContentPage, IDisableFlyoutGesture, IContainFlyoutPageInstance
 {
 	AirportMap Map { get; } = new();
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
@@ -14,6 +15,8 @@ public class TopPage : ContentPage
 
 	MVALayer MVA { get; set; } = new();
 	MVALabelLayer MVAText { get; set; } = new();
+
+	public FlyoutPage? FlyoutPage { get; set; }
 
 	public TopPage()
 	{
@@ -64,9 +67,7 @@ public class TopPage : ContentPage
 			Map.Map?.Widgets.Add(widget);
 		});
 
-
-		Shell.SetNavBarIsVisible(this, false);
-		Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
+		NavigationPage.SetHasNavigationBar(this, false);
 
 		Task.Run(async () =>
 		{
@@ -147,11 +148,8 @@ public class TopPage : ContentPage
 	{
 		if (MainThread.IsMainThread)
 		{
-			Shell.SetFlyoutBehavior(this, Shell.GetFlyoutBehavior(this) switch
-			{
-				FlyoutBehavior.Disabled or FlyoutBehavior.Flyout => FlyoutBehavior.Locked,
-				_ => FlyoutBehavior.Disabled
-			});
+			if (FlyoutPage is not null)
+				FlyoutPage.IsPresented = !FlyoutPage.IsPresented;
 		}
 		else
 			MainThread.BeginInvokeOnMainThread(OnMenuButtonClicked);
