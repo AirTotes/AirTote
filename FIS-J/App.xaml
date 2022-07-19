@@ -40,6 +40,14 @@
 					Property="Background"
 					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
 			</Style>
+			<Style TargetType="NavigationPage">
+				<Setter
+					Property="BarTextColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+				<Setter
+					Property="BarBackground"
+					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+			</Style>
 			<Style TargetType="Button">
 				<Setter
 					Property="Margin"
