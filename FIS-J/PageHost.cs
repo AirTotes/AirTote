@@ -24,7 +24,7 @@ public class PageHost : FlyoutPage
 
 	private void PageListView_SelectionChanged(object? sender, SelectionChangedEventArgs e)
 	{
-		if (e.CurrentSelection.FirstOrDefault() is not FlyoutMenuItem menuItem)
+		if (e.CurrentSelection.Count <= 0 || e.CurrentSelection[0] is not FlyoutMenuItem menuItem)
 			return;
 
 		ChangeRootPage(menuItem.Page);
