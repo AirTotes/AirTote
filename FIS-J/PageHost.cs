@@ -16,6 +16,12 @@ public class PageHost : FlyoutPage
 		topNavPage = new(topPage);
 		MenuPage = new(topNavPage);
 
+		MenuPage.CloseSwipeGesture.Swiped += (_, _) =>
+		{
+			if (!IsGestureEnabled)
+				IsPresented = false;
+		};
+
 		Flyout = MenuPage;
 
 		ChangeRootPage(topNavPage, topPage);
