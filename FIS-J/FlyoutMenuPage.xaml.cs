@@ -6,26 +6,27 @@ namespace FIS_J;
 
 public partial class FlyoutMenuPage : ContentPage
 {
-	ObservableCollection<FlyoutMenuItem> MenuItems { get; } = new();
+	ObservableCollection<FlyoutMenuItem> _MenuItems { get; } = new();
+	public IReadOnlyCollection<FlyoutMenuItem> MenuItems => _MenuItems;
 
-	public FlyoutMenuPage(Page topPage)
+	public FlyoutMenuPage(NavigationPage topNavPage)
 	{
 		InitializeComponent();
 
 		WidthRequest = 300;
 
-		PageListView.ItemsSource = MenuItems;
+		PageListView.ItemsSource = _MenuItems;
 
 		Task.Run(() =>
 		{
-			MenuItems.Add(new(topPage));
-			MenuItems.Add(new(new FISJ.SubmitReport()));
-			MenuItems.Add(new(new FISJ.ReservePages.ReserveSpotAndFuel()));
-			MenuItems.Add(new(new FISJ.aero()));
-			MenuItems.Add(new(new FISJ.WetherInformation()));
-			MenuItems.Add(new(new FISJ.IcaoPage()));
-			MenuItems.Add(new(new FISJ.PayLandingFee.CalcFee()));
-			MenuItems.Add(new(new Views.SettingPage()));
+			_MenuItems.Add(new(topNavPage));
+			_MenuItems.Add(new(new FISJ.SubmitReport()));
+			_MenuItems.Add(new(new FISJ.ReservePages.ReserveSpotAndFuel()));
+			_MenuItems.Add(new(new FISJ.aero()));
+			_MenuItems.Add(new(new FISJ.WetherInformation()));
+			_MenuItems.Add(new(new FISJ.IcaoPage()));
+			_MenuItems.Add(new(new FISJ.PayLandingFee.CalcFee()));
+			_MenuItems.Add(new(new Views.SettingPage()));
 		});
 	}
 }

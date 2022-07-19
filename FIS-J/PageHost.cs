@@ -6,16 +6,18 @@ namespace FIS_J;
 public class PageHost : FlyoutPage
 {
 	TopPage topPage { get; }
+	NavigationPage topNavPage { get; }
 	FlyoutMenuPage MenuPage { get; }
 
 	public PageHost()
 	{
 		topPage = new();
-		MenuPage = new(topPage);
+		topNavPage = new(topPage);
+		MenuPage = new(topNavPage);
 
 		Flyout = MenuPage;
 
-		ChangeRootPage(topPage);
+		ChangeRootPage(topNavPage, topPage);
 		MenuPage.PageListView.SelectionChanged += PageListView_SelectionChanged;
 
 		// ref: https://github.com/dotnet/maui/issues/7520
@@ -27,13 +29,23 @@ public class PageHost : FlyoutPage
 		if (e.CurrentSelection.Count <= 0 || e.CurrentSelection[0] is not FlyoutMenuItem menuItem)
 			return;
 
-		ChangeRootPage(menuItem.Page);
+		ChangeRootPage(menuItem);
 		MenuPage.PageListView.SelectedItem = null;
 	}
 
-	void ChangeRootPage(Page page)
+	void ChangeRootPage(FlyoutMenuItem item)
+		=> ChangeRootPage(item.Page, item.RootPage);
+
+	async void ChangeRootPage(NavigationPage navP, Page contentP)
 	{
-		Detail = new NavigationPage(page);
 		IsPresented = false;
+
+#if !IOS
+		navP = new(contentP);
+#endif
+
+		await navP.PopToRootAsync();
+
+		Detail = navP;
 	}
 }

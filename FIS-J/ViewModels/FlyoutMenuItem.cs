@@ -7,11 +7,22 @@ public class FlyoutMenuItem : BaseViewModel
 		if (page is null)
 			throw new ArgumentNullException(nameof(page));
 
-		_Page = page;
-		Title = page.Title;
+		if (page is NavigationPage navPage)
+		{
+			_RootPage = navPage.RootPage;
+			_Page = navPage;
+		}
+		else
+		{
+			_RootPage = page;
+			_Page = new(RootPage);
+		}
+		Title = _RootPage.Title;
 	}
 
-	private Page _Page;
-	public Page Page => _Page;
+	private Page _RootPage;
+	public Page RootPage => _RootPage;
+	private NavigationPage _Page;
+	public NavigationPage Page => _Page;
 }
 
