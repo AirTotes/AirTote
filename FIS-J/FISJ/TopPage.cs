@@ -4,6 +4,7 @@ using FIS_J.Models;
 using FIS_J.Services;
 using Mapsui.Extensions;
 using Mapsui.Layers;
+using Topten.RichTextKit;
 
 namespace FIS_J.FISJ;
 
@@ -186,20 +187,20 @@ public class TopPage : ContentPage, IContainFlyoutPageInstance
 		}
 	}
 
-	private IEnumerable<CalloutText> setCalloutTextAction(AirportInfo.APInfo ap, IEnumerable<CalloutText> upper)
+	private RichString setCalloutTextAction(AirportInfo.APInfo ap, RichString str)
 	{
-		List<CalloutText> texts = new(upper);
-
 		METAR.Data.TryGetValue(ap.icao, out var _metar);
 		TAF.Data.TryGetValue(ap.icao, out var _taf);
 
-		CalloutText metar = new($"METAR:\t{_metar?.FirstOrDefault() ?? "N/A"}", upper.Last());
-		CalloutText taf = new($"TAF:\t{_taf?.FirstOrDefault() ?? "N/A"}", metar);
+		str
+			.Alignment(Topten.RichTextKit.TextAlignment.Left)
+			.Add($"METAR: {_metar?.FirstOrDefault() ?? "N/A"}", fontSize: 14);
+		str
+			.Paragraph()
+			.Alignment(Topten.RichTextKit.TextAlignment.Left)
+			.Add($"  TAF: {_taf?.FirstOrDefault() ?? "N/A"}", fontSize: 14);
 
-		texts.Add(metar);
-		texts.Add(taf);
-
-		return texts;
+		return str;
 	}
 }
 
