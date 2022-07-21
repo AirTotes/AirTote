@@ -1,5 +1,9 @@
-﻿using FIS_J.Models;
+﻿using System.Linq;
+using FIS_J.Models;
 using Mapsui.UI.Maui;
+using Topten.RichTextKit;
+
+using TCalloutTextGen = System.Func<FIS_J.Models.AirportInfo.APInfo, Topten.RichTextKit.RichString, Topten.RichTextKit.RichString>;
 
 namespace FIS_J.Maps;
 
@@ -14,18 +18,18 @@ public class AirportMap : AirMap
 	public event EventHandler<AirportSelectedEventArgs>? AirportSelected;
 	public event EventHandler<AirportSelectedEventArgs>? AirportClicked;
 
-	public AirportMap(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
+	public AirportMap(Func<AirportInfo.APInfo, RichString, RichString>? setCalloutText = null)
 	{
 		Init(setCalloutText);
 	}
 
-	public AirportMap(double longitude, double latitude, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
+	public AirportMap(double longitude, double latitude, TCalloutTextGen? setCalloutText = null)
 		: base(longitude, latitude)
 	{
 		Init(setCalloutText);
 	}
 
-	private async void Init(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText)
+	private async void Init(TCalloutTextGen? setCalloutText)
 	{
 		Map?.Layers.Add(LatLngLayerGenerator.Generate());
 		PinClicked += OnPinClicked;
@@ -67,7 +71,7 @@ public class AirportMap : AirMap
 		}
 	}
 
-	public void SetCalloutText(Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText = null)
+	public void SetCalloutText(TCalloutTextGen? setCalloutText = null)
 	{
 		foreach (var pin in Pins)
 		{
@@ -81,14 +85,27 @@ public class AirportMap : AirMap
 		}
 	}
 
-	private void SetCalloutText(CustomTextCalloutPin pin, AirportInfo.APInfo ap, Func<AirportInfo.APInfo, IEnumerable<CalloutText>, IEnumerable<CalloutText>>? setCalloutText)
+	private void SetCalloutText(CustomTextCalloutPin pin, AirportInfo.APInfo ap, TCalloutTextGen? setCalloutText)
 	{
-		using CalloutText baseText = new($"{ap.icao} ({ap.name})");
-		CalloutText[] baseTextArr = new[] { baseText };
+		RichString str = new();
 
-		IEnumerable<CalloutText> calloutTexts = setCalloutText?.Invoke(ap, baseTextArr) ?? baseTextArr;
+		str.Alignment(Topten.RichTextKit.TextAlignment.Center)
+			.Add($"{ap.icao} ({ap.name})", fontSize: 24, underline: UnderlineStyle.Solid)
+			.MarginBottom(8);
 
-		pin.SetCalloutText(calloutTexts);
+		if (setCalloutText is not null)
+		{
+			str
+				.Paragraph()
+				.MarginBottom(0);
+
+			str = setCalloutText(ap, str);
+		}
+
+		var tmpMaxWidth = (float)Math.Min(Height, Width) * 0.9f;
+		str.MaxWidth = tmpMaxWidth < 0 ? 300 : tmpMaxWidth;
+
+		pin.SetCalloutText(str);
 	}
 
 	private void OnPinClicked(object? sender, PinClickedEventArgs e)
