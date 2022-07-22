@@ -10,9 +10,9 @@ namespace FIS_J.Maps
 {
 	public static class LatLngLayerGenerator
 	{
-		const double MAX_RESO_LV_1 = 5000;
-		const double MAX_RESO_LV_2 = 1000;
-		const int LAT_LINE_MAX = 85;
+		public const double MAX_RESO_LV_1 = 5000;
+		public const double MAX_RESO_LV_2 = 1000;
+		public const int LAT_LINE_MAX = 85;
 		const double DEFAULT_OPACITY = 0.2;
 
 		static readonly double[] WIDTH_SET = new double[]
