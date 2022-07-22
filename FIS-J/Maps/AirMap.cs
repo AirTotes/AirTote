@@ -49,6 +49,9 @@ namespace FIS_J.Maps
 				pin.HideCallout();
 				e.Handled = true;
 			};
+
+			Map?.Widgets.Add(new LonLatLabelWidget());
+			Renderer.WidgetRenders[typeof(LonLatLabelWidget)] = new LonLatLabelWidgetRenderer();
 		}
 
 		public void MoveTo(AirportInfo.LatLng latlng)
