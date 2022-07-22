@@ -26,6 +26,14 @@ namespace FIS_J.Maps
 			0.7,
 		};
 
+		static public double GetLineStep(in double resolution)
+			=> resolution switch
+			{
+				var i when i <= MAX_RESO_LV_2 => 0.1,
+				var i when i <= MAX_RESO_LV_1 => 1,
+				_ => 5
+			};
+
 		static public ILayer[] Generate()
 		{
 			List<ILayer> layers = new();
