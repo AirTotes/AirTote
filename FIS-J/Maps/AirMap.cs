@@ -26,7 +26,10 @@ namespace FIS_J.Maps
 			if (Map is null)
 				throw new NullReferenceException("Cannot use NULL Map");
 
-			Map.Layers.Add(OpenStreetMap.CreateTileLayer());
+			Map.Layers.Add(TileProvider.CreateLayer());
+
+			Map.Widgets.Add(new TileLicenseWidget());
+			Renderer.WidgetRenders[typeof(TileLicenseWidget)] = new TileLicenseWidgetRenderer();
 
 			var reso = Map.Resolutions[Math.Min(Map.Resolutions.Count - 1, 9)];
 			Map.Home = v => v.NavigateTo(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), reso);

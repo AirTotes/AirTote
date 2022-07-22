@@ -1,10 +1,22 @@
-﻿namespace FIS_J.Services;
+﻿using System.Reflection;
+
+namespace FIS_J.Services;
 
 public class HttpService
 {
-	static public HttpClient HttpClient { get; } = new()
+	static public HttpClient HttpClient { get; }
+
+	static HttpService()
 	{
-		Timeout = new(0, 0, 2),
-	};
+		HttpClient = new()
+		{
+			Timeout = new(0, 0, 2),
+		};
+
+		HttpClient.DefaultRequestHeaders.UserAgent.Add(new(
+			Path.GetFileNameWithoutExtension(System.AppDomain.CurrentDomain.FriendlyName),
+			Assembly.GetEntryAssembly()?.GetName().Version?.ToString() ?? "1.0"
+			));
+	}
 }
 
