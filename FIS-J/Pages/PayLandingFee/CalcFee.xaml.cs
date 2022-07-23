@@ -2,7 +2,7 @@
 using FIS_J.Services;
 using FIS_J.ViewModels.PayLandingFee;
 
-namespace FIS_J.FISJ.PayLandingFee
+namespace FIS_J.Pages.PayLandingFee
 {
 	public partial class CalcFee : ContentPage
 	{

@@ -1,9 +1,9 @@
-﻿using FIS_J.FISJ.PayLandingFee;
+﻿using FIS_J.Pages.PayLandingFee;
 using FIS_J.ViewModels.ReservePages;
 
 using System;
 
-namespace FIS_J.FISJ.ReservePages
+namespace FIS_J.Pages.ReservePages
 {
 	public partial class ReserveSpotAndFuel : ContentPage
 	{

@@ -5,7 +5,7 @@ using Mapsui.UI.Maui;
 using Mapsui.Widgets;
 using SkiaSharp;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps.Widgets;
 
 public class InfoWidget : Widget, INotifyPropertyChanged
 {

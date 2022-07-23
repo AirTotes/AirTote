@@ -6,7 +6,7 @@
 	xmlns:convs="clr-namespace:FIS_J.ValueConverters"
 	x:DataType="reservepages:ReserveSpotAndFuelViewModel"
 	Title="{Binding Title}"
-	x:Class="FIS_J.FISJ.ReservePages.ReserveSpotAndFuel">
+	x:Class="FIS_J.Pages.ReservePages.ReserveSpotAndFuel">
 	<ContentPage.Resources>
 		<convs:StringToIntegerConverter x:Key="StrToIntConv" />
 		<convs:IntToENumConverter x:Key="IntToEnum"/>

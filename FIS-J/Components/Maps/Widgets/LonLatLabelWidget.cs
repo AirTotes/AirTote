@@ -1,10 +1,11 @@
-﻿using Mapsui;
+﻿using FIS_J.Components.Maps.Layers;
+using Mapsui;
 using Mapsui.Projections;
 using Mapsui.Rendering.Skia.SkiaWidgets;
 using Mapsui.Widgets;
 using SkiaSharp;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps.Widgets;
 
 public class LonLatLabelWidget : Widget
 {

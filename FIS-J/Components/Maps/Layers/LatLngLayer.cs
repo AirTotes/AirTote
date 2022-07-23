@@ -6,7 +6,7 @@ using Mapsui.Styles;
 
 using NetTopologySuite.Geometries;
 
-namespace FIS_J.Maps
+namespace FIS_J.Components.Maps.Layers
 {
 	public static class LatLngLayerGenerator
 	{

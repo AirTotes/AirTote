@@ -7,7 +7,7 @@ using Topten.RichTextKit;
 using IStyle = Topten.RichTextKit.IStyle;
 using Style = Topten.RichTextKit.Style;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps;
 
 public class CustomTextCalloutPin : Pin
 {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FIS_J.FISJ
+namespace FIS_J.Pages
 {
 	public partial class Nomwether : ContentPage
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using FIS_J.ViewModels;
-namespace FIS_J;
+namespace FIS_J.Pages;
 
 public partial class FlyoutMenuPage : ContentPage
 {
@@ -20,12 +20,12 @@ public partial class FlyoutMenuPage : ContentPage
 		Task.Run(() =>
 		{
 			_MenuItems.Add(new(topNavPage));
-			_MenuItems.Add(new(new FISJ.SubmitReport()));
-			_MenuItems.Add(new(new FISJ.ReservePages.ReserveSpotAndFuel()));
-			_MenuItems.Add(new(new FISJ.aero()));
-			_MenuItems.Add(new(new FISJ.WetherInformation()));
-			_MenuItems.Add(new(new FISJ.IcaoPage()));
-			_MenuItems.Add(new(new FISJ.PayLandingFee.CalcFee()));
+			_MenuItems.Add(new(new SubmitReport()));
+			_MenuItems.Add(new(new ReservePages.ReserveSpotAndFuel()));
+			_MenuItems.Add(new(new aero()));
+			_MenuItems.Add(new(new WetherInformation()));
+			_MenuItems.Add(new(new IcaoPage()));
+			_MenuItems.Add(new(new PayLandingFee.CalcFee()));
 			_MenuItems.Add(new(new Views.SettingPage()));
 		});
 

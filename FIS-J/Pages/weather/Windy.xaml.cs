@@ -1,4 +1,4 @@
-﻿namespace FIS_J.FISJ.weather
+﻿namespace FIS_J.Pages.weather
 {
 	public partial class Windy : ContentPage
 	{

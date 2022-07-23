@@ -2,7 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.livenews"
+	x:Class="FIS_J.Pages.livenews"
 	Title="速報天気図">
 	<WebView
 		Source="https://n-kishou.com/ee/exp/exp01.html?cd=spas&amp;cat=e1"

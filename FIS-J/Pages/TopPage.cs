@@ -1,12 +1,14 @@
-﻿using FIS_J.Interfaces;
-using FIS_J.Maps;
+﻿using FIS_J.Components.Maps;
+using FIS_J.Components.Maps.Layers;
+using FIS_J.Components.Maps.Widgets;
+using FIS_J.Interfaces;
 using FIS_J.Models;
 using FIS_J.Services;
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Topten.RichTextKit;
 
-namespace FIS_J.FISJ;
+namespace FIS_J.Pages;
 
 public class TopPage : ContentPage, IContainFlyoutPageInstance
 {

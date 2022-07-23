@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using FIS_J.Services;
 using FIS_J.ViewModels;
 
-namespace FIS_J.FISJ
+namespace FIS_J.Pages
 {
 	public partial class aero : ContentPage
 	{

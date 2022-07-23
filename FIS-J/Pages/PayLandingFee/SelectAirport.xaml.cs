@@ -1,7 +1,7 @@
-﻿using FIS_J.Maps;
+﻿using FIS_J.Components.Maps;
 using FIS_J.Models;
 
-namespace FIS_J.FISJ.PayLandingFee
+namespace FIS_J.Pages.PayLandingFee
 {
 	public partial class SelectAirport : ContentPage
 	{

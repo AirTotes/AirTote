@@ -6,7 +6,7 @@
 	xmlns:valueconverters="clr-namespace:FIS_J.ValueConverters"
 	x:DataType="PayLandingFee:CalcFeeViewModel"
 	Title="{Binding Title}"
-	x:Class="FIS_J.FISJ.PayLandingFee.CalcFee">
+	x:Class="FIS_J.Pages.PayLandingFee.CalcFee">
 	<ContentPage.Resources>
 		<valueconverters:StringToDoubleConverter x:Key="StrToDouble"/>
 		<valueconverters:StringToIntegerConverter x:Key="StrToInt"/>

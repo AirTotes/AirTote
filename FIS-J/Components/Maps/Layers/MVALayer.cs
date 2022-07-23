@@ -5,7 +5,7 @@ using Mapsui.Nts;
 using Mapsui.Providers;
 using Mapsui.Styles;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps.Layers;
 
 public class MVALayer : Layer
 {

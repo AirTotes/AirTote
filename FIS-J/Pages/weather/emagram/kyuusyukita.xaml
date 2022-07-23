@@ -2,7 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.kyuusyukita"
+	x:Class="FIS_J.Pages.kyuusyukita"
 	Title="エマグラム>九州北部">
 	<WebView
 		Source="https://www.sunny-spot.net/emagram/index.html?area=9"

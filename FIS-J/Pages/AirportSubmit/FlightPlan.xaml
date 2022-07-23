@@ -3,7 +3,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.FlightPlan"
+	x:Class="FIS_J.Pages.FlightPlan"
 	Title="飛行計画書の提出">
 	<WebView
 		Source="https://fis-j.github.io/FlightPlanGenerator/flight_plan_sheet.html"

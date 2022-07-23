@@ -14,7 +14,7 @@ using SkiaSharp;
 
 using Topten.RichTextKit;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps;
 
 public static class TileProvider
 {

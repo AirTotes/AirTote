@@ -3,7 +3,7 @@
 using Mapsui.Layers;
 using Mapsui.Providers;
 
-namespace FIS_J.Maps;
+namespace FIS_J.Components.Maps.Layers;
 
 public class MVALabelLayer : Layer
 {

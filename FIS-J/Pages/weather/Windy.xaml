@@ -2,7 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.weather.Windy"
+	x:Class="FIS_J.Pages.weather.Windy"
 	Title="Windy">
 	<WebView
 		Source="https://www.windy.com/35.685/139.751?35.175,139.751,8"

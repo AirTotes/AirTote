@@ -2,7 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.FISJ.monthensemble"
+	x:Class="FIS_J.Pages.monthensemble"
 	Title=" 1ヵ月予報資料 アンサンブル平均図">
 	<WebView
 		Source="https://n-kishou.com/ee/exp/exp01.html?cd=fcvx12&amp;cat=e4"
