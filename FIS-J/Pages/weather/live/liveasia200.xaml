@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.Pages.liveasia200"
+	Title="アジア太平洋200hPa高度・気温・風・圏界面">
+	<WebView
+		Source="https://n-kishou.com/ee/exp/exp01.html?cd=aupa20&amp;cat=e1"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"/>
+</ContentPage>

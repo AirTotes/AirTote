@@ -77,7 +77,4 @@
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
 		<PackageReference Include="HarfBuzzSharp" Version="2.8.2" />
 	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Components\" />
-	</ItemGroup>
 </Project>
