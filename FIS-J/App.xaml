@@ -45,6 +45,10 @@
 			<Style
 				TargetType="FlyoutPage"
 				BasedOn="{StaticResource LightDarkBG}" />
+			<Style
+				TargetType="Rectangle"
+				x:Key="LightDarkBGRect"
+				BasedOn="{StaticResource LightDarkBG}" />
 
 			<Style TargetType="NavigationPage">
 				<Setter
