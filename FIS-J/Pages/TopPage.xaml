@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:maps="clr-namespace:FIS_J.Components.Maps"
+	x:Class="FIS_J.Pages.TopPage"
+	Title="Flight Information">
+	<AbsoluteLayout
+		IgnoreSafeArea="True">
+		<maps:AirportMap
+			AbsoluteLayout.LayoutBounds="0,0,1,1"
+			AbsoluteLayout.LayoutFlags="All"
+			x:Name="Map"/>
+	</AbsoluteLayout>
+</ContentPage>

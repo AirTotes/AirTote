@@ -10,9 +10,8 @@ using Topten.RichTextKit;
 
 namespace FIS_J.Pages;
 
-public class TopPage : ContentPage, IContainFlyoutPageInstance
+public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 {
-	AirportMap Map { get; } = new();
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
@@ -23,8 +22,7 @@ public class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	public TopPage()
 	{
-		Content = Map;
-		Title = "Flight Information";
+		InitializeComponent();
 
 		Appearing += (_, _) => ResetCalloutText();
 
