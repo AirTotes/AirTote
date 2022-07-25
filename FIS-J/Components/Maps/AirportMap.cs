@@ -19,7 +19,9 @@ public class AirportMap : AirMap
 	public event EventHandler<AirportSelectedEventArgs>? AirportSelected;
 	public event EventHandler<AirportSelectedEventArgs>? AirportClicked;
 
-	public AirportMap(Func<AirportInfo.APInfo, RichString, RichString>? setCalloutText = null)
+	public AirportMap() : this(null) { }
+
+	public AirportMap(TCalloutTextGen? setCalloutText)
 	{
 		Init(setCalloutText);
 	}

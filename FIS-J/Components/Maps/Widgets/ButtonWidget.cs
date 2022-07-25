@@ -12,7 +12,7 @@ using Svg.Skia;
 
 namespace FIS_J.Components.Maps.Widgets;
 
-public class ButtonWidget : Widget
+public class ButtonWidget : Widget, INamedWidget
 {
 	public event EventHandler<WidgetTouchedEventArgs>? WidgetTouched;
 
@@ -21,11 +21,16 @@ public class ButtonWidget : Widget
 	public float Height { get; init; }
 	public float Width { get; init; }
 
-	public ButtonWidget(string svgString)
+	public string Name { get; }
+
+	public ButtonWidget(string name, string svgString)
 	{
+		if (string.IsNullOrWhiteSpace(name))
+			throw new ArgumentException("name cannot be null or empty");
 		if (string.IsNullOrWhiteSpace(svgString))
 			throw new ArgumentException("svgString cannot be null or empty");
 
+		Name = name;
 		Picture = new SKSvg().FromSvg(svgString) ?? throw new FormatException("SvgString is not a valid SVG Format");
 	}
 
