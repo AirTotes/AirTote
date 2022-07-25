@@ -16,15 +16,21 @@ namespace FIS_J.Components.Maps.Layers
 		public const int LON_LINE_MAX = 180;
 		const double DEFAULT_OPACITY = 0.2;
 
+		static Pen DashPen { get; } = new()
+		{
+			Color = Mapsui.Styles.Color.Black,
+			PenStyle = PenStyle.Dash,
+			PenStrokeCap = PenStrokeCap.Round,
+		};
+
 		static readonly double[] WIDTH_SET = new double[]
 		{
 			2,
 
-			1.6,
-			1.2,
+			1.7,
+			1.4,
 
-			0.9,
-			0.6,
+			1,
 		};
 
 		static public double GetLineStep(in double resolution)
@@ -44,13 +50,13 @@ namespace FIS_J.Components.Maps.Layers
 				.Concat(CreateLatLngLayer(10, 0, MAX_RESO_LV_1, WIDTH_SET[0]))
 
 				.Concat(CreateLatLngLayer(5, MAX_RESO_LV_2, MAX_RESO_LV_1, WIDTH_SET[2], 10))
-				.Concat(CreateLatLngLayer(1, MAX_RESO_LV_2, MAX_RESO_LV_1, WIDTH_SET[4], 5))
+				.Concat(CreateLatLngLayer(1, MAX_RESO_LV_2, MAX_RESO_LV_1, WIDTH_SET[3], 5, DashPen))
 
 				.Concat(CreateLatLngLayer(5, 0, MAX_RESO_LV_2, WIDTH_SET[1], 10))
 				.Concat(CreateLatLngLayer(1, 0, MAX_RESO_LV_2, WIDTH_SET[2], 5))
 
 				.Concat(CreateLatLngLayer(0.5, 0, MAX_RESO_LV_2, WIDTH_SET[3], 1))
-				.Concat(CreateLatLngLayer(0.1, 0, MAX_RESO_LV_2, WIDTH_SET[4], 0.5));
+				.Concat(CreateLatLngLayer(0.1, 0, MAX_RESO_LV_2, WIDTH_SET[3], 0.5, DashPen));
 
 			return new()
 			{
@@ -61,7 +67,7 @@ namespace FIS_J.Components.Maps.Layers
 			};
 		}
 
-		static List<GeometryFeature> CreateLatLngLayer(double step, double MinVisibleResolution, double MaxVisibleResolution, double Width, double skipStep = double.NaN)
+		static List<GeometryFeature> CreateLatLngLayer(double step, double MinVisibleResolution, double MaxVisibleResolution, double Width, double skipStep = double.NaN, Pen? pen = null)
 		{
 			List<GeometryFeature> latlngLines = new();
 
@@ -71,11 +77,12 @@ namespace FIS_J.Components.Maps.Layers
 			{
 				Fill = null,
 				Outline = null,
-				Line = new(Mapsui.Styles.Color.Black, Width),
+				Line = pen ?? new(Mapsui.Styles.Color.Black),
 				MinVisible = MinVisibleResolution,
 				MaxVisible = MaxVisibleResolution,
 				Opacity = (float)DEFAULT_OPACITY,
 			};
+			style.Line.Width = Width;
 
 			void AddNewLine(double lon1, double lat1, double lon2, double lat2)
 			{
