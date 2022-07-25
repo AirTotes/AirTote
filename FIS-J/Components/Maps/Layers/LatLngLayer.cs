@@ -61,7 +61,7 @@ namespace FIS_J.Components.Maps.Layers
 
 			for (double i = 0; i <= 180; i += step)
 			{
-				if (isSkipStepNaN && (i % skipStep) == 0)
+				if (!isSkipStepNaN && (i % skipStep) == 0)
 					continue;
 
 				// positive longitude
@@ -88,7 +88,7 @@ namespace FIS_J.Components.Maps.Layers
 
 			for (double i = 0; i <= LAT_LINE_MAX; i += step)
 			{
-				if (isSkipStepNaN && (i % skipStep) == 0)
+				if (!isSkipStepNaN && (i % skipStep) == 0)
 					continue;
 
 				// positive latitude
