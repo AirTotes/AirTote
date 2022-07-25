@@ -52,7 +52,7 @@ public class TopPage : ContentPage, IContainFlyoutPageInstance
 			try
 			{
 				using (var stream = await FileSystem.OpenAppPackageFileAsync("menu_FILL0_wght700_GRAD0_opsz48.svg"))
-					widget = new(await new StreamReader(stream).ReadToEndAsync())
+					widget = new("Open Menu Button", await new StreamReader(stream).ReadToEndAsync())
 					{
 						MarginX = 4,
 						MarginY = StatusBarBGWidgetRenderer.Height,
