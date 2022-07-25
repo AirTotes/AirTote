@@ -27,8 +27,8 @@
 			VerticalOptions="FillAndExpand">
 			<TableRoot>
 				<TableSection
-					Title="Pages"
-					x:Name="PagesSection" />
+					Title="Map Types"
+					x:Name="MapTypeSection" />
 				<TableSection
 					Title="Layers"
 					x:Name="LayersSection" />
