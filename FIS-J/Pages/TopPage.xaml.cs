@@ -1,4 +1,5 @@
-﻿using FIS_J.Components.Maps;
+﻿using CommunityToolkit.Maui.Views;
+using FIS_J.Components.Maps;
 using FIS_J.Components.Maps.Layers;
 using FIS_J.Components.Maps.Widgets;
 using FIS_J.Interfaces;
@@ -42,34 +43,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		});
 
 		Map.Map?.Widgets.Add(new StatusBarBGWidget());
-
-		Task.Run(async () =>
-		{
-			ButtonWidget widget;
-
-			try
-			{
-				using (var stream = await FileSystem.OpenAppPackageFileAsync("menu_FILL0_wght700_GRAD0_opsz48.svg"))
-					widget = new("Open Menu Button", await new StreamReader(stream).ReadToEndAsync())
-					{
-						MarginX = 4,
-						MarginY = StatusBarBGWidgetRenderer.Height,
-					};
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-				return;
-			}
-
-			widget.WidgetTouched += (s, e) =>
-			{
-				OnMenuButtonClicked();
-				e.Handled = true;
-			};
-
-			Map.Map?.Widgets.Add(widget);
-		});
 
 		NavigationPage.SetHasNavigationBar(this, false);
 		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
@@ -201,6 +174,17 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			.Add($"  TAF: {_taf?.FirstOrDefault() ?? "N/A"}", fontSize: 14);
 
 		return str;
+	}
+
+	void MenuButton_Clicked(object sender, EventArgs e)
+		=> OnMenuButtonClicked();
+
+	void SettingButton_Clicked(object sender, EventArgs e)
+	{
+		if (Map.Map is null)
+			return;
+
+		this.ShowPopup(new MapSettingPopup(this.Map.Map, Map.RefreshGraphics));
 	}
 }
 
