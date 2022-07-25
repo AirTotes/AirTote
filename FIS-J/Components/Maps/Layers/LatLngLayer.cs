@@ -16,6 +16,8 @@ namespace FIS_J.Components.Maps.Layers
 		public const int LON_LINE_MAX = 180;
 		const double DEFAULT_OPACITY = 0.2;
 
+		const int STEP_PRECISION = 100;
+
 		static Pen DashPen { get; } = new()
 		{
 			Color = Mapsui.Styles.Color.Black,
@@ -73,6 +75,9 @@ namespace FIS_J.Components.Maps.Layers
 
 			bool isSkipStepNaN = double.IsNaN(skipStep);
 
+			int I_Step = (int)(step * STEP_PRECISION);
+			int I_SkipStep = isSkipStepNaN ? int.MaxValue : (int)(skipStep * STEP_PRECISION);
+
 			VectorStyle style = new()
 			{
 				Fill = null,
@@ -98,35 +103,37 @@ namespace FIS_J.Components.Maps.Layers
 				latlngLines.Add(feature);
 			}
 
-			for (double i = 0; i <= 180; i += step)
+			for (int i = 0; i <= LON_LINE_MAX * STEP_PRECISION; i += I_Step)
 			{
-				if (!isSkipStepNaN && (i % skipStep) == 0)
+				if (!isSkipStepNaN && (i % I_SkipStep) == 0)
 					continue;
 
+				double value = (double)i / (double)STEP_PRECISION;
 				// positive longitude
 				AddNewLine(
-					i, -LAT_LINE_MAX,
-					i, LAT_LINE_MAX
+					value, -LAT_LINE_MAX,
+					value, LAT_LINE_MAX
 					);
 				if (i == 0)
 					continue;
 
 				// negative longitude
 				AddNewLine(
-					-i, -LAT_LINE_MAX,
-					-i, LAT_LINE_MAX
+					-value, -LAT_LINE_MAX,
+					-value, LAT_LINE_MAX
 					);
 			}
 
-			for (double i = 0; i <= LAT_LINE_MAX; i += step)
+			for (int i = 0; i <= LAT_LINE_MAX * STEP_PRECISION; i += I_Step)
 			{
-				if (!isSkipStepNaN && (i % skipStep) == 0)
+				if (!isSkipStepNaN && (i % I_SkipStep) == 0)
 					continue;
 
+				double value = (double)i / (double)STEP_PRECISION;
 				// positive latitude
 				AddNewLine(
-					-LON_LINE_MAX, i,
-					LON_LINE_MAX, i
+					-LON_LINE_MAX, value,
+					LON_LINE_MAX, value
 					);
 
 				if (i == 0)
@@ -134,8 +141,8 @@ namespace FIS_J.Components.Maps.Layers
 
 				// negative latitude
 				AddNewLine(
-					-LON_LINE_MAX, -i,
-					LON_LINE_MAX, -i
+					-LON_LINE_MAX, -value,
+					LON_LINE_MAX, -value
 					);
 			}
 
