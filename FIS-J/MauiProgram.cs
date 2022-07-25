@@ -19,6 +19,7 @@ public static class MauiProgram
 				fonts.AddFont("BIZUDGothic-Regular.ttf", "BIZ UDGothic");
 				fonts.AddFont("BIZUDPGothic-Bold.ttf", "BIZ UDPGothic Bold");
 				fonts.AddFont("BIZUDPGothic-Regular.ttf", "BIZ UDPGothic");
+				fonts.AddFont("MaterialSymbolsRounded.ttf", "MaterialSymbolsRounded");
 			});
 
 		return builder.Build();
