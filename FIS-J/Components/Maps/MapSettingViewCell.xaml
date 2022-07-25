@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="FIS_J.Components.Maps.MapSettingViewCell">
+	<Grid
+		Margin="8,4">
+		<Label
+			x:Name="NameLabel"
+			VerticalOptions="Center"
+			Text="(Name Unknown)"/>
+
+		<Switch
+			x:Name="EnableSW"
+			VerticalOptions="Center"
+			Toggled="EnableSW_Toggled"
+			HorizontalOptions="End"/>
+	</Grid>
+</ViewCell>
