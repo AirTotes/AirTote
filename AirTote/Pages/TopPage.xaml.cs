@@ -43,34 +43,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Map.Map?.Widgets.Add(new StatusBarBGWidget());
 
-		Task.Run(async () =>
-		{
-			ButtonWidget widget;
-
-			try
-			{
-				using (var stream = await FileSystem.OpenAppPackageFileAsync("menu_FILL0_wght700_GRAD0_opsz48.svg"))
-					widget = new(await new StreamReader(stream).ReadToEndAsync())
-					{
-						MarginX = 4,
-						MarginY = StatusBarBGWidgetRenderer.Height,
-					};
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-				return;
-			}
-
-			widget.WidgetTouched += (s, e) =>
-			{
-				OnMenuButtonClicked();
-				e.Handled = true;
-			};
-
-			Map.Map?.Widgets.Add(widget);
-		});
-
 		NavigationPage.SetHasNavigationBar(this, false);
 		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
 
@@ -202,4 +174,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		return str;
 	}
+
+	void MenuButton_Clicked(object sender, EventArgs e)
+		=> OnMenuButtonClicked();
 }
