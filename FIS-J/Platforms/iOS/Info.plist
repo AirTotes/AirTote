@@ -6,10 +6,6 @@
 	<false/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Can we use your location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>We are using your location</string>
 	<key>UIDeviceFamily</key>
 	<array>
 		<integer>1</integer>
