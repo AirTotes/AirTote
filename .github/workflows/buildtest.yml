@@ -3,7 +3,7 @@ name: Build App
 on:
   push:
     tags:
-      - bundle[0-9]+.[0-9]+.[0-9]+
+      - 'bundle[0-9]+.[0-9]+.[0-9]+'
 
 env:
   CSPROJ_PATH: ./FIS-J/FIS-J.csproj
