@@ -25,6 +25,7 @@ jobs:
         -r ios-arm64
         -c Publish
         /p:ApplicationVersion=`echo ${{ github.ref_name }} | tr -d bundle`
+        /p:ApplicationDisplayVersion=`echo ${{ github.ref_name }} | tr -d bundle | awk -F '.' '{print $1 "." $2}'`
     
     - name: validate
       run: >
