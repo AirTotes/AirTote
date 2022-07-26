@@ -11,6 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        ref: ${{github.head_ref}}
     - run: git fetch --all --tags
     - run: git tag -l bundle0.${{ github.event.number }}.[0-9]* --merged > BUNDLE_VERSIONS
     - run: |
