@@ -35,7 +35,8 @@ jobs:
         echo Tag bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
 
     - run: >
-        echo \`Tag bundle0.${{ github.event.number }}.`cat PATCH_VERSION`\` was automatically created and pushed
+        echo Tag \`bundle0.${{ github.event.number }}.`cat PATCH_VERSION`\` was automatically created and pushed with
+        ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
         | gh pr comment ${{ github.event.number }} -F -
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
