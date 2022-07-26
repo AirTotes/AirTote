@@ -31,8 +31,6 @@ jobs:
     - run: gh pr edit ${{ github.event.number }} --remove-label deploy
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - run: |
-        echo Tag bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
 
     - run: >
         echo Tag \`bundle0.${{ github.event.number }}.`cat PATCH_VERSION`\` was automatically created and pushed with
