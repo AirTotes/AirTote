@@ -1,4 +1,4 @@
-name: Assign Bundle ID tags (Pull Request)
+name: Assign Bundle ID tags (main)
 
 on:
   push:
@@ -7,18 +7,12 @@ on:
 
 jobs:
   assign-tag:
-    if: ${{ github.event.label.name == 'deploy' }}
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
       with:
         ref: ${{github.head_ref}}
-
-    - name: remove label from PR
-      run: gh pr edit ${{ github.event.number }} --remove-label deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Setup github-actions[bot] account
       run: |
