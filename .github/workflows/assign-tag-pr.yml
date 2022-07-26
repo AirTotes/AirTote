@@ -43,7 +43,7 @@ jobs:
         fi
 
     - name: tagging new tag
-      run: git tag -a bundle0.${{ github.event.number }}.`cat PATCH_VERSION` -m "Auto Generated tag (PR \#${{ github.event.number }})"
+      run: git tag -a bundle0.${{ github.event.number }}.`cat PATCH_VERSION` -m "Auto Generated tag (PR \#${{ github.event.number }} ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} )"
 
     - name: push new tag
       run: git push origin bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
