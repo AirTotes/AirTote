@@ -14,6 +14,11 @@ jobs:
       with:
         ref: ${{github.head_ref}}
 
+    - name: remove label from PR
+      run: gh pr edit ${{ github.event.number }} --remove-label deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Setup github-actions[bot] account
       run: |
         git config user.name 'github-actions[bot]'
@@ -39,11 +44,6 @@ jobs:
 
     - name: push new tag
       run: git push origin bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
-
-    - name: remove label from PR
-      run: gh pr edit ${{ github.event.number }} --remove-label deploy
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Comment TagName and Actions-Run URL to PR
       run: >
