@@ -24,3 +24,14 @@ jobs:
         fi
     - run: git tag -a bundle0.${{ github.event.number }}.`cat PATCH_VERSION` -m "Auto Generated tag (PR \#${{ github.event.number }})"
     - run: git push origin bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
+    - run: gh pr edit ${{ github.event.number }} --remove-label deploy
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - run: |
+        echo Tag bundle0.${{ github.event.number }}.`cat PATCH_VERSION`
+
+    - run: >
+        echo \`Tag bundle0.${{ github.event.number }}.`cat PATCH_VERSION`\` was automatically created and pushed
+        | gh pr comment ${{ github.event.number }} -F -
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
