@@ -14,7 +14,7 @@ jobs:
       with:
         ref: ${{github.head_ref}}
     - run: git fetch --all --tags
-    - run: git tag -l bundle0.${{ github.event.number }}.[0-9]* --merged > BUNDLE_VERSIONS
+    - run: git tag -l "bundle0.${{ github.event.number }}.[0-9]*" --merged > BUNDLE_VERSIONS
     - run: |
       if [ `cat BUNDLE_VERSIONS | wc -l` -eq 0 ]; then
         echo 0 > PATCH_VERSION
