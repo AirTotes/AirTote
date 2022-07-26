@@ -19,13 +19,30 @@ jobs:
       run: dotnet restore ${{ env.CSPROJ_PATH }}
 
     - name: Build
-      run: dotnet publish ${{ env.CSPROJ_PATH }} -f:net6.0-ios -r ios-arm64 -c:Publish /p:ApplicationVersion=`echo ${{ github.ref_name }} | tr -d bundle`
+      run: >
+        dotnet publish ${{ env.CSPROJ_PATH }}
+        -f:net6.0-ios
+        -r ios-arm64
+        -c Publish
+        /p:ApplicationVersion=`echo ${{ github.ref_name }} | tr -d bundle`
     
     - name: validate
-      run: xcrun altool --validate-app --type ios -f ${{ env.IPA_PATH }} --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }} --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
+      run: >
+        xcrun altool
+        --validate-app
+        --type ios
+        -f ${{ env.IPA_PATH }}
+        --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }}
+        --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
 
     - name: upload
-      run: xcrun altool --upload-app --type ios -f ${{ env.IPA_PATH }} --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }} --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
+      run: >
+        xcrun altool
+        --upload-app
+        --type ios
+        -f ${{ env.IPA_PATH }}
+        --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }}
+        --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
 
     - name: Upload IPA
       uses: actions/upload-artifact@v3.0.0
