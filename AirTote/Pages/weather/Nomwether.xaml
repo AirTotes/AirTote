@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.Nomwether"
+	Title="数値天気予報図">
+	<ScrollView>
+		<StackLayout>
+			<Label Text="アジア太平洋250hPa高度・気温・風予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia250hpa_Clicked_1"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia250hpa12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="アジア太平洋300hPa高度・気温・風予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia300hpa_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia300hpa12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="アジア太平洋400hPa高度・気温・風予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia400hpa_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia400hpa12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="アジア太平洋500hPa高度・気温・風予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia500hpa_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="asia500hpa12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="極東850hPa気温・風、700hPa上昇流／700hPa湿数、500hPa気温予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="east850hpatem_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="east850hpatem12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="極東地上気圧・風・降水量／500hPa高度・渦度予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+				Text="00UTC"
+				HorizontalOptions="FillAndExpand"
+				Clicked="Groundpressure_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="Groundpressure12_Clicked"/>
+			</StackLayout>
+
+			<Label Text="" FontSize="Medium"/>
+			<Button
+				Text="アジア地上気圧、850hPa気温／500hPa高度・渦度予想図"
+				Clicked="asiaGround_Clicked"/>
+
+			<Label Text="" FontSize="Medium"/>
+
+			<Label Text="日本850hPa相当温位・風予想図" FontSize="Medium"/>
+			<StackLayout Orientation="Horizontal">
+				<Button
+					Text="00UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="japan850hpa_Clicked"/>
+				<Button
+					Text="12UTC"
+					HorizontalOptions="FillAndExpand"
+					Clicked="japan850hpa12_Clicked"/>
+			</StackLayout>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>

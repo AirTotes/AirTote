@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.WetherInformation"
+	Title="気象情報">
+	<ScrollView>
+		<StackLayout>
+			<Button
+				Clicked="Nomwether_Clicked"
+				Text="数値天気予報図"/>
+			<Button
+				Clicked="Upperwether_Clicked"
+				Text="高層天気図"/>
+			<Button
+				Clicked="SkyInformation_Clicked"
+				Text="空域の情報"/>
+			<Button
+				Clicked="live_Clicked"
+				Text="実況"/>
+			<Button
+				Clicked="weekly_Clicked"
+				Text="週間"/>
+			<Button
+				Clicked="longterm_Clicked"
+				Text="長期"/>
+			<Button
+				Clicked="satellite_Clicked"
+				Text="衛生画像"/>
+			<Button
+				Clicked="emagram_Clicked"
+				Text="エマグラム"/>
+			<Button
+				Clicked="Windy_Clicked"
+				Text="Windy"/>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>
