@@ -2,8 +2,16 @@ name: Publish iOS App
 
 on:
   push:
+    # WorkfloaからのPushではTriggerされないため注意が必要
     tags:
       - 'bundle[0-9]+.[0-9]+.[0-9]+'
+
+  workflow_run:
+    workflows:
+      - Assign Bundle ID tags (main),
+      - Assign Bundle ID tags (Pull Request)
+    types:
+      - completed
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
@@ -11,9 +19,21 @@ env:
 
 jobs:
   build-ios:
+    if: |
+      github.event_name == 'push'
+      || github.event.workflow_run.conclusion == 'success'
+
     runs-on: [self-hosted, macOS]
     steps:
     - uses: actions/checkout@v2
+
+    - name: fetch related tag
+      run: git fetch --no-recurse-submodules --depth=1 origin +${{ github.sha }}:${{ github.ref }}
+
+    - name: get version number
+      run: |
+        git tag --points-at ${{ github.sha }} | tr -d bundle > VERSION_NUMBER
+        echo VersionNumber (Bundle Version) "..." `cat VERSION_NUMBER`
 
     - name: Install dependencies
       run: dotnet restore ${{ env.CSPROJ_PATH }}
@@ -24,8 +44,8 @@ jobs:
         -f:net6.0-ios
         -r ios-arm64
         -c Publish
-        /p:ApplicationVersion=`echo ${{ github.ref_name }} | tr -d bundle`
-        /p:ApplicationDisplayVersion=`echo ${{ github.ref_name }} | tr -d bundle | awk -F '.' '{print $1 "." $2}'`
+        /p:ApplicationVersion=`cat VERSION_NUMBER`
+        /p:ApplicationDisplayVersion=`cat VERSION_NUMBER | awk -F '.' '{print $1 "." $2}'`
     
     - name: validate
       run: >
