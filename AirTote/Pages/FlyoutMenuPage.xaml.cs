@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
-using FIS_J.ViewModels;
-namespace FIS_J.Pages;
+using AirTote.ViewModels;
+namespace AirTote.Pages;
 
 public partial class FlyoutMenuPage : ContentPage
 {

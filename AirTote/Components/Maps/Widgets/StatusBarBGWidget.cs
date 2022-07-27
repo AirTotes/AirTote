@@ -5,7 +5,7 @@ using Mapsui.UI.Maui;
 using Mapsui.Widgets;
 using SkiaSharp;
 
-namespace FIS_J.Components.Maps.Widgets;
+namespace AirTote.Components.Maps.Widgets;
 
 public class StatusBarBGWidget : Widget, INamedWidget
 {

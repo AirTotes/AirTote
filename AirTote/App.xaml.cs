@@ -1,4 +1,4 @@
-﻿namespace FIS_J;
+﻿namespace AirTote;
 
 public partial class App : Application
 {

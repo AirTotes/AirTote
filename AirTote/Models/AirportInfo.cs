@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 using Newtonsoft.Json;
 
-namespace FIS_J.Models
+namespace AirTote.Models
 {
 	public static class AirportInfo
 	{

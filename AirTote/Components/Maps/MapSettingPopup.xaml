@@ -4,7 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 	Color="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
-	x:Class="FIS_J.Components.Maps.MapSettingPopup">
+	x:Class="AirTote.Components.Maps.MapSettingPopup">
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="auto"/>

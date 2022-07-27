@@ -1,7 +1,7 @@
-﻿using FIS_J.Components.Maps;
-using FIS_J.Models;
+﻿using AirTote.Components.Maps;
+using AirTote.Models;
 
-namespace FIS_J.Pages.PayLandingFee
+namespace AirTote.Pages.PayLandingFee
 {
 	public partial class SelectAirport : ContentPage
 	{

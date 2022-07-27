@@ -1,5 +1,5 @@
-﻿using FIS_J.Components.Maps.Widgets;
-using FIS_J.Models;
+﻿using AirTote.Components.Maps.Widgets;
+using AirTote.Models;
 
 using Mapsui;
 using Mapsui.Extensions;
@@ -8,7 +8,7 @@ using Mapsui.Tiling;
 using Mapsui.UI.Maui;
 using Mapsui.Utilities;
 
-namespace FIS_J.Components.Maps
+namespace AirTote.Components.Maps
 {
 	public class AirMap : MapView
 	{

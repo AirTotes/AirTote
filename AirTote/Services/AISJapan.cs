@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace FIS_J.Services
+namespace AirTote.Services
 {
 	internal class AISJapan : IDisposable
 	{

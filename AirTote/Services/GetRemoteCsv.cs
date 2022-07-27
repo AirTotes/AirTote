@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualBasic.FileIO;
 
-namespace FIS_J.Services;
+namespace AirTote.Services;
 
 public class GetRemoteCsv
 {

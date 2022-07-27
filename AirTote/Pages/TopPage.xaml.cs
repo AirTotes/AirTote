@@ -1,15 +1,15 @@
 ﻿using CommunityToolkit.Maui.Views;
-using FIS_J.Components.Maps;
-using FIS_J.Components.Maps.Layers;
-using FIS_J.Components.Maps.Widgets;
-using FIS_J.Interfaces;
-using FIS_J.Models;
-using FIS_J.Services;
+using AirTote.Components.Maps;
+using AirTote.Components.Maps.Layers;
+using AirTote.Components.Maps.Widgets;
+using AirTote.Interfaces;
+using AirTote.Models;
+using AirTote.Services;
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Topten.RichTextKit;
 
-namespace FIS_J.Pages;
+namespace AirTote.Pages;
 
 public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 {

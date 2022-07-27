@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using FIS_J.Models;
+using AirTote.Models;
 
-namespace FIS_J.ViewModels.ReservePages
+namespace AirTote.ViewModels.ReservePages
 {
 	public class ReserveSpotAndFuelViewModel : BaseViewModel, IContainsAirportInfo
 	{

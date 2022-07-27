@@ -1,7 +1,7 @@
 using Android.App;
 using Android.Runtime;
 
-namespace FIS_J;
+namespace AirTote;
 
 [Application]
 public class MainApplication : MauiApplication

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace FIS_J.ViewModels
+namespace AirTote.ViewModels
 {
 	public class BaseViewModel : INotifyPropertyChanged
 	{

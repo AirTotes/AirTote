@@ -1,11 +1,11 @@
-﻿using FIS_J.Components.Maps.Layers;
+﻿using AirTote.Components.Maps.Layers;
 using Mapsui;
 using Mapsui.Projections;
 using Mapsui.Rendering.Skia.SkiaWidgets;
 using Mapsui.Widgets;
 using SkiaSharp;
 
-namespace FIS_J.Components.Maps.Widgets;
+namespace AirTote.Components.Maps.Widgets;
 
 public class LonLatLabelWidget : Widget, INamedWidget
 {

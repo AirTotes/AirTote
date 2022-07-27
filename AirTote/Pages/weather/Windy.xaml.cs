@@ -1,4 +1,4 @@
-﻿namespace FIS_J.Pages.weather
+﻿namespace AirTote.Pages.weather
 {
 	public partial class Windy : ContentPage
 	{

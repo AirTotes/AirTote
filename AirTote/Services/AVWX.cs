@@ -1,6 +1,6 @@
 ﻿#nullable disable
 
-using FIS_J.Models;
+using AirTote.Models;
 
 using Newtonsoft.Json;
 
@@ -8,7 +8,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-namespace FIS_J.Services
+namespace AirTote.Services
 {
 	public class NoContentException : Exception { }
 

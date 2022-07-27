@@ -2,9 +2,9 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:ViewModels="clr-namespace:FIS_J.ViewModels"
+	xmlns:ViewModels="clr-namespace:AirTote.ViewModels"
 	x:DataType="ViewModels:SettingPageViewModel"
 	Title="{Binding Title}"
-	x:Class="FIS_J.Views.SettingPage">
+	x:Class="AirTote.Views.SettingPage">
 	<WebView VerticalOptions="FillAndExpand" Source="{Binding WebPage}"/>
 </ContentPage>

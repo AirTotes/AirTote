@@ -1,9 +1,9 @@
-﻿using FIS_J.Pages.PayLandingFee;
-using FIS_J.ViewModels.ReservePages;
+﻿using AirTote.Pages.PayLandingFee;
+using AirTote.ViewModels.ReservePages;
 
 using System;
 
-namespace FIS_J.Pages.ReservePages
+namespace AirTote.Pages.ReservePages
 {
 	public partial class ReserveSpotAndFuel : ContentPage
 	{

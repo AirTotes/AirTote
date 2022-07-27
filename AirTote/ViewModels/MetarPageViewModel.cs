@@ -1,6 +1,6 @@
-using FIS_J.Models;
+using AirTote.Models;
 
-namespace FIS_J.ViewModels
+namespace AirTote.ViewModels
 {
 	internal class MetarPageViewModel : BaseViewModel
 	{

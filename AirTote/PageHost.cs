@@ -1,8 +1,8 @@
-﻿using FIS_J.Pages;
-using FIS_J.Interfaces;
-using FIS_J.ViewModels;
+﻿using AirTote.Pages;
+using AirTote.Interfaces;
+using AirTote.ViewModels;
 
-namespace FIS_J;
+namespace AirTote;
 
 public class PageHost : FlyoutPage
 {

@@ -1,4 +1,4 @@
-﻿namespace FIS_J.ViewModels;
+﻿namespace AirTote.ViewModels;
 
 public class FlyoutMenuItem : BaseViewModel
 {

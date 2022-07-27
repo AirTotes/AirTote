@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using AngleSharp;
-using FIS_J.Services;
-using FIS_J.ViewModels;
+using AirTote.Services;
+using AirTote.ViewModels;
 
-namespace FIS_J.Views
+namespace AirTote.Views
 {
 	public partial class SettingPage : ContentPage
 	{

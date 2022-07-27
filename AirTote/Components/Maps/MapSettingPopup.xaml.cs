@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Maui.Views;
-using FIS_J.Components.Maps.Widgets;
+using AirTote.Components.Maps.Widgets;
 using Mapsui;
 
-namespace FIS_J.Components.Maps;
+namespace AirTote.Components.Maps;
 
 public partial class MapSettingPopup : Popup
 {

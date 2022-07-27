@@ -1,12 +1,12 @@
 ﻿using System.Linq;
-using FIS_J.Components.Maps.Layers;
-using FIS_J.Models;
+using AirTote.Components.Maps.Layers;
+using AirTote.Models;
 using Mapsui.UI.Maui;
 using Topten.RichTextKit;
 
-using TCalloutTextGen = System.Func<FIS_J.Models.AirportInfo.APInfo, Topten.RichTextKit.RichString, Topten.RichTextKit.RichString>;
+using TCalloutTextGen = System.Func<AirTote.Models.AirportInfo.APInfo, Topten.RichTextKit.RichString, Topten.RichTextKit.RichString>;
 
-namespace FIS_J.Components.Maps;
+namespace AirTote.Components.Maps;
 
 public record AirportSelectedEventArgs(AirportInfo.APInfo SelectedAP);
 

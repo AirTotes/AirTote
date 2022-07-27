@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace FIS_J.ValueConverters
+namespace AirTote.ValueConverters
 {
 	public class BooleanInverter : IValueConverter
 	{

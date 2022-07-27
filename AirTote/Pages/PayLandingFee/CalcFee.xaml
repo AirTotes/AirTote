@@ -2,11 +2,11 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:PayLandingFee="clr-namespace:FIS_J.ViewModels.PayLandingFee"
-	xmlns:valueconverters="clr-namespace:FIS_J.ValueConverters"
+	xmlns:PayLandingFee="clr-namespace:AirTote.ViewModels.PayLandingFee"
+	xmlns:valueconverters="clr-namespace:AirTote.ValueConverters"
 	x:DataType="PayLandingFee:CalcFeeViewModel"
 	Title="{Binding Title}"
-	x:Class="FIS_J.Pages.PayLandingFee.CalcFee">
+	x:Class="AirTote.Pages.PayLandingFee.CalcFee">
 	<ContentPage.Resources>
 		<valueconverters:StringToDoubleConverter x:Key="StrToDouble"/>
 		<valueconverters:StringToIntegerConverter x:Key="StrToInt"/>

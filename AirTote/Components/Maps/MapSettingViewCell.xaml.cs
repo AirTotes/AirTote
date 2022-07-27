@@ -1,9 +1,9 @@
-﻿using FIS_J.Components.Maps.Widgets;
+﻿using AirTote.Components.Maps.Widgets;
 
 using Mapsui.Layers;
 using Mapsui.Widgets;
 
-namespace FIS_J.Components.Maps;
+namespace AirTote.Components.Maps;
 
 public partial class MapSettingViewCell : ViewCell
 {

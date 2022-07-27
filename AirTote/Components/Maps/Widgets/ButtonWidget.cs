@@ -10,7 +10,7 @@ using SkiaSharp;
 
 using Svg.Skia;
 
-namespace FIS_J.Components.Maps.Widgets;
+namespace AirTote.Components.Maps.Widgets;
 
 public class ButtonWidget : Widget, INamedWidget
 {

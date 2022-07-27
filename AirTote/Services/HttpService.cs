@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace FIS_J.Services;
+namespace AirTote.Services;
 
 public class HttpService
 {

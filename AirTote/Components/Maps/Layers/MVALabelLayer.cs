@@ -1,9 +1,9 @@
-﻿using FIS_J.Services;
+﻿using AirTote.Services;
 
 using Mapsui.Layers;
 using Mapsui.Providers;
 
-namespace FIS_J.Components.Maps.Layers;
+namespace AirTote.Components.Maps.Layers;
 
 public class MVALabelLayer : Layer
 {

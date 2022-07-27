@@ -2,7 +2,7 @@ using CommunityToolkit.Maui;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
 
-namespace FIS_J;
+namespace AirTote;
 
 public static class MauiProgram
 {

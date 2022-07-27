@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FIS_J.ViewModels
+namespace AirTote.ViewModels
 {
 	public class SettingPageViewModel : BaseViewModel
 	{

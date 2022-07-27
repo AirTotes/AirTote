@@ -2,8 +2,8 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:maps="clr-namespace:FIS_J.Components.Maps"
-	x:Class="FIS_J.Pages.TopPage"
+	xmlns:maps="clr-namespace:AirTote.Components.Maps"
+	x:Class="AirTote.Pages.TopPage"
 	Title="Flight Information">
 	<ContentPage.Resources>
 		<x:Double x:Key="BtnWidth">48</x:Double>

@@ -1,8 +1,8 @@
-﻿using FIS_J.Models;
-using FIS_J.Services;
-using FIS_J.ViewModels.PayLandingFee;
+﻿using AirTote.Models;
+using AirTote.Services;
+using AirTote.ViewModels.PayLandingFee;
 
-namespace FIS_J.Pages.PayLandingFee
+namespace AirTote.Pages.PayLandingFee
 {
 	public partial class CalcFee : ContentPage
 	{

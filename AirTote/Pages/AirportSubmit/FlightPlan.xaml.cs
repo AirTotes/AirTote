@@ -1,12 +1,12 @@
 ﻿using AngleSharp;
-using FIS_J.Services;
+using AirTote.Services;
 
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FIS_J.Pages
+namespace AirTote.Pages
 {
 	public partial class FlightPlan : ContentPage
 	{

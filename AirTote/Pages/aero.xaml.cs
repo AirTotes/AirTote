@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using FIS_J.Services;
-using FIS_J.ViewModels;
+using AirTote.Services;
+using AirTote.ViewModels;
 
-namespace FIS_J.Pages
+namespace AirTote.Pages
 {
 	public partial class aero : ContentPage
 	{

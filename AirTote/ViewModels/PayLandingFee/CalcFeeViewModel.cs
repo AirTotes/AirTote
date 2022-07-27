@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
-using FIS_J.Models;
-using FIS_J.Services;
+using AirTote.Models;
+using AirTote.Services;
 
-namespace FIS_J.ViewModels.PayLandingFee
+namespace AirTote.ViewModels.PayLandingFee
 {
 	public class CalcFeeViewModel : BaseViewModel, IContainsAirportInfo
 	{

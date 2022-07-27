@@ -1,11 +1,11 @@
-﻿using FIS_J.Services;
+﻿using AirTote.Services;
 
 using Mapsui.Layers;
 using Mapsui.Nts;
 using Mapsui.Providers;
 using Mapsui.Styles;
 
-namespace FIS_J.Components.Maps.Layers;
+namespace AirTote.Components.Maps.Layers;
 
 public class MVALayer : Layer
 {

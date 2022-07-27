@@ -3,7 +3,7 @@ using BruTile.Cache;
 using BruTile.Predefined;
 using BruTile.Web;
 
-using FIS_J.Services;
+using AirTote.Services;
 
 using Mapsui;
 using Mapsui.Rendering.Skia.SkiaWidgets;
@@ -14,7 +14,7 @@ using SkiaSharp;
 
 using Topten.RichTextKit;
 
-namespace FIS_J.Components.Maps;
+namespace AirTote.Components.Maps;
 
 public static class TileProvider
 {

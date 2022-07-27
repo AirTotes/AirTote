@@ -13,7 +13,7 @@ using Mapsui.Styles;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 
-namespace FIS_J.Services;
+namespace AirTote.Services;
 
 public static class MinimumVectoringAltitude
 {

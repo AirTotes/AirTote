@@ -1,12 +1,12 @@
-using FIS_J.Models;
-using FIS_J.Services;
+using AirTote.Models;
+using AirTote.Services;
 
 using NUnit.Framework;
 
 using System;
 using System.Threading.Tasks;
 
-namespace FIS_J.Tests
+namespace AirTote.Tests
 {
 	public class AVWXTests
 	{

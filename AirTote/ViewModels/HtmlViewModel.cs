@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace FIS_J.ViewModels
+namespace AirTote.ViewModels
 {
 	internal class HtmlViewModel : BaseViewModel
 	{

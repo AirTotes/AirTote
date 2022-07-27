@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FIS_J.Pages
+namespace AirTote.Pages
 {
 	public partial class kounan : ContentPage
 	{

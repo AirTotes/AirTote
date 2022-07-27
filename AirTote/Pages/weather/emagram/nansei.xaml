@@ -2,7 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	x:Class="FIS_J.Pages.nansei"
+	x:Class="AirTote.Pages.nansei"
 	Title="エマグラム>南西諸島">
 	<WebView
 		Source="https://www.sunny-spot.net/emagram/index.html?area=11"
