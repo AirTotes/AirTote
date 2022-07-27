@@ -8,7 +8,7 @@ on:
 
   workflow_run:
     workflows:
-      - Assign Bundle ID tags (main),
+      - Assign Bundle ID tags (main)
       - Assign Bundle ID tags (Pull Request)
     types:
       - completed
