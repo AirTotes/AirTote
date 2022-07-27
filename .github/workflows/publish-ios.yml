@@ -28,7 +28,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: fetch related tag
-      run: git fetch --no-recurse-submodules --depth=1 origin +${{ github.sha }}:${{ github.ref }}
+      run: git fetch --no-recurse-submodules --depth=1 origin +${{ github.sha }}:refs/remotes/origin/${{ github.ref_name }}
 
     - name: get version number
       run: |
