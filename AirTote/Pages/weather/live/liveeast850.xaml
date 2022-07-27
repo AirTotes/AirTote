@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.liveeast850"
+	Title="極東850hPa気温・風/700hPa上昇流/500hPa高度・渦度">
+	<WebView
+		Source="https://n-kishou.com/ee/exp/exp01.html?cd=axfe578&amp;cat=e1"
+		HorizontalOptions="FillAndExpand"
+		VerticalOptions="FillAndExpand"/>
+</ContentPage>

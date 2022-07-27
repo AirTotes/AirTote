@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  CSPROJ_PATH: ./AirTote/AirTote.csproj
+
 jobs:
   assign-tag:
     runs-on: ubuntu-latest
@@ -23,7 +26,7 @@ jobs:
       run: git fetch --all --tags
 
     - name: Get current Major/Minor Version
-      run: grep -oP '(?<=<ApplicationDisplayVersion>).*?(?=</ApplicationDisplayVersion>)' ./FIS-J/FIS-J.csproj > MAJOR_MINOR_VERSION
+      run: grep -oP '(?<=<ApplicationDisplayVersion>).*?(?=</ApplicationDisplayVersion>)' ${{ env.CSPROJ_PATH }} > MAJOR_MINOR_VERSION
 
     - name: generate bundle version pattern
       run: echo bundle`cat MAJOR_MINOR_VERSION`.[0-9]* > BUNDLE_VERSION_PATTERN
