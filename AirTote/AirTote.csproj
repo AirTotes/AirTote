@@ -10,7 +10,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<!-- Display name -->
-		<ApplicationTitle>FIS-J</ApplicationTitle>
+		<ApplicationTitle>AirTote</ApplicationTitle>
 		<!-- App Identifier -->
 		<ApplicationId>com.technotter.fis-j</ApplicationId>
 		<ApplicationIdGuid>4C1E60E8-E959-4B25-8FDB-2B8863C432D3</ApplicationIdGuid>
