@@ -19,8 +19,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      major_minor_version: ${{ steps.set_major_minor_version.outputs.version }}
-      version_num: ${{ steps.set_version_number.outputs.version }}
+      display_version: ${{ steps.set_display_version.outputs.version }}
+      bundle_version: ${{ steps.set_version_number.outputs.version }}
 
     steps:
     - uses: actions/checkout@v3
@@ -39,12 +39,12 @@ jobs:
       run: echo "0.${{ github.event.number }}" > BUNDLE_VERSION_MAJOR_MINOR
 
     - name: set major/minor version to variable
-      id: set_major_minor_version
-      run: echo "::set-output name=version::$(cat BUNDLE_VERSION_MAJOR_MINOR)"
+      id: set_display_version
+      run: echo "::set-output name=disp-version::$(cat BUNDLE_VERSION_MAJOR_MINOR)"
 
     - name: Get all tags reachable from current commit
       run: |
-        git tag -l "bundle$(cat BUNDLE_VERSION_PATTERN).[0-9]*" > BUNDLE_VERSIONS
+        git tag -l "bundle${{ steps.set_display_version.outputs.disp-version }}.[0-9]*" > BUNDLE_VERSIONS
         cat BUNDLE_VERSIONS
 
     - name: Generate new patch version number
@@ -59,7 +59,7 @@ jobs:
 
     - name: set version number
       id: set_version_number
-      run: echo "::set-output name=version::${{ steps.set_major_minor_version.outputs.version }}.${{ steps.patch_version.outputs.version }}"
+      run: echo "::set-output name=version::${{ steps.set_display_version.outputs.disp-version }}.${{ steps.patch_version.outputs.version }}"
 
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
@@ -70,8 +70,8 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      major_minor_version: ${{ steps.get-version.outputs.major_minor_version }}
-      version_num: ${{ steps.get-version.outputs.version_num }}
+      display_version: ${{ steps.get-version.outputs.display_version }}
+      bundle_version: ${{ steps.get-version.outputs.bundle_version }}
 
     steps:
     - name: get version
@@ -79,11 +79,11 @@ jobs:
       run: |
         if [ '${{ startsWith(github.ref, 'refs/tags/bundle') }}' == 'true' ]; then
           VERSION=`echo '${{ github.ref }}' | tr -d 'refs/tags/bundle'`
-          echo "::set-output name=version_num::$VERSION"
-          echo "::set-output name=major_minor_version::$(echo $VERSION | awk -F '.' '{print $1 "." $2}')"
+          echo "::set-output name=bundle_version::$VERSION"
+          echo "::set-output name=display_version::$(echo $VERSION | awk -F '.' '{print $1 "." $2}')"
         else
-          echo "::set-output name=version_num::${{ needs.generate-bundle-version.outputs.version_num }}"
-          echo "::set-output name=major_minor_version::${{ needs.generate-bundle-version.outputs.major_minor_version }}"
+          echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
+          echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
         fi
 
   build-publish-ios:
@@ -101,8 +101,8 @@ jobs:
         -f:net6.0-ios
         -r ios-arm64
         -c Publish
-        /p:ApplicationVersion=${{ needs.get-bundle-version.outputs.version_num }}
-        /p:ApplicationDisplayVersion=${{ needs.get-bundle-version.outputs.major_minor_version }}
+        /p:ApplicationVersion=${{ needs.get-bundle-version.outputs.bundle_version }}
+        /p:ApplicationDisplayVersion=${{ needs.get-bundle-version.outputs.display_version }}
     
     - name: validate
       run: >
@@ -144,7 +144,7 @@ jobs:
         git config user.email 'github-actions[bot]@users.noreply.github.com'
 
     - name: tagging new tag
-      run: git tag -a bundle${{ needs.generate-bundle-version.outputs.version_num }} -m "Auto Generated tag ( https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} )"
+      run: git tag -a bundle${{ needs.generate-bundle-version.outputs.bundle_version }} -m "Auto Generated tag ( https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} )"
 
     - name: push new tag
       run: git push origin `cat BUNDLE_VERSION`
@@ -152,7 +152,7 @@ jobs:
     - name: Comment TagName and Actions-Run URL to PR
       if: ${{ github.event_name == 'pull_request' }}
       run: >
-        echo Tag \`bundle${{ needs.generate-bundle-version.outputs.version_num }}\` was automatically created and pushed with
+        echo Tag \`bundle${{ needs.generate-bundle-version.outputs.bundle_version }}\` was automatically created and pushed with
         ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
         | gh pr comment ${{ github.event.number }} -F -
       env:
