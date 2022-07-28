@@ -74,7 +74,9 @@ jobs:
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
   get-bundle-version:
-    if: ${{ !failure() }}
+    if: |
+      needs.generate-bundle-version.result == 'success'
+      || needs.generate-bundle-version.result == 'skipped'
     needs: generate-bundle-version
     runs-on: ubuntu-latest
 
@@ -96,7 +98,7 @@ jobs:
         fi
 
   build-publish-ios:
-    if: ${{ !failure() }}
+    if: ${{ needs.get-bundle-version.result == 'success' }}
     runs-on: [self-hosted, macOS]
     needs: get-bundle-version
     steps:
@@ -140,7 +142,7 @@ jobs:
         retention-days: 3
 
   set-tag:
-    if: ${{ !failure() }}
+    if: ${{ needs.build-publish-ios.result == 'success' }}
     runs-on: ubuntu-latest
     needs:
       - generate-bundle-version
