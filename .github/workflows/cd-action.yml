@@ -8,6 +8,7 @@ on:
       - 'bundle[0-9]+.[0-9]+.[0-9]+'
   pull_request:
     types: [ labeled ]
+  workflow_dispatch:
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
@@ -38,13 +39,19 @@ jobs:
       if: ${{ github.event_name == 'pull_request' }}
       run: echo "0.${{ github.event.number }}" > BUNDLE_VERSION_MAJOR_MINOR
 
+    - name: generate bundle version pattern (Trigger:WorkflowDispatch)
+      if: ${{ github.event_name == 'pull_request' }}
+      run: echo "0.0.1" > BUNDLE_VERSION_MAJOR_MINOR
+
     - name: set major/minor version to variable
       id: set_display_version
-      run: echo "::set-output name=disp-version::$(cat BUNDLE_VERSION_MAJOR_MINOR)"
+      run: |
+        echo "::set-output name=disp-version::$(cat BUNDLE_VERSION_MAJOR_MINOR)"
+        echo "::set-output name=major-minor-version::$(echo '${{ steps.set_display_version.outputs.version }}' | awk -F '.' '{print $1 "." $2}')"
 
     - name: Get all tags reachable from current commit
       run: |
-        git tag -l "bundle${{ steps.set_display_version.outputs.disp-version }}.[0-9]*" > BUNDLE_VERSIONS
+        git tag -l "bundle${{ steps.set_display_version.outputs.major-minor-version }}.[0-9]*" > BUNDLE_VERSIONS
         cat BUNDLE_VERSIONS
 
     - name: Generate new patch version number
@@ -59,7 +66,7 @@ jobs:
 
     - name: set version number
       id: set_version_number
-      run: echo "::set-output name=version::${{ steps.set_display_version.outputs.disp-version }}.${{ steps.patch_version.outputs.version }}"
+      run: echo "::set-output name=version::${{ steps.set_display_version.outputs.major-minor-version }}.${{ steps.patch_version.outputs.version }}"
 
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
