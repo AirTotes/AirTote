@@ -27,11 +27,15 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: fetch related tag
-      run: git fetch --no-recurse-submodules --depth=1 origin +${{ github.sha }}:refs/remotes/origin/${{ github.ref_name }}
-
-    - name: get version number
+    - name: get version number (trigger:PUSH)
+      if: ${{ github.event_name == 'push' }}
       run: |
+        echo '${{ github.ref_name }}' | tr -d bundle > VERSION_NUMBER
+
+    - name: get version number (trigger:WorkflowRun)
+      if: ${{ github.event_name == 'workflow_run' }}
+      run: |
+        git fetch --no-recurse-submodules --depth=1 origin +${{ github.event.workflow_run.head_sha }}:refs/remotes/origin/${{ github.event.workflow_run.head_branch }}
         git tag --points-at ${{ github.sha }} | tr -d bundle > VERSION_NUMBER
 
     - name: print version number
