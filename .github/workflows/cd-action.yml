@@ -152,16 +152,25 @@ jobs:
         git config user.name 'github-actions[bot]'
         git config user.email 'github-actions[bot]@users.noreply.github.com'
 
+    - name: set PR number
+      id: pr-num
+      if: ${{ github.event_name == 'pull_request' }}
+      run: echo "::set-output name=str::#${{ github.event.number }}"
+
+    - name: generate tag name
+      id: tag-name
+      run: echo "::set-output name=tag-name::bundle${{ needs.generate-bundle-version.outputs.bundle_version }}"
+
     - name: tagging new tag
-      run: git tag -a bundle${{ needs.generate-bundle-version.outputs.bundle_version }} -m "Auto Generated tag ( https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} )"
+      run: git tag -a ${{ steps.tag-name.outputs.tag-name }} -m "Auto Generated tag ${{ steps.pr-num.outputs.str }} ( https://github.com/${{github.repository}}/actions/runs/${{github.run_id}} )"
 
     - name: push new tag
-      run: git push origin `cat BUNDLE_VERSION`
+      run: git push origin ${{ steps.tag-name.outputs.tag-name }}
     
     - name: Comment TagName and Actions-Run URL to PR
       if: ${{ github.event_name == 'pull_request' }}
       run: >
-        echo Tag \`bundle${{ needs.generate-bundle-version.outputs.bundle_version }}\` was automatically created and pushed with
+        echo Tag \`${{ steps.tag-name.outputs.tag-name }}\` was automatically created and pushed with
         ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
         | gh pr comment ${{ github.event.number }} -F -
       env:
