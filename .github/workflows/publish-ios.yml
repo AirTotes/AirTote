@@ -33,7 +33,9 @@ jobs:
     - name: get version number
       run: |
         git tag --points-at ${{ github.sha }} | tr -d bundle > VERSION_NUMBER
-        echo "VersionNumber (Bundle Version) ..." `cat VERSION_NUMBER`
+
+    - name: print version number
+      run: echo "VersionNumber (Bundle Version) ..." `cat VERSION_NUMBER`
 
     - name: Install dependencies
       run: dotnet restore ${{ env.CSPROJ_PATH }}
