@@ -40,7 +40,7 @@ jobs:
 
     - name: print version number
       run: |
-        sort -rV VERSION_NUMBER_TMP | head -n 1 > VERSION_NUMBER
+        sort -rV VERSION_NUMBER_TMP | head -n 1 | tr -d bundle > VERSION_NUMBER
         echo "VersionNumber (Bundle Version) ..." `cat VERSION_NUMBER`
 
     - name: Install dependencies
