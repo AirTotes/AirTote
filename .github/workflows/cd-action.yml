@@ -9,6 +9,7 @@ on:
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
+  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
 
 jobs:
   generate-bundle-version:
@@ -63,9 +64,54 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
+  build-publish-ios:
+    runs-on: [self-hosted, macOS]
+    needs: generate-bundle-version
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: dotnet restore ${{ env.CSPROJ_PATH }}
+
+    - name: Build
+      run: >
+        dotnet publish ${{ env.CSPROJ_PATH }}
+        -f:net6.0-ios
+        -r ios-arm64
+        -c Publish
+        /p:ApplicationVersion=${{ needs.generate-bundle-version.outputs.version_num }}
+        /p:ApplicationDisplayVersion=${{ needs.generate-bundle-version.outputs.major_minor_version }}
+    
+    - name: validate
+      run: >
+        xcrun altool
+        --validate-app
+        --type ios
+        -f ${{ env.IPA_PATH }}
+        --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }}
+        --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
+
+    - name: upload
+      run: >
+        xcrun altool
+        --upload-app
+        --type ios
+        -f ${{ env.IPA_PATH }}
+        --apiKey ${{ secrets.APPSTORECONNECT_API_KEY }}
+        --apiIssuer ${{ secrets.APPSTORECONNECT_ISSUER_ID }}
+
+    - name: Upload IPA
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: ipa
+        path: ${{ env.IPA_PATH }}
+        retention-days: 3
+
   set-tag:
     runs-on: ubuntu-latest
-    needs: generate-bundle-version
+    needs:
+      - generate-bundle-version
+      - build-publish-ios
 
     steps:
     - uses: actions/checkout@v3
