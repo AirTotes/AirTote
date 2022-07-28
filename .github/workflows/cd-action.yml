@@ -96,6 +96,7 @@ jobs:
         fi
 
   build-publish-ios:
+    if: ${{ !failure() }}
     runs-on: [self-hosted, macOS]
     needs: get-bundle-version
     steps:
@@ -139,6 +140,7 @@ jobs:
         retention-days: 3
 
   set-tag:
+    if: ${{ !failure() }}
     runs-on: ubuntu-latest
     needs:
       - generate-bundle-version
