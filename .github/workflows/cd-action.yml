@@ -42,7 +42,7 @@ jobs:
       run: echo "0.${{ github.event.number }}" > BUNDLE_VERSION_MAJOR_MINOR
 
     - name: generate bundle version pattern (Trigger:WorkflowDispatch)
-      if: ${{ github.event_name == 'pull_request' }}
+      if: ${{ github.event_name == 'workflow_dispatch' }}
       run: echo "0.0.1" > BUNDLE_VERSION_MAJOR_MINOR
 
     - name: set major/minor version to variable
