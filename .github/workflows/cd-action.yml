@@ -44,7 +44,7 @@ jobs:
 
     - name: Get all tags reachable from current commit
       run: |
-        git tag -l bundle`cat BUNDLE_VERSION_PATTERN`".[0-9]*" > BUNDLE_VERSIONS
+        git tag -l "bundle$(cat BUNDLE_VERSION_PATTERN).[0-9]*" > BUNDLE_VERSIONS
         cat BUNDLE_VERSIONS
 
     - name: Generate new patch version number
