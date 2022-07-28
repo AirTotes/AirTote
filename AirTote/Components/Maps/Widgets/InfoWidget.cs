@@ -7,12 +7,13 @@ using SkiaSharp;
 
 namespace AirTote.Components.Maps.Widgets;
 
-public class InfoWidget : Widget, INotifyPropertyChanged
+public class InfoWidget : Widget, INotifyPropertyChanged, INamedWidget
 {
 	public event PropertyChangedEventHandler? PropertyChanged;
 
 	public float PaddingX { get; set; } = 4;
 	public float PaddingY { get; set; } = 4;
+	public string Name { get; } = "InfoWidget";
 
 	public InfoWidget()
 	{

@@ -21,6 +21,14 @@
 			<Color x:Key="DarkSecondaryColor">White</Color>
 			<Color x:Key="DarkBackgroundColor">#222</Color>
 
+			<Style
+				TargetType="{x:Type VisualElement}"
+				x:Key="LightDarkBG">
+				<Setter
+					Property="BackgroundColor"
+					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+			</Style>
+
 			<Style TargetType="Label">
 				<Setter Property="FontFamily" Value="BIZ UDPGothic" />
 				<Setter
@@ -30,16 +38,18 @@
 					Property="Padding"
 					Value="2,4,2,0"/>
 			</Style>
-			<Style TargetType="ContentPage">
-				<Setter
-					Property="Background"
-					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
-			</Style>
-			<Style TargetType="FlyoutPage">
-				<Setter
-					Property="Background"
-					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
-			</Style>
+
+			<Style
+				TargetType="ContentPage"
+				BasedOn="{StaticResource LightDarkBG}" />
+			<Style
+				TargetType="FlyoutPage"
+				BasedOn="{StaticResource LightDarkBG}" />
+			<Style
+				TargetType="Rectangle"
+				x:Key="LightDarkBGRect"
+				BasedOn="{StaticResource LightDarkBG}" />
+
 			<Style TargetType="NavigationPage">
 				<Setter
 					Property="BarTextColor"

@@ -7,8 +7,10 @@ using SkiaSharp;
 
 namespace AirTote.Components.Maps.Widgets;
 
-public class LonLatLabelWidget : Widget
+public class LonLatLabelWidget : Widget, INamedWidget
 {
+	public string Name { get; } = "Longitude / Latitude Label";
+
 	public override bool HandleWidgetTouched(INavigator navigator, MPoint position)
 		=> false;
 }

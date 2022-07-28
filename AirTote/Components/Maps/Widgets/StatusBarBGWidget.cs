@@ -7,8 +7,10 @@ using SkiaSharp;
 
 namespace AirTote.Components.Maps.Widgets;
 
-public class StatusBarBGWidget : Widget
+public class StatusBarBGWidget : Widget, INamedWidget
 {
+	public string Name { get; } = "StatusBar Background";
+
 	public override bool HandleWidgetTouched(INavigator navigator, MPoint position)
 		=> false;
 }
