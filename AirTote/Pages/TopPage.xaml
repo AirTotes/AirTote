@@ -24,9 +24,6 @@
 				Property="BackgroundColor"
 				Value="Transparent" />
 			<Setter
-				Property="FontFamily"
-				Value="MaterialSymbolsRounded" />
-			<Setter
 				Property="FontSize"
 				Value="36"/>
 		</Style>
@@ -58,7 +55,7 @@
 				<Button
 					Grid.Row="0"
 					Style="{StaticResource MenuButton}"
-					Text="&#xe5d2;"
+					Text="&#x2261;"
 					Clicked="MenuButton_Clicked">
 				</Button>
 			</Grid>
