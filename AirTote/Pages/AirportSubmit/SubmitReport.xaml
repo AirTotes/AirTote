@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.SubmitReport"
+	Title="書類提出">
+	<StackLayout>
+		<Button
+			Text="飛行計画書の提出"
+			Clicked="FlightPlan_Clicked"
+			FontSize="Medium"/>
+
+		<Button
+			Text="空港使用届"
+			Clicked="AirportUse_Clicked"
+			FontSize="Medium"/>
+	</StackLayout>
+</ContentPage>

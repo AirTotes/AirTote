@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.emagram"
+	Title="エマグラム">
+	<ScrollView>
+		<StackLayout>
+			<Button
+				Clicked="Zenkoku_Clicked"
+				Text="全国"/>
+			<Button
+				Clicked="Hokkaido_Clicked"
+				Text="北海道"/>
+			<Button
+				Clicked="Touhoku_Clicked"
+				Text="東北"/>
+			<Button
+				Clicked="Kanto_Clicked"
+				Text="関東甲信"/>
+			<Button
+				Clicked="Hokuriku_Clicked"
+				Text="北陸"/>
+			<Button
+				Clicked="Toukai_Clicked"
+				Text="東海"/>
+			<Button
+				Clicked="Kinki_Clicked"
+				Text="近畿"/>
+			<Button
+				Clicked="Tyuugoku_Clicked"
+				Text="中国"/>
+			<Button
+				Clicked="Sikoku_Clicked"
+				Text="四国"/>
+			<Button
+				Clicked="Kyuusyukita_Clicked"
+				Text="九州北部"/>
+			<Button
+				Clicked="Kyuusyuminami_Clicked"
+				Text="九州南部"/>
+			<Button
+				Clicked="Nansei_Clicked"
+				Text="南西諸島"/>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>
