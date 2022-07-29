@@ -55,7 +55,7 @@
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and '$(Configuration)' == 'Publish'">
 		<CodesignKey>iPhone Distribution: Kazunori Fujita (JYXQMVT4FS)</CodesignKey>
-		<CodesignProvision>AirTote Distribution</CodesignProvision>
+		<CodesignProvision>FIS-J Distribution</CodesignProvision>
 		<ArchiveOnBuild>true</ArchiveOnBuild>
 	</PropertyGroup>
 	<ItemGroup>
