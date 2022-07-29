@@ -36,16 +36,20 @@
 			AbsoluteLayout.LayoutFlags="All"
 			x:Name="Map"/>
 
-		<AbsoluteLayout>
+		<Grid
+			HorizontalOptions="Start"
+			VerticalOptions="Start">
 			<Rectangle
 				Style="{StaticResource LightDarkBGRect}"
-				AbsoluteLayout.LayoutBounds="0,0,48,96"
+				HeightRequest="96"
 				Aspect="Fill"/>
 			<Button
-				AbsoluteLayout.LayoutBounds="0,0,48,48"
+				HeightRequest="{StaticResource BtnWidth}"
+				WidthRequest="{StaticResource BtnWidth}"
+				VerticalOptions="Start"
 				Style="{StaticResource MenuButton}"
 				Text="&#x2261;"
 				Clicked="MenuButton_Clicked"/>
-		</AbsoluteLayout>
+		</Grid>
 	</AbsoluteLayout>
 </ContentPage>
