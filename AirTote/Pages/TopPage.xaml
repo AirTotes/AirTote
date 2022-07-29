@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -37,30 +37,15 @@
 			x:Name="Map"/>
 
 		<AbsoluteLayout>
-			<!-- LayoutBoundsは、どうやらSafeAreaも含めて計算するらしい。 -->
-			<Grid
-				AbsoluteLayout.LayoutBounds="0,0,48,200"
-				HorizontalOptions="Start"
-				VerticalOptions="Start">
-				<Grid.RowDefinitions>
-					<RowDefinition Height="{StaticResource BtnWidth}"/>
-					<RowDefinition Height="{StaticResource BtnWidth}"/>
-				</Grid.RowDefinitions>
-
-				<Rectangle
-					Style="{StaticResource LightDarkBGRect}"
-					Aspect="Fill"
-					Grid.RowSpan="2"/>
-
-				<Button
-					Grid.Row="0"
-					Style="{StaticResource MenuButton}"
-					Text="&#x2261;"
-					Clicked="MenuButton_Clicked">
-				</Button>
-			</Grid>
-
-
+			<Rectangle
+				Style="{StaticResource LightDarkBGRect}"
+				AbsoluteLayout.LayoutBounds="0,0,48,96"
+				Aspect="Fill"/>
+			<Button
+				AbsoluteLayout.LayoutBounds="0,0,48,48"
+				Style="{StaticResource MenuButton}"
+				Text="&#x2261;"
+				Clicked="MenuButton_Clicked"/>
 		</AbsoluteLayout>
 	</AbsoluteLayout>
 </ContentPage>
