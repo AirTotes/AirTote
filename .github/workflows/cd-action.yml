@@ -17,6 +17,12 @@ env:
   IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
 
 jobs:
+  dump-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump `github` context
+        run: echo '${{ toJSON(github) }}'
+
   generate-bundle-version:
     if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
     runs-on: ubuntu-latest
@@ -73,16 +79,24 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
-  get-bundle-version:
-    if: |
-      needs.generate-bundle-version.result == 'success'
-      || needs.generate-bundle-version.result == 'skipped'
-    needs: generate-bundle-version
+  dump-context-2:
+    if: ${{ !failure() }}
     runs-on: ubuntu-latest
+    needs: build-publish-ios
+    steps:
+      - name: dump `needs` context
+        run: echo '${{ toJSON(needs) }}'
 
-    outputs:
-      display_version: ${{ steps.get-version.outputs.display_version }}
-      bundle_version: ${{ steps.get-version.outputs.bundle_version }}
+  build-publish-ios:
+    if: |
+      !failure() && 
+      (
+        needs.generate-bundle-version.result == 'success'
+        || needs.generate-bundle-version.result == 'skipped'
+      )
+
+    runs-on: [self-hosted, macOS]
+    needs: generate-bundle-version
 
     steps:
     - name: get version
@@ -97,11 +111,6 @@ jobs:
           echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
         fi
 
-  build-publish-ios:
-    if: ${{ needs.get-bundle-version.result == 'success' }}
-    runs-on: [self-hosted, macOS]
-    needs: get-bundle-version
-    steps:
     - uses: actions/checkout@v2
 
     - name: Install dependencies
@@ -113,8 +122,8 @@ jobs:
         -f:net6.0-ios
         -r ios-arm64
         -c Publish
-        /p:ApplicationVersion=${{ needs.get-bundle-version.outputs.bundle_version }}
-        /p:ApplicationDisplayVersion=${{ needs.get-bundle-version.outputs.display_version }}
+        /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
+        /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
     
     - name: validate
       run: >
@@ -142,7 +151,10 @@ jobs:
         retention-days: 3
 
   set-tag:
-    if: ${{ needs.build-publish-ios.result == 'success' }}
+    if: |
+      needs.generate-bundle-version.result == 'success'
+      && needs.build-publish-ios.result == 'success'
+
     runs-on: ubuntu-latest
     needs:
       - generate-bundle-version
