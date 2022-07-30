@@ -137,7 +137,10 @@ jobs:
         retention-days: 3
 
   set-tag:
-    if: ${{ needs.build-publish-ios.result == 'success' }}
+    if: |
+      needs.generate-bundle-version.result == 'success'
+      && needs.build-publish-ios.result == 'success'
+
     runs-on: ubuntu-latest
     needs:
       - generate-bundle-version
