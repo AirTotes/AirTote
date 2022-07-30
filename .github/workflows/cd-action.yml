@@ -83,6 +83,16 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
+  dump-context-1:
+    if: ${{ !failure() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 1
+    needs: generate-bundle-version
+    steps:
+      - name: dump `needs` context
+        env:
+          __CONTEXT: ${{ toJSON(needs) }}
+        run: echo "$__CONTEXT"
   dump-context-2:
     if: ${{ !failure() }}
     runs-on: ubuntu-latest
