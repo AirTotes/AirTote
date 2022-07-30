@@ -22,7 +22,9 @@ jobs:
     timeout-minutes: 1
     steps:
       - name: dump `github` context
-        run: echo '${{ toJSON(github) }}'
+        env:
+          __CONTEXT: ${{ toJSON(github) }}
+        run: echo "$__CONTEXT"
 
   generate-bundle-version:
     if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
@@ -88,7 +90,9 @@ jobs:
     needs: build-publish-ios
     steps:
       - name: dump `needs` context
-        run: echo '${{ toJSON(needs) }}'
+        env:
+          __CONTEXT: ${{ toJSON(needs) }}
+        run: echo "$__CONTEXT"
 
   build-publish-ios:
     if: |
