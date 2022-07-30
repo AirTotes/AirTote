@@ -79,6 +79,14 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
+  dump-context-2:
+    if: ${{ !failure() }}
+    runs-on: ubuntu-latest
+    needs: build-publish-ios
+    steps:
+      - name: dump `needs` context
+        run: echo '${{ toJSON(needs) }}'
+
   build-publish-ios:
     if: |
       !failure() && 
