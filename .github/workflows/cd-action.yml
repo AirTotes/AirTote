@@ -17,6 +17,12 @@ env:
   IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
 
 jobs:
+  dump-context:
+    runs-on: ubuntu-latest
+    steps:
+      - name: dump `github` context
+        run: echo '${{ toJSON(github) }}'
+
   generate-bundle-version:
     if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
     runs-on: ubuntu-latest
