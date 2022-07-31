@@ -18,7 +18,7 @@ env:
 
 jobs:
   dump-context:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 1
     steps:
       - name: dump `github` context
@@ -28,7 +28,7 @@ jobs:
 
   generate-bundle-version:
     if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 5
 
     outputs:
@@ -85,7 +85,7 @@ jobs:
 
   dump-context-1:
     if: ${{ !failure() }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 1
     needs: generate-bundle-version
     steps:
@@ -95,7 +95,7 @@ jobs:
         run: echo "$__CONTEXT"
   dump-context-2:
     if: ${{ !failure() }}
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 1
     needs: build-publish-ios
     steps:
@@ -173,7 +173,7 @@ jobs:
       needs.generate-bundle-version.result == 'success'
       && needs.build-publish-ios.result == 'success'
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     timeout-minutes: 5
     needs:
       - generate-bundle-version
