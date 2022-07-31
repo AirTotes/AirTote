@@ -8,11 +8,14 @@ using AirTote.Services;
 using Mapsui.Extensions;
 using Mapsui.Layers;
 using Topten.RichTextKit;
+using SkiaSharp;
 
 namespace AirTote.Pages;
 
 public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 {
+	const float BUTTON_HEIGHT_WIDTH = 48;
+
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
 
@@ -46,6 +49,39 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		NavigationPage.SetHasNavigationBar(this, false);
 		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
+
+		Task.Run(async () =>
+		{
+			ButtonWidget widget = await ButtonWidget.FromAppPackageFileAsync("Open Menu Button", "menu_FILL0_wght700_GRAD0_opsz48.svg");
+			widget.MarginX = 0;
+			widget.MarginY = StatusBarBGWidgetRenderer.Height;
+			widget.Size = new(BUTTON_HEIGHT_WIDTH, BUTTON_HEIGHT_WIDTH);
+
+			widget.WidgetTouched += (_, e) =>
+			{
+				OnMenuButtonClicked();
+				e.Handled = true;
+			};
+
+			Map.Map?.Widgets.Add(widget);
+		});
+
+
+		Task.Run(async () =>
+		{
+			ButtonWidget widget = await ButtonWidget.FromAppPackageFileAsync("Open Menu Button", "settings_FILL0_wght400_GRAD0_opsz48.svg");
+			widget.MarginX = 0;
+			widget.MarginY = StatusBarBGWidgetRenderer.Height + BUTTON_HEIGHT_WIDTH;
+			widget.Size = new(BUTTON_HEIGHT_WIDTH, BUTTON_HEIGHT_WIDTH);
+
+			widget.WidgetTouched += (_, e) =>
+			{
+				OnSettingButtonClicked();
+				e.Handled = true;
+			};
+
+			Map.Map?.Widgets.Add(widget);
+		});
 
 		Task.Run(async () =>
 		{
@@ -176,10 +212,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		return str;
 	}
 
-	void MenuButton_Clicked(object sender, EventArgs e)
-		=> OnMenuButtonClicked();
-
-	void SettingButton_Clicked(object sender, EventArgs e)
+	void OnSettingButtonClicked()
 	{
 		if (Map.Map is null)
 			return;
