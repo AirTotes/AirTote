@@ -16,6 +16,8 @@ using Topten.RichTextKit;
 
 namespace AirTote.Components.Maps;
 
+public record MapTileSourceInfo(string UrlFormatter, string Name, Attribution Attr);
+
 public static class TileProvider
 {
 	// TODO: Impl Cache System
@@ -28,18 +30,16 @@ public static class TileProvider
 
 	static string USER_AGENT => HttpService.HttpClient.DefaultRequestHeaders.UserAgent.ToString();
 
-	static Dictionary<string, ITileSource> _TileSources { get; } = new();
-	public static IReadOnlyDictionary<string, ITileSource> TileSources => _TileSources;
+	static Dictionary<string, MapTileSourceInfo> _TileSources { get; } = new();
+	public static IReadOnlyDictionary<string, MapTileSourceInfo> TileSources => _TileSources;
 	public const string DEFAULT_MAP_SOURCE_KEY = "gsi_jp_pale";
 
 	static TileProvider()
 	{
-		_TileSources.Add(DEFAULT_MAP_SOURCE_KEY, new HttpTileSource(
-				new GlobalSphericalMercator(),
+		_TileSources.Add(DEFAULT_MAP_SOURCE_KEY, new(
 				@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-				name: "国土地理院 淡色地図",
-				persistentCache: DefaultCache,
-				userAgent: USER_AGENT
+				"国土地理院 淡色地図",
+				AttributionInfo
 			));
 	}
 
@@ -48,7 +48,14 @@ public static class TileProvider
 		if (!TileSources.TryGetValue(key, out var value) || value is null)
 			throw new KeyNotFoundException("Specified key was not found");
 
-		return new(value)
+		return new(new HttpTileSource(
+				new GlobalSphericalMercator(),
+				value.UrlFormatter,
+				name: value.Name,
+				persistentCache: DefaultCache,
+				userAgent: USER_AGENT,
+				attribution: AttributionInfo
+			))
 		{
 			Name = value.Name
 		};
