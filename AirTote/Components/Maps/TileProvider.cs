@@ -38,6 +38,9 @@ public static class TileProvider
 
 	public static TileLayer CreateLayer(string key = DEFAULT_MAP_SOURCE_KEY)
 	{
+		if (string.IsNullOrWhiteSpace(key))
+			key = DEFAULT_MAP_SOURCE_KEY;
+
 		if (!TileSources.TryGetValue(key, out var value) || value is null)
 			throw new KeyNotFoundException("Specified key was not found");
 
