@@ -19,11 +19,6 @@ namespace AirTote.Components.Maps
 
 		public AirMap(double longitude, double latitude)
 		{
-			Init(longitude, latitude);
-		}
-
-		private void Init(double longitude, double latitude)
-		{
 			if (Map is null)
 				throw new NullReferenceException("Cannot use NULL Map");
 
