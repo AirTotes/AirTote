@@ -5,16 +5,11 @@ using BruTile.Web;
 
 using AirTote.Services;
 
-using Mapsui;
-using Mapsui.Rendering.Skia.SkiaWidgets;
 using Mapsui.Tiling.Layers;
-using Mapsui.Widgets;
-
-using SkiaSharp;
-
-using Topten.RichTextKit;
 
 namespace AirTote.Components.Maps;
+
+public record MapTileSourceInfo(string UrlFormatter, string Name, Attribution Attr);
 
 public static class TileProvider
 {
@@ -28,80 +23,41 @@ public static class TileProvider
 
 	static string USER_AGENT => HttpService.HttpClient.DefaultRequestHeaders.UserAgent.ToString();
 
-	static HttpTileSource TileSource { get; } = new(
-		new GlobalSphericalMercator(),
-		@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-		name: "国土地理院 淡色地図",
-		persistentCache: DefaultCache,
-		userAgent: USER_AGENT
-		);
+	static Dictionary<string, MapTileSourceInfo> _TileSources { get; } = new();
+	public static IReadOnlyDictionary<string, MapTileSourceInfo> TileSources => _TileSources;
+	public const string DEFAULT_MAP_SOURCE_KEY = "gsi_jp_pale";
 
-
-	public static TileLayer CreateLayer()
-		=> new(TileSource);
-}
-
-public class TileLicenseWidget : Widget
-{
-	public override bool HandleWidgetTouched(INavigator navigator, MPoint position)
+	static TileProvider()
 	{
-		Launcher.OpenAsync(TileProvider.AttributionInfo.Url);
-		return true;
+		_TileSources.Add(DEFAULT_MAP_SOURCE_KEY, new(
+				@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+				"国土地理院 淡色地図",
+				AttributionInfo
+			));
 	}
-}
 
-public class TileLicenseWidgetRenderer : ISkiaWidgetRenderer, IDisposable
-{
-	const float PADDING = 4;
-	const float MARGIN = 4;
-	const float RADIUS = 4;
-	static float StrWidth { get; }
-	static float StrHeight { get; }
-	static RichString Str { get; }
-	static SKColor BGColor { get; } = SKColors.White.WithAlpha(0x80);
-	static SKColor TextColor { get; } = SKColors.Black;
-
-	SKPaint BgPaint { get; } = new()
+	public static TileLayer CreateLayer(string key = DEFAULT_MAP_SOURCE_KEY)
 	{
-		Color = BGColor,
-		Style = SKPaintStyle.Fill
-	};
+		if (string.IsNullOrWhiteSpace(key))
+			key = DEFAULT_MAP_SOURCE_KEY;
 
+		if (!TileSources.TryGetValue(key, out var value) || value is null)
+			throw new KeyNotFoundException("Specified key was not found");
 
-	static TileLicenseWidgetRenderer()
-	{
-		Str = new(TileProvider.AttributionInfo.Text);
-		Str.DefaultStyle = new Topten.RichTextKit.Style()
+		TileLayer layer = new(new HttpTileSource(
+				new GlobalSphericalMercator(),
+				value.UrlFormatter,
+				name: value.Name,
+				persistentCache: DefaultCache,
+				userAgent: USER_AGENT,
+				attribution: AttributionInfo
+			))
 		{
-			TextColor = TextColor,
-			FontFamily = "BIZ UDGothic",
-			FontSize = 10,
+			Name = value.Name,
 		};
 
-		StrWidth = Str.MeasuredWidth;
-		StrHeight = Str.MeasuredHeight;
-	}
+		layer.Attribution.Enabled = false;
 
-	public void Draw(SKCanvas canvas, IReadOnlyViewport viewport, IWidget _widget, float layerOpacity)
-	{
-		if (_widget is not TileLicenseWidget widget)
-			return;
-
-		float strLeft = (float)viewport.Width - MARGIN - PADDING - StrWidth;
-		float strUp = (float)viewport.Height - MARGIN - PADDING - StrHeight;
-		float rectLeft = strLeft - PADDING;
-		float rectUp = strUp - PADDING;
-		float rectHeight = StrHeight + (PADDING * 2);
-		float rectWidth = StrWidth + (PADDING * 2);
-
-		widget.Envelope = new(rectLeft, rectUp, rectLeft + rectWidth, rectUp + rectHeight);
-
-		canvas.DrawRoundRect(strLeft - PADDING, strUp - PADDING, rectWidth, rectHeight, RADIUS, RADIUS, BgPaint);
-		Str.Paint(canvas, new SKPoint(strLeft, strUp));
-	}
-
-	public void Dispose()
-	{
-		BgPaint.Dispose();
+		return layer;
 	}
 }
