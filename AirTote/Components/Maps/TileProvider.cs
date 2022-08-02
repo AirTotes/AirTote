@@ -28,17 +28,31 @@ public static class TileProvider
 
 	static string USER_AGENT => HttpService.HttpClient.DefaultRequestHeaders.UserAgent.ToString();
 
-	static HttpTileSource TileSource { get; } = new(
-		new GlobalSphericalMercator(),
-		@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
-		name: "国土地理院 淡色地図",
-		persistentCache: DefaultCache,
-		userAgent: USER_AGENT
-		);
+	static Dictionary<string, ITileSource> _TileSources { get; } = new();
+	public static IReadOnlyDictionary<string, ITileSource> TileSources => _TileSources;
+	public const string DEFAULT_MAP_SOURCE_KEY = "gsi_jp_pale";
 
+	static TileProvider()
+	{
+		_TileSources.Add(DEFAULT_MAP_SOURCE_KEY, new HttpTileSource(
+				new GlobalSphericalMercator(),
+				@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
+				name: "国土地理院 淡色地図",
+				persistentCache: DefaultCache,
+				userAgent: USER_AGENT
+			));
+	}
 
-	public static TileLayer CreateLayer()
-		=> new(TileSource);
+	public static TileLayer CreateLayer(string key = DEFAULT_MAP_SOURCE_KEY)
+	{
+		if (!TileSources.TryGetValue(key, out var value) || value is null)
+			throw new KeyNotFoundException("Specified key was not found");
+
+		return new(value)
+		{
+			Name = value.Name
+		};
+	}
 }
 
 public class TileLicenseWidget : Widget
