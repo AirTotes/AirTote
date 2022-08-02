@@ -44,7 +44,6 @@ public class InfoWidget : Widget, INotifyPropertyChanged, INamedWidget
 public class InfoWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 {
 	const float TextSize = 12;
-	const float Margin = 4;
 
 	const string Header = "Resolution: ";
 	const string StrFormat = "#,###,###.##";
