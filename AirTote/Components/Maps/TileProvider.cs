@@ -140,6 +140,8 @@ public class TileLicenseWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 	{
 		if (_widget is not TileLicenseWidget widget || widget.Str is null)
 			return;
+		// 割合設定の数値は、iPhone SEでInfoWidgetに被らない程度に設定している
+		widget.Str.MaxWidth = (float)(viewport.Width * 0.6);
 
 		float strLeft = (float)viewport.Width - MARGIN - PADDING - widget.Str.MeasuredWidth;
 		float strUp = (float)viewport.Height - MARGIN - PADDING - widget.Str.MeasuredHeight;
