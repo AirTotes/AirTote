@@ -46,7 +46,7 @@ public class InfoWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 	const float TextSize = 12;
 
 	const string Header = "Resolution: ";
-	const string StrFormat = "#,###,###.##";
+	const string StrFormat = "###,###.##";
 
 	SKPaint textPaint { get; } = new() { Color = SKColors.Black, TextSize = 12 };
 	SKPaint bgPaint { get; } = new() { Color = SKColors.White, Style = SKPaintStyle.Fill };
