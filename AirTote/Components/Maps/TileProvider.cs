@@ -13,6 +13,7 @@ using Mapsui.Widgets;
 using SkiaSharp;
 
 using Topten.RichTextKit;
+using Mapsui.Layers;
 
 namespace AirTote.Components.Maps;
 
@@ -48,7 +49,7 @@ public static class TileProvider
 		if (!TileSources.TryGetValue(key, out var value) || value is null)
 			throw new KeyNotFoundException("Specified key was not found");
 
-		return new(new HttpTileSource(
+		TileLayer layer = new(new HttpTileSource(
 				new GlobalSphericalMercator(),
 				value.UrlFormatter,
 				name: value.Name,
@@ -57,16 +58,65 @@ public static class TileProvider
 				attribution: AttributionInfo
 			))
 		{
-			Name = value.Name
+			Name = value.Name,
 		};
+
+		layer.Attribution.Enabled = false;
+
+		return layer;
 	}
 }
 
 public class TileLicenseWidget : Widget
 {
+	public RichString? Str { get; private set; } = null;
+	public Attribution? Link { get; private set; } = null;
+
+	static Topten.RichTextKit.Style MapAttrTextStyle { get; } = new Topten.RichTextKit.Style()
+	{
+		TextColor = SKColors.Black,
+		FontFamily = "BIZ UDGothic",
+		FontSize = 10,
+	};
+
+
+	public TileLicenseWidget(Mapsui.Map map)
+	{
+		map.Layers.Changed += Layers_Changed;
+
+		SetAttrText(map.Layers.AsEnumerable());
+	}
+
+	private void Layers_Changed(object sender, LayerCollectionChangedEventArgs args)
+	{
+		bool isTileLayerRemoved = args.RemovedLayers?.Any(v => v is TileLayer) ?? false;
+		if (!SetAttrText(args.AddedLayers) && isTileLayerRemoved)
+		{
+			Str = null;
+			Link = null;
+		}
+	}
+
+	private bool SetAttrText(IEnumerable<ILayer>? layers)
+	{
+		if (layers?.FirstOrDefault(v => v is TileLayer) is not TileLayer layer || layer.TileSource is not HttpTileSource src)
+			return false;
+
+		Str = new(src.Attribution.Text)
+		{
+			DefaultStyle = MapAttrTextStyle
+		};
+
+		Link = src.Attribution;
+		return true;
+	}
+
 	public override bool HandleWidgetTouched(INavigator navigator, MPoint position)
 	{
-		Launcher.OpenAsync(TileProvider.AttributionInfo.Url);
+		if (Link?.Url is null)
+			return false;
+
+		Launcher.OpenAsync(Link.Url);
 		return true;
 	}
 }
@@ -76,11 +126,8 @@ public class TileLicenseWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 	const float PADDING = 4;
 	const float MARGIN = 4;
 	const float RADIUS = 4;
-	static float StrWidth { get; }
-	static float StrHeight { get; }
-	static RichString Str { get; }
+
 	static SKColor BGColor { get; } = SKColors.White.WithAlpha(0x80);
-	static SKColor TextColor { get; } = SKColors.Black;
 
 	SKPaint BgPaint { get; } = new()
 	{
@@ -89,36 +136,22 @@ public class TileLicenseWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 	};
 
 
-	static TileLicenseWidgetRenderer()
-	{
-		Str = new(TileProvider.AttributionInfo.Text);
-		Str.DefaultStyle = new Topten.RichTextKit.Style()
-		{
-			TextColor = TextColor,
-			FontFamily = "BIZ UDGothic",
-			FontSize = 10,
-		};
-
-		StrWidth = Str.MeasuredWidth;
-		StrHeight = Str.MeasuredHeight;
-	}
-
 	public void Draw(SKCanvas canvas, IReadOnlyViewport viewport, IWidget _widget, float layerOpacity)
 	{
-		if (_widget is not TileLicenseWidget widget)
+		if (_widget is not TileLicenseWidget widget || widget.Str is null)
 			return;
 
-		float strLeft = (float)viewport.Width - MARGIN - PADDING - StrWidth;
-		float strUp = (float)viewport.Height - MARGIN - PADDING - StrHeight;
+		float strLeft = (float)viewport.Width - MARGIN - PADDING - widget.Str.MeasuredWidth;
+		float strUp = (float)viewport.Height - MARGIN - PADDING - widget.Str.MeasuredHeight;
 		float rectLeft = strLeft - PADDING;
 		float rectUp = strUp - PADDING;
-		float rectHeight = StrHeight + (PADDING * 2);
-		float rectWidth = StrWidth + (PADDING * 2);
+		float rectHeight = widget.Str.MeasuredHeight + (PADDING * 2);
+		float rectWidth = widget.Str.MeasuredWidth + (PADDING * 2);
 
 		widget.Envelope = new(rectLeft, rectUp, rectLeft + rectWidth, rectUp + rectHeight);
 
 		canvas.DrawRoundRect(strLeft - PADDING, strUp - PADDING, rectWidth, rectHeight, RADIUS, RADIUS, BgPaint);
-		Str.Paint(canvas, new SKPoint(strLeft, strUp));
+		widget.Str.Paint(canvas, new SKPoint(strLeft, strUp));
 	}
 
 	public void Dispose()

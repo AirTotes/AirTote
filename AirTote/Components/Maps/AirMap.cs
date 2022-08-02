@@ -29,7 +29,7 @@ namespace AirTote.Components.Maps
 
 			Map.Layers.Add(TileProvider.CreateLayer());
 
-			Map.Widgets.Add(new TileLicenseWidget());
+			Map.Widgets.Add(new TileLicenseWidget(Map));
 			Renderer.WidgetRenders[typeof(TileLicenseWidget)] = new TileLicenseWidgetRenderer();
 
 			var reso = Map.Resolutions[Math.Min(Map.Resolutions.Count - 1, 9)];
