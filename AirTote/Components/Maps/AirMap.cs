@@ -27,7 +27,8 @@ namespace AirTote.Components.Maps
 
 			ChangeMapTile();
 
-			Map.Widgets.Add(new TileLicenseWidget(Map));
+			TileLicenseWidget licenseWidget = new(Map);
+			Map.Widgets.Add(licenseWidget);
 			Renderer.WidgetRenders[typeof(TileLicenseWidget)] = new TileLicenseWidgetRenderer();
 
 			var reso = Map.Resolutions[Math.Min(Map.Resolutions.Count - 1, 9)];
@@ -52,7 +53,7 @@ namespace AirTote.Components.Maps
 				e.Handled = true;
 			};
 
-			Map?.Widgets.Add(new LonLatLabelWidget());
+			Map?.Widgets.Add(new LonLatLabelWidget(licenseWidget));
 			Renderer.WidgetRenders[typeof(LonLatLabelWidget)] = new LonLatLabelWidgetRenderer();
 		}
 

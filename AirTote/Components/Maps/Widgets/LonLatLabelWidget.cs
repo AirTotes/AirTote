@@ -10,6 +10,12 @@ namespace AirTote.Components.Maps.Widgets;
 public class LonLatLabelWidget : Widget, INamedWidget
 {
 	public string Name { get; } = "Longitude / Latitude Label";
+	public TileLicenseWidget LicenseWidget { get; }
+
+	public LonLatLabelWidget(TileLicenseWidget licenseWidget)
+	{
+		LicenseWidget = licenseWidget;
+	}
 
 	public override bool HandleWidgetTouched(INavigator navigator, MPoint position)
 		=> false;
@@ -117,8 +123,9 @@ public class LonLatLabelWidgetRenderer : ISkiaWidgetRenderer, IDisposable
 			SetLonLatLabelPosIfNeeded(labels, TEXT_POS, y);
 
 		lastLonLat = null;
+		int textPos_Y = (int)(viewport.Height - TEXT_POS - (widget.LicenseWidget.Str?.MeasuredHeight ?? 0));
 		for (int x = TEXT_POS; x <= viewport.Width - TEXT_POS; x++)
-			SetLonLatLabelPosIfNeeded(labels, x, (int)viewport.Height - TEXT_POS);
+			SetLonLatLabelPosIfNeeded(labels, x, textPos_Y);
 
 		DrawLonLatText(labels);
 	}
