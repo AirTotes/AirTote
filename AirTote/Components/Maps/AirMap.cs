@@ -5,6 +5,7 @@ using Mapsui;
 using Mapsui.Extensions;
 using Mapsui.Projections;
 using Mapsui.Tiling;
+using Mapsui.Tiling.Layers;
 using Mapsui.UI.Maui;
 using Mapsui.Utilities;
 
@@ -15,6 +16,8 @@ namespace AirTote.Components.Maps
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
+		TileLayer? CurrentMapTileLayer;
+
 		public AirMap() : this(DEFAULT_CENTER_LONGITUDE, DEFAULT_CENTER_LATITUDE) { }
 
 		public AirMap(double longitude, double latitude)
@@ -22,7 +25,7 @@ namespace AirTote.Components.Maps
 			if (Map is null)
 				throw new NullReferenceException("Cannot use NULL Map");
 
-			Map.Layers.Add(TileProvider.CreateLayer());
+			ChangeMapTile();
 
 			Map.Widgets.Add(new TileLicenseWidget(Map));
 			Renderer.WidgetRenders[typeof(TileLicenseWidget)] = new TileLicenseWidgetRenderer();
@@ -59,6 +62,15 @@ namespace AirTote.Components.Maps
 			=> MoveTo(longitude: latlng.Longitude, latitude: latlng.Latitude);
 		public void MoveTo(in double longitude, in double latitude)
 			=> Navigator?.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
+
+		public void ChangeMapTile(string name = "")
+		{
+			if (CurrentMapTileLayer is not null)
+				Map?.Layers.Remove(CurrentMapTileLayer);
+
+			CurrentMapTileLayer = TileProvider.CreateLayer(name);
+			Map?.Layers.Add(CurrentMapTileLayer);
+		}
 	}
 }
 
