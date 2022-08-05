@@ -50,6 +50,11 @@ public static class TileProvider
 		if (!TileSources.TryGetValue(key, out var value) || value is null)
 			throw new KeyNotFoundException("Specified key was not found");
 
+		return CreateLayer(value);
+	}
+
+	public static TileLayer CreateLayer(MapTileSourceInfo value)
+	{
 		TileLayer layer = new(new HttpTileSource(
 				new GlobalSphericalMercator(),
 				value.UrlFormatter,

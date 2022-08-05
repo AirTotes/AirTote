@@ -72,6 +72,15 @@ namespace AirTote.Components.Maps
 			CurrentMapTileLayer = TileProvider.CreateLayer(name);
 			Map?.Layers.Add(CurrentMapTileLayer);
 		}
+
+		public void ChangeMapTile(MapTileSourceInfo srcInfo)
+		{
+			if (CurrentMapTileLayer is not null)
+				Map?.Layers.Remove(CurrentMapTileLayer);
+
+			CurrentMapTileLayer = TileProvider.CreateLayer(srcInfo);
+			Map?.Layers.Add(CurrentMapTileLayer);
+		}
 	}
 }
 
