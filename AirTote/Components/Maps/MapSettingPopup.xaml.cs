@@ -6,11 +6,13 @@ namespace AirTote.Components.Maps;
 
 public partial class MapSettingPopup : Popup
 {
-	Mapsui.Map Map { get; }
+	AirMap Map { get; }
 
-	public MapSettingPopup(Mapsui.Map map, Action RefleshCanvas)
+	public MapSettingPopup(AirMap map, Action RefleshCanvas)
 	{
 		Map = map;
+		if (map.Map is null)
+			throw new ArgumentNullException(nameof(Map.Map));
 
 		// code from: https://github.com/CommunityToolkit/Maui/blob/68b82412a7e31d961b7ec0da2909f38e2a07ff9a/samples/CommunityToolkit.Maui.Sample/Models/PopupSize.cs#L10
 		var deviceDisplay = DeviceDisplay.Current;
@@ -21,10 +23,10 @@ public partial class MapSettingPopup : Popup
 
 		InitializeComponent();
 
-		foreach (var layer in map.Layers)
+		foreach (var layer in map.Map.Layers)
 			LayersSection.Add(new MapSettingViewCell(layer));
 
-		foreach (var widget in map.Widgets)
+		foreach (var widget in map.Map.Widgets)
 		{
 			if (widget is not INamedWidget namedWidget)
 				continue;
