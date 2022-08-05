@@ -26,6 +26,7 @@ public static class TileProvider
 	static Dictionary<string, MapTileSourceInfo> _TileSources { get; } = new();
 	public static IReadOnlyDictionary<string, MapTileSourceInfo> TileSources => _TileSources;
 	public const string DEFAULT_MAP_SOURCE_KEY = "gsi_jp_pale";
+	public const string BLANK_MAP_SOURCE_KEY = "gsi_jp_blank";
 
 	static TileProvider()
 	{
@@ -33,6 +34,11 @@ public static class TileProvider
 				@"https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png",
 				"国土地理院 淡色地図",
 				AttributionInfo
+			));
+		_TileSources.Add(BLANK_MAP_SOURCE_KEY, new(
+				@"https://cyberjapandata.gsi.go.jp/xyz/blank/{z}/{x}/{y}.png",
+				"国土地理院 白地図",
+				new("出典: 地理院タイル", "https://maps.gsi.go.jp/development/ichiran.html")
 			));
 	}
 
