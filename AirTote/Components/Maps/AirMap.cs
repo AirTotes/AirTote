@@ -65,20 +65,17 @@ namespace AirTote.Components.Maps
 			=> Navigator?.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
 
 		public void ChangeMapTile(string name = "")
-		{
-			if (CurrentMapTileLayer is not null)
-				Map?.Layers.Remove(CurrentMapTileLayer);
-
-			CurrentMapTileLayer = TileProvider.CreateLayer(name);
-			Map?.Layers.Add(CurrentMapTileLayer);
-		}
+			=> ChangeMapTile(TileProvider.CreateLayer(name));
 
 		public void ChangeMapTile(MapTileSourceInfo srcInfo)
+			=> ChangeMapTile(TileProvider.CreateLayer(srcInfo));
+
+		public void ChangeMapTile(TileLayer layer)
 		{
 			if (CurrentMapTileLayer is not null)
 				Map?.Layers.Remove(CurrentMapTileLayer);
 
-			CurrentMapTileLayer = TileProvider.CreateLayer(srcInfo);
+			CurrentMapTileLayer = layer;
 			Map?.Layers.Add(CurrentMapTileLayer);
 		}
 	}
