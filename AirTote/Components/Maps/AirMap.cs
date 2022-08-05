@@ -16,7 +16,7 @@ namespace AirTote.Components.Maps
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		TileLayer? CurrentMapTileLayer;
+		public TileLayer? CurrentMapTileLayer { get; private set; }
 
 		public AirMap() : this(DEFAULT_CENTER_LONGITUDE, DEFAULT_CENTER_LATITUDE) { }
 
