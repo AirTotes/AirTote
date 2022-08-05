@@ -32,7 +32,10 @@ public partial class MapSettingPopup : Popup
 		}
 
 		foreach (var layer in map.Map.Layers)
-			LayersSection.Add(new MapSettingViewCell(layer));
+		{
+			if (layer.IsMapInfoLayer)
+				LayersSection.Add(new MapSettingViewCell(layer));
+		}
 
 		foreach (var widget in map.Map.Widgets)
 		{
