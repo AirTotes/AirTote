@@ -23,6 +23,14 @@ public partial class MapSettingPopup : Popup
 
 		InitializeComponent();
 
+		List<MapTileSettingViewCell> MapTypeCells = new();
+		foreach (var v in TileProvider.TileSources.Values)
+		{
+			MapTileSettingViewCell cell = new(MapTypeCells, map.CurrentMapTileLayer?.Name == v.Name, Map, v);
+			MapTypeCells.Add(cell);
+			MapTypeSection.Add(cell);
+		}
+
 		foreach (var layer in map.Map.Layers)
 			LayersSection.Add(new MapSettingViewCell(layer));
 
