@@ -15,9 +15,10 @@ public partial class MapSettingPopup : Popup
 		// code from: https://github.com/CommunityToolkit/Maui/blob/68b82412a7e31d961b7ec0da2909f38e2a07ff9a/samples/CommunityToolkit.Maui.Sample/Models/PopupSize.cs#L10
 		var deviceDisplay = DeviceDisplay.Current;
 		Size = new(
-			0.9 * (deviceDisplay.MainDisplayInfo.Width / deviceDisplay.MainDisplayInfo.Density),
+			Math.Min(0.9 * (deviceDisplay.MainDisplayInfo.Width / deviceDisplay.MainDisplayInfo.Density), 350),
 			0.8 * (deviceDisplay.MainDisplayInfo.Height / deviceDisplay.MainDisplayInfo.Density)
 			);
+		this.HorizontalOptions = Microsoft.Maui.Primitives.LayoutAlignment.Start;
 
 		InitializeComponent();
 
