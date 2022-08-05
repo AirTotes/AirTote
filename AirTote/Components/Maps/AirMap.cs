@@ -76,7 +76,7 @@ namespace AirTote.Components.Maps
 				Map?.Layers.Remove(CurrentMapTileLayer);
 
 			CurrentMapTileLayer = layer;
-			Map?.Layers.Add(CurrentMapTileLayer);
+			Map?.Layers.Insert(0, CurrentMapTileLayer);
 		}
 	}
 }
