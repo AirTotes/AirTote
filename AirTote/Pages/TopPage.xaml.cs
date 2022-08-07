@@ -47,8 +47,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Map.Map?.Widgets.Add(new StatusBarBGWidget());
 
-		NavigationPage.SetHasNavigationBar(this, false);
-		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
+		Shell.SetNavBarIsVisible(this, false);
+		//PageHost.SetIsGestureEnabled(typeof(TopPage), false);
 
 		Task.Run(async () =>
 		{
