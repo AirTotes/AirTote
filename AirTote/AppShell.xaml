@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:local="clr-namespace:AirTote.Views"
+	xmlns:airtote="clr-namespace:AirTote.Pages"
+	xmlns:ReservePages="clr-namespace:AirTote.Pages.ReservePages"
+	xmlns:PayLandingFee="clr-namespace:AirTote.Pages.PayLandingFee"
+	Title="AirTote"
+	x:Class="AirTote.AppShell">
+
+	<FlyoutItem Title="TOP">
+		<ShellContent ContentTemplate="{DataTemplate airtote:TopPage}" />
+	</FlyoutItem>
+	<FlyoutItem Title="書類提出">
+		<ShellContent ContentTemplate="{DataTemplate airtote:SubmitReport}" />
+	</FlyoutItem>
+	<FlyoutItem Title="PPR (書類提出)">
+		<ShellContent ContentTemplate="{DataTemplate ReservePages:ReserveSpotAndFuel}" />
+	</FlyoutItem>
+	<FlyoutItem Title="航空情報">
+		<ShellContent ContentTemplate="{DataTemplate airtote:aero}" />
+	</FlyoutItem>
+	<FlyoutItem Title="気象情報">
+		<ShellContent ContentTemplate="{DataTemplate airtote:WetherInformation}" />
+	</FlyoutItem>
+	<FlyoutItem Title="ICAO">
+		<ShellContent ContentTemplate="{DataTemplate airtote:IcaoPage}" />
+	</FlyoutItem>
+	<FlyoutItem Title="オンライン支払い">
+		<ShellContent ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
+	</FlyoutItem>
+	<FlyoutItem Title="設定">
+		<ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
+	</FlyoutItem>
+</Shell>
