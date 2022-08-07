@@ -10,15 +10,25 @@ on:
     types:
       - opened
       - synchronize
+      - unlabeled
   workflow_dispatch:
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
+  IS_NOT_WIP_OR_WIP_REMOVED_RUN: |
+    ${{
+      github.event_name != 'pull_request'
+      || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels, 'WIP'))
+      || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+    }}
 
 jobs:
   generate-bundle-version:
-    if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
+    if: |
+      !startsWith(github.ref, 'refs/tags/bundle')
+      && env.IS_NOT_WIP_OR_WIP_REMOVED_RUN
+
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -81,6 +91,7 @@ jobs:
         needs.generate-bundle-version.result == 'success'
         || needs.generate-bundle-version.result == 'skipped'
       )
+      && env.IS_NOT_WIP_OR_WIP_REMOVED_RUN
 
     runs-on: [self-hosted, macOS]
     timeout-minutes: 20
