@@ -10,6 +10,7 @@ on:
     types:
       - opened
       - synchronize
+      - unlabeled
   workflow_dispatch:
 
 env:
@@ -17,17 +18,15 @@ env:
   IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
 
 jobs:
-  dump-context:
-    runs-on: self-hosted
-    timeout-minutes: 1
-    steps:
-      - name: dump `github` context
-        env:
-          __CONTEXT: ${{ toJSON(github) }}
-        run: echo "$__CONTEXT"
-
   generate-bundle-version:
-    if: ${{ !startsWith(github.ref, 'refs/tags/bundle') }}
+    if: |
+      !startsWith(github.ref, 'refs/tags/bundle')
+      && (
+        github.event_name != 'pull_request'
+        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+      )
+
     runs-on: ubuntu-latest
     timeout-minutes: 5
 
@@ -83,33 +82,17 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
-  dump-context-1:
-    if: ${{ !failure() }}
-    runs-on: self-hosted
-    timeout-minutes: 1
-    needs: generate-bundle-version
-    steps:
-      - name: dump `needs` context
-        env:
-          __CONTEXT: ${{ toJSON(needs) }}
-        run: echo "$__CONTEXT"
-  dump-context-2:
-    if: ${{ !failure() }}
-    runs-on: self-hosted
-    timeout-minutes: 1
-    needs: build-publish-ios
-    steps:
-      - name: dump `needs` context
-        env:
-          __CONTEXT: ${{ toJSON(needs) }}
-        run: echo "$__CONTEXT"
-
   build-publish-ios:
     if: |
       !failure() && 
       (
         needs.generate-bundle-version.result == 'success'
         || needs.generate-bundle-version.result == 'skipped'
+      )
+      && (
+        github.event_name != 'pull_request'
+        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
       )
 
     runs-on: [self-hosted, macOS]
@@ -212,3 +195,32 @@ jobs:
         | gh pr comment ${{ github.event.number }} -F -
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+  dump-context:
+    runs-on: self-hosted
+    timeout-minutes: 1
+    steps:
+      - name: dump `github` context
+        env:
+          __CONTEXT: ${{ toJSON(github) }}
+        run: echo "$__CONTEXT"
+  dump-context-1:
+    if: ${{ !failure() }}
+    runs-on: self-hosted
+    timeout-minutes: 1
+    needs: generate-bundle-version
+    steps:
+      - name: dump `needs` context
+        env:
+          __CONTEXT: ${{ toJSON(needs) }}
+        run: echo "$__CONTEXT"
+  dump-context-2:
+    if: ${{ !failure() }}
+    runs-on: self-hosted
+    timeout-minutes: 1
+    needs: build-publish-ios
+    steps:
+      - name: dump `needs` context
+        env:
+          __CONTEXT: ${{ toJSON(needs) }}
+        run: echo "$__CONTEXT"
