@@ -16,7 +16,7 @@ namespace AirTote.Components.Maps
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
 
-		TileLayer? CurrentMapTileLayer;
+		public TileLayer? CurrentMapTileLayer { get; private set; }
 
 		public AirMap() : this(DEFAULT_CENTER_LONGITUDE, DEFAULT_CENTER_LATITUDE) { }
 
@@ -65,12 +65,18 @@ namespace AirTote.Components.Maps
 			=> Navigator?.CenterOn(SphericalMercator.FromLonLat(longitude, latitude).ToMPoint(), 250, Mapsui.Utilities.Easing.SinInOut);
 
 		public void ChangeMapTile(string name = "")
+			=> ChangeMapTile(TileProvider.CreateLayer(name));
+
+		public void ChangeMapTile(MapTileSourceInfo srcInfo)
+			=> ChangeMapTile(TileProvider.CreateLayer(srcInfo));
+
+		public void ChangeMapTile(TileLayer layer)
 		{
 			if (CurrentMapTileLayer is not null)
 				Map?.Layers.Remove(CurrentMapTileLayer);
 
-			CurrentMapTileLayer = TileProvider.CreateLayer(name);
-			Map?.Layers.Add(CurrentMapTileLayer);
+			CurrentMapTileLayer = layer;
+			Map?.Layers.Insert(0, CurrentMapTileLayer);
 		}
 	}
 }
