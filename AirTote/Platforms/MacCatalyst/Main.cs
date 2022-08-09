@@ -1,6 +1,6 @@
 using UIKit;
 
-namespace FIS_J;
+namespace AirTote;
 
 public class Program
 {

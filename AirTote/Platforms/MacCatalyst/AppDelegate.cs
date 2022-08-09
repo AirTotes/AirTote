@@ -1,6 +1,6 @@
 using Foundation;
 
-namespace FIS_J;
+namespace AirTote;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate
