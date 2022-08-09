@@ -1,9 +1,9 @@
 ﻿using AirTote.Components.Maps;
 using AirTote.Models;
 
-namespace AirTote.Pages.PayLandingFee
+namespace AirTote.Components.Maps
 {
-	public partial class SelectAirport : ContentPage
+	public class SelectAirport : ContentPage
 	{
 		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
 		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
