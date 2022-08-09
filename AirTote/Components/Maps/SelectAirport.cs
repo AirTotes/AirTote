@@ -1,32 +1,31 @@
 ﻿using AirTote.Components.Maps;
 using AirTote.Models;
 
-namespace AirTote.Components.Maps
+namespace AirTote.Components.Maps;
+
+public class SelectAirport : ContentPage
 {
-	public class SelectAirport : ContentPage
+	const double DEFAULT_CENTER_LATITUDE = 35.5469298;
+	const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
+
+	public SelectAirport(IContainsAirportInfo? airportInfo)
 	{
-		const double DEFAULT_CENTER_LATITUDE = 35.5469298;
-		const double DEFAULT_CENTER_LONGITUDE = 139.7719668;
+		var latlng = airportInfo?.AirportInfo?.coordinates
+			?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
 
-		public SelectAirport(IContainsAirportInfo? airportInfo)
+		//PageHost.SetIsGestureEnabled(typeof(SelectAirport), false);
+
+		AirportMap map = new(latlng.longitude, latlng.latitude);
+		map.AirportSelected += async (_, e) =>
 		{
-			var latlng = airportInfo?.AirportInfo?.coordinates
-				?? new() { latitude = DEFAULT_CENTER_LATITUDE, longitude = DEFAULT_CENTER_LONGITUDE };
+			if (airportInfo is not null)
+				airportInfo.AirportInfo = e.SelectedAP;
+			await Navigation.PopAsync();
+		};
 
-			//PageHost.SetIsGestureEnabled(typeof(SelectAirport), false);
+		Content = map;
 
-			AirportMap map = new(latlng.longitude, latlng.latitude);
-			map.AirportSelected += async (_, e) =>
-			{
-				if (airportInfo is not null)
-					airportInfo.AirportInfo = e.SelectedAP;
-				await Navigation.PopAsync();
-			};
-
-			Content = map;
-
-			Title = "Please Select Airport";
-		}
+		Title = "Please Select Airport";
 	}
 }
 
