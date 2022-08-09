@@ -1,5 +1,8 @@
-﻿using AirTote.Pages.PayLandingFee;
+﻿using AirTote.Components.Maps;
+using AirTote.Pages.PayLandingFee;
 using AirTote.ViewModels.ReservePages;
+
+using CommunityToolkit.Maui.Views;
 
 using System;
 
@@ -17,7 +20,7 @@ namespace AirTote.Pages.ReservePages
 
 		private async void ShowAirportSelectPage(object sender, EventArgs e)
 		{
-			await Navigation.PushAsync(new SelectAirport(viewModel));
+			await this.ShowPopupAsync(new SelectAirport(viewModel));
 		}
 	}
 }

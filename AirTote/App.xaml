@@ -96,6 +96,58 @@
 					</VisualStateGroupList>
 				</Setter>
 			</Style>
+
+			<Style x:Key="BaseStyle" TargetType="Element">
+				<Setter
+					Property="Shell.BackgroundColor"
+					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+				<Setter
+					Property="Shell.ForegroundColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+				<Setter
+					Property="Shell.TitleColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+				<Setter Property="Shell.TitleColor" Value="White" />
+				<Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+				<Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+				<Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
+				<Setter Property="Shell.TabBarForegroundColor" Value="White"/>
+				<Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
+				<Setter Property="Shell.TabBarTitleColor" Value="White"/>
+			</Style>
+			<Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+			<Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+
+			<Style
+				Class="FlyoutItemLayoutStyle"
+				TargetType="Layout"
+				ApplyToDerivedTypes="True">
+				<Setter
+					TargetName="FlyoutItemLabel"
+					Property="Label.TextColor"
+					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
+
+				<Setter Property="VisualStateManager.VisualStateGroups">
+					<VisualStateGroupList>
+						<VisualStateGroup Name="CommonStates">
+							<VisualState Name="Normal">
+								<VisualState.Setters>
+									<Setter
+										Property="BackgroundColor"
+										Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
+								</VisualState.Setters>
+							</VisualState>
+							<VisualState Name="Selected">
+								<VisualState.Setters>
+									<Setter
+										Property="BackgroundColor"
+										Value="{AppThemeBinding Light={StaticResource LightPrimaryColor}, Dark={StaticResource DarkPrimaryColor}}" />
+								</VisualState.Setters>
+							</VisualState>
+						</VisualStateGroup>
+					</VisualStateGroupList>
+				</Setter>
+			</Style>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

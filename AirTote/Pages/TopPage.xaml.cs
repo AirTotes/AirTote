@@ -9,6 +9,7 @@ using Mapsui.Extensions;
 using Mapsui.Layers;
 using Topten.RichTextKit;
 using SkiaSharp;
+using AirTote.Components.FlyoutMenu;
 
 namespace AirTote.Pages;
 
@@ -47,8 +48,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Map.Map?.Widgets.Add(new StatusBarBGWidget());
 
-		NavigationPage.SetHasNavigationBar(this, false);
-		PageHost.SetIsGestureEnabled(typeof(TopPage), false);
+		Shell.SetNavBarIsVisible(this, false);
+		Shell.SetFlyoutBehavior(this, FlyoutBehavior.Disabled);
 
 		Task.Run(async () =>
 		{
@@ -158,16 +159,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		});
 	}
 
-	private void OnMenuButtonClicked()
-	{
-		if (MainThread.IsMainThread)
-		{
-			if (FlyoutPage is not null)
-				FlyoutPage.IsPresented = !FlyoutPage.IsPresented;
-		}
-		else
-			MainThread.BeginInvokeOnMainThread(OnMenuButtonClicked);
-	}
+	private Task OnMenuButtonClicked()
+		=> this.ShowPopupAsync(new FlyoutMenuPopup());
 
 	bool ResetCalloutTextRunning = false;
 	private async void ResetCalloutText()
