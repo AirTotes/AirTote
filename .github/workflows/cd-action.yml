@@ -26,6 +26,7 @@ jobs:
         || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
       )
+      && !cancelled()
 
     runs-on: ubuntu-latest
     timeout-minutes: 5
@@ -94,6 +95,7 @@ jobs:
         || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
       )
+      && !cancelled()
 
     runs-on: [self-hosted, macOS]
     timeout-minutes: 20
@@ -155,6 +157,7 @@ jobs:
     if: |
       needs.generate-bundle-version.result == 'success'
       && needs.build-publish-ios.result == 'success'
+      && !cancelled()
 
     runs-on: ubuntu-latest
     timeout-minutes: 5
