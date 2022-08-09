@@ -14,6 +14,8 @@ public class FlyoutMenuPopup : Popup
 		Content = MenuView;
 
 		MenuView.PageChangeRequested += (_, _) => this.Close();
+
+		HorizontalOptions = VerticalOptions = Microsoft.Maui.Primitives.LayoutAlignment.Start;
 	}
 }
 
