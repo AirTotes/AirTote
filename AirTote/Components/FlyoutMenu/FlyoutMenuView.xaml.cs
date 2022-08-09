@@ -1,4 +1,4 @@
-﻿namespace AirTote.Components;
+﻿namespace AirTote.Components.FlyoutMenu;
 
 public partial class FlyoutMenuView : ContentView
 {
