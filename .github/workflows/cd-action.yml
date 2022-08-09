@@ -205,23 +205,3 @@ jobs:
         env:
           __CONTEXT: ${{ toJSON(github) }}
         run: echo "$__CONTEXT"
-  dump-context-1:
-    if: ${{ !failure() }}
-    runs-on: self-hosted
-    timeout-minutes: 1
-    needs: generate-bundle-version
-    steps:
-      - name: dump `needs` context
-        env:
-          __CONTEXT: ${{ toJSON(needs) }}
-        run: echo "$__CONTEXT"
-  dump-context-2:
-    if: ${{ !failure() }}
-    runs-on: self-hosted
-    timeout-minutes: 1
-    needs: build-publish-ios
-    steps:
-      - name: dump `needs` context
-        env:
-          __CONTEXT: ${{ toJSON(needs) }}
-        run: echo "$__CONTEXT"
