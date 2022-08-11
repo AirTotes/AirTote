@@ -30,6 +30,11 @@ class LicenseInfo:
   projectUrl: str
   copyrightText: str
 
+def getNugetGlobalPackagesDir() -> str:
+  with Popen(["dotnet", "nuget", "locals", "global-packages", "-l"], stdout=PIPE) as p:
+    execResult = p.stdout.readlines()[0].decode(ENC)
+    return execResult.lstrip("global-packages: ").rstrip('\n')
+
 async def getLicenseInfo(session: ClientSession, requestBaseUrl: str, packageInfo: PackageInfo) -> LicenseInfo:
   packageNameLower = str.lower(packageInfo.PackageName)
   resourceUrl = f'{requestBaseUrl}{packageNameLower}/{packageInfo.ResolvedVersion}/{packageNameLower}.nuspec' 
