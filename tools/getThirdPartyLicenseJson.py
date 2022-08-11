@@ -24,6 +24,7 @@ class LicenseInfo:
   id: str
   version: str
   license: str
+  licenseDataType: str
   licenseUrl: str
   author: str
   projectUrl: str
@@ -49,10 +50,18 @@ async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> Li
       NUSPEC_XML_NAMESPACE[''] = root.tag.lstrip('{').rstrip('}package')
     metadata = root.find("metadata", NUSPEC_XML_NAMESPACE)
   
+  licenseElem = metadata.find("license", namespaces=NUSPEC_XML_NAMESPACE)
+  licenseText: str = None
+  licenseDataType: str = None
+  if licenseElem is not None:
+    licenseText = licenseElem.text
+    licenseDataType = licenseElem.attrib['type']
+
   return LicenseInfo(
     metadata.findtext("id", namespaces=NUSPEC_XML_NAMESPACE),
     metadata.findtext("version", namespaces=NUSPEC_XML_NAMESPACE),
-    metadata.findtext("license", namespaces=NUSPEC_XML_NAMESPACE),
+    licenseText,
+    licenseDataType,
     metadata.findtext("licenseUrl", namespaces=NUSPEC_XML_NAMESPACE),
     metadata.findtext("authors", namespaces=NUSPEC_XML_NAMESPACE)
     or metadata.findtext("owners", namespaces=NUSPEC_XML_NAMESPACE),
