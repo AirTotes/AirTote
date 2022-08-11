@@ -5,7 +5,7 @@
     "type": "object",
     "required": [
       "id",
-      "version"
+      "resolvedVersion"
     ],
     "additionalProperties": false,
     "properties": {
@@ -14,6 +14,9 @@
         "minLength": 1
       },
       "version": {
+        "type": "string"
+      },
+      "resolvedVersion": {
         "type": "string",
         "minLength": 1
       },

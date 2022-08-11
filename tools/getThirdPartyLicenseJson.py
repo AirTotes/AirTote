@@ -1,18 +1,29 @@
 from dataclasses import asdict, dataclass
 import json
+from os import makedirs
 from subprocess import PIPE, Popen
-from os.path import dirname
+from os.path import dirname, basename, exists, join as joinPath
 from sys import argv, stderr
-from typing import List
+from typing import Dict, List
 from xml.etree import ElementTree
 from aiofiles import open as aio_open
+from aiohttp import ClientSession
 import asyncio
+import re
+from hashlib import sha256
 
 CSPROJ_PATH = dirname(__file__) + "/../AirTote/AirTote.csproj"
 TIMEOUT_SEC = 2
 ENC = "utf-8"
 
 LICENSE_INFO_LIST_FILE_NAME = "third_party_license_list.json"
+
+LICENSE_TYPE_EXPRESSION = 'expression'
+# `{PackageID}/{FilePath(Name)}`にライセンスファイルが配置されていることを示す
+LICENSE_TYPE_FILE = 'file'
+# licenseUrlから取得したものについては、ハッシュにてファイルを管理する。
+# Type:HASHは、そのハッシュ値が記録されていることを示す。
+LICENSE_TYPE_HASH = 'hash'
 
 @dataclass
 class PackageInfo:
@@ -23,6 +34,7 @@ class PackageInfo:
 class LicenseInfo:
   id: str
   version: str
+  resolvedVersion: str
   license: str
   licenseDataType: str
   licenseUrl: str
@@ -60,6 +72,7 @@ async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> Li
   return LicenseInfo(
     metadata.findtext("id", namespaces=NUSPEC_XML_NAMESPACE),
     metadata.findtext("version", namespaces=NUSPEC_XML_NAMESPACE),
+    packageInfo.ResolvedVersion,
     licenseText,
     licenseDataType,
     metadata.findtext("licenseUrl", namespaces=NUSPEC_XML_NAMESPACE),
@@ -69,7 +82,79 @@ async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> Li
     metadata.findtext("copyright", namespaces=NUSPEC_XML_NAMESPACE),
   )
 
+def getAndTrySetUniqueKey(dic: Dict[str, str], key: str) -> str:
+  hashStr = sha256(key.encode(ENC)).hexdigest()
+  v = dic.get(key)
+  if v is not None:
+    return v
+
+  # ハッシュ衝突チェック
+  # 衝突の可能性は限りなく低いものの、0では無いため
+  for v in dic.values():
+    if v == hashStr:
+      return getAndTrySetUniqueKey(dic, key + hashStr)
+
+  dic[key] = hashStr
+  return hashStr
+
+async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: str, licenseInfo: LicenseInfo, urlDic: Dict[str, str]):
+  url = licenseInfo.licenseUrl
+
+  hashStr = getAndTrySetUniqueKey(urlDic, url)
+  licenseFilePath = joinPath(targetDir, hashStr)
+  licenseInfo.license = hashStr
+  licenseInfo.licenseDataType = LICENSE_TYPE_HASH
+  if exists(licenseFilePath):
+    return
+
+  async with session.head(url, allow_redirects=True) as result:
+    url = result.url.human_repr()
+
+  if url.startswith("https://github.com/"):
+    dirs = url.removeprefix("https://github.com/").split('/')
+    userName = dirs[0]
+    repoName = dirs[1]
+    refName = dirs[3]
+    path = ""
+    for v in dirs[4:]:
+      path = '/' + v
+    url = f"https://raw.githubusercontent.com/{userName}/{repoName}/{refName}{path}"
+
+  async with aio_open(licenseFilePath, 'w') as f:
+    async with session.get(url) as result:
+      await f.write(await result.text())
+
+async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licenseInfo: LicenseInfo, targetDir: str):
+  licenseList = [str(v) for v in re.split("\(|\)|OR|AND", licenseInfo.license) if v != '' or v.isspace()]
+  for licenseId in licenseList:
+    licenseFilePath = joinPath(targetDir, licenseId)
+    if exists(licenseFilePath):
+      continue
+
+    url = f'https://raw.githubusercontent.com/spdx/license-list-data/master/text/{licenseId}.txt'
+    async with aio_open(licenseFilePath, 'w') as f:
+      async with session.get(url) as result:
+        await f.write(await result.text())
+
+async def dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir: str, targetDir: str, licenseInfo: LicenseInfo):
+  packageNameLower = str.lower(licenseInfo.id)
+  resourceDir = f'{globalPackagesDir}{packageNameLower}/{licenseInfo.resolvedVersion}/'
+  print(f'\t[FIL]: {basename(licenseInfo.license)} (exists?: {exists(resourceDir + licenseInfo.license)})')
+  print('NOT IMPLEMENTED', file=stderr)
+  exit(-1)
+
+async def dumpLicenseTextFile(session: ClientSession, targetDir: str, globalPackagesDir: str, licenseInfo: LicenseInfo, urlDic: Dict[str, str]):
+  if licenseInfo.licenseDataType is None:
+    await dumpLicenseTextFileFromLicenseUrl(session, targetDir, licenseInfo, urlDic)
+  elif licenseInfo.licenseDataType == LICENSE_TYPE_EXPRESSION:
+    await dumpLicenseTextFileFromLicenseExpression(session, licenseInfo, targetDir)
+  elif licenseInfo.licenseDataType == LICENSE_INFO_LIST_FILE_NAME:
+    await dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir, targetDir, licenseInfo)
+
 async def main(targetFramework: str, targetDir: str) -> int:
+  if not exists(targetDir):
+    makedirs(targetDir)
+
   lines: List[List[bytes]]
   with Popen(["dotnet", "list", CSPROJ_PATH, "package", "--framework", targetFramework, '--include-transitive'], stdout=PIPE) as p:
     lines = [line.split() for line in p.stdout.readlines()]
@@ -88,6 +173,10 @@ async def main(targetFramework: str, targetDir: str) -> int:
   globalPackagesDir = getNugetGlobalPackagesDir()
   packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages])
   
+  urlDic = {}
+  async with ClientSession() as session:
+    await asyncio.gather(*[dumpLicenseTextFile(session, targetDir, globalPackagesDir, v, urlDic) for v in packageInfoList])
+
   with open(f'{targetDir}/{LICENSE_INFO_LIST_FILE_NAME}', 'w') as f:
     json.dump([asdict(v) for v in packageInfoList], f)
 
