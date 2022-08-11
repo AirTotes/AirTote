@@ -201,6 +201,13 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   dump-context:
+    if: |
+      !(
+        github.event_name == 'pull_request'
+        && github.event.action != 'unlabeled'
+        && !contains(github.event.pull_request.labels.*.name, 'WIP')
+      )
+
     runs-on: self-hosted
     timeout-minutes: 1
     steps:
