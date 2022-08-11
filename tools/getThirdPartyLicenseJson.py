@@ -172,7 +172,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
   
   globalPackagesDir = getNugetGlobalPackagesDir()
   packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages])
-  
+
   urlDic = {}
   async with ClientSession() as session:
     await asyncio.gather(*[dumpLicenseTextFile(session, targetDir, globalPackagesDir, v, urlDic) for v in packageInfoList])
