@@ -5,13 +5,12 @@ from os.path import dirname
 from sys import argv
 from typing import List
 from xml.etree import ElementTree
-from aiohttp import ClientSession
+from aiofiles import open as aio_open
 import asyncio
 
 CSPROJ_PATH = dirname(__file__) + "/../AirTote/AirTote.csproj"
 TIMEOUT_SEC = 2
 ENC = "utf-8"
-GET_LICENSE_INFO_BASE_URL = "https://api.nuget.org/v3-flatcontainer/"
 
 LICENSE_INFO_LIST_FILE_NAME = "third_party_license_list.json"
 
@@ -35,13 +34,14 @@ def getNugetGlobalPackagesDir() -> str:
     execResult = p.stdout.readlines()[0].decode(ENC)
     return execResult.lstrip("global-packages: ").rstrip('\n')
 
-async def getLicenseInfo(session: ClientSession, requestBaseUrl: str, packageInfo: PackageInfo) -> LicenseInfo:
+async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> LicenseInfo:
   packageNameLower = str.lower(packageInfo.PackageName)
-  resourceUrl = f'{requestBaseUrl}{packageNameLower}/{packageInfo.ResolvedVersion}/{packageNameLower}.nuspec' 
+  resourcePath = f'{globalPackagesDir}{packageNameLower}/{packageInfo.ResolvedVersion}/{packageNameLower}.nuspec'
+
   metadata: ElementTree.Element = None
   NUSPEC_XML_NAMESPACE = {}
-  async with session.get(resourceUrl) as stream:
-    root = ElementTree.fromstring(await stream.text())
+  async with aio_open(resourcePath, 'r') as stream:
+    root = ElementTree.fromstring(await stream.read())
     if root is None:
       return None
     # namespaceがパッケージによって違う場合があるため、動的に取得する
@@ -76,9 +76,8 @@ async def main(targetFramework: str, targetDir: str) -> int:
       continue
     packages.append(PackageInfo(v[1].decode(ENC), v[-1].decode(ENC)))
   
-  packageInfoList: List[PackageInfo]
-  async with ClientSession() as session:
-    packageInfoList = await asyncio.gather(*[getLicenseInfo(session, GET_LICENSE_INFO_BASE_URL, v) for v in packages])
+  globalPackagesDir = getNugetGlobalPackagesDir()
+  packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages])
   
   with open(f'{targetDir}/{LICENSE_INFO_LIST_FILE_NAME}', 'w') as f:
     json.dump([asdict(v) for v in packageInfoList], f)
