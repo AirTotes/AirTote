@@ -33,7 +33,7 @@ class LicenseInfo:
 def getNugetGlobalPackagesDir() -> str:
   with Popen(["dotnet", "nuget", "locals", "global-packages", "-l"], stdout=PIPE) as p:
     execResult = p.stdout.readlines()[0].decode(ENC)
-    return execResult.lstrip("global-packages: ").rstrip('\n')
+    return execResult.removeprefix("global-packages: ").removesuffix('\n')
 
 async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> LicenseInfo:
   packageNameLower = str.lower(packageInfo.PackageName)
@@ -47,7 +47,7 @@ async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> Li
       return None
     # namespaceがパッケージによって違う場合があるため、動的に取得する
     if root.tag.find('{') >= 0:
-      NUSPEC_XML_NAMESPACE[''] = root.tag.lstrip('{').rstrip('}package')
+      NUSPEC_XML_NAMESPACE[''] = root.tag.removeprefix('{').removesuffix('}package')
     metadata = root.find("metadata", NUSPEC_XML_NAMESPACE)
   
   licenseElem = metadata.find("license", namespaces=NUSPEC_XML_NAMESPACE)
