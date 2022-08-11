@@ -2,7 +2,7 @@ from dataclasses import asdict, dataclass
 import json
 from subprocess import PIPE, Popen
 from os.path import dirname
-from sys import argv
+from sys import argv, stderr
 from typing import List
 from xml.etree import ElementTree
 from aiofiles import open as aio_open
@@ -86,7 +86,8 @@ async def main(targetFramework: str, targetDir: str) -> int:
 
 
 if __name__ == "__main__":
-  if len(argv) <= 1:
+  if len(argv) <= 2:
+    print("too few arguments", file=stderr)
     exit(1)
   exitCode = asyncio.run(main(argv[1], argv[2]))
   exit(exitCode)
