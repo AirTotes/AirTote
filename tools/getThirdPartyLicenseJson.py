@@ -166,8 +166,7 @@ async def dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir: str, targetD
   packageNameLower = str.lower(licenseInfo.id)
   resourceDir = f'{globalPackagesDir}{packageNameLower}/{licenseInfo.resolvedVersion}/'
   print(f'\t[FIL]: {basename(licenseInfo.license)} (exists?: {exists(resourceDir + licenseInfo.license)})')
-  print('NOT IMPLEMENTED', file=stderr)
-  exit(-1)
+  raise NotImplementedError()
 
 async def dumpLicenseTextFile(session: ClientSession, targetDir: str, globalPackagesDir: str, licenseInfo: LicenseInfo, urlDic: Dict[str, str]):
   if licenseInfo.licenseDataType is None:
