@@ -108,6 +108,13 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
     return
 
   async with session.head(url, allow_redirects=True) as result:
+    result.close()
+    if not result.closed:
+      await result.wait_for_close()
+
+    if not result.ok:
+      raise EOFError()
+
     url = result.url.human_repr()
 
   if url.startswith("https://github.com/"):
@@ -121,8 +128,18 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
     url = f"https://raw.githubusercontent.com/{userName}/{repoName}/{refName}{path}"
 
   async with aio_open(licenseFilePath, 'w') as f:
+    text = ''
     async with session.get(url) as result:
-      await f.write(await result.text())
+      if not result.ok:
+        raise EOFError()
+
+      text = await result.text()
+
+      result.close()
+      if not result.closed:
+        await result.wait_for_close()
+    await f.write(text)
+
 
 async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licenseInfo: LicenseInfo, targetDir: str):
   licenseList = [str(v) for v in re.split("\(|\)|OR|AND", licenseInfo.license) if v != '' or v.isspace()]
@@ -133,8 +150,17 @@ async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licen
 
     url = f'https://raw.githubusercontent.com/spdx/license-list-data/master/text/{licenseId}.txt'
     async with aio_open(licenseFilePath, 'w') as f:
+      text = ''
       async with session.get(url) as result:
-        await f.write(await result.text())
+        if not result.ok:
+          raise EOFError()
+
+        text = await result.text()
+
+        result.close()
+        if not result.closed:
+          await result.wait_for_close()
+      await f.write(text)
 
 async def dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir: str, targetDir: str, licenseInfo: LicenseInfo):
   packageNameLower = str.lower(licenseInfo.id)
