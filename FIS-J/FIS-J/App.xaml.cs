@@ -9,7 +9,7 @@ namespace FIS_J
 		{
 			InitializeComponent();
 
-			MainPage = new AppShell();
+			MainPage = new FIS_J.FISJ.MainPagexaml();
 		}
 
 		protected override void OnStart()

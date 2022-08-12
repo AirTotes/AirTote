@@ -25,4 +25,21 @@
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Bold.ttf" />
     <EmbeddedResource Include="Assets\Fonts\BIZUDPGothic-Regular.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="UI_edit\pages\DocumentPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI_edit\pages\InformationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI_edit\pages\MapPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI_edit\pages\WeatherPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="UI_edit\pages\TabMainPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
 </Project>
