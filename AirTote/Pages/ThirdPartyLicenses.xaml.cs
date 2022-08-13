@@ -12,7 +12,7 @@ public partial class ThirdPartyLicenses
 	{
 		InitializeComponent();
 
-		PackageLicenseInfoView.Content = new Label()
+		TwoPaneView.RightPaneContent = new Label()
 		{
 			Text = "Select package to check license"
 		};
@@ -46,11 +46,12 @@ public partial class ThirdPartyLicenses
 		licenses.AddRange(arr);
 	}
 
-	void PackageListView_ItemTapped(object? sender, ItemTappedEventArgs e)
+	async void PackageListView_ItemTapped(object? sender, ItemTappedEventArgs e)
 	{
 		if (e.Item is not LicenseJsonSchema license)
 			return;
 
-		PackageLicenseInfoView.Content = new LicenseView(license);
+		TwoPaneView.RightPaneContent = new LicenseView(license);
+		await this.TwoPaneView.NotifyRightPaneContentChanged(license.id);
 	}
 }
