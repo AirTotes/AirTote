@@ -78,5 +78,6 @@
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
 		<PackageReference Include="HarfBuzzSharp" Version="2.8.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
+		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
 	</ItemGroup>
 </Project>
