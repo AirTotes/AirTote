@@ -14,7 +14,9 @@ public partial class ThirdPartyLicenses
 
 		TwoPaneView.RightPaneContent = new Label()
 		{
-			Text = "Select package to check license"
+			Text = "Select package to check license",
+			HorizontalOptions = LayoutOptions.Center,
+			VerticalOptions = LayoutOptions.Center
 		};
 
 		Task.Run(Init);
