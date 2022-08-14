@@ -15,6 +15,10 @@ on:
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
+  THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
+  THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
+  TARGET_FRAMEWORK: net6.0-ios15.4
+  TARGET_RUNTIME: ios-arm64
   IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
 
 jobs:
@@ -83,12 +87,56 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
+  generate-third-party-license-info:
+    if: |
+      (
+        github.event_name != 'pull_request'
+        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+      )
+      && !cancelled()
+
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10' 
+
+    - name: Restore dotnet packages
+      run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
+
+    - name: Prapare Python Package
+      run: python -m pip install aiofiles aiohttp
+
+    - name: Dump Third Party License Info
+      run: |
+        python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+
+    - name: Print Third Party License Info Files
+      run: cat ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}/${{ env.THIRD_PARTY_LICENSE_LIST_NAME }}.json
+
+    - name: Upload Third Party License Info
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: third_party_license
+        path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        retention-days: 3
+
   build-publish-ios:
     if: |
       !failure() && 
       (
-        needs.generate-bundle-version.result == 'success'
-        || needs.generate-bundle-version.result == 'skipped'
+        !contains(needs.*.result, 'failure')
+        && !contains(needs.*.result, 'cancelled')
       )
       && (
         github.event_name != 'pull_request'
@@ -99,7 +147,9 @@ jobs:
 
     runs-on: [self-hosted, macOS]
     timeout-minutes: 20
-    needs: generate-bundle-version
+    needs:
+      - generate-bundle-version
+      - generate-third-party-license-info
 
     steps:
     - name: get version
@@ -116,8 +166,14 @@ jobs:
 
     - uses: actions/checkout@v2
 
+    - name: Download Third Party License Info
+      uses: actions/download-artifact@v3
+      with:
+        name: third_party_license
+        path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+
     - name: Install dependencies
-      run: dotnet restore ${{ env.CSPROJ_PATH }}
+      run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
     - name: Build
       run: >
