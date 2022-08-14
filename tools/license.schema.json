@@ -1,0 +1,40 @@
+{
+  "type": "array",
+  "minItems": 0,
+  "items": {
+    "type": "object",
+    "required": [
+      "id",
+      "resolvedVersion"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "minLength": 1
+      },
+      "version": {
+        "type": "string"
+      },
+      "resolvedVersion": {
+        "type": "string",
+        "minLength": 1
+      },
+      "license": {
+        "type": "string"
+      },
+      "licenseUrl": {
+        "type": "string"
+      },
+      "author": {
+        "type": "string"
+      },
+      "projectUrl": {
+        "type": "string"
+      },
+      "copyrightText": {
+        "type": "string"
+      }
+    }
+  }
+}

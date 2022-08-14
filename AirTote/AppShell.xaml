@@ -33,4 +33,7 @@
 	<FlyoutItem Title="設定">
 		<ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
 	</FlyoutItem>
+	<FlyoutItem Title="Third Party Licenses">
+		<ShellContent ContentTemplate="{DataTemplate airtote:ThirdPartyLicenses}" />
+	</FlyoutItem>
 </Shell>
