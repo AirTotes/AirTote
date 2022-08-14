@@ -106,8 +106,8 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Restore dotnet workloads
-      run: dotnet workload restore ${{ env.CSPROJ_PATH }}
+    - name: Install dotnet workloads
+      run: dotnet workload install maui maui-ios maui-android
     - name: Restore dotnet packages
       run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
