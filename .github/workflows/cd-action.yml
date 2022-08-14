@@ -19,7 +19,7 @@ env:
   THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
-  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
+  IPA_PATH: ./AirTote/bin/Publish/$TARGET_FRAMEWORK/$TARGET_RUNTIME/publish/AirTote.ipa
 
 jobs:
   generate-bundle-version:
@@ -178,8 +178,8 @@ jobs:
     - name: Build
       run: >
         dotnet publish ${{ env.CSPROJ_PATH }}
-        -f:net6.0-ios
-        -r ios-arm64
+        -f ${{ env.TARGET_FRAMEWORK }}
+        -r ${{ env.TARGET_RUNTIME }}
         -c Publish
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
