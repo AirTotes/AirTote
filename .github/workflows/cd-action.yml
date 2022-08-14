@@ -110,6 +110,8 @@ jobs:
       with:
         python-version: '3.10' 
 
+    - name: Restore dotnet workloads
+      run: dotnet workload restore ${{ env.CSPROJ_PATH }}
     - name: Restore dotnet packages
       run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
