@@ -7,7 +7,7 @@ from sys import argv, stderr
 from typing import Dict, List
 from xml.etree import ElementTree
 from aiofiles import open as aio_open
-from aiohttp import ClientSession
+from aiohttp import ClientSession, TCPConnector
 import asyncio
 import re
 from hashlib import sha256
@@ -199,7 +199,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
   packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages])
 
   urlDic = {}
-  async with ClientSession() as session:
+  async with ClientSession(connector = TCPConnector(limit = 20, force_close = True)) as session:
     await asyncio.gather(*[dumpLicenseTextFile(session, targetDir, globalPackagesDir, v, urlDic) for v in packageInfoList])
 
   with open(f'{targetDir}/{LICENSE_INFO_LIST_FILE_NAME}', 'w') as f:
