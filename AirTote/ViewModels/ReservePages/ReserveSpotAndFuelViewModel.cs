@@ -80,8 +80,8 @@ namespace AirTote.ViewModels.ReservePages
 			set => SetProperty(ref _FuelToCharge_gal, value);
 		}
 
-		AirportInfo.APInfo _AirportInfo = new();
-		public AirportInfo.APInfo AirportInfo
+		AirportInfo.APInfo? _AirportInfo = null;
+		public AirportInfo.APInfo? AirportInfo
 		{
 			get => _AirportInfo;
 			set

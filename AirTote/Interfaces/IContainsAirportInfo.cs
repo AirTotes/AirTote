@@ -4,6 +4,6 @@ namespace AirTote.Interfaces
 {
 	public interface IContainsAirportInfo
 	{
-		AirportInfo.APInfo AirportInfo { get; set; }
+		AirportInfo.APInfo? AirportInfo { get; set; }
 	}
 }
