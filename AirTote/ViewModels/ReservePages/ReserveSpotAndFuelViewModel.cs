@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AirTote.Interfaces;
 using AirTote.Models;
 
 namespace AirTote.ViewModels.ReservePages
