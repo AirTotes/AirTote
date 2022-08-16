@@ -4,18 +4,24 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:ViewModels="clr-namespace:AirTote.ViewModels"
 	xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
+	xmlns:p="clr-namespace:AirTote.Pages.Settings"
 	x:DataType="ViewModels:SettingPageViewModel"
 	Title="{Binding Title}"
 	x:Class="AirTote.Pages.SettingPage">
 	<tpv:TwoPaneView
 		x:Name="TPV"
 		LeftPaneWidth="300"
+		RightPaneWidth="*"
 		MinimumTwoPaneWidth="500">
 		<TableView
 			Intent="Settings">
 			<TableRoot>
 				<TableSection
 					Title="External Service Settings">
+					<TextCell
+						Text="AIS Japan"
+						Command="{Binding ChangeRightPaneViewCommand}"
+						CommandParameter="{Type p:AISJapan}"/>
 				</TableSection>
 
 			</TableRoot>
