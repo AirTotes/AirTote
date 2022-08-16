@@ -1,5 +1,6 @@
 ﻿using AirTote.Components;
 using AirTote.Models;
+using AirTote.TwoPaneView;
 
 namespace AirTote.Pages;
 
