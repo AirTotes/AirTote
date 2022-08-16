@@ -1,4 +1,5 @@
-﻿using AirTote.ViewModels;
+﻿using AirTote.TwoPaneView;
+using AirTote.ViewModels;
 
 namespace AirTote.Pages;
 
@@ -10,5 +11,7 @@ public partial class SettingPage : ContentPage
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
+
+		viewModel.ChangeRightPaneViewCommand = new(TPV);
 	}
 }
