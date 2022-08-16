@@ -3,7 +3,7 @@ using AngleSharp;
 using AirTote.Services;
 using AirTote.ViewModels;
 
-namespace AirTote.Views
+namespace AirTote.Pages
 {
 	public partial class SettingPage : ContentPage
 	{

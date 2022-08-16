@@ -2,7 +2,6 @@
 <Shell
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:local="clr-namespace:AirTote.Views"
 	xmlns:airtote="clr-namespace:AirTote.Pages"
 	xmlns:ReservePages="clr-namespace:AirTote.Pages.ReservePages"
 	xmlns:PayLandingFee="clr-namespace:AirTote.Pages.PayLandingFee"
@@ -31,7 +30,7 @@
 		<ShellContent ContentTemplate="{DataTemplate PayLandingFee:CalcFee}" />
 	</FlyoutItem>
 	<FlyoutItem Title="設定">
-		<ShellContent ContentTemplate="{DataTemplate local:SettingPage}" />
+		<ShellContent ContentTemplate="{DataTemplate airtote:SettingPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="Third Party Licenses">
 		<ShellContent ContentTemplate="{DataTemplate airtote:ThirdPartyLicenses}" />

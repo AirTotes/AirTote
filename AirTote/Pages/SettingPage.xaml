@@ -5,6 +5,6 @@
 	xmlns:ViewModels="clr-namespace:AirTote.ViewModels"
 	x:DataType="ViewModels:SettingPageViewModel"
 	Title="{Binding Title}"
-	x:Class="AirTote.Views.SettingPage">
+	x:Class="AirTote.Pages.SettingPage">
 	<WebView VerticalOptions="FillAndExpand" Source="{Binding WebPage}"/>
 </ContentPage>
