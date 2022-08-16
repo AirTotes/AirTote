@@ -17,7 +17,6 @@
 		LeftPaneWidth="300"
 		RightPaneWidth="*"
 		MinimumTwoPaneWidth="660">
-		<tpv:TwoPaneView.LeftPaneContent>
 			<ListView
 				x:Name="PackageListView"
 				SelectionMode="None"
@@ -51,6 +50,5 @@
 					</DataTemplate>
 				</ListView.ItemTemplate>
 			</ListView>
-		</tpv:TwoPaneView.LeftPaneContent>
 	</tpv:TwoPaneView>
 </ContentPage>

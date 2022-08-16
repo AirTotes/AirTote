@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace AirTote.TwoPaneView;
 
+[ContentProperty(nameof(LeftPaneContent))]
 [DependencyProperty<View>("LeftPaneContent")]
 [DependencyProperty<View>("RightPaneContent")]
 [DependencyProperty<double>("MinimumTwoPaneWidth", DefaultValue = 300)]
