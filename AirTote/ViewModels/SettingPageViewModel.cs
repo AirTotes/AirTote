@@ -1,10 +1,9 @@
-﻿namespace AirTote.ViewModels
+﻿namespace AirTote.ViewModels;
+
+public class SettingPageViewModel : BaseViewModel
 {
-	public class SettingPageViewModel : BaseViewModel
+	public SettingPageViewModel()
 	{
-		public SettingPageViewModel()
-		{
-			Title = "Settings";
-		}
+		Title = "Settings";
 	}
 }
