@@ -17,38 +17,38 @@
 		LeftPaneWidth="300"
 		RightPaneWidth="*"
 		MinimumTwoPaneWidth="660">
-			<ListView
-				x:Name="PackageListView"
-				SelectionMode="None"
-				ItemTapped="PackageListView_ItemTapped"
-				SeparatorVisibility="Default"
-				HasUnevenRows="True">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<VerticalStackLayout
-								Padding="10">
-								<Label
-									Text="{Binding id}"
-									FontAttributes="Bold"
-									FontSize="Medium" />
-								<Label
-									Text="{Binding author, StringFormat='author: {0}'}"
-									HorizontalOptions="End"
-									HorizontalTextAlignment="End"
-									FontSize="Small" />
-								<Label
-									IsVisible="{Binding licenseDataType, Converter={StaticResource IsEqualConverter}, ConverterParameter='expression'}"
-									Text="{Binding license, StringFormat='SPDX-License-Identifier: {0}'}"
-									FontSize="Micro" />
-								<Label
-									Text="{Binding copyrightText}"
-									FontAttributes="Italic"
-									FontSize="Micro" />
-							</VerticalStackLayout>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
+		<ListView
+			x:Name="PackageListView"
+			SelectionMode="None"
+			ItemTapped="PackageListView_ItemTapped"
+			SeparatorVisibility="Default"
+			HasUnevenRows="True">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<VerticalStackLayout
+							Padding="10">
+							<Label
+								Text="{Binding id}"
+								FontAttributes="Bold"
+								FontSize="Medium" />
+							<Label
+								Text="{Binding author, StringFormat='author: {0}'}"
+								HorizontalOptions="End"
+								HorizontalTextAlignment="End"
+								FontSize="Small" />
+							<Label
+								IsVisible="{Binding licenseDataType, Converter={StaticResource IsEqualConverter}, ConverterParameter='expression'}"
+								Text="{Binding license, StringFormat='SPDX-License-Identifier: {0}'}"
+								FontSize="Micro" />
+							<Label
+								Text="{Binding copyrightText}"
+								FontAttributes="Italic"
+								FontSize="Micro" />
+						</VerticalStackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
 	</tpv:TwoPaneView>
 </ContentPage>
