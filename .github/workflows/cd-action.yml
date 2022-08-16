@@ -19,7 +19,7 @@ env:
   THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
-  IPA_PATH: ./AirTote/bin/Publish/$TARGET_FRAMEWORK/$TARGET_RUNTIME/publish/AirTote.ipa
+  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios15.4/ios-arm64/publish/AirTote.ipa
 
 jobs:
   generate-bundle-version:

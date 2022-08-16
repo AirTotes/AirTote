@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AirTote.Interfaces;
 using AirTote.Models;
 
 namespace AirTote.ViewModels.ReservePages
@@ -79,8 +80,8 @@ namespace AirTote.ViewModels.ReservePages
 			set => SetProperty(ref _FuelToCharge_gal, value);
 		}
 
-		AirportInfo.APInfo _AirportInfo = new();
-		public AirportInfo.APInfo AirportInfo
+		AirportInfo.APInfo? _AirportInfo = null;
+		public AirportInfo.APInfo? AirportInfo
 		{
 			get => _AirportInfo;
 			set

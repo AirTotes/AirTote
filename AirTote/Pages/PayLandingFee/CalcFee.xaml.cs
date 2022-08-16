@@ -15,11 +15,6 @@ namespace AirTote.Pages.PayLandingFee
 		{
 			InitializeComponent();
 			BindingContext = viewModel;
-
-			viewModel.AirportInfo = new()
-			{
-				icao = "RJTT"
-			};
 		}
 
 		public CalcFee(AirportInfo.APInfo station)

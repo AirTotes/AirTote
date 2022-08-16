@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
+using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
 
@@ -79,8 +80,8 @@ namespace AirTote.ViewModels.PayLandingFee
 			}
 		}
 
-		AirportInfo.APInfo _AirportInfo = new();
-		public AirportInfo.APInfo AirportInfo
+		AirportInfo.APInfo? _AirportInfo = null;
+		public AirportInfo.APInfo? AirportInfo
 		{
 			get => _AirportInfo;
 			set => SetProperty(ref _AirportInfo, value);
