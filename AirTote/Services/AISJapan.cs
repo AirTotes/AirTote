@@ -42,6 +42,33 @@ namespace AirTote.Services
 			Ctx.Dispose();
 		}
 
+		public async Task<string?> GetSignInError()
+		{
+			var whatsnew = await WhatsNew;
+			if (whatsnew.Url != LoginPageUrl.ToString())
+				return null;
+
+			List<string> list = new();
+
+			foreach (var v in whatsnew.Scripts)
+			{
+				if (!string.IsNullOrWhiteSpace(v.Source))
+					continue;
+
+				var result = System.Text.RegularExpressions.Regex.Match(v.Text, "alert\\(([^\\(\\)]+)\\)");
+				if (!result.Success)
+					continue;
+
+				int prefixLen = "alert('".Length;
+				list.Add(result.Value.Substring(prefixLen, result.Value.Length - prefixLen - 2).Trim());
+			}
+
+			if (list.Count <= 0)
+				return null;
+
+			return string.Join('\n', list);
+		}
+
 		public async Task<IHtmlTableRowElement?> GetWhatsNewAsync()
 		{
 			var whatsnew = await WhatsNew;
