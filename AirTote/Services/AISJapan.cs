@@ -16,11 +16,13 @@ namespace AirTote.Services
 		IBrowsingContext Ctx { get; } = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithDefaultCookies());
 		Task<IDocument> WhatsNew { get; }
 
+		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/LoginAction.do");
+
 		public AISJapan(in string id, in string password)
 		{
 			WhatsNew = Ctx.OpenAsync(
 				DocumentRequest.PostAsUrlencoded(
-					new Url("https://aisjapan.mlit.go.jp/LoginAction.do"),
+					LoginPageUrl,
 					new Dictionary<string, string>
 					{
 						{ "formName", "ais-web" },
