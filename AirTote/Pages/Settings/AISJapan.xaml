@@ -50,12 +50,38 @@
 							VerticalOptions="Center"
 							Text="Password"/>
 						<Entry
-							Text="{Binding Password, Mode=OneWayToSource}"
+							Text="{Binding Password}"
 							IsEnabled="{Binding IsEnabled}"
+							Placeholder="(unchanged)"
 							Margin="2"
 							Grid.Row="1"
 							Grid.Column="1"
 							IsPassword="True"/>
+					</Grid>
+				</ViewCell>
+				<ViewCell>
+					<Grid>
+						<Button
+							IsEnabled="{Binding IsEnabled}"
+							HorizontalOptions="Start"
+							VerticalOptions="Center"
+							Text="Reset"/>
+
+						<ActivityIndicator
+							IsRunning="{Binding IsBusy}"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"/>
+						<Label
+							Text="{Binding Message}"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"/>
+
+						<Button
+							IsEnabled="{Binding IsEnabled}"
+							HorizontalOptions="End"
+							VerticalOptions="Center"
+							Clicked="LogInButtonClicked"
+							Text="Login"/>
 					</Grid>
 
 				</ViewCell>
