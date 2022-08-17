@@ -15,7 +15,7 @@ public partial class AISJapanViewModel : ObservableObject
 	private string _Message = "";
 
 	[ObservableProperty]
-	private string _Email = "";
+	private string _Username = "";
 
 	[ObservableProperty]
 	private string _Password = "";

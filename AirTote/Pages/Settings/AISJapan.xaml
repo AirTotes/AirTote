@@ -34,14 +34,14 @@
 							Grid.Row="0"
 							Grid.Column="0"
 							VerticalOptions="Center"
-							Text="Mail"/>
+							Text="Username"/>
 						<Entry
-							Text="{Binding Email}"
+							Text="{Binding Username}"
 							IsEnabled="{Binding IsEnabled}"
 							Margin="2"
 							Grid.Row="0"
 							Grid.Column="1"
-							Keyboard="Email"/>
+							Keyboard="Plain"/>
 
 						<Label
 							Margin="2"
