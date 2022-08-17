@@ -35,6 +35,10 @@ namespace AirTote.Services
 
 		public void Dispose()
 		{
+			if (WhatsNew.IsCompleted)
+				WhatsNew.Result.Dispose();
+			WhatsNew.Dispose();
+
 			Ctx.Dispose();
 		}
 
