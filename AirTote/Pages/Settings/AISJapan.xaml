@@ -83,7 +83,15 @@
 							Clicked="LogInButtonClicked"
 							Text="Login"/>
 					</Grid>
-
+				</ViewCell>
+				<ViewCell>
+					<Button
+						Text="Remove Account from App"
+						Padding="16,8"
+						HorizontalOptions="Start"
+						FontSize="10"
+						Clicked="RemoveAccountButtonClicked"
+						IsEnabled="{Binding IsEnabled}"/>
 				</ViewCell>
 			</TableSection>
 		</TableRoot>
