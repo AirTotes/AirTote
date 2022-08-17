@@ -196,7 +196,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
     packages.append(PackageInfo(v[1].decode(ENC), v[-1].decode(ENC)))
   
   globalPackagesDir = getNugetGlobalPackagesDir()
-  packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages])
+  packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages if not v.PackageName.startswith("AirTote")])
 
   urlDic = {}
   async with ClientSession(connector = TCPConnector(limit = 20, force_close = True)) as session:
