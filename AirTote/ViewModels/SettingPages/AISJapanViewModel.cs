@@ -9,6 +9,12 @@ public partial class AISJapanViewModel : ObservableObject
 	private bool _IsEnabled = false;
 
 	[ObservableProperty]
+	private bool _IsBusy = false;
+
+	[ObservableProperty]
+	private string _Message = "";
+
+	[ObservableProperty]
 	private string _Email = "";
 
 	[ObservableProperty]
