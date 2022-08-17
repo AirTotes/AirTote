@@ -61,24 +61,36 @@
 				</ViewCell>
 				<ViewCell>
 					<Grid>
-						<Button
-							IsEnabled="{Binding IsEnabled}"
-							HorizontalOptions="Start"
-							VerticalOptions="Center"
-							Text="Reset"/>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="100"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="100"/>
+
+						</Grid.ColumnDefinitions>
 
 						<ActivityIndicator
+							Grid.Column="1"
 							IsRunning="{Binding IsBusy}"
 							HorizontalOptions="Center"
 							VerticalOptions="Center"/>
 						<Label
+							Grid.Column="1"
+							LineBreakMode="WordWrap"
 							Text="{Binding Message}"
-							HorizontalOptions="Center"
+							HorizontalOptions="CenterAndExpand"
 							VerticalOptions="Center"/>
 
 						<Button
+							Grid.Column="0"
 							IsEnabled="{Binding IsEnabled}"
-							HorizontalOptions="End"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Text="Reset"/>
+
+						<Button
+							Grid.Column="2"
+							IsEnabled="{Binding IsEnabled}"
+							HorizontalOptions="FillAndExpand"
 							VerticalOptions="Center"
 							Clicked="LogInButtonClicked"
 							Text="Login"/>
