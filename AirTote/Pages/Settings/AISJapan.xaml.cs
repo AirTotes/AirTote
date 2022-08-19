@@ -105,7 +105,7 @@ public partial class AISJapan : ContentPage
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Password Restore Error", "パスワードの復元に失敗しました。", "OK");
+			await Shell.Current.CurrentPage.DisplayAlert("Password Restore Error", "パスワードの復元に失敗しました。\n" + ex.Message, "OK");
 			return;
 		}
 
