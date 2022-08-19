@@ -6,6 +6,9 @@
 	x:DataType="ViewModels:AISJapanViewModel"
 	x:Class="AirTote.Pages.Settings.AISJapan"
 	Title="AIS Japan Settings">
+	<ContentPage.Resources>
+		<Thickness x:Key="CellMargin">4</Thickness>
+	</ContentPage.Resources>
 	<TableView
 		HasUnevenRows="True"
 		Intent="Data">
@@ -21,7 +24,8 @@
 				Title="SignIn to AIS Japan">
 				<ViewCell
 					Height="100">
-					<Grid>
+					<Grid
+						Margin="{StaticResource CellMargin}">
 						<Grid.RowDefinitions>
 							<RowDefinition Height="*"/>
 							<RowDefinition Height="*"/>
@@ -62,7 +66,8 @@
 				</ViewCell>
 
 				<ViewCell>
-					<Grid>
+					<Grid
+						Margin="{StaticResource CellMargin}">
 						<Grid.ColumnDefinitions>
 							<ColumnDefinition Width="100"/>
 							<ColumnDefinition Width="*"/>
@@ -103,6 +108,7 @@
 				<ViewCell>
 					<Button
 						Text="Remove Account from App"
+						Margin="{StaticResource CellMargin}"
 						Padding="16,8"
 						HorizontalOptions="Start"
 						FontSize="10"
