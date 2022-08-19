@@ -19,7 +19,8 @@
 			</TableSection>
 			<TableSection
 				Title="SignIn to AIS Japan">
-				<ViewCell>
+				<ViewCell
+					Height="100">
 					<Grid>
 						<Grid.RowDefinitions>
 							<RowDefinition Height="*"/>
