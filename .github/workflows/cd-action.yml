@@ -251,7 +251,7 @@ jobs:
         retention-days: 3
 
     - name: Post 'Import Code Sign Certificates'
-      if: steps.import-code-sign-cert.conclusion == 'success'
+      if: always() && steps.import-code-sign-cert.conclusion == 'success'
       run: /usr/bin/security delete-keychain ${{ steps.gen-keychain-name.outputs.keychain-name }}.keychain
 
   set-tag:
