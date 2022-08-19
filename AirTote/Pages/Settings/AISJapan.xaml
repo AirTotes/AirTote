@@ -59,6 +59,7 @@
 							IsPassword="True"/>
 					</Grid>
 				</ViewCell>
+
 				<ViewCell>
 					<Grid>
 						<Grid.ColumnDefinitions>
@@ -96,6 +97,7 @@
 							Text="Login"/>
 					</Grid>
 				</ViewCell>
+
 				<ViewCell>
 					<Button
 						Text="Remove Account from App"
