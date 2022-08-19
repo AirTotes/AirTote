@@ -189,7 +189,7 @@ jobs:
 
     - name: Generate Keychain Name
       id: gen-keychain-name
-      run: "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
+      run: echo "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
     - name: Import Code Sign Certificates
       id: import-code-sign-cert
       uses: apple-actions/import-codesign-certs@v1
