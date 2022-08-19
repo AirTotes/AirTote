@@ -145,8 +145,7 @@ jobs:
       )
       && !cancelled()
 
-    # runs-on: [self-hosted, macOS]
-    runs-on: macos-12
+    runs-on: [self-hosted, macOS]
     timeout-minutes: 30
     needs:
       - generate-bundle-version
