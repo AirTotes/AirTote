@@ -187,10 +187,14 @@ jobs:
         TARGET_DIR: ~/.appstoreconnect/private_keys
         TARGET_FILE: AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
 
+    - name: Generate Keychain Name
+      id: gen-keychain-name
+      run: "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
     - name: Import Code Sign Certificates
+      id: import-code-sign-cert
       uses: apple-actions/import-codesign-certs@v1
       with:
-        keychain: tmp_cert
+        keychain: ${{ steps.gen-keychain-name.outputs.keychain-name }}
         create-keychain: true
         p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
         p12-password: ${{ secrets.P12_PASSWORD }}
@@ -245,6 +249,10 @@ jobs:
         name: ipa
         path: ${{ env.IPA_PATH }}
         retention-days: 3
+
+    - name: Post 'Import Code Sign Certificates'
+      if: steps.import-code-sign-cert.conclusion == 'success'
+      run: /usr/bin/security delete-keychain ${{ steps.gen-keychain-name.outputs.keychain-name }}.keychain
 
   set-tag:
     if: |
