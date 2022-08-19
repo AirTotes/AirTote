@@ -163,6 +163,25 @@ jobs:
           echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
           echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
         fi
+    
+    - name: Import Provisioning Profile
+      run: |
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > ~/Library/MobileDevice/Provisioning\ Profiles/distribution.mobileprovision
+
+    - name: Import App Store Connect API Private Key
+      run: |
+        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
+        chmod 400 ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
+
+    - name: Import Code Sign Certificates
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        keychain: tmp_cert
+        create-keychain: true
+        p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
+        p12-password: ${{ secrets.P12_PASSWORD }}
 
     - uses: actions/checkout@v2
 
