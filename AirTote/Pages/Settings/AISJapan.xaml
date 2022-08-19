@@ -86,6 +86,7 @@
 							IsEnabled="{Binding IsEnabled}"
 							HorizontalOptions="Center"
 							VerticalOptions="Center"
+							Clicked="ResetButtonClicked"
 							Text="Reset"/>
 
 						<Button

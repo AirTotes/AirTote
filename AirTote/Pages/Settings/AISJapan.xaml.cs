@@ -166,4 +166,19 @@ public partial class AISJapan : ContentPage
 			ViewModel.IsBusy = false;
 		}
 	}
+
+	async void ResetButtonClicked(object sender, EventArgs e)
+	{
+		ViewModel.Password = "";
+
+		try
+		{
+			ViewModel.Username = await SecStorage.GetAsync(SEC_STORAGE_KEY_USER) ?? "";
+		}
+		catch (Exception ex)
+		{
+			await Shell.Current.CurrentPage.DisplayAlert("Username restore failed", "ユーザ名の復元に失敗しました。\n" + ex.Message, "OK");
+			return;
+		}
+	}
 }
