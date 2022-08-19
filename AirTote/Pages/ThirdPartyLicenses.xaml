@@ -3,7 +3,7 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
-	xmlns:components="clr-namespace:AirTote.Components"
+	xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
 	x:Class="AirTote.Pages.ThirdPartyLicenses"
 	Title="Third Party Licenses">
 	<ContentPage.Resources>
@@ -12,45 +12,43 @@
 		</ResourceDictionary>
 	</ContentPage.Resources>
 
-	<components:TwoPaneView
+	<tpv:TwoPaneView
 		x:Name="TwoPaneView"
 		LeftPaneWidth="300"
 		RightPaneWidth="*"
 		MinimumTwoPaneWidth="660">
-		<components:TwoPaneView.LeftPaneContent>
-			<ListView
-				x:Name="PackageListView"
-				SelectionMode="None"
-				ItemTapped="PackageListView_ItemTapped"
-				SeparatorVisibility="Default"
-				HasUnevenRows="True">
-				<ListView.ItemTemplate>
-					<DataTemplate>
-						<ViewCell>
-							<VerticalStackLayout
-								Padding="10">
-								<Label
-									Text="{Binding id}"
-									FontAttributes="Bold"
-									FontSize="Medium" />
-								<Label
-									Text="{Binding author, StringFormat='author: {0}'}"
-									HorizontalOptions="End"
-									HorizontalTextAlignment="End"
-									FontSize="Small" />
-								<Label
-									IsVisible="{Binding licenseDataType, Converter={StaticResource IsEqualConverter}, ConverterParameter='expression'}"
-									Text="{Binding license, StringFormat='SPDX-License-Identifier: {0}'}"
-									FontSize="Micro" />
-								<Label
-									Text="{Binding copyrightText}"
-									FontAttributes="Italic"
-									FontSize="Micro" />
-							</VerticalStackLayout>
-						</ViewCell>
-					</DataTemplate>
-				</ListView.ItemTemplate>
-			</ListView>
-		</components:TwoPaneView.LeftPaneContent>
-	</components:TwoPaneView>
+		<ListView
+			x:Name="PackageListView"
+			SelectionMode="None"
+			ItemTapped="PackageListView_ItemTapped"
+			SeparatorVisibility="Default"
+			HasUnevenRows="True">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<VerticalStackLayout
+							Padding="10">
+							<Label
+								Text="{Binding id}"
+								FontAttributes="Bold"
+								FontSize="Medium" />
+							<Label
+								Text="{Binding author, StringFormat='author: {0}'}"
+								HorizontalOptions="End"
+								HorizontalTextAlignment="End"
+								FontSize="Small" />
+							<Label
+								IsVisible="{Binding licenseDataType, Converter={StaticResource IsEqualConverter}, ConverterParameter='expression'}"
+								Text="{Binding license, StringFormat='SPDX-License-Identifier: {0}'}"
+								FontSize="Micro" />
+							<Label
+								Text="{Binding copyrightText}"
+								FontAttributes="Italic"
+								FontSize="Micro" />
+						</VerticalStackLayout>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+		</ListView>
+	</tpv:TwoPaneView>
 </ContentPage>
