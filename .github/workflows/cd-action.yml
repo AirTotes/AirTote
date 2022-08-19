@@ -172,7 +172,7 @@ jobs:
 
     - name: Import App Store Connect API Private Key
       run: |
-        mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+        mkdir -p ~/.appstoreconnect/private_keys
         echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
         chmod 400 ~/.appstoreconnect/private_keys/AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
 
