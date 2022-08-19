@@ -146,7 +146,7 @@ jobs:
       && !cancelled()
 
     runs-on: [self-hosted, macOS]
-    timeout-minutes: 20
+    timeout-minutes: 30
     needs:
       - generate-bundle-version
       - generate-third-party-license-info
@@ -171,6 +171,12 @@ jobs:
       with:
         name: third_party_license
         path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+    - name: Install dotnet workloads
+      run: dotnet workload install maui-ios maui-android
 
     - name: Install dependencies
       run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
