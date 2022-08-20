@@ -104,7 +104,7 @@ public partial class AISJapan : ContentPage
 
 		if (string.IsNullOrWhiteSpace(ViewModel.Username))
 		{
-			MsgBox.DisplayAlert("Username Empty", "ユーザ名を入力してください。", "OK");
+			ViewModel.Message = "⚠️ ユーザ名を入力してください。";
 			return;
 		}
 
@@ -122,7 +122,7 @@ public partial class AISJapan : ContentPage
 
 		if (string.IsNullOrWhiteSpace(pass))
 		{
-			MsgBox.DisplayAlert("Password Empty", "パスワードを入力してください。", "OK");
+			ViewModel.Message = "⚠️ パスワードを入力してください。";
 			return;
 		}
 
