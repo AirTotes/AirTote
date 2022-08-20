@@ -140,36 +140,34 @@ public partial class AISJapan : ContentPage
 		await SaveAccountAsync();
 	}
 
-	void RemoveAccountButtonClicked(object sender, EventArgs e)
+	async void RemoveAccountButtonClicked(object sender, EventArgs e)
 	{
 		ViewModel.Message = "";
 
-		MsgBox.DisplayAlert(
+		bool isAccepted = await MsgBox.DisplayAlertAsync(
 			"Remove Account from App?",
 			"アカウントを除去すると、再度設定するまでAIS Japanを使用する機能を使用できなくなります。",
 			"Continue Remove",
-			"Cancel",
-			isAccepted =>
-			{
-				if (!isAccepted)
-					return;
+			"Cancel");
 
-				try
-				{
-					ViewModel.IsEnabled = false;
-					ViewModel.IsBusy = true;
-					ViewModel.Message = "";
+		if (!isAccepted)
+			return;
 
-					RemoveAccount();
+		try
+		{
+			ViewModel.IsEnabled = false;
+			ViewModel.IsBusy = true;
+			ViewModel.Message = "";
 
-					ViewModel.Message = "✅ 削除処理終了";
-				}
-				finally
-				{
-					ViewModel.IsEnabled = true;
-					ViewModel.IsBusy = false;
-				}
-			});
+			RemoveAccount();
+
+			ViewModel.Message = "✅ 削除処理終了";
+		}
+		finally
+		{
+			ViewModel.IsEnabled = true;
+			ViewModel.IsBusy = false;
+		}
 	}
 
 	async void ResetButtonClicked(object sender, EventArgs e)
