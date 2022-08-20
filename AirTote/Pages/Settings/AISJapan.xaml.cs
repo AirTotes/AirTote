@@ -100,6 +100,8 @@ public partial class AISJapan : ContentPage
 
 	async void LogInButtonClicked(object sender, EventArgs e)
 	{
+		ViewModel.Message = "";
+
 		if (string.IsNullOrWhiteSpace(ViewModel.Username))
 		{
 			MsgBox.DisplayAlert("Username Empty", "ユーザ名を入力してください。", "OK");
