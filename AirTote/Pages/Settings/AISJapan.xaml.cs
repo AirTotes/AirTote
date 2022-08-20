@@ -179,6 +179,8 @@ public partial class AISJapan : ContentPage
 		try
 		{
 			ViewModel.Username = await SecStorage.GetAsync(SEC_STORAGE_KEY_USER) ?? "";
+
+			ViewModel.IsEnabled = true;
 		}
 		catch (Exception ex)
 		{
