@@ -1,4 +1,5 @@
-﻿using AirTote.ViewModels.SettingPages;
+﻿using AirTote.Services;
+using AirTote.ViewModels.SettingPages;
 
 namespace AirTote.Pages.Settings;
 
@@ -43,15 +44,15 @@ public partial class AISJapan : ContentPage
 		}
 		catch (FeatureNotSupportedException ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Cannot use this Feature", "この端末では、アカウント情報の保存に対応していません。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Cannot use this Feature", "この端末では、アカウント情報の保存に対応していません。\n" + ex.Message, "OK");
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Unknown Error", "アカウント情報の取得でエラーが発生しました。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Unknown Error", "アカウント情報の取得でエラーが発生しました。\n" + ex.Message, "OK");
 		}
 	}
 
-	async Task RemoveAccountAsync()
+	void RemoveAccount()
 	{
 		ViewModel.Username = "";
 		ViewModel.Password = "";
@@ -63,7 +64,7 @@ public partial class AISJapan : ContentPage
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Unknown error", "不明なエラーが発生しました。データの消去に失敗している可能性があります。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Unknown error", "不明なエラーが発生しました。データの消去に失敗している可能性があります。\n" + ex.Message, "OK");
 		}
 	}
 
@@ -78,7 +79,7 @@ public partial class AISJapan : ContentPage
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Unknown Error", "アカウント情報の保存でエラーが発生しました。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Unknown Error", "アカウント情報の保存でエラーが発生しました。\n" + ex.Message, "OK");
 		}
 	}
 
@@ -93,7 +94,7 @@ public partial class AISJapan : ContentPage
 	{
 		if (string.IsNullOrWhiteSpace(ViewModel.Username))
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Username Empty", "ユーザ名を入力してください。", "OK");
+			MsgBox.DisplayAlert("Username Empty", "ユーザ名を入力してください。", "OK");
 			return;
 		}
 
@@ -105,13 +106,13 @@ public partial class AISJapan : ContentPage
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Password Restore Error", "パスワードの復元に失敗しました。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Password Restore Error", "パスワードの復元に失敗しました。\n" + ex.Message, "OK");
 			return;
 		}
 
 		if (string.IsNullOrWhiteSpace(pass))
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Password Empty", "パスワードを入力してください。", "OK");
+			MsgBox.DisplayAlert("Password Empty", "パスワードを入力してください。", "OK");
 			return;
 		}
 
@@ -139,32 +140,36 @@ public partial class AISJapan : ContentPage
 		await SaveAccountAsync();
 	}
 
-	async void RemoveAccountButtonClicked(object sender, EventArgs e)
+	void RemoveAccountButtonClicked(object sender, EventArgs e)
 	{
 		ViewModel.Message = "";
 
-		bool isAccesped = await Shell.Current.CurrentPage.DisplayAlert(
+		MsgBox.DisplayAlert(
 			"Remove Account from App?",
 			"アカウントを除去すると、再度設定するまでAIS Japanを使用する機能を使用できなくなります。",
 			"Continue Remove",
-			"Cancel");
+			"Cancel",
+			isAccepted =>
+			{
+				if (!isAccepted)
+					return;
 
-		if (!isAccesped)
-			return;
+				try
+				{
+					ViewModel.IsEnabled = false;
+					ViewModel.IsBusy = true;
+					ViewModel.Message = "";
 
-		try
-		{
-			ViewModel.IsEnabled = false;
-			ViewModel.IsBusy = true;
-			ViewModel.Message = "";
-			await RemoveAccountAsync();
-			ViewModel.Message = "✅ 削除処理終了";
-		}
-		finally
-		{
-			ViewModel.IsEnabled = true;
-			ViewModel.IsBusy = false;
-		}
+					RemoveAccount();
+
+					ViewModel.Message = "✅ 削除処理終了";
+				}
+				finally
+				{
+					ViewModel.IsEnabled = true;
+					ViewModel.IsBusy = false;
+				}
+			});
 	}
 
 	async void ResetButtonClicked(object sender, EventArgs e)
@@ -177,7 +182,7 @@ public partial class AISJapan : ContentPage
 		}
 		catch (Exception ex)
 		{
-			await Shell.Current.CurrentPage.DisplayAlert("Username restore failed", "ユーザ名の復元に失敗しました。\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Username restore failed", "ユーザ名の復元に失敗しました。\n" + ex.Message, "OK");
 			return;
 		}
 	}
