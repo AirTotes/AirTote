@@ -1,19 +1,18 @@
-﻿using System;
+﻿using AirTote.TwoPaneView;
 
-namespace AirTote.ViewModels
+namespace AirTote.ViewModels;
+
+public class SettingPageViewModel : BaseViewModel
 {
-	public class SettingPageViewModel : BaseViewModel
+	public SettingPageViewModel()
 	{
-		public SettingPageViewModel()
-		{
-			Title = "Settings";
-		}
+		Title = "Settings";
+	}
 
-		HtmlWebViewSource? _page = null;
-		public HtmlWebViewSource? WebPage
-		{
-			get => _page;
-			set => SetProperty(ref _page, value);
-		}
+	private ChangeRightPaneViewCommand? _ChangeRightPaneViewCommand;
+	public ChangeRightPaneViewCommand? ChangeRightPaneViewCommand
+	{
+		get => _ChangeRightPaneViewCommand;
+		set => SetProperty(ref _ChangeRightPaneViewCommand, value);
 	}
 }
