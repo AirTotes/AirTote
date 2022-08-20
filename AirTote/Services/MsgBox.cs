@@ -21,5 +21,15 @@ static public class MsgBox
 					_ = Task.Run(() => action.Invoke(result));
 			}
 		);
+
+	static public Task DisplayAlertAsync(string title, string msg, string cancelBtnText)
+		=> MainThread.InvokeOnMainThreadAsync(() =>
+			Shell.Current.CurrentPage.DisplayAlert(title, msg, cancelBtnText)
+		);
+
+	static public Task<bool> DisplayAlertAsync(string title, string msg, string acceptBtnText, string cancelBtnText)
+		=> MainThread.InvokeOnMainThreadAsync(() =>
+			Shell.Current.CurrentPage.DisplayAlert(title, msg, acceptBtnText, cancelBtnText)
+		);
 }
 
