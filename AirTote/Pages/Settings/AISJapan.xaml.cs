@@ -29,8 +29,6 @@ public partial class AISJapan : ContentPage
 
 	async Task LoadAccountAsync()
 	{
-		ViewModel.IsEnabled = false;
-
 		try
 		{
 			ViewModel.Username = await SecStorage.GetAsync(SEC_STORAGE_KEY_USER) ?? "";
@@ -41,6 +39,8 @@ public partial class AISJapan : ContentPage
 			ViewModel.Password = "";
 
 			ViewModel.IsEnabled = true;
+
+			return;
 		}
 		catch (FeatureNotSupportedException ex)
 		{
@@ -50,6 +50,8 @@ public partial class AISJapan : ContentPage
 		{
 			MsgBox.DisplayAlert("Unknown Error", "アカウント情報の取得でエラーが発生しました。\n" + ex.Message, "OK");
 		}
+
+		ViewModel.IsEnabled = false;
 	}
 
 	void RemoveAccount()

@@ -6,7 +6,7 @@ namespace AirTote.ViewModels.SettingPages;
 public partial class AISJapanViewModel : ObservableObject
 {
 	[ObservableProperty]
-	private bool _IsEnabled = false;
+	private bool _IsEnabled = true;
 
 	[ObservableProperty]
 	private bool _IsBusy = false;
