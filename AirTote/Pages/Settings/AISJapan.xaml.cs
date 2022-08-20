@@ -31,6 +31,8 @@ public partial class AISJapan : ContentPage
 	{
 		try
 		{
+			ViewModel.IsBusy = true;
+
 			ViewModel.Username = await SecStorage.GetAsync(SEC_STORAGE_KEY_USER) ?? "";
 
 			// パスワードに関しては、取得ができるかどうかのみをチェックする
@@ -49,6 +51,10 @@ public partial class AISJapan : ContentPage
 		catch (Exception ex)
 		{
 			MsgBox.DisplayAlert("Unknown Error", "アカウント情報の取得でエラーが発生しました。\n" + ex.Message, "OK");
+		}
+		finally
+		{
+			ViewModel.IsBusy = false;
 		}
 
 		ViewModel.IsEnabled = false;
