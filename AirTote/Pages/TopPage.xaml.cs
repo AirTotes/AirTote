@@ -1,15 +1,19 @@
-﻿using CommunityToolkit.Maui.Views;
+using AirTote.Components.FlyoutMenu;
 using AirTote.Components.Maps;
 using AirTote.Components.Maps.Layers;
 using AirTote.Components.Maps.Widgets;
 using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
+
+using CommunityToolkit.Maui.Views;
+
 using Mapsui.Extensions;
 using Mapsui.Layers;
-using Topten.RichTextKit;
+
 using SkiaSharp;
-using AirTote.Components.FlyoutMenu;
+
+using Topten.RichTextKit;
 
 namespace AirTote.Pages;
 

@@ -1,11 +1,11 @@
-﻿using AngleSharp;
-using AngleSharp.Dom;
-using AngleSharp.Html.Dom;
-using AngleSharp.Io;
-
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+
+using AngleSharp;
+using AngleSharp.Dom;
+using AngleSharp.Html.Dom;
+using AngleSharp.Io;
 
 namespace AirTote.Services
 {

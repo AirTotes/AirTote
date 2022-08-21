@@ -1,4 +1,4 @@
-﻿using AirTote.Components.Maps.Widgets;
+using AirTote.Components.Maps.Widgets;
 
 using Mapsui.Layers;
 using Mapsui.Widgets;

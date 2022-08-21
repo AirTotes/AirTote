@@ -1,4 +1,4 @@
-﻿namespace AirTote.Models;
+namespace AirTote.Models;
 
 public interface ILicenseJsonSchema
 {

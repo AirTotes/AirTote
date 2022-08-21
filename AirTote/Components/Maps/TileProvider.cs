@@ -1,9 +1,9 @@
-﻿using BruTile;
+using AirTote.Services;
+
+using BruTile;
 using BruTile.Cache;
 using BruTile.Predefined;
 using BruTile.Web;
-
-using AirTote.Services;
 
 using Mapsui.Tiling.Layers;
 
