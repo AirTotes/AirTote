@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 using AirTote.Components.Maps;
 using AirTote.Pages.PayLandingFee;

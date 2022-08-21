@@ -1,4 +1,4 @@
-﻿using AirTote.Components.Maps;
+using AirTote.Components.Maps;
 using AirTote.Models;
 using AirTote.Services;
 using AirTote.ViewModels.PayLandingFee;

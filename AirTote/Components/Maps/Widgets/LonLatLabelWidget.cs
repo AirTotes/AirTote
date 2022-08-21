@@ -1,4 +1,4 @@
-﻿using AirTote.Components.Maps.Layers;
+using AirTote.Components.Maps.Layers;
 
 using Mapsui;
 using Mapsui.Projections;

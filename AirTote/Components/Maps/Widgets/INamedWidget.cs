@@ -1,4 +1,4 @@
-﻿using Mapsui.Widgets;
+using Mapsui.Widgets;
 
 namespace AirTote.Components.Maps.Widgets;
 

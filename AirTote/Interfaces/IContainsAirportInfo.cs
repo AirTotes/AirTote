@@ -1,4 +1,4 @@
-﻿using AirTote.Models;
+using AirTote.Models;
 
 namespace AirTote.Interfaces
 {

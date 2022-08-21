@@ -1,4 +1,4 @@
-﻿using AirTote.Components;
+using AirTote.Components;
 using AirTote.Models;
 using AirTote.TwoPaneView;
 

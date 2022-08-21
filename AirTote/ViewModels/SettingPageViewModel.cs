@@ -1,4 +1,4 @@
-﻿using AirTote.TwoPaneView;
+using AirTote.TwoPaneView;
 
 namespace AirTote.ViewModels;
 

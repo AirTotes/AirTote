@@ -1,4 +1,4 @@
-﻿namespace AirTote.Interfaces;
+namespace AirTote.Interfaces;
 
 public interface IContainFlyoutPageInstance
 {

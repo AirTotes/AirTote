@@ -1,4 +1,4 @@
-﻿using AirTote.Services;
+using AirTote.Services;
 
 using BruTile;
 using BruTile.Cache;

@@ -1,4 +1,4 @@
-﻿namespace AirTote.Services;
+namespace AirTote.Services;
 
 static public class MsgBox
 {

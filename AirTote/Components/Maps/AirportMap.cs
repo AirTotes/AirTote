@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 
 using AirTote.Components.Maps.Layers;
 using AirTote.Models;

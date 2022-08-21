@@ -1,4 +1,4 @@
-﻿using AirTote.ViewModels;
+using AirTote.ViewModels;
 
 using CommunityToolkit.Mvvm.ComponentModel;
 

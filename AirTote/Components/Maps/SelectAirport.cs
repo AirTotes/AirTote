@@ -1,4 +1,4 @@
-﻿using AirTote.Components.Maps;
+using AirTote.Components.Maps;
 using AirTote.Interfaces;
 
 using CommunityToolkit.Maui.Views;

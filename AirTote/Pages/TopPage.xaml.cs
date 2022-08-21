@@ -1,4 +1,4 @@
-﻿using AirTote.Components.FlyoutMenu;
+using AirTote.Components.FlyoutMenu;
 using AirTote.Components.Maps;
 using AirTote.Components.Maps.Layers;
 using AirTote.Components.Maps.Widgets;
