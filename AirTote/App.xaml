@@ -114,7 +114,6 @@
 				<Setter
 					Property="Shell.TitleColor"
 					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
-				<Setter Property="Shell.TitleColor" Value="White" />
 				<Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
 				<Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
 				<Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
