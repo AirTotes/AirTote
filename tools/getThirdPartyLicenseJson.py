@@ -199,7 +199,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
   packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages if not v.PackageName.startswith("AirTote")])
 
   urlDic = {}
-  async with ClientSession(connector = TCPConnector(limit = 20, force_close = True)) as session:
+  async with ClientSession(connector = TCPConnector(limit = 2, force_close = True)) as session:
     await asyncio.gather(*[dumpLicenseTextFile(session, targetDir, globalPackagesDir, v, urlDic) for v in packageInfoList])
 
   with open(f'{targetDir}/{LICENSE_INFO_LIST_FILE_NAME}', 'w') as f:
