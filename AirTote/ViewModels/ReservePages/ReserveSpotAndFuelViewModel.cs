@@ -42,7 +42,7 @@ namespace AirTote.ViewModels.ReservePages
 			get => _SpotStayTime_MM;
 			set
 			{
-				if (0 <= value && value < 60)
+				if (value is >= 0 and < 60)
 					SetProperty(ref _SpotStayTime_MM, value);
 
 				int value_total_mm = SpotStayTime_HH * 60 + value;
