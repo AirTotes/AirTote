@@ -14,6 +14,8 @@ namespace AirTote.Services
 		public const string SEC_STORAGE_KEY_USER = "AIS_JAPAN_USERNAME";
 		public const string SEC_STORAGE_KEY_PASS = "AIS_JAPAN_PASSWORD";
 
+		public bool IsOutdated { get; private set; }
+
 		// AngleSharp login ref : https://neue.cc/2021/12/04.html
 
 		IBrowsingContext Ctx { get; } = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithDefaultCookies());
@@ -45,6 +47,16 @@ namespace AirTote.Services
 					}
 				)
 			);
+		}
+
+		public async Task<bool> SignOutAsync()
+		{
+			var result = await Ctx.OpenAsync("https://aisjapan.mlit.go.jp/LogoutAction.do");
+
+			bool isOutdated = result.StatusCode == System.Net.HttpStatusCode.OK;
+			IsOutdated = isOutdated;
+
+			return isOutdated;
 		}
 
 		public void Dispose()
