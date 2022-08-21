@@ -1,12 +1,21 @@
 ﻿using DependencyPropertyGenerator;
 
-namespace AirTote.Components;
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
+using System;
+using System.ComponentModel;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace AirTote.TwoPaneView;
+
+[ContentProperty(nameof(LeftPaneContent))]
 [DependencyProperty<View>("LeftPaneContent")]
 [DependencyProperty<View>("RightPaneContent")]
 [DependencyProperty<double>("MinimumTwoPaneWidth", DefaultValue = 300)]
-[DependencyProperty<GridLength>("LeftPaneWidth", TypeConverter = typeof(GridLengthTypeConverter))]
-[DependencyProperty<GridLength>("RightPaneWidth", TypeConverter = typeof(GridLengthTypeConverter))]
+[DependencyProperty<GridLength>("LeftPaneWidth", TypeConverter = typeof(GridLengthTypeConverter), DefaultValueExpression = "new(1, Microsoft.Maui.GridUnitType.Star)")]
+[DependencyProperty<GridLength>("RightPaneWidth", TypeConverter = typeof(GridLengthTypeConverter), DefaultValueExpression = "new(200)")]
 [DependencyProperty<bool>("IsTwoPane", IsReadOnly = true, DefaultValue = true)]
 public partial class TwoPaneView : ContentView
 {
