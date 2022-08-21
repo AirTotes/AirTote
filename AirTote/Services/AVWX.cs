@@ -1,12 +1,12 @@
 ﻿#nullable disable
 
-using AirTote.Models;
-
-using Newtonsoft.Json;
-
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
+
+using AirTote.Models;
+
+using Newtonsoft.Json;
 
 namespace AirTote.Services
 {

@@ -1,12 +1,12 @@
-﻿using DependencyPropertyGenerator;
-
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+
+using DependencyPropertyGenerator;
+
+using Microsoft.Maui;
+using Microsoft.Maui.Controls;
 
 namespace AirTote.TwoPaneView;
 

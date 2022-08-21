@@ -4,6 +4,7 @@ using Mapsui.UI.Maui;
 using SkiaSharp;
 
 using Topten.RichTextKit;
+
 using IStyle = Topten.RichTextKit.IStyle;
 using Style = Topten.RichTextKit.Style;
 

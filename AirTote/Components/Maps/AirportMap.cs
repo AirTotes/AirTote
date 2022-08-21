@@ -1,7 +1,10 @@
 ﻿using System.Linq;
+
 using AirTote.Components.Maps.Layers;
 using AirTote.Models;
+
 using Mapsui.UI.Maui;
+
 using Topten.RichTextKit;
 
 using TCalloutTextGen = System.Func<AirTote.Models.AirportInfo.APInfo, Topten.RichTextKit.RichString, Topten.RichTextKit.RichString>;

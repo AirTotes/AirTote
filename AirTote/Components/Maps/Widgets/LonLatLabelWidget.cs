@@ -1,8 +1,10 @@
 ﻿using AirTote.Components.Maps.Layers;
+
 using Mapsui;
 using Mapsui.Projections;
 using Mapsui.Rendering.Skia.SkiaWidgets;
 using Mapsui.Widgets;
+
 using SkiaSharp;
 
 namespace AirTote.Components.Maps.Widgets;

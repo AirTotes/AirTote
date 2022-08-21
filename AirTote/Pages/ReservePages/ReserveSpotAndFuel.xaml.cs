@@ -1,10 +1,10 @@
-﻿using AirTote.Components.Maps;
+﻿using System;
+
+using AirTote.Components.Maps;
 using AirTote.Pages.PayLandingFee;
 using AirTote.ViewModels.ReservePages;
 
 using CommunityToolkit.Maui.Views;
-
-using System;
 
 namespace AirTote.Pages.ReservePages
 {
