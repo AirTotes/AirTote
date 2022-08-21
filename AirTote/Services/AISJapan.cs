@@ -59,11 +59,14 @@ namespace AirTote.Services
 			return isOutdated;
 		}
 
-		public void Dispose()
+		public async void Dispose()
 		{
 			if (WhatsNew.IsCompleted)
 				WhatsNew.Result.Dispose();
 			WhatsNew.Dispose();
+
+			if (!IsOutdated)
+				_ = await SignOutAsync();
 
 			Ctx.Dispose();
 		}
