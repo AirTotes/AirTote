@@ -24,11 +24,16 @@ public partial class AISJapan : ContentPage
 		Task.Run(LoadAccountAsync);
 	}
 
+	Task SetIsEnabledPropAsync(bool isEnabled)
+		=> MainThread.InvokeOnMainThreadAsync(() => ViewModel.IsEnabled = isEnabled);
+
 	async void CreateAccount_Tapped(object sender, EventArgs e)
 		=> await Browser.OpenAsync(AIS_JAPAN_CREATE_ACCOUNT);
 
 	async Task LoadAccountAsync()
 	{
+		await SetIsEnabledPropAsync(false);
+
 		try
 		{
 			ViewModel.IsBusy = true;
@@ -40,7 +45,7 @@ public partial class AISJapan : ContentPage
 			_ = await SecStorage.GetAsync(SEC_STORAGE_KEY_PASS);
 			ViewModel.Password = "";
 
-			ViewModel.IsEnabled = true;
+			await SetIsEnabledPropAsync(true);
 
 			return;
 		}
@@ -56,8 +61,6 @@ public partial class AISJapan : ContentPage
 		{
 			ViewModel.IsBusy = false;
 		}
-
-		ViewModel.IsEnabled = false;
 	}
 
 	void RemoveAccount()
@@ -129,7 +132,7 @@ public partial class AISJapan : ContentPage
 		try
 		{
 			ViewModel.IsBusy = true;
-			ViewModel.IsEnabled = false;
+			await SetIsEnabledPropAsync(false);
 
 			var result = await TrySignInAsync(ViewModel.Username, pass);
 
@@ -144,7 +147,7 @@ public partial class AISJapan : ContentPage
 		finally
 		{
 			ViewModel.IsBusy = false;
-			ViewModel.IsEnabled = true;
+			await SetIsEnabledPropAsync(true);
 		}
 
 		await SaveAccountAsync();
@@ -165,7 +168,7 @@ public partial class AISJapan : ContentPage
 
 		try
 		{
-			ViewModel.IsEnabled = false;
+			await SetIsEnabledPropAsync(false);
 			ViewModel.IsBusy = true;
 			ViewModel.Message = "";
 
@@ -175,7 +178,7 @@ public partial class AISJapan : ContentPage
 		}
 		finally
 		{
-			ViewModel.IsEnabled = true;
+			await SetIsEnabledPropAsync(true);
 			ViewModel.IsBusy = false;
 		}
 	}
@@ -188,7 +191,7 @@ public partial class AISJapan : ContentPage
 		{
 			ViewModel.Username = await SecStorage.GetAsync(SEC_STORAGE_KEY_USER) ?? "";
 
-			ViewModel.IsEnabled = true;
+			await SetIsEnabledPropAsync(true);
 		}
 		catch (Exception ex)
 		{
