@@ -11,16 +11,32 @@ namespace AirTote.Services
 {
 	internal class AISJapan : IDisposable
 	{
+		public const string SEC_STORAGE_KEY_USER = "AIS_JAPAN_USERNAME";
+		public const string SEC_STORAGE_KEY_PASS = "AIS_JAPAN_PASSWORD";
+
 		// AngleSharp login ref : https://neue.cc/2021/12/04.html
 
 		IBrowsingContext Ctx { get; } = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithDefaultCookies());
 		Task<IDocument> WhatsNew { get; }
 
+		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/LoginAction.do");
+
+		static public async Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
+		{
+			string? id = await secureStorage.GetAsync(SEC_STORAGE_KEY_USER);
+			string? pass = await secureStorage.GetAsync(SEC_STORAGE_KEY_PASS);
+
+			if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(pass))
+				throw new InvalidOperationException("ID or Password was not in the provided SecureStorage");
+
+			return new(id, pass);
+		}
+
 		public AISJapan(in string id, in string password)
 		{
 			WhatsNew = Ctx.OpenAsync(
 				DocumentRequest.PostAsUrlencoded(
-					new Url("https://aisjapan.mlit.go.jp/LoginAction.do"),
+					LoginPageUrl,
 					new Dictionary<string, string>
 					{
 						{ "formName", "ais-web" },
@@ -33,7 +49,38 @@ namespace AirTote.Services
 
 		public void Dispose()
 		{
+			if (WhatsNew.IsCompleted)
+				WhatsNew.Result.Dispose();
+			WhatsNew.Dispose();
+
 			Ctx.Dispose();
+		}
+
+		public async Task<string?> GetSignInError()
+		{
+			var whatsnew = await WhatsNew;
+			if (whatsnew.Url != LoginPageUrl.ToString())
+				return null;
+
+			List<string> list = new();
+
+			foreach (var v in whatsnew.Scripts)
+			{
+				if (!string.IsNullOrWhiteSpace(v.Source))
+					continue;
+
+				var result = System.Text.RegularExpressions.Regex.Match(v.Text, "alert\\(([^\\(\\)]+)\\)");
+				if (!result.Success)
+					continue;
+
+				int prefixLen = "alert('".Length;
+				list.Add(result.Value.Substring(prefixLen, result.Value.Length - prefixLen - 2).Trim());
+			}
+
+			if (list.Count <= 0)
+				return null;
+
+			return string.Join('\n', list);
 		}
 
 		public async Task<IHtmlTableRowElement?> GetWhatsNewAsync()

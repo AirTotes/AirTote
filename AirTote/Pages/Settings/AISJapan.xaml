@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:ViewModels="clr-namespace:AirTote.ViewModels.SettingPages"
+	x:DataType="ViewModels:AISJapanViewModel"
+	x:Class="AirTote.Pages.Settings.AISJapan"
+	Title="AIS Japan Settings">
+	<ContentPage.Resources>
+		<Thickness x:Key="CellMargin">4</Thickness>
+	</ContentPage.Resources>
+	<TableView
+		HasUnevenRows="True"
+		Intent="Data">
+		<TableRoot>
+			<TableSection
+				Title="Create Account">
+				<TextCell
+					Text="アカウント作成ページはこちら"
+					Detail="(ブラウザが開きます)"
+					Tapped="CreateAccount_Tapped"/>
+			</TableSection>
+			<TableSection
+				Title="SignIn to AIS Japan">
+				<ViewCell
+					Height="100">
+					<Grid
+						Margin="{StaticResource CellMargin}">
+						<Grid.RowDefinitions>
+							<RowDefinition Height="*"/>
+							<RowDefinition Height="*"/>
+						</Grid.RowDefinitions>
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="Auto"/>
+							<ColumnDefinition Width="*"/>
+						</Grid.ColumnDefinitions>
+						<Label
+							Margin="2"
+							Grid.Row="0"
+							Grid.Column="0"
+							VerticalOptions="Center"
+							Text="Username"/>
+						<Entry
+							Text="{Binding Username}"
+							IsEnabled="{Binding IsEnabled}"
+							Margin="2"
+							Grid.Row="0"
+							Grid.Column="1"
+							Keyboard="Plain"/>
+
+						<Label
+							Margin="2"
+							Grid.Row="1"
+							Grid.Column="0"
+							VerticalOptions="Center"
+							Text="Password"/>
+						<Entry
+							Text="{Binding Password}"
+							IsEnabled="{Binding IsEnabled}"
+							Placeholder="(unchanged)"
+							Margin="2"
+							Grid.Row="1"
+							Grid.Column="1"
+							IsPassword="True"/>
+					</Grid>
+				</ViewCell>
+
+				<ViewCell>
+					<Grid
+						Margin="{StaticResource CellMargin}">
+						<Grid.ColumnDefinitions>
+							<ColumnDefinition Width="100"/>
+							<ColumnDefinition Width="*"/>
+							<ColumnDefinition Width="100"/>
+
+						</Grid.ColumnDefinitions>
+
+						<ActivityIndicator
+							Grid.Column="1"
+							IsRunning="{Binding IsBusy}"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"/>
+						<Label
+							Grid.Column="1"
+							LineBreakMode="WordWrap"
+							Text="{Binding Message}"
+							HorizontalOptions="CenterAndExpand"
+							VerticalOptions="Center"/>
+
+						<Button
+							Grid.Column="0"
+							IsEnabled="{Binding IsEnabled}"
+							HorizontalOptions="Center"
+							VerticalOptions="Center"
+							Clicked="ResetButtonClicked"
+							Text="Reset"/>
+
+						<Button
+							Grid.Column="2"
+							IsEnabled="{Binding IsEnabled}"
+							HorizontalOptions="FillAndExpand"
+							VerticalOptions="Center"
+							Clicked="LogInButtonClicked"
+							Text="Login"/>
+					</Grid>
+				</ViewCell>
+
+				<ViewCell>
+					<Button
+						Text="Remove Account from App"
+						Margin="{StaticResource CellMargin}"
+						Padding="16,8"
+						HorizontalOptions="Start"
+						FontSize="10"
+						Clicked="RemoveAccountButtonClicked"
+						IsEnabled="{Binding IsEnabled}"/>
+				</ViewCell>
+			</TableSection>
+		</TableRoot>
+	</TableView>
+</ContentPage>
