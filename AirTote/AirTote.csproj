@@ -69,6 +69,14 @@
 		<MauiFont Include="Assets\Fonts\*" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Assets\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Remove="Assets\Images\book_black_24dp.svg" />
+		<None Remove="Assets\Images\description_black_24dp.svg" />
+		<None Remove="Assets\Images\edit_note_black_24dp.svg" />
+		<None Remove="Assets\Images\explore_black_24dp.svg" />
+		<None Remove="Assets\Images\flight_takeoff_black_24dp.svg" />
+		<None Remove="Assets\Images\local_airport_black_24dp.svg" />
+		<None Remove="Assets\Images\read_more_black_24dp.svg" />
+		<None Remove="Assets\Images\thermostat_black_24dp.svg" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
 	</ItemGroup>
 	<ItemGroup>

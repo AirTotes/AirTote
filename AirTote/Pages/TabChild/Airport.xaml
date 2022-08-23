@@ -5,8 +5,8 @@
              Title="Airport">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
+            Text="This is airportspage!"
+            VerticalOptions="FillAndExpand" 
+            HorizontalOptions="FillAndExpand" />
     </VerticalStackLayout>
 </ContentPage>

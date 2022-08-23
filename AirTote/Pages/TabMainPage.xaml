@@ -7,12 +7,20 @@
     xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
     android:TabbedPage.ToolbarPlacement="Bottom">
     <!--Pages can be added as references or inline-->
-    <ContentPage Title="Airports"/>
-    <ContentPage Title="Maps"/>
-    <ContentPage Title="Plates"/>
-    <ContentPage Title="Documents"/>
-    <ContentPage Title="Imagery"/>
-    <ContentPage Title="Flights"/>
-    <ContentPage Title="ScratchPads"/>
-    <ContentPage Title="More"/>
+    <ContentPage Title="Airports"
+                 IconImageSource ="local_airport_black_24dp.svg"/>
+    <ContentPage Title="Maps"
+                 IconImageSource ="explore_black_24dp.svg"/>
+    <ContentPage Title="Imagery"
+                 IconImageSource ="thermostat_black_24dp.svg"/>
+    <ContentPage Title="Documents"
+                 IconImageSource ="description_black_24dp.svg"/>
+    <ContentPage Title="Plates"
+                 IconImageSource ="book_black_24dp.svg"/>
+    <ContentPage Title="Flights"
+                 IconImageSource ="flight_takeoff_black_24dp.svg"/>
+    <ContentPage Title="ScratchPads"
+                 IconImageSource ="edit_note_black_24dp.svg"/>
+    <ContentPage Title="More"
+                 IconImageSource ="read_more_black_24dp.svg"/>
 </TabbedPage>
