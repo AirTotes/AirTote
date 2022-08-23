@@ -10,6 +10,7 @@ using CommunityToolkit.Maui.Views;
 
 using Mapsui.Extensions;
 using Mapsui.Layers;
+using Mapsui.Projections;
 
 using SkiaSharp;
 
@@ -20,6 +21,9 @@ namespace AirTote.Pages;
 public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 {
 	const float BUTTON_HEIGHT_WIDTH = 48;
+	static TimeSpan LOCATION_TIMER_INTERVAL = new(0, 0, 0, 2);
+
+	CancellationTokenSource? gpsCancelation;
 
 	GetRemoteCsv METAR { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/metar_jp.csv");
 	GetRemoteCsv TAF { get; } = new(@"https://fis-j.technotter.com/GetMetarTaf/taf_jp.csv");
@@ -160,6 +164,10 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			return;
 #endif
 		});
+
+		Task.Run(StartGPS);
+
+		Map.MyLocationLayer.Clicked += (_, _) => Map.MyLocationFollow = true;
 	}
 
 	private Task OnMenuButtonClicked()
@@ -214,6 +222,69 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			return;
 
 		this.ShowPopup(new MapSettingPopup(this.Map, Map.RefreshGraphics));
+	}
+
+	void UpdateMyLocation(Location loc)
+	{
+		Mapsui.UI.Maui.Position pos = new(loc.Latitude, loc.Longitude);
+		Map.MyLocationLayer.UpdateMyLocation(pos, Map.MyLocationEnabled);
+		if (loc.Speed is double v)
+			Map.MyLocationLayer.UpdateMySpeed(v);
+	}
+
+	public async void StartGPS()
+	{
+		gpsCancelation?.Dispose();
+		gpsCancelation = new CancellationTokenSource();
+
+		await Task.Run(async () =>
+		{
+			while (!gpsCancelation.IsCancellationRequested)
+			{
+				// ref: https://docs.microsoft.com/en-us/dotnet/maui/platform-integration/device/geolocation
+				GeolocationRequest req = new(GeolocationAccuracy.High, TimeSpan.FromSeconds(10));
+
+				Application.Current?.Dispatcher.DispatchAsync(async () =>
+				{
+					try
+					{
+						Location? loc = await Geolocation.Default.GetLocationAsync(req);
+						if (loc is not null)
+						{
+							UpdateMyLocation(loc);
+
+							if (!Map.MyLocationEnabled)
+							{
+								Map.MyLocationEnabled = true;
+								Map.MyLocationFollow = true;
+								Map.IsMyLocationButtonVisible = true;
+							}
+						}
+						return;
+					}
+					catch (FeatureNotSupportedException)
+					{
+						MsgBox.DisplayAlert("Cannot Show Your Location", "この端末では位置情報サービスを使用できません", "OK");
+					}
+					catch (FeatureNotEnabledException)
+					{
+						MsgBox.DisplayAlert("Location Service Disabled", "OSの設定により、位置情報サービスが無効化されています", "OK");
+					}
+					catch (PermissionException)
+					{
+						MsgBox.DisplayAlert("Location Service Not Allowed", "アプリに位置情報の使用が許可されていません", "OK");
+					}
+					catch (Exception ex)
+					{
+						MsgBox.DisplayAlert("Failed to Get Your Location", "位置情報の取得でエラーが発生しました\n" + ex.Message, "OK");
+					}
+
+					gpsCancelation.Cancel();
+				}).ConfigureAwait(false);
+
+				await Task.Delay(2000).ConfigureAwait(false);
+			}
+		}, gpsCancelation.Token).ConfigureAwait(false);
 	}
 }
 
