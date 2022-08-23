@@ -71,7 +71,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			Map.Map?.Widgets.Add(widget);
 		});
 
-
 		Task.Run(async () =>
 		{
 			ButtonWidget widget = await ButtonWidget.FromAppPackageFileAsync("Open Menu Button", "settings_FILL0_wght400_GRAD0_opsz48.svg");
@@ -97,7 +96,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
-				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK"));
+				await MsgBox.DisplayAlertAsync("Failed to get Remote Resource", "MVAの取得に失敗しました。" + ex.Message, "OK");
 				return;
 			}
 
@@ -113,7 +112,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
-					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVAの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
+					bool response = await MsgBox.DisplayAlertAsync("Failed to get Remote Resource", $"MVAの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No");
 					if (!response)
 						return;
 				}
@@ -134,7 +133,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
-				await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "MVA Textの取得に失敗しました。" + ex.Message, "OK"));
+				await MsgBox.DisplayAlertAsync("Failed to get Remote Resource", "MVA Textの取得に失敗しました。" + ex.Message, "OK");
 				return;
 			}
 
@@ -150,7 +149,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 				catch (Exception ex)
 				{
 					Console.WriteLine(ex);
-					bool response = await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", $"MVA Textの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No"));
+					bool response = await MsgBox.DisplayAlertAsync("Failed to get Remote Resource", $"MVA Textの更新に失敗しました。\n{ex.Message}\n更新を継続しますか?", "Yes", "No");
 					if (!response)
 						return;
 				}
@@ -184,7 +183,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		}
 		catch (Exception ex)
 		{
-			await MainThread.InvokeOnMainThreadAsync(() => DisplayAlert("Failed to get Remote Resource", "METAR/TAFの更新に失敗しました。表示されている情報は、前回までに取得した情報です。\n" + ex.Message, "OK"));
+			await MsgBox.DisplayAlertAsync("Failed to get Remote Resource", "METAR/TAFの更新に失敗しました。表示されている情報は、前回までに取得した情報です。\n" + ex.Message, "OK");
 			return;
 		}
 		finally
