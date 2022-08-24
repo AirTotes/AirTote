@@ -133,7 +133,7 @@ jobs:
 
   build-publish-ios:
     if: |
-      !failure() && 
+      !failure() &&
       (
         !contains(needs.*.result, 'failure')
         && !contains(needs.*.result, 'cancelled')
@@ -163,7 +163,7 @@ jobs:
           echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
           echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
         fi
-    
+
     - name: Import Provisioning Profile
       run: |
         mkdir -p "$TARGET_DIR"
@@ -224,7 +224,7 @@ jobs:
         -c Publish
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
-    
+
     - name: validate
       run: >
         xcrun altool
@@ -291,7 +291,7 @@ jobs:
 
     - name: push new tag
       run: git push origin ${{ steps.tag-name.outputs.tag-name }}
-    
+
     - name: Comment TagName and Actions-Run URL to PR
       if: ${{ github.event_name == 'pull_request' }}
       run: >
