@@ -5,6 +5,8 @@ public static class PreferenceManager
 	public enum Keys
 	{
 		TopPage_EnableLocationService,
+		TopPage_EnableLocationFollowAnimation,
+		TopPage_LocationRefleshInterval,
 	}
 
 	static public void Set<T>(Keys key, T value)
