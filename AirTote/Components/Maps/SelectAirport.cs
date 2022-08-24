@@ -1,5 +1,5 @@
-﻿using AirTote.Components.Maps;
-using AirTote.Models;
+using AirTote.Components.Maps;
+using AirTote.Interfaces;
 
 using CommunityToolkit.Maui.Views;
 

@@ -1,5 +1,7 @@
-﻿using CommunityToolkit.Maui.Views;
 using AirTote.Components.Maps.Widgets;
+
+using CommunityToolkit.Maui.Views;
+
 using Mapsui;
 
 namespace AirTote.Components.Maps;

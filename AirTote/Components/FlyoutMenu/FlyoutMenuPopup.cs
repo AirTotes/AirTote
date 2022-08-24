@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+
 using CommunityToolkit.Maui.Views;
 
 namespace AirTote.Components.FlyoutMenu;

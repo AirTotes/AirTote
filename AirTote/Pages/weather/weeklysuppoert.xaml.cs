@@ -1,4 +1,4 @@
-﻿namespace AirTote.Pages
+namespace AirTote.Pages
 {
 	public partial class weeklysuppoert : ContentPage
 	{

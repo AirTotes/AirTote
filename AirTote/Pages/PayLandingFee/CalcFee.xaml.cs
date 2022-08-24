@@ -1,4 +1,4 @@
-﻿using AirTote.Components.Maps;
+using AirTote.Components.Maps;
 using AirTote.Models;
 using AirTote.Services;
 using AirTote.ViewModels.PayLandingFee;
@@ -15,11 +15,6 @@ namespace AirTote.Pages.PayLandingFee
 		{
 			InitializeComponent();
 			BindingContext = viewModel;
-
-			viewModel.AirportInfo = new()
-			{
-				icao = "RJTT"
-			};
 		}
 
 		public CalcFee(AirportInfo.APInfo station)

@@ -28,6 +28,13 @@
 					Property="BackgroundColor"
 					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
 			</Style>
+			<Style
+				TargetType="{x:Type VisualElement}"
+				x:Key="LightDarkBGInv">
+				<Setter
+					Property="BackgroundColor"
+					Value="{AppThemeBinding Dark={StaticResource LightBackgroundColor}, Light={StaticResource DarkBackgroundColor}}" />
+			</Style>
 
 			<Style TargetType="Label">
 				<Setter Property="FontFamily" Value="BIZ UDPGothic" />
@@ -50,14 +57,6 @@
 				x:Key="LightDarkBGRect"
 				BasedOn="{StaticResource LightDarkBG}" />
 
-			<Style TargetType="NavigationPage">
-				<Setter
-					Property="BarTextColor"
-					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
-				<Setter
-					Property="BarBackground"
-					Value="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}" />
-			</Style>
 			<Style TargetType="Button">
 				<Setter
 					Property="Margin"
@@ -107,7 +106,6 @@
 				<Setter
 					Property="Shell.TitleColor"
 					Value="{AppThemeBinding Light={StaticResource LightSecondaryColor}, Dark={StaticResource DarkSecondaryColor}}" />
-				<Setter Property="Shell.TitleColor" Value="White" />
 				<Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
 				<Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
 				<Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />

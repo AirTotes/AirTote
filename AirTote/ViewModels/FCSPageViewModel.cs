@@ -1,4 +1,4 @@
-﻿namespace AirTote.ViewModels
+namespace AirTote.ViewModels
 {
 	internal class FCSPageViewModel : BaseViewModel
 	{

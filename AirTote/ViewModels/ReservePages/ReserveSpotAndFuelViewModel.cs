@@ -1,5 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+
+using AirTote.Interfaces;
 using AirTote.Models;
 
 namespace AirTote.ViewModels.ReservePages
@@ -40,7 +42,7 @@ namespace AirTote.ViewModels.ReservePages
 			get => _SpotStayTime_MM;
 			set
 			{
-				if (0 <= value && value < 60)
+				if (value is >= 0 and < 60)
 					SetProperty(ref _SpotStayTime_MM, value);
 
 				int value_total_mm = SpotStayTime_HH * 60 + value;
@@ -79,8 +81,8 @@ namespace AirTote.ViewModels.ReservePages
 			set => SetProperty(ref _FuelToCharge_gal, value);
 		}
 
-		AirportInfo.APInfo _AirportInfo = new();
-		public AirportInfo.APInfo AirportInfo
+		AirportInfo.APInfo? _AirportInfo = null;
+		public AirportInfo.APInfo? AirportInfo
 		{
 			get => _AirportInfo;
 			set

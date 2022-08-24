@@ -1,4 +1,4 @@
-﻿using System.Collections.Concurrent;
+using System.Collections.Concurrent;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 
@@ -111,7 +111,7 @@ public static class MinimumVectoringAltitude
 	class LabelTextsRecord
 	{
 		[JsonPropertyName("text")]
-		public string Text { get; set; } = String.Empty;
+		public string Text { get; set; } = string.Empty;
 
 		[JsonPropertyName("lon")]
 		public double? Lon { get; set; }

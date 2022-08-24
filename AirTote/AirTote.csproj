@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios</TargetFrameworks>
+		<TargetFrameworks>net6.0-android31.0;net6.0-ios15.4</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net6.0-windows10.0.19041.0</TargetFrameworks>
 		<OutputType>Exe</OutputType>
 		<RootNamespace>AirTote</RootNamespace>
@@ -9,6 +9,7 @@
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
+		<LangVersion>preview</LangVersion>
 		<!-- Display name -->
 		<ApplicationTitle>AirTote</ApplicationTitle>
 		<!-- App Identifier -->
@@ -86,6 +87,11 @@
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
 		<PackageReference Include="HarfBuzzSharp" Version="2.8.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
+		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Pages\TabChild\Airport.xaml.cs">

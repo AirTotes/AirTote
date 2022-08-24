@@ -1,7 +1,8 @@
-﻿using BruTile;
+using BruTile;
 using BruTile.Web;
 
 using Mapsui;
+using Mapsui.Layers;
 using Mapsui.Rendering.Skia.SkiaWidgets;
 using Mapsui.Tiling.Layers;
 using Mapsui.Widgets;
@@ -9,7 +10,6 @@ using Mapsui.Widgets;
 using SkiaSharp;
 
 using Topten.RichTextKit;
-using Mapsui.Layers;
 
 namespace AirTote.Components.Maps.Widgets;
 

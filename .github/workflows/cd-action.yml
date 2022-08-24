@@ -15,7 +15,11 @@ on:
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
-  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios/ios-arm64/publish/AirTote.ipa
+  THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
+  THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
+  TARGET_FRAMEWORK: net6.0-ios15.4
+  TARGET_RUNTIME: ios-arm64
+  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios15.4/ios-arm64/publish/AirTote.ipa
 
 jobs:
   generate-bundle-version:
@@ -83,12 +87,56 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
+  generate-third-party-license-info:
+    if: |
+      (
+        github.event_name != 'pull_request'
+        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+      )
+      && !cancelled()
+
+    runs-on: [self-hosted, macOS]
+    timeout-minutes: 30
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+
+    - name: Install dotnet workloads
+      run: dotnet workload install maui-ios maui-android
+    - name: Restore dotnet packages
+      run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
+
+    - name: Prapare Python Package
+      run: |
+        python --version
+        python -m pip install aiofiles aiohttp
+
+    - name: Dump Third Party License Info
+      run: |
+        python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+
+    - name: Print Third Party License Info Files
+      run: cat ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}/${{ env.THIRD_PARTY_LICENSE_LIST_NAME }}.json
+
+    - name: Upload Third Party License Info
+      uses: actions/upload-artifact@v3.0.0
+      with:
+        name: third_party_license
+        path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        retention-days: 3
+
   build-publish-ios:
     if: |
       !failure() && 
       (
-        needs.generate-bundle-version.result == 'success'
-        || needs.generate-bundle-version.result == 'skipped'
+        !contains(needs.*.result, 'failure')
+        && !contains(needs.*.result, 'cancelled')
       )
       && (
         github.event_name != 'pull_request'
@@ -98,8 +146,10 @@ jobs:
       && !cancelled()
 
     runs-on: [self-hosted, macOS]
-    timeout-minutes: 20
-    needs: generate-bundle-version
+    timeout-minutes: 30
+    needs:
+      - generate-bundle-version
+      - generate-third-party-license-info
 
     steps:
     - name: get version
@@ -113,17 +163,64 @@ jobs:
           echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
           echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
         fi
+    
+    - name: Import Provisioning Profile
+      run: |
+        mkdir -p "$TARGET_DIR"
+
+        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
+          echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
+        fi
+      env:
+        TARGET_DIR: ~/Library/MobileDevice/Provisioning Profiles
+        TARGET_FILE: distribution.mobileprovision
+
+    - name: Import App Store Connect API Private Key
+      run: |
+        mkdir -p "$TARGET_DIR"
+
+        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
+          echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
+          chmod 400 "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
+        fi
+      env:
+        TARGET_DIR: ~/.appstoreconnect/private_keys
+        TARGET_FILE: AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
+
+    - name: Generate Keychain Name
+      id: gen-keychain-name
+      run: echo "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
+    - name: Import Code Sign Certificates
+      id: import-code-sign-cert
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        keychain: ${{ steps.gen-keychain-name.outputs.keychain-name }}
+        create-keychain: true
+        p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
+        p12-password: ${{ secrets.P12_PASSWORD }}
 
     - uses: actions/checkout@v2
 
+    - name: Download Third Party License Info
+      uses: actions/download-artifact@v3
+      with:
+        name: third_party_license
+        path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+
+    - uses: actions/setup-dotnet@v2
+      with:
+        dotnet-version: '6.0.x'
+    - name: Install dotnet workloads
+      run: dotnet workload install maui-ios maui-android
+
     - name: Install dependencies
-      run: dotnet restore ${{ env.CSPROJ_PATH }}
+      run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
     - name: Build
       run: >
         dotnet publish ${{ env.CSPROJ_PATH }}
-        -f:net6.0-ios
-        -r ios-arm64
+        -f ${{ env.TARGET_FRAMEWORK }}
+        -r ${{ env.TARGET_RUNTIME }}
         -c Publish
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
@@ -152,6 +249,10 @@ jobs:
         name: ipa
         path: ${{ env.IPA_PATH }}
         retention-days: 3
+
+    - name: Post 'Import Code Sign Certificates'
+      if: always() && steps.import-code-sign-cert.conclusion == 'success'
+      run: /usr/bin/security delete-keychain ${{ steps.gen-keychain-name.outputs.keychain-name }}.keychain
 
   set-tag:
     if: |
@@ -201,6 +302,12 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   dump-context:
+    if: |
+      !(
+        github.event_name == 'pull_request'
+        && contains(github.event.pull_request.labels.*.name, 'WIP')
+      )
+
     runs-on: self-hosted
     timeout-minutes: 1
     steps:

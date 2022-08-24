@@ -1,4 +1,4 @@
-﻿namespace AirTote;
+namespace AirTote;
 
 public partial class App : Application
 {
