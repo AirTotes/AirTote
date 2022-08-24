@@ -15,7 +15,7 @@ using SkiaSharp;
 
 using Topten.RichTextKit;
 
-namespace AirTote.Pages;
+namespace AirTote.Pages.TabChild;
 
 public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 {
