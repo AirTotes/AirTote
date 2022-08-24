@@ -121,7 +121,7 @@ jobs:
 
     - name: Import Provisioning Profile
       run: |
-        mkdir -p "$TARGET_DIR"
+        mkdir -p "${{ env.TARGET_DIR }}"
 
         if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
           echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
@@ -133,7 +133,7 @@ jobs:
 
     - name: Import App Store Connect API Private Key
       run: |
-        mkdir -p "$TARGET_DIR"
+        mkdir -p "${{ env.TARGET_DIR }}"
 
         if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
           echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
