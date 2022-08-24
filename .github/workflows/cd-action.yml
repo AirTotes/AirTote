@@ -101,7 +101,7 @@ jobs:
       )
       && !cancelled()
 
-    runs-on: macos-latest
+    runs-on: macos-12
     timeout-minutes: 30
     needs:
       - generate-bundle-version
