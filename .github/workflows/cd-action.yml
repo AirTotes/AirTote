@@ -111,6 +111,9 @@ jobs:
     - name: Restore dotnet packages
       run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
     - name: Prapare Python Package
       run: |
         python --version
