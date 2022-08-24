@@ -96,7 +96,7 @@ jobs:
       )
       && !cancelled()
 
-    runs-on: [self-hosted, macOS]
+    runs-on: macos-latest
     timeout-minutes: 30
 
     steps:
@@ -148,7 +148,7 @@ jobs:
       )
       && !cancelled()
 
-    runs-on: [self-hosted, macOS]
+    runs-on: macos-latest
     timeout-minutes: 30
     needs:
       - generate-bundle-version
@@ -311,7 +311,7 @@ jobs:
         && contains(github.event.pull_request.labels.*.name, 'WIP')
       )
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
       - name: dump `github` context
