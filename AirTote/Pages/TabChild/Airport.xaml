@@ -5,7 +5,7 @@
              Title="Airport">
     <VerticalStackLayout>
         <Label 
-            Text="This is airportspage!"
+            Text="This is just a HARIBOTE page!"
             VerticalOptions="FillAndExpand" 
             HorizontalOptions="FillAndExpand" />
     </VerticalStackLayout>
