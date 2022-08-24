@@ -1,4 +1,4 @@
-namespace AirTote.Pages.TabChild.ScratchPads.xaml;
+namespace AirTote.Pages.TabChild;
 
 public partial class Plates : ContentPage
 {

@@ -1,4 +1,4 @@
-namespace AirTote.Pages.TabChild.Plates.xaml;
+namespace AirTote.Pages.TabChild;
 
 public partial class More : ContentPage
 {
