@@ -121,24 +121,24 @@ jobs:
 
     - name: Import Provisioning Profile
       run: |
-        mkdir -p "${{ env.TARGET_DIR }}"
+        mkdir -p ${{ env.TARGET_DIR }}
 
-        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
-          echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-          ls -l "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
+        if [ ! -f ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }} ]; then
+          echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          ls -l ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
         fi
       env:
-        TARGET_DIR: ~/Library/MobileDevice/Provisioning Profiles
+        TARGET_DIR: ~/Library/MobileDevice/Provisioning\ Profiles
         TARGET_FILE: distribution.mobileprovision
 
     - name: Import App Store Connect API Private Key
       run: |
-        mkdir -p "${{ env.TARGET_DIR }}"
+        mkdir -p ${{ env.TARGET_DIR }}
 
-        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
-          echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-          chmod 400 "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-          ls -l "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
+        if [ ! -f ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }} ]; then
+          echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          chmod 400 ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          ls -l ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
         fi
       env:
         TARGET_DIR: ~/.appstoreconnect/private_keys
