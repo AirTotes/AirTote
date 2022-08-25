@@ -1,12 +1,36 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:ViewModels="clr-namespace:AirTote.ViewModels"
-			 xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
-		     xmlns:p="clr-namespace:AirTote.Pages.Settings"
-			 x:DataType="ViewModels:SettingPageViewModel"
              x:Class="AirTote.Pages.TabChild.Imagery"
+			 xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
+			 xmlns:local="clr-namespace:AirTote.Pages.TabChild"
+			 xmlns:p="clr-namespace:AirTote.Pages.Settings"
+			 xmlns:android="clr-namespace:Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;assembly=Microsoft.Maui.Controls"
              Title="Imagery">
 
-
+	<tpv:TwoPaneView
+		x:Name="TPV"
+		LeftPaneWidth="300"
+		RightPaneWidth="*"
+		MinimumTwoPaneWidth="500">
+		<TableView
+			Intent="Settings">
+			<TableRoot>
+				<TableSection Title="実況">
+					<TextCell Text="ASAS アジア地上解析図　過去"
+							  Command="{Binding ChangeRightPaneViewCommand}">
+						<TextCell.CommandParameter>
+							<tpv:ViewProps Title="WebView">
+								<WebView Source="https://www.data.jma.go.jp/fcd/yoho/wxchart/quickmonthly.html"
+									 VerticalOptions="FillAndExpand"
+									 HorizontalOptions="FillAndExpand"
+									 android:WebView.EnableZoomControls="true"
+									 android:WebView.DisplayZoomControls="true"/>
+							</tpv:ViewProps>
+						</TextCell.CommandParameter>
+					</TextCell>
+				</TableSection>
+			</TableRoot>
+		</TableView>
+	</tpv:TwoPaneView>
 </ContentPage>
