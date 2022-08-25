@@ -87,30 +87,89 @@ jobs:
     - name: print new version number
       run: echo "VersionNumber (Bundle Version) ... ${{ steps.set_version_number.outputs.version }}"
 
-  generate-third-party-license-info:
+  build-publish-ios:
     if: |
+      !failure() &&
       (
+        !contains(needs.*.result, 'failure')
+        && !contains(needs.*.result, 'cancelled')
+      )
+      && (
         github.event_name != 'pull_request'
         || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
       )
       && !cancelled()
 
-    runs-on: [self-hosted, macOS]
+    runs-on: macos-12
     timeout-minutes: 30
+    needs:
+      - generate-bundle-version
 
     steps:
+    - name: get version
+      id: get-version
+      run: |
+        if [ '${{ startsWith(github.ref, 'refs/tags/bundle') }}' == 'true' ]; then
+          VERSION=`echo '${{ github.ref }}' | tr -d 'refs/tags/bundle'`
+          echo "::set-output name=bundle_version::$VERSION"
+          echo "::set-output name=display_version::$(echo $VERSION | awk -F '.' '{print $1 "." $2}')"
+        else
+          echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
+          echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
+        fi
+
+    - name: Import Provisioning Profile
+      run: |
+        mkdir -p ${{ env.TARGET_DIR }}
+
+        if [ ! -f ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }} ]; then
+          echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          ls -l ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+        fi
+      env:
+        TARGET_DIR: ~/Library/MobileDevice/Provisioning\ Profiles
+        TARGET_FILE: distribution.mobileprovision
+
+    - name: Import App Store Connect API Private Key
+      run: |
+        mkdir -p ${{ env.TARGET_DIR }}
+
+        if [ ! -f ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }} ]; then
+          echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          chmod 400 ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+          ls -l ${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}
+        fi
+      env:
+        TARGET_DIR: ~/.appstoreconnect/private_keys
+        TARGET_FILE: AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
+
+    - name: Generate Keychain Name
+      id: gen-keychain-name
+      run: echo "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
+    - name: Import Code Sign Certificates
+      id: import-code-sign-cert
+      uses: apple-actions/import-codesign-certs@v1
+      with:
+        keychain: ${{ steps.gen-keychain-name.outputs.keychain-name }}
+        create-keychain: true
+        p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
+        p12-password: ${{ secrets.P12_PASSWORD }}
+
     - uses: actions/checkout@v2
 
     - uses: actions/setup-dotnet@v2
       with:
         dotnet-version: '6.0.x'
-
     - name: Install dotnet workloads
       run: dotnet workload install maui-ios maui-android
-    - name: Restore dotnet packages
+
+    - name: Install dependencies
       run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
 
+    - uses: actions/setup-python@v4
+      with:
+        python-version: '3.10'
     - name: Prapare Python Package
       run: |
         python --version
@@ -131,91 +190,6 @@ jobs:
         path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
         retention-days: 3
 
-  build-publish-ios:
-    if: |
-      !failure() && 
-      (
-        !contains(needs.*.result, 'failure')
-        && !contains(needs.*.result, 'cancelled')
-      )
-      && (
-        github.event_name != 'pull_request'
-        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
-        || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
-      )
-      && !cancelled()
-
-    runs-on: [self-hosted, macOS]
-    timeout-minutes: 30
-    needs:
-      - generate-bundle-version
-      - generate-third-party-license-info
-
-    steps:
-    - name: get version
-      id: get-version
-      run: |
-        if [ '${{ startsWith(github.ref, 'refs/tags/bundle') }}' == 'true' ]; then
-          VERSION=`echo '${{ github.ref }}' | tr -d 'refs/tags/bundle'`
-          echo "::set-output name=bundle_version::$VERSION"
-          echo "::set-output name=display_version::$(echo $VERSION | awk -F '.' '{print $1 "." $2}')"
-        else
-          echo "::set-output name=bundle_version::${{ needs.generate-bundle-version.outputs.bundle_version }}"
-          echo "::set-output name=display_version::${{ needs.generate-bundle-version.outputs.display_version }}"
-        fi
-    
-    - name: Import Provisioning Profile
-      run: |
-        mkdir -p "$TARGET_DIR"
-
-        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
-          echo -n ${{ secrets.PROVISIONING_PROFILE }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-        fi
-      env:
-        TARGET_DIR: ~/Library/MobileDevice/Provisioning Profiles
-        TARGET_FILE: distribution.mobileprovision
-
-    - name: Import App Store Connect API Private Key
-      run: |
-        mkdir -p "$TARGET_DIR"
-
-        if [ ! -f "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}" ]; then
-          echo -n ${{ secrets.APPSTORECONNECT_API_PRIVATE_KEY }} | base64 -d > "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-          chmod 400 "${{ env.TARGET_DIR }}/${{ env.TARGET_FILE }}"
-        fi
-      env:
-        TARGET_DIR: ~/.appstoreconnect/private_keys
-        TARGET_FILE: AuthKey_${{ secrets.APPSTORECONNECT_API_KEY }}.p8
-
-    - name: Generate Keychain Name
-      id: gen-keychain-name
-      run: echo "::set-output name=keychain-name::${{ github.run_id }}_${{ github.run_attempt }}"
-    - name: Import Code Sign Certificates
-      id: import-code-sign-cert
-      uses: apple-actions/import-codesign-certs@v1
-      with:
-        keychain: ${{ steps.gen-keychain-name.outputs.keychain-name }}
-        create-keychain: true
-        p12-file-base64: ${{ secrets.P12_FILE_BASE64 }}
-        p12-password: ${{ secrets.P12_PASSWORD }}
-
-    - uses: actions/checkout@v2
-
-    - name: Download Third Party License Info
-      uses: actions/download-artifact@v3
-      with:
-        name: third_party_license
-        path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
-
-    - uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: '6.0.x'
-    - name: Install dotnet workloads
-      run: dotnet workload install maui-ios maui-android
-
-    - name: Install dependencies
-      run: dotnet restore ${{ env.CSPROJ_PATH }} -r ${{ env.TARGET_RUNTIME }}
-
     - name: Build
       run: >
         dotnet publish ${{ env.CSPROJ_PATH }}
@@ -224,7 +198,7 @@ jobs:
         -c Publish
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
-    
+
     - name: validate
       run: >
         xcrun altool
@@ -291,7 +265,7 @@ jobs:
 
     - name: push new tag
       run: git push origin ${{ steps.tag-name.outputs.tag-name }}
-    
+
     - name: Comment TagName and Actions-Run URL to PR
       if: ${{ github.event_name == 'pull_request' }}
       run: >
@@ -308,7 +282,7 @@ jobs:
         && contains(github.event.pull_request.labels.*.name, 'WIP')
       )
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     timeout-minutes: 1
     steps:
       - name: dump `github` context
