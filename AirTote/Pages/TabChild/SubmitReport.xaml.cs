@@ -1,6 +1,6 @@
 using System;
 
-namespace AirTote.Pages
+namespace AirTote.Pages.TabChild
 {
 	public partial class SubmitReport : ContentPage
 	{

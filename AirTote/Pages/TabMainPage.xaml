@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Shell
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:pages="clr-namespace:AirTote.Pages.TabChild;assembly=AirTote"
+	x:Class="AirTote.Pages.TabMainPage"
+	xmlns:TabChild="clr-namespace:AirTote.Pages.TabChild">
+	<TabBar>
+		<Tab Title="Airports"
+             Icon ="local_airport_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:Airport}"/>
+		</Tab>
+		<Tab Title="Maps"
+             Icon ="explore_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:TopPage}"/>
+		</Tab>
+		<Tab Title="Imagery"
+             Icon ="thermostat_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:Imagery}"/>
+		</Tab>
+		<Tab Title="Documents"
+             Icon ="description_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:Documents}"/>
+		</Tab>
+		<Tab Title="Plates"
+             Icon ="book_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:aero}"/>
+		</Tab>
+		<Tab Title="Flights"
+             Icon ="flight_takeoff_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
+		</Tab>
+		<Tab Title="ScratchPads"
+             Icon ="edit_note_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>
+		</Tab>
+		<Tab Title="More"
+             Icon ="read_more_black_24dp.png">
+			<ShellContent ContentTemplate="{DataTemplate TabChild:More}"/>
+		</Tab>
+	</TabBar>
+</Shell>

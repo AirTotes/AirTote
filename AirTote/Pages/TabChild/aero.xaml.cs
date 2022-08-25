@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using AirTote.Services;
 using AirTote.ViewModels;
 
-namespace AirTote.Pages
+namespace AirTote.Pages.TabChild
 {
 	public partial class aero : ContentPage
 	{
