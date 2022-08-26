@@ -27,7 +27,8 @@ public partial class TopPageSettingViewModel : ObservableObject
 	{
 		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationService, ref _IsLocationEnabled);
 		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, ref _IsLocationFollowAnimationEnabled);
-		PreferenceManager.TryGet(PreferenceManager.Keys.TopPage_LocationRefleshInterval, ref _LocationRefleshInterval);
+		if (PreferenceManager.TryGet<long>(PreferenceManager.Keys.TopPage_LocationRefleshInterval, ref _LocationRefleshInterval_ms))
+			_LocationRefleshInterval = TimeSpan.FromMilliseconds(LocationRefleshInterval_ms);
 
 		LocationRefleshIntervalIndex = _IntervalList.IndexOf(LocationRefleshInterval);
 	}
@@ -41,13 +42,18 @@ public partial class TopPageSettingViewModel : ObservableObject
 	[ObservableProperty]
 	private int _LocationRefleshIntervalIndex;
 
+	[ObservableProperty]
+	private long _LocationRefleshInterval_ms = (long)IntervalDefaultValue.TotalMilliseconds;
+
 	partial void OnLocationRefleshIntervalIndexChanged(int value)
 		=> LocationRefleshInterval = _IntervalList[value];
+	partial void OnLocationRefleshIntervalChanged(TimeSpan value)
+		=> LocationRefleshInterval_ms = (long)value.TotalMilliseconds;
 
 	partial void OnIsLocationEnabledChanged(bool value)
 		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationService, value);
 	partial void OnIsLocationFollowAnimationEnabledChanged(bool value)
 		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, value);
-	partial void OnLocationRefleshIntervalChanged(TimeSpan value)
-		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_LocationRefleshInterval, _LocationRefleshInterval);
+	partial void OnLocationRefleshInterval_msChanged(long value)
+		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_LocationRefleshInterval, value);
 }
