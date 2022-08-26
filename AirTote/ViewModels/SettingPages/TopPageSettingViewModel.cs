@@ -24,6 +24,9 @@ public partial class TopPageSettingViewModel : ObservableObject
 	public static System.Collections.IList IntervalStrList => _IntervalList.Select(v => v.ToString(@"m\分s\.f\秒")).ToList();
 
 	public TopPageSettingViewModel()
+		=> LoadValues();
+
+	public void LoadValues()
 	{
 		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationService, ref _IsLocationEnabled);
 		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, ref _IsLocationFollowAnimationEnabled);
