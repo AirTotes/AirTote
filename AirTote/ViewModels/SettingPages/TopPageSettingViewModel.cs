@@ -5,6 +5,8 @@ namespace AirTote.ViewModels.SettingPages;
 
 public partial class TopPageSettingViewModel : ObservableObject
 {
+	static readonly TimeSpan IntervalDefaultValue = new(0, 0, 2);
+
 	public TopPageSettingViewModel()
 	{
 		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationService, ref _IsLocationEnabled);
@@ -13,11 +15,11 @@ public partial class TopPageSettingViewModel : ObservableObject
 	}
 
 	[ObservableProperty]
-	private bool _IsLocationEnabled;
+	private bool _IsLocationEnabled = true;
 	[ObservableProperty]
-	private bool _IsLocationFollowAnimationEnabled;
+	private bool _IsLocationFollowAnimationEnabled = true;
 	[ObservableProperty]
-	private TimeSpan _LocationRefleshInterval;
+	private TimeSpan _LocationRefleshInterval = IntervalDefaultValue;
 
 	public void SeveToPreference()
 	{
