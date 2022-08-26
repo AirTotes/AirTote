@@ -37,6 +37,7 @@ public class ChangeRightPaneViewCommand : ICommand
 					&& t.GetConstructor(Array.Empty<Type>())?.Invoke(null) is ContentPage p)
 				{
 					view = p.Content;
+					view.BindingContext ??= p.BindingContext;
 					title = p.Title;
 				}
 				break;
