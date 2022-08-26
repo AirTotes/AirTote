@@ -5,6 +5,7 @@ using AirTote.Components.Maps.Widgets;
 using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
+using AirTote.ViewModels.SettingPages;
 
 using CommunityToolkit.Maui.Views;
 
@@ -32,6 +33,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 	MVALabelLayer MVAText { get; set; } = new();
 
 	public FlyoutPage? FlyoutPage { get; set; }
+
+	TopPageSettingViewModel Settings { get; } = new();
 
 	public TopPage()
 	{
@@ -200,6 +203,24 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		}
 	}
 
+	protected override void OnAppearing()
+	{
+		base.OnAppearing();
+
+		Settings.LoadValues();
+		StartGPS();
+	}
+
+	protected override void OnDisappearing()
+	{
+		base.OnDisappearing();
+		gpsCancelation?.Cancel();
+
+		Map.MyLocationEnabled = false;
+		Map.MyLocationFollow = false;
+		Map.IsMyLocationButtonVisible = false;
+	}
+
 	private RichString setCalloutTextAction(AirportInfo.APInfo ap, RichString str)
 	{
 		METAR.Data.TryGetValue(ap.icao, out var _metar);
@@ -227,7 +248,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 	void UpdateMyLocation(Location loc)
 	{
 		Mapsui.UI.Maui.Position pos = new(loc.Latitude, loc.Longitude);
-		Map.MyLocationLayer.UpdateMyLocation(pos, Map.MyLocationEnabled);
+		Map.MyLocationLayer.UpdateMyLocation(pos, Map.MyLocationEnabled && Settings.IsLocationFollowAnimationEnabled);
 		if (loc.Speed is double v)
 			Map.MyLocationLayer.UpdateMySpeed(v);
 	}
@@ -235,6 +256,10 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 	public async void StartGPS()
 	{
 		gpsCancelation?.Dispose();
+		gpsCancelation = null;
+		if (!Settings.IsLocationEnabled)
+			return;
+
 		gpsCancelation = new CancellationTokenSource();
 
 		await Task.Run(async () =>
@@ -242,7 +267,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			while (!gpsCancelation.IsCancellationRequested)
 			{
 				// ref: https://docs.microsoft.com/en-us/dotnet/maui/platform-integration/device/geolocation
-				GeolocationRequest req = new(GeolocationAccuracy.High, TimeSpan.FromSeconds(10));
+				GeolocationRequest req = new(GeolocationAccuracy.High, Settings.LocationRefleshInterval);
 
 				Application.Current?.Dispatcher.DispatchAsync(async () =>
 				{
@@ -282,7 +307,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 					gpsCancelation.Cancel();
 				}).ConfigureAwait(false);
 
-				await Task.Delay(2000).ConfigureAwait(false);
+				await Task.Delay(Settings.LocationRefleshInterval).ConfigureAwait(false);
 			}
 		}, gpsCancelation.Token).ConfigureAwait(false);
 	}
