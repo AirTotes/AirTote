@@ -304,6 +304,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 						MsgBox.DisplayAlert("Failed to Get Your Location", "位置情報の取得でエラーが発生しました\n" + ex.Message, "OK");
 					}
 
+					Settings.IsLocationEnabled = false;
 					gpsCancelation.Cancel();
 				}).ConfigureAwait(false);
 
