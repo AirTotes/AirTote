@@ -17,7 +17,7 @@ public static class PreferenceManager
 		if (!Preferences.Default.ContainsKey(key.ToString()))
 			return false;
 
-		Preferences.Default.Get(key.ToString(), value);
+		value = Get<T>(key);
 		return true;
 	}
 
