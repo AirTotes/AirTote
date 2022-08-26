@@ -7,16 +7,9 @@ public partial class TopPageSettingViewModel : ObservableObject
 {
 	public TopPageSettingViewModel()
 	{
-		_IsLocationEnabled = PreferenceManager.Get<bool>(PreferenceManager.Keys.TopPage_EnableLocationService);
-		_IsLocationFollowAnimationEnabled = PreferenceManager.Get<bool>(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation);
-
-		_LocationRefleshInterval = PreferenceManager.Get<TimeSpan>(PreferenceManager.Keys.TopPage_LocationRefleshInterval);
-
-		if (
-			!PreferenceManager.TryGet(PreferenceManager.Keys.TopPage_LocationRefleshInterval, out _LocationRefleshInterval)
-			|| _LocationRefleshInterval == default
-			)
-			_LocationRefleshInterval = new(0, 0, 2);
+		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationService, ref _IsLocationEnabled);
+		PreferenceManager.TryGet<bool>(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, ref _IsLocationFollowAnimationEnabled);
+		PreferenceManager.TryGet(PreferenceManager.Keys.TopPage_LocationRefleshInterval, ref _LocationRefleshInterval);
 	}
 
 	[ObservableProperty]
