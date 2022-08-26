@@ -21,10 +21,10 @@ public partial class TopPageSettingViewModel : ObservableObject
 	[ObservableProperty]
 	private TimeSpan _LocationRefleshInterval = IntervalDefaultValue;
 
-	public void SeveToPreference()
-	{
-		PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationService, _IsLocationEnabled);
-		PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, _IsLocationFollowAnimationEnabled);
-		PreferenceManager.Set(PreferenceManager.Keys.TopPage_LocationRefleshInterval, _LocationRefleshInterval);
-	}
+	partial void OnIsLocationEnabledChanged(bool value)
+		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationService, value);
+	partial void OnIsLocationFollowAnimationEnabledChanged(bool value)
+		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_EnableLocationFollowAnimation, value);
+	partial void OnLocationRefleshIntervalChanged(TimeSpan value)
+		=> PreferenceManager.Set(PreferenceManager.Keys.TopPage_LocationRefleshInterval, _LocationRefleshInterval);
 }
