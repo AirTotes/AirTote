@@ -12,9 +12,8 @@ public static class PreferenceManager
 	static public void Set<T>(Keys key, T value)
 		=> Preferences.Default.Set(key.ToString(), value);
 
-	static public bool TryGet<T>(Keys key, out T? value)
+	static public bool TryGet<T>(Keys key, ref T? value)
 	{
-		value = default(T);
 		if (!Preferences.Default.ContainsKey(key.ToString()))
 			return false;
 
