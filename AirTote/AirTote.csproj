@@ -78,10 +78,12 @@
 		<None Remove="Assets\Images\local_airport_black_24dp.svg" />
 		<None Remove="Assets\Images\read_more_black_24dp.svg" />
 		<None Remove="Assets\Images\thermostat_black_24dp.svg" />
+		<None Remove="Assets\Raw\ImagerySource.csv" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
+		<PackageReference Include="CsvHelper" Version="28.0.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
