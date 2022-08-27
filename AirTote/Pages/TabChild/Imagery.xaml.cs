@@ -21,7 +21,7 @@ public partial class Imagery : ContentPage
 	ImageryPageViewModel viewModel { get; } = new();
 
 	/// <summary>CsvファイルからImageryの中身を生成する関数</summary>
-	private async void CsvToImageryListAsync() 
+	private async void CsvToImageryListAsync()
 	{
 		MyCsvReader reader = new();
 
@@ -46,10 +46,11 @@ public partial class Imagery : ContentPage
 				TableSection sec = new(kvp.Key);
 
 				List<MyCsvReader> recordList = kvp.Value;
-				
+
 				foreach (MyCsvReader record in recordList)
 				{
-					TextCell cell = new(){
+					TextCell cell = new()
+					{
 						Text = record.ShortTitle,
 						Detail = record.FullTitle,
 					};
@@ -85,7 +86,8 @@ public partial class Imagery : ContentPage
 				sectionList.Add(sec);
 			}
 
-			MainThread.BeginInvokeOnMainThread(() => {
+			MainThread.BeginInvokeOnMainThread(() =>
+			{
 				foreach (TableSection sec in sectionList)
 					ImageryList.Root.Add(sec);
 			});
