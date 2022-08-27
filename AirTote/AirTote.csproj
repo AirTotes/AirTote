@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android31.0;net6.0-ios15.4</TargetFrameworks>
@@ -70,10 +70,20 @@
 		<MauiFont Include="Assets\Fonts\*" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Assets\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Remove="Assets\Images\book_black_24dp.svg" />
+		<None Remove="Assets\Images\description_black_24dp.svg" />
+		<None Remove="Assets\Images\edit_note_black_24dp.svg" />
+		<None Remove="Assets\Images\explore_black_24dp.svg" />
+		<None Remove="Assets\Images\flight_takeoff_black_24dp.svg" />
+		<None Remove="Assets\Images\local_airport_black_24dp.svg" />
+		<None Remove="Assets\Images\read_more_black_24dp.svg" />
+		<None Remove="Assets\Images\thermostat_black_24dp.svg" />
+		<None Remove="Assets\Raw\ImagerySource.csv" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
+		<PackageReference Include="CsvHelper" Version="28.0.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
@@ -84,5 +94,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Pages\TabChild\Airport.xaml.cs">
+	    <DependentUpon>Airport.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>
