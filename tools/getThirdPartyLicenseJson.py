@@ -142,7 +142,7 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
 
 
 async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licenseInfo: LicenseInfo, targetDir: str):
-  licenseList = [str(v) for v in re.split("\(|\)|OR|AND", licenseInfo.license) if v != '' or v.isspace()]
+  licenseList = [str(v) for v in re.split("\(|\)| ", licenseInfo.license) if (v != '' or v.isspace()) and v != "OR" and v != "AND"]
   for licenseId in licenseList:
     licenseFilePath = joinPath(targetDir, licenseId)
     if exists(licenseFilePath):
