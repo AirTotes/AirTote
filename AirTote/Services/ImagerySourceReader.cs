@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace AirTote.Services;
 
-public class MyCsvReader
+public class ImagerySourceReader
 {
 	public string GroupName { get; set; }
 	public string ShortTitle { get; set; }
@@ -24,13 +24,13 @@ public class MyCsvReader
 
 
 	// List<T>
-	public async Task<List<MyCsvReader>> ReadCsvFileAsync(string filePath)
+	public async Task<List<ImagerySourceReader>> ReadCsvFileAsync(string filePath)
 	{
 		using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
 		using StreamReader reader = new StreamReader(fileStream);
 
 		using CsvHelper.CsvReader csv = new CsvHelper.CsvReader(reader, CultureInfo.InvariantCulture);
-		IEnumerable<MyCsvReader> records = csv.GetRecords<MyCsvReader>();
+		IEnumerable<ImagerySourceReader> records = csv.GetRecords<ImagerySourceReader>();
 
 		return records.ToList();
 	}

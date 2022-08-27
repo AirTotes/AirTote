@@ -23,15 +23,15 @@ public partial class Imagery : ContentPage
 	/// <summary>CsvファイルからImageryの中身を生成する関数</summary>
 	private async void CsvToImageryListAsync()
 	{
-		MyCsvReader reader = new();
+		ImagerySourceReader reader = new();
 
 		try //例外処理
 		{
-			List<MyCsvReader> text = await reader.ReadCsvFileAsync("ImagerySource.csv");
+			List<ImagerySourceReader> text = await reader.ReadCsvFileAsync("ImagerySource.csv");
 
 			string FullName = string.Empty;
 
-			Dictionary<string, List<MyCsvReader>> GroupNameKeyDic = new();
+			Dictionary<string, List<ImagerySourceReader>> GroupNameKeyDic = new();
 			foreach (var textItem in text)
 			{
 				if (!GroupNameKeyDic.ContainsKey(textItem.GroupName))
@@ -41,13 +41,13 @@ public partial class Imagery : ContentPage
 			}
 
 			List<TableSection> sectionList = new();
-			foreach (KeyValuePair<string, List<MyCsvReader>> kvp in GroupNameKeyDic)
+			foreach (KeyValuePair<string, List<ImagerySourceReader>> kvp in GroupNameKeyDic)
 			{
 				TableSection sec = new(kvp.Key);
 
-				List<MyCsvReader> recordList = kvp.Value;
+				List<ImagerySourceReader> recordList = kvp.Value;
 
-				foreach (MyCsvReader record in recordList)
+				foreach (ImagerySourceReader record in recordList)
 				{
 					TextCell cell = new()
 					{
