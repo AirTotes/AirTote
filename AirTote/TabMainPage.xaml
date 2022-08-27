@@ -36,10 +36,10 @@
 		</Tab>
 		<Tab Title="More"
              Icon ="read_more_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate pages:SettingPage}"/>
+			<ShellContent ContentTemplate="{DataTemplate TabChild:More}"/>
 		</Tab>
-		<Tab Icon ="book_black_24dp.png">
+		<!--<Tab Icon ="settings_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate pages:SettingPage}"/>
-		</Tab>
+		</Tab>-->
 	</TabBar>
 </Shell>
