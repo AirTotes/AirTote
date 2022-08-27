@@ -2,7 +2,7 @@
 <Shell
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:pages="clr-namespace:AirTote.Pages.TabChild;assembly=AirTote"
+	xmlns:pages="clr-namespace:AirTote.Pages"
 	x:Class="AirTote.Pages.TabMainPage"
 	xmlns:TabChild="clr-namespace:AirTote.Pages.TabChild">
 	<TabBar>
@@ -36,7 +36,7 @@
 		</Tab>
 		<Tab Title="More"
              Icon ="read_more_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:More}"/>
+			<ShellContent ContentTemplate="{DataTemplate pages:SettingPage}"/>
 		</Tab>
 	</TabBar>
 </Shell>
