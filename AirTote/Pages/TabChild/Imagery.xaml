@@ -14,23 +14,7 @@
 		RightPaneWidth="*"
 		MinimumTwoPaneWidth="500">
 		<TableView
-			Intent="Settings">
-			<TableRoot>
-				<TableSection Title="実況">
-					<TextCell Text="ASAS アジア地上解析図　過去"
-							  Command="{Binding ChangeRightPaneViewCommand}">
-						<TextCell.CommandParameter>
-							<tpv:ViewProps Title="WebView">
-								<WebView Source="https://www.data.jma.go.jp/fcd/yoho/wxchart/quickmonthly.html"
-									 VerticalOptions="FillAndExpand"
-									 HorizontalOptions="FillAndExpand"
-									 android:WebView.EnableZoomControls="true"
-									 android:WebView.DisplayZoomControls="true"/>
-							</tpv:ViewProps>
-						</TextCell.CommandParameter>
-					</TextCell>
-				</TableSection>
-			</TableRoot>
-		</TableView>
+			Intent="Settings"
+			x:Name="ImageryList"/>
 	</tpv:TwoPaneView>
 </ContentPage>
