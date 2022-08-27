@@ -3,22 +3,23 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:airtote="clr-namespace:AirTote.Pages"
+	xmlns:TabChild="clr-namespace:AirTote.Pages.TabChild"
 	xmlns:ReservePages="clr-namespace:AirTote.Pages.ReservePages"
 	xmlns:PayLandingFee="clr-namespace:AirTote.Pages.PayLandingFee"
 	Title="AirTote"
 	x:Class="AirTote.AppShell">
 
 	<FlyoutItem Title="TOP">
-		<ShellContent ContentTemplate="{DataTemplate airtote:TopPage}" />
+		<ShellContent ContentTemplate="{DataTemplate TabChild:TopPage}" />
 	</FlyoutItem>
 	<FlyoutItem Title="書類提出">
-		<ShellContent ContentTemplate="{DataTemplate airtote:SubmitReport}" />
+		<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}" />
 	</FlyoutItem>
 	<FlyoutItem Title="PPR (書類提出)">
 		<ShellContent ContentTemplate="{DataTemplate ReservePages:ReserveSpotAndFuel}" />
 	</FlyoutItem>
 	<FlyoutItem Title="航空情報">
-		<ShellContent ContentTemplate="{DataTemplate airtote:aero}" />
+		<ShellContent ContentTemplate="{DataTemplate TabChild:aero}" />
 	</FlyoutItem>
 	<FlyoutItem Title="気象情報">
 		<ShellContent ContentTemplate="{DataTemplate airtote:WetherInformation}" />
