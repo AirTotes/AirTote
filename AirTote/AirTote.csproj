@@ -77,6 +77,7 @@
 		<None Remove="Assets\Images\flight_takeoff_black_24dp.svg" />
 		<None Remove="Assets\Images\local_airport_black_24dp.svg" />
 		<None Remove="Assets\Images\read_more_black_24dp.svg" />
+		<None Remove="Assets\Images\settings_black_24dp.svg" />
 		<None Remove="Assets\Images\thermostat_black_24dp.svg" />
 		<None Remove="Assets\Raw\ImagerySource.csv" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
