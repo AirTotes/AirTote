@@ -41,6 +41,7 @@ public class TableView : Microsoft.Maui.Controls.TableView
 					SetTextColors(s);
 					break;
 
+				// TextCell and ImageCell(=inherited from TextCell)
 				case TextCell c:
 					c.SetAppThemeColor(
 						TextCell.TextColorProperty,
@@ -52,6 +53,10 @@ public class TableView : Microsoft.Maui.Controls.TableView
 						App.LightSecondaryColor.WithAlpha(Alpha),
 						App.DarkSecondaryColor.WithAlpha(Alpha)
 					);
+					break;
+
+				// no textcolor props
+				case SwitchCell c:
 					break;
 
 				case EntryCell c:
