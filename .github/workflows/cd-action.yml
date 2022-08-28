@@ -19,7 +19,8 @@ env:
   THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
-  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios15.4/ios-arm64/publish/AirTote.ipa
+  OUTPUT_DIR: ./out
+  IPA_PATH: ./out/AirTote.ipa
 
 jobs:
   generate-bundle-version:
@@ -190,14 +191,26 @@ jobs:
         path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
         retention-days: 3
 
+    - name: Check Configuration
+      id: chk-cfg
+      run: |
+        if [ '${{ github.event_name == 'pull_request' }}' == 'true' ]; then
+          echo "::set-output name=cfg::Debug"
+        else
+          echo "::set-output name=cfg::Release"
+        fi
+
     - name: Build
       run: >
         dotnet publish ${{ env.CSPROJ_PATH }}
         -f ${{ env.TARGET_FRAMEWORK }}
         -r ${{ env.TARGET_RUNTIME }}
-        -c Publish
+        -c ${{ steps.chk-cfg.outputs.cfg }}
+        -o "${{ env.OUTPUT_DIR }}"
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
+        /p:CodesignKey="${{ secrets.CODESIGN_KEY_NAME_IOS }}"
+        /p:CodesignProvision="${{ secrets.CODESIGN_PROVISION_NAME_IOS }}"
 
     - name: validate
       run: >
