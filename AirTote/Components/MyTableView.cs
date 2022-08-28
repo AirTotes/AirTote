@@ -28,7 +28,6 @@ public class TableView : Microsoft.Maui.Controls.TableView
 
 	static void SetTextColors(System.Collections.IEnumerable? e)
 	{
-		Console.WriteLine("\t" + nameof(SetTextColors));
 		if (e is null)
 			return;
 
