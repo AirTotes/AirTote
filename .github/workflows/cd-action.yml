@@ -19,7 +19,8 @@ env:
   THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
-  IPA_PATH: ./AirTote/bin/Publish/net6.0-ios15.4/ios-arm64/publish/AirTote.ipa
+  OUTPUT_DIR: ./out
+  IPA_PATH: ./out/AirTote.ipa
 
 jobs:
   generate-bundle-version:
@@ -205,6 +206,7 @@ jobs:
         -f ${{ env.TARGET_FRAMEWORK }}
         -r ${{ env.TARGET_RUNTIME }}
         -c ${{ steps.chk-cfg.outputs.cfg }}
+        -o "${{ env.OUTPUT_DIR }}"
         /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
         /p:CodesignKey="${{ secrets.CODESIGN_KEY_NAME_IOS }}"
