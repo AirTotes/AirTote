@@ -88,8 +88,14 @@ public partial class Imagery : ContentPage
 
 			MainThread.BeginInvokeOnMainThread(() =>
 			{
-				foreach (TableSection sec in sectionList)
-					ImageryList.Root.Add(sec);
+				try
+				{
+					foreach (TableSection sec in sectionList)
+						ImageryList.Root.Add(sec);
+				} catch(Exception ex)
+				{
+					 MsgBox.DisplayAlert("Imagery Show Error", "エラーが発生しました\n" + ex.Message, "OK");
+				}
 			});
 		}
 		catch (Exception ex) //例外の種類
