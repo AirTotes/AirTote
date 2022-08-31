@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android31.0;net6.0-ios15.4</TargetFrameworks>
@@ -74,6 +74,7 @@
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
+		<PackageReference Include="CsvHelper" Version="28.0.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.5" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
@@ -84,5 +85,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="Pages\TabChild\Airport.xaml.cs">
+	    <DependentUpon>Airport.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>
