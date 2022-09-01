@@ -14,6 +14,9 @@ on:
       - unlabeled
   workflow_dispatch:
 
+concurrency:
+  cd-action-${{ github.ref }}
+
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
