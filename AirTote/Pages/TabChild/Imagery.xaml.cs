@@ -6,6 +6,16 @@ using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
 namespace AirTote.Pages.TabChild;
 
+public class ImageryList : List<ImagerySourceReader>
+{
+	public string Name { get; private set; }
+
+	public ImageryList(string name,List<ImagerySourceReader> ImageryList):base(ImageryList)
+	{
+		Name = name;
+	}
+}
+
 public partial class Imagery : ContentPage
 {
 	public Imagery()
@@ -23,76 +33,36 @@ public partial class Imagery : ContentPage
 	/// <summary>CsvファイルからImageryの中身を生成する関数</summary>
 	private async void CsvToImageryListAsync()
 	{
-		ImagerySourceReader reader = new();
 
 		try //例外処理
 		{
-			List<ImagerySourceReader> text = await reader.ReadCsvFileAsync("ImagerySource.csv");
+			List<ImagerySourceReader> text = await ImagerySourceReader.ReadCsvFileAsync("ImagerySource.csv");
 
 			string FullName = string.Empty;
 
 			Dictionary<string, List<ImagerySourceReader>> GroupNameKeyDic = new();
 			foreach (var textItem in text)
 			{
-				if (!GroupNameKeyDic.ContainsKey(textItem.GroupName))
+				textItem.tpv = TPV;
+				if(!GroupNameKeyDic.ContainsKey(textItem.GroupName))
 					GroupNameKeyDic[textItem.GroupName] = new();
 
 				GroupNameKeyDic[textItem.GroupName].Add(textItem);
 			}
+			List<ImageryList> imageryGroup = new();
 
-			List<TableSection> sectionList = new();
-			foreach (KeyValuePair<string, List<ImagerySourceReader>> kvp in GroupNameKeyDic)
+			foreach (KeyValuePair<string, List<ImagerySourceReader>> textItem in GroupNameKeyDic)
 			{
-				TableSection sec = new(kvp.Key);
-
-				List<ImagerySourceReader> recordList = kvp.Value;
-
-				foreach (ImagerySourceReader record in recordList)
-				{
-					TextCell cell = new()
-					{
-						Text = record.ShortTitle,
-						Detail = record.FullTitle,
-					};
-
-					if (record.IsPublic)
-					{
-						Microsoft.Maui.Controls.WebView webView = new()
-						{
-							Source = record.URL
-						};
-
-						webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
-								.EnableZoomControls(true);
-						webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
-								.DisplayZoomControls(true);
-
-						cell.Command = viewModel.ChangeRightPaneViewCommand;
-						cell.CommandParameter = new ViewProps()
-						{
-							Title = record.FullTitle,
-							Content = webView
-						};
-					}
-					else
-					{
-						cell.Command = OpenUri;
-						cell.CommandParameter = record.URL;
-					}
-
-					sec.Add(cell);
-				}
-
-				sectionList.Add(sec);
+				ImageryList imageryList = new(textItem.Key, textItem.Value);
+				imageryGroup.Add(imageryList);
 			}
-
 			MainThread.BeginInvokeOnMainThread(() =>
 			{
 				try
 				{
-					foreach (TableSection sec in sectionList)
-						ImageryList.Root.Add(sec);
-				} catch(Exception ex)
+					ImageryList.ItemsSource = imageryGroup;
+				}
+				catch(Exception ex)
 				{
 					 MsgBox.DisplayAlert("Imagery Show Error", "エラーが発生しました\n" + ex.Message, "OK");
 				}

@@ -4,6 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+
+using AirTote.TwoPaneView;
+
+using CsvHelper.Configuration.Attributes;
+
+using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
+
 namespace AirTote.Services;
 
 public class ImagerySourceReader
@@ -14,7 +22,57 @@ public class ImagerySourceReader
 	public string URL { get; set; } = "";
 	public bool IsPublic { get; set; }
 
-	public async Task<string> ReadTextFileAsync(string filePath)
+	[Ignore]
+	public TwoPaneView.TwoPaneView? tpv { get; set; }
+
+	static readonly private OpenBrowserCommand obc = new();
+
+	[Ignore]
+	public ICommand Command
+	{
+		get
+		{
+			if (IsPublic && tpv is not null)
+			{
+				return new ChangeRightPaneViewCommand(tpv);
+			}
+			else
+			{
+				return obc;
+			}
+		}
+	}
+
+	[Ignore]
+	public object CommandParametor
+	{
+		get
+		{
+			if (IsPublic && tpv is not null)
+			{
+				Microsoft.Maui.Controls.WebView webView = new()
+				{
+					Source = URL
+				};
+
+				webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
+						.EnableZoomControls(true);
+				webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
+						.DisplayZoomControls(true);
+
+				return new ViewProps()
+				{
+					Title = FullTitle,
+					Content = webView
+				};
+			}
+			else
+			{
+				return URL;
+			}
+		}
+	}
+	public static async Task<string> ReadTextFileAsync(string filePath)
 	{
 		using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
 		using StreamReader reader = new StreamReader(fileStream);
@@ -24,7 +82,7 @@ public class ImagerySourceReader
 
 
 	// List<T>
-	public async Task<List<ImagerySourceReader>> ReadCsvFileAsync(string filePath)
+	public static async Task<List<ImagerySourceReader>> ReadCsvFileAsync(string filePath)
 	{
 		using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
 		using StreamReader reader = new StreamReader(fileStream);
