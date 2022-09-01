@@ -70,7 +70,7 @@ public partial class Imagery : ContentPage
 		}
 		catch (Exception ex) //例外の種類
 		{
-			MsgBox.DisplayAlert("Read Asset Error", "エラーが発生しました\n" + ex.Message, "OK");
+			MsgBox.DisplayAlert("Read Asset Error", $"{ex}", "OK");
 			return;
 		}
 	}
