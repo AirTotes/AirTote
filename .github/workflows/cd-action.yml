@@ -29,7 +29,7 @@ jobs:
       !startsWith(github.ref, 'refs/tags/bundle')
       && (
         github.event_name != 'pull_request'
-        || (github.event.action != 'unlabeled' &&  && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
       )
       && !(github.event_name != 'pull_request' && github.event.action == 'labeled' && github.event.label.name != 'Release Candidate')
