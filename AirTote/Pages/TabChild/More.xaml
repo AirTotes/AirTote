@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AirTote.Pages.TabChild.More"
+             Title="More">
+	<ScrollView>
+		<StackLayout HorizontalOptions="FillAndExpand"
+					 VerticalOptions="FillAndExpand"
+					 Orientation="Vertical">
+			<Button Text="IcaoPage"
+					Clicked="Button_Clicked"/>
+			<Button Text="PPR(書類提出)"
+					Clicked="Button_Clicked_1"/>
+			<Button Text="FeeCalculator"
+					Clicked="Button_Clicked_2"/>
+			<Button Text="ThirdPartyLicenses"
+					Clicked="Button_Clicked_3"/>
+			<Button Text="setting"
+					Clicked="Button_Clicked_4"/>
+		</StackLayout>
+	</ScrollView>
+</ContentPage>
