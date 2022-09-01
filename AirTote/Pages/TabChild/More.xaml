@@ -2,10 +2,6 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AirTote.Pages.TabChild.More"
-			 xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
-			 xmlns:Pages="clr-namespace:AirTote.Pages"
-			 xmlns:PaymentPage="clr-namespace:AirTote.Pages.PayLandingFee"
-			 xmlns:PPR="clr-namespace:AirTote.Pages.ReservePages"
              Title="More">
 	<ScrollView>
 		<StackLayout HorizontalOptions="FillAndExpand"

@@ -86,9 +86,4 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Compile Update="Pages\TabChild\Airport.xaml.cs">
-	    <DependentUpon>Airport.xaml</DependentUpon>
-	  </Compile>
-	</ItemGroup>
 </Project>

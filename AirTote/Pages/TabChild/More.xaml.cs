@@ -4,12 +4,9 @@ namespace AirTote.Pages.TabChild;
 
 public partial class More : ContentPage
 {
-
-
 	public More()
 	{
 		InitializeComponent();
-		
 	}
 
 	private void Button_Clicked(object sender, EventArgs e)

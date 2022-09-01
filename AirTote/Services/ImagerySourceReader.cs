@@ -8,10 +8,10 @@ namespace AirTote.Services;
 
 public class ImagerySourceReader
 {
-	public string GroupName { get; set; }
-	public string ShortTitle { get; set; }
-	public string FullTitle { get; set; }
-	public string URL { get; set; }
+	public string GroupName { get; set; } = "";
+	public string ShortTitle { get; set; } = "";
+	public string FullTitle { get; set; } = "";
+	public string URL { get; set; } = "";
 	public bool IsPublic { get; set; }
 
 	public async Task<string> ReadTextFileAsync(string filePath)
