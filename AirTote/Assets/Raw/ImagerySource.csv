@@ -82,7 +82,7 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 アメダス,,24時間,https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=precipitation24h&contents=amedas&interval=60,true
 アメダス,,風向、風速,https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=wind&contents=amedas&interval=60,true
 アメダス,,気温,https://www.jma.go.jp/bosai/map.html#5/34.416/141.592/&elem=temp&contents=amedas&interval=60,true
-アメダス,,日照時間,https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=sun1h&contents=amedas&interval=60https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=sun1h&contents=amedas&interval=60,true
+アメダス,,日照時間,https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=sun1h&contents=amedas&interval=60,true
 アメダス,,湿度,https://www.jma.go.jp/bosai/map.html#5/34.315/142.393/&elem=humidity&contents=amedas&interval=60,true
 空港の情報,,空港の予報,https://www.data.jma.go.jp/airinfo/data/awfo_taf.html#contents_area2,true
 空港の情報,,飛行場気象解説情報,https://www.data.jma.go.jp/airinfo/data/awfo_comment.html#contents_area2,true
