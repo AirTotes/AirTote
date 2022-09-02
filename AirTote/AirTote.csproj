@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFrameworks>net6.0-android31.0;net6.0-ios15.4</TargetFrameworks>
@@ -43,8 +43,6 @@
 		<MtouchFastDev>true</MtouchFastDev>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'Publish')">
-		<DebugType>none</DebugType>
-		<MtouchDebug>false</MtouchDebug>
 		<Optimize>true</Optimize>
 		<MtouchUseLlvm>true</MtouchUseLlvm>
 		<MtouchUseThumb>true</MtouchUseThumb>
@@ -70,17 +68,18 @@
 		<MauiFont Include="Assets\Fonts\*" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Assets\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Remove="Assets\Raw\ImagerySource.csv" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.5" />
-		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
 		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
 		<PackageReference Include="HarfBuzzSharp" Version="2.8.2" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="Csv" Version="2.0.84" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
