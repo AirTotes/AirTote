@@ -92,4 +92,6 @@ public class ImagerySourceReader
 
 		return records.ToList();
 	}
+
+	public override string ToString() => $"[{this.GroupName}] '{this.FullTitle}'({this.ShortTitle}) => {this.URL} (IsPublic?:{this.IsPublic})";
 }
