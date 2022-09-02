@@ -43,7 +43,9 @@
 		<MtouchFastDev>true</MtouchFastDev>
 	</PropertyGroup>
 	<PropertyGroup Condition="$(TargetFramework.Contains('-ios')) and ('$(Configuration)' == 'Release' or '$(Configuration)' == 'Publish')">
+		<MtouchLink>Full</MtouchLink>
 		<Optimize>true</Optimize>
+		<AotAssemblies>true</AotAssemblies>
 		<MtouchUseLlvm>true</MtouchUseLlvm>
 		<MtouchUseThumb>true</MtouchUseThumb>
 		<MtouchI18n>cjk</MtouchI18n>
