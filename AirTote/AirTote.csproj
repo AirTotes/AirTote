@@ -74,6 +74,7 @@
 		<MauiFont Include="Assets\Fonts\*" />
 		<!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
 		<MauiAsset Include="Assets\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+		<None Remove="Assets\Raw\ImagerySource.csv" />
 		<MauiAsset Include="..\CommonResources\AppIcon\appiconfore.svg" LogicalName="appiconfore.svg" />
 	</ItemGroup>
 	<ItemGroup>

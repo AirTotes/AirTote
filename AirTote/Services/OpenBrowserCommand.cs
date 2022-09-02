@@ -8,15 +8,15 @@ internal class OpenBrowserCommand : ICommand
 
 	public bool CanExecute(object? parameter)
 	{
-			return parameter is not null;
+		return parameter is not null;
 	}
 	public async void Execute(object? parameter)
 	{
-		if(parameter is string s)
+		if (parameter is string s)
 		{
 			try
 			{
-				await Browser.Default.OpenAsync(s,BrowserLaunchMode.SystemPreferred);
+				await Browser.Default.OpenAsync(s, BrowserLaunchMode.SystemPreferred);
 			}
 			catch (Exception ex)
 			{

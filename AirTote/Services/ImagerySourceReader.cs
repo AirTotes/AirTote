@@ -21,6 +21,7 @@ public class ImagerySourceReader
 	public string FullTitle { get; set; } = "";
 	public string URL { get; set; } = "";
 	public bool IsPublic { get; set; }
+	public bool IsFullTitleLong => FullTitle.Length > 28;
 
 	public TwoPaneView.TwoPaneView? tpv { get; set; }
 
