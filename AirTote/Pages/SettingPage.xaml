@@ -23,6 +23,11 @@
 						Text="AIS Japan"
 						Command="{Binding ChangeRightPaneViewCommand}"
 						CommandParameter="{Type p:AISJapan}"/>
+					<TextCell
+						Text="Top Page"
+						Detail="Map General Settings"
+						Command="{Binding ChangeRightPaneViewCommand}"
+						CommandParameter="{Type p:TopPage}"/>
 				</TableSection>
 
 			</TableRoot>
