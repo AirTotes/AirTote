@@ -27,6 +27,16 @@ public partial class Imagery : ContentPage
 
 		Task.Run(CsvToImageryListAsync);
 	}
+
+	void Cell_Tapped(object sender, EventArgs e)
+	{
+		if ((sender as Cell)?.BindingContext is not ImagerySourceReader ctx)
+			return;
+
+		if (ctx.Command?.CanExecute(ctx.CommandParametor) == true)
+			ctx.Command.Execute(ctx.CommandParametor);
+	}
+
 	internal static readonly OpenBrowserCommand OpenUri = new();
 	ImageryPageViewModel viewModel { get; } = new();
 

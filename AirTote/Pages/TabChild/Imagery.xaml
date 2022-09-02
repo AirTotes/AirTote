@@ -17,7 +17,8 @@
 			HasUnevenRows="True">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<ViewCell>
+					<ViewCell
+						Tapped="Cell_Tapped">
 						<Grid Margin="2,6">
 							<VerticalStackLayout>
 
