@@ -27,25 +27,35 @@ public class ImagerySourceReader
 
 	static readonly private OpenBrowserCommand obc = new();
 
+	private ICommand? _Command;
 	public ICommand Command
 	{
 		get
 		{
+			if (_Command is not null)
+				return _Command;
+
 			if (IsPublic && tpv is not null)
 			{
-				return new ChangeRightPaneViewCommand(tpv);
+				_Command = new ChangeRightPaneViewCommand(tpv);
 			}
 			else
 			{
-				return obc;
+				_Command = obc;
 			}
+
+			return _Command;
 		}
 	}
 
+	private object? _CommandParameter = null;
 	public object CommandParametor
 	{
 		get
 		{
+			if (_CommandParameter is not null)
+				return _CommandParameter;
+
 			if (IsPublic && tpv is not null)
 			{
 				Microsoft.Maui.Controls.WebView webView = new()
@@ -58,7 +68,7 @@ public class ImagerySourceReader
 				webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
 						.DisplayZoomControls(true);
 
-				return new ViewProps()
+				_CommandParameter = new ViewProps()
 				{
 					Title = FullTitle,
 					Content = webView
@@ -66,8 +76,10 @@ public class ImagerySourceReader
 			}
 			else
 			{
-				return URL;
+				_CommandParameter = URL;
 			}
+
+			return _CommandParameter;
 		}
 	}
 	public static async Task<string> ReadTextFileAsync(string filePath)
