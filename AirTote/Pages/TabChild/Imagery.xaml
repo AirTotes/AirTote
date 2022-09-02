@@ -58,9 +58,16 @@
 				<DataTemplate
 					x:DataType="{x:Type local:ImageryList}">
 					<ViewCell>
-						<Label Text="{Binding Name}"
-							FontSize="18"
-							FontAttributes="Bold" />
+						<Grid
+							Margin="2"
+							BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}">
+							<Label
+								Text="{Binding Name}"
+								Margin="2"
+								VerticalOptions="Center"
+								FontSize="Subtitle"
+								FontAttributes="Bold" />
+						</Grid>
 					</ViewCell>
 				</DataTemplate>
 			</ListView.GroupHeaderTemplate>
