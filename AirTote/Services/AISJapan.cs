@@ -74,8 +74,9 @@ namespace AirTote.Services
 		public async Task<string?> GetSignInError()
 		{
 			var whatsnew = await WhatsNew;
-			if (whatsnew.Url != LoginPageUrl.ToString())
-				return null;
+
+			if (whatsnew.StatusCode != System.Net.HttpStatusCode.OK)
+				return $"StatusCode was {whatsnew.StatusCode} (Sign in failed)";
 
 			List<string> list = new();
 
