@@ -21,7 +21,7 @@ namespace AirTote.Services
 		IBrowsingContext Ctx { get; } = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithDefaultCookies());
 		Task<IDocument> WhatsNew { get; }
 
-		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/Login.do");
+		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/LoginAction.do");
 
 		static public async Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
 		{
