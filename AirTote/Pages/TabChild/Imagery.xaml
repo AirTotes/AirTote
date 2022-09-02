@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	x:Class="AirTote.Pages.TabChild.Imagery"
+	xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
+	Title="Imagery">
+
+	<tpv:TwoPaneView
+		x:Name="TPV"
+		LeftPaneWidth="300"
+		RightPaneWidth="*"
+		MinimumTwoPaneWidth="500">
+		<ListView
+			x:Name="ImageryList"
+			IsGroupingEnabled="True"
+			HasUnevenRows="True">
+			<ListView.ItemTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Grid Margin="2,6">
+							<VerticalStackLayout>
+
+								<Label
+									Text="{Binding ShortTitle}"
+									FontSize="Default">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding ShortTitle}" Value="">
+											<Setter Property="IsVisible" Value="False"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
+
+								<Label
+									Text="{Binding FullTitle}"
+									FontSize="Caption"
+									Opacity="0.8"
+									Margin="0,2">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding IsFullTitleLong}" Value="True">
+											<Setter Property="FontSize" Value="10"/>
+										</DataTrigger>
+										<DataTrigger TargetType="Label" Binding="{Binding ShortTitle}" Value="">
+											<Setter Property="Opacity" Value="1"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
+
+							</VerticalStackLayout>
+						</Grid>
+					</ViewCell>
+				</DataTemplate>
+			</ListView.ItemTemplate>
+
+			<ListView.GroupHeaderTemplate>
+				<DataTemplate>
+					<ViewCell>
+						<Label Text="{Binding Name}"
+							FontSize="18"
+							FontAttributes="Bold" />
+					</ViewCell>
+				</DataTemplate>
+			</ListView.GroupHeaderTemplate>
+		</ListView>
+	</tpv:TwoPaneView>
+</ContentPage>
