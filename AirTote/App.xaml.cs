@@ -6,6 +6,6 @@ public partial class App : Application
 	{
 		InitializeComponent();
 
-		MainPage = new Pages.TabMainPage();
+		MainPage = new AirTote.TabMainPage();
 	}
 }
