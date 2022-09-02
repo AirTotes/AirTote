@@ -20,7 +20,9 @@
 				<DataTemplate>
 					<ViewCell
 						Tapped="Cell_Tapped">
-						<Grid Margin="2,6">
+						<Grid
+							Margin="2,6"
+							VerticalOptions="Center">
 							<VerticalStackLayout>
 
 								<Label
@@ -37,6 +39,7 @@
 									Text="{Binding FullTitle}"
 									FontSize="Caption"
 									Opacity="0.8"
+									LineHeight="1.2"
 									Margin="0,2">
 									<Label.Triggers>
 										<DataTrigger TargetType="Label" Binding="{Binding IsFullTitleLong}" Value="True">
@@ -44,6 +47,7 @@
 										</DataTrigger>
 										<DataTrigger TargetType="Label" Binding="{Binding ShortTitle}" Value="">
 											<Setter Property="Opacity" Value="1"/>
+											<Setter Property="Margin" Value="0,6"/>
 										</DataTrigger>
 									</Label.Triggers>
 								</Label>
