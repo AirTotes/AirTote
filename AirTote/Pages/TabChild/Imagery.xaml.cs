@@ -81,7 +81,6 @@ public partial class Imagery : ContentPage
 		catch (Exception ex) //例外の種類
 		{
 			MsgBox.DisplayAlert("Read Asset Error", $"{ex}", "OK");
-			Console.WriteLine(ex);
 			return;
 		}
 	}
