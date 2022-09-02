@@ -10,7 +10,7 @@ public class ImageryList : List<ImagerySourceReader>
 {
 	public string Name { get; private set; }
 
-	public ImageryList(string name,List<ImagerySourceReader> ImageryList):base(ImageryList)
+	public ImageryList(string name, List<ImagerySourceReader> ImageryList) : base(ImageryList)
 	{
 		Name = name;
 	}
@@ -44,7 +44,7 @@ public partial class Imagery : ContentPage
 			foreach (var textItem in text)
 			{
 				textItem.tpv = TPV;
-				if(!GroupNameKeyDic.ContainsKey(textItem.GroupName))
+				if (!GroupNameKeyDic.ContainsKey(textItem.GroupName))
 					GroupNameKeyDic[textItem.GroupName] = new();
 
 				GroupNameKeyDic[textItem.GroupName].Add(textItem);
@@ -62,9 +62,9 @@ public partial class Imagery : ContentPage
 				{
 					ImageryList.ItemsSource = imageryGroup;
 				}
-				catch(Exception ex)
+				catch (Exception ex)
 				{
-					 MsgBox.DisplayAlert("Imagery Show Error", "エラーが発生しました\n" + ex.Message, "OK");
+					MsgBox.DisplayAlert("Imagery Show Error", "エラーが発生しました\n" + ex.Message, "OK");
 				}
 			});
 		}

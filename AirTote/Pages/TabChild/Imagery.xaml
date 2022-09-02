@@ -13,14 +13,42 @@
 		MinimumTwoPaneWidth="500">
 		<ListView
 			x:Name="ImageryList"
-			IsGroupingEnabled="True">
+			IsGroupingEnabled="True"
+			HasUnevenRows="True">
 			<ListView.ItemTemplate>
 				<DataTemplate>
-					<TextCell
-						Text="{Binding ShortTitle}"
-						Detail="{Binding FullTitle}"
-						Command="{Binding Command}"
-						CommandParameter="{Binding CommandParametor}"/>
+					<ViewCell>
+						<Grid Margin="2,6">
+							<VerticalStackLayout>
+
+								<Label
+									Text="{Binding ShortTitle}"
+									FontSize="Default">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding ShortTitle}" Value="">
+											<Setter Property="IsVisible" Value="False"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
+
+								<Label
+									Text="{Binding FullTitle}"
+									FontSize="Caption"
+									Opacity="0.8"
+									Margin="0,2">
+									<Label.Triggers>
+										<DataTrigger TargetType="Label" Binding="{Binding IsFullTitleLong}" Value="True">
+											<Setter Property="FontSize" Value="10"/>
+										</DataTrigger>
+										<DataTrigger TargetType="Label" Binding="{Binding ShortTitle}" Value="">
+											<Setter Property="Opacity" Value="1"/>
+										</DataTrigger>
+									</Label.Triggers>
+								</Label>
+
+							</VerticalStackLayout>
+						</Grid>
+					</ViewCell>
 				</DataTemplate>
 			</ListView.ItemTemplate>
 
@@ -28,7 +56,6 @@
 				<DataTemplate>
 					<ViewCell>
 						<Label Text="{Binding Name}"
-							BackgroundColor="LightGray"
 							FontSize="18"
 							FontAttributes="Bold" />
 					</ViewCell>
