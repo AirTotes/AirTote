@@ -3,6 +3,7 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="AirTote.Pages.TabChild.Imagery"
+	xmlns:local="clr-namespace:AirTote.Pages.TabChild"
 	xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
 	Title="Imagery">
 
@@ -54,7 +55,8 @@
 			</ListView.ItemTemplate>
 
 			<ListView.GroupHeaderTemplate>
-				<DataTemplate>
+				<DataTemplate
+					x:DataType="{x:Type local:ImageryList}">
 					<ViewCell>
 						<Label Text="{Binding Name}"
 							FontSize="18"
