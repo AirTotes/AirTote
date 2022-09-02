@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 using AirTote.TwoPaneView;
 
-using CsvHelper.Configuration.Attributes;
+using Csv;
 
 using Microsoft.Maui.Controls.PlatformConfiguration.AndroidSpecific;
 
@@ -22,12 +22,10 @@ public class ImagerySourceReader
 	public string URL { get; set; } = "";
 	public bool IsPublic { get; set; }
 
-	[Ignore]
 	public TwoPaneView.TwoPaneView? tpv { get; set; }
 
 	static readonly private OpenBrowserCommand obc = new();
 
-	[Ignore]
 	public ICommand Command
 	{
 		get
@@ -43,7 +41,6 @@ public class ImagerySourceReader
 		}
 	}
 
-	[Ignore]
 	public object CommandParametor
 	{
 		get
@@ -85,12 +82,21 @@ public class ImagerySourceReader
 	public static async Task<List<ImagerySourceReader>> ReadCsvFileAsync(string filePath)
 	{
 		using Stream fileStream = await FileSystem.Current.OpenAppPackageFileAsync(filePath);
-		using StreamReader reader = new StreamReader(fileStream);
 
-		using CsvHelper.CsvReader csv = new CsvHelper.CsvReader(reader, CultureInfo.InvariantCulture);
-		IEnumerable<ImagerySourceReader> records = csv.GetRecords<ImagerySourceReader>();
+		List<ImagerySourceReader> records = new();
+		await foreach (var row in CsvReader.ReadFromStreamAsync(fileStream))
+		{
+			records.Add(new()
+			{
+				GroupName = row[0] ?? "",
+				ShortTitle = row[1] ?? "",
+				FullTitle = row[2] ?? "",
+				URL = row[3] ?? "",
+				IsPublic = bool.Parse(row[4])
+			});
+		}
 
-		return records.ToList();
+		return records;
 	}
 
 	public override string ToString() => $"[{this.GroupName}] '{this.FullTitle}'({this.ShortTitle}) => {this.URL} (IsPublic?:{this.IsPublic})";
