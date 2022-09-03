@@ -1,12 +1,9 @@
+using AirTote.Services;
+
+using Mapsui;
 using Mapsui.Layers;
-using Mapsui.Nts;
-using Mapsui.Nts.Extensions;
-using Mapsui.Projections;
 using Mapsui.Styles;
 using Mapsui.UI;
-
-using NetTopologySuite.Geometries;
-using NetTopologySuite.IO;
 
 namespace AirTote.Components.Maps.Layers;
 
@@ -14,14 +11,6 @@ public partial class AirRouteLayer : MemoryLayer
 {
 	Mapsui.Map Map { get; }
 	CalloutStyle? LastTapped { get; set; } = null;
-	static VectorStyle LINE_STYLE { get; } = new()
-	{
-		Line = new()
-		{
-			Color = Mapsui.Styles.Color.Red,
-			Width = 2
-		}
-	};
 
 	public AirRouteLayer(Mapsui.Map map)
 	{
@@ -32,8 +21,7 @@ public partial class AirRouteLayer : MemoryLayer
 
 		Map.Info += Map_OnInfo;
 
-		Style = LINE_STYLE;
-		Features = CreateLines();
+		Task.Run(LoadLowerATSRoute);
 	}
 
 	/// <summary>FeatureがTapされたときに呼び出される</summary>
@@ -56,51 +44,17 @@ public partial class AirRouteLayer : MemoryLayer
 			LastTapped = null;
 	}
 
-	static GeometryFeature[] CreateLines()
+	async void LoadLowerATSRoute()
 	{
-		return new[]
-		{
-			CreateFeatureFromWKT("LINESTRING(135 35, 140 40)"),
-			CreateFeatureFromWKT("LINESTRING(130 35, 140 40)"),
-			CreateFeatureFromWKT("LINESTRING(140 35, 140 40)"),
-		};
-	}
+		List<IFeature> features = new();
 
-	private static GeometryFeature CreateFeatureFromWKT(string wkt)
-	{
-		WKTReader reader = new();
+		var result = await AirRouteProvider.GetLowerATSRouteAsync(new(2022, 9, 8), new(2022, 9, 8));
 
-		GeometryFeature feat = new LineString(
-			reader
-				.Read(wkt)
-				.Coordinates
-				.Select(v => SphericalMercator.FromLonLat(v.X, v.Y)
-					.ToCoordinate()
-				)
-				.ToArray()
-			).ToFeature();
+		var ptList = result?.PointList.Where(v => v.Latitude_Deg is not null && v.Longitude_Deg is not null);
+		if (ptList is not null)
+			foreach (var pt in ptList)
+				features.Add(new PointObject(pt));
 
-		feat.Styles.Add(CreateCalloutStyle("SAMPLE TEXT"));
-
-		return feat;
-	}
-
-	private static CalloutStyle CreateCalloutStyle(string? name)
-	{
-		return new CalloutStyle
-		{
-			Title = name,
-			TitleFont =
-			{
-				FontFamily = null,
-				Size = 12
-			},
-			TitleFontColor = Mapsui.Styles.Color.Gray,
-			MaxWidth = 120,
-			RectRadius = 10,
-			ShadowWidth = 4,
-			Enabled = false,
-		};
+		Features = features;
 	}
 }
-
