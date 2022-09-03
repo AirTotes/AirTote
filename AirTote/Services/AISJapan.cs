@@ -23,7 +23,13 @@ namespace AirTote.Services
 
 		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/LoginAction.do");
 
-		static public async Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
+		private string ID { get; }
+		private string Password { get; }
+
+		static public Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
+			=> FromSecureStorageIfNeededAsync(secureStorage, null);
+
+		static public async Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage, AISJapan? aisJapan)
 		{
 			string? id = await secureStorage.GetAsync(SEC_STORAGE_KEY_USER);
 			string? pass = await secureStorage.GetAsync(SEC_STORAGE_KEY_PASS);
@@ -31,11 +37,20 @@ namespace AirTote.Services
 			if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(pass))
 				throw new InvalidOperationException("ID or Password was not in the provided SecureStorage");
 
+			if (aisJapan is not null && id == aisJapan.ID && pass == aisJapan.Password)
+				return aisJapan;
+
 			return new(id, pass);
 		}
 
+		public Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage)
+			=> AISJapan.FromSecureStorageIfNeededAsync(secureStorage, this);
+
 		public AISJapan(in string id, in string password)
 		{
+			ID = id;
+			Password = password;
+
 			WhatsNew = Ctx.OpenAsync(
 				DocumentRequest.PostAsUrlencoded(
 					LoginPageUrl,
