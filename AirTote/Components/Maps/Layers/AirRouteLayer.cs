@@ -10,7 +10,7 @@ using NetTopologySuite.IO;
 
 namespace AirTote.Components.Maps.Layers;
 
-public class AirRouteLayer : MemoryLayer
+public partial class AirRouteLayer : MemoryLayer
 {
 	Mapsui.Map Map { get; }
 	CalloutStyle? LastTapped { get; set; } = null;
