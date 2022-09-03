@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirTote", "AirTote\AirTote.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.TwoPaneView.MAUI", "AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj", "{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Tests", "AirTote.Tests\AirTote.Tests.csproj", "{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -28,6 +30,12 @@ Global
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
