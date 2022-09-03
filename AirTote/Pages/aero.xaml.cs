@@ -15,19 +15,23 @@ namespace AirTote.Pages
 			InitializeComponent();
 			BindingContext = html;
 
-			Task.Run(async () =>
+			Appearing += Aero_Appearing;
+		}
+
+		private async void Aero_Appearing(object? sender, EventArgs e)
+		{
+			html.HTML = null;
+
+			try
 			{
-				try
-				{
-					ais = await AISJapan.FromSecureStorageAsync(SecureStorage.Default);
-				}
-				catch (Exception ex)
-				{
-					MainThread.BeginInvokeOnMainThread(async () =>
-						await Shell.Current.CurrentPage.DisplayAlert("AIS Japan Account Error", "設定画面にて自身のアカウントを設定してください。\n" + ex.Message, "OK")
-					);
-				}
-			});
+				ais = await AISJapan.FromSecureStorageIfNeededAsync(SecureStorage.Default, ais);
+			}
+			catch (Exception ex)
+			{
+				ais = null;
+
+				MsgBox.DisplayAlert("AIS Japan Account Error", "設定画面にて自身のアカウントを設定してください。\n" + ex.Message, "OK");
+			}
 		}
 
 		private void SUPsView_Clicked(object sender, EventArgs e)
