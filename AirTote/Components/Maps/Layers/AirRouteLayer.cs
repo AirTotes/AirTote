@@ -35,7 +35,7 @@ public partial class AirRouteLayer : MemoryLayer
 		if (e.MapInfo?.Layer != this || e.MapInfo.Feature is null)
 			return;
 
-		if (e.MapInfo.Feature.Styles.Where(v => v is CalloutStyle).FirstOrDefault() is CalloutStyle calloutStyle && calloutStyle != LastTapped)
+		if (e.MapInfo.Feature.Styles.FirstOrDefault(v => v is CalloutStyle) is CalloutStyle calloutStyle && calloutStyle != LastTapped)
 		{
 			calloutStyle.Enabled = !calloutStyle.Enabled;
 			LastTapped = calloutStyle;
