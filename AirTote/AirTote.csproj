@@ -84,5 +84,6 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
+	  <ProjectReference Include="..\AirTote.Services\AirTote.Services.csproj" />
 	</ItemGroup>
 </Project>

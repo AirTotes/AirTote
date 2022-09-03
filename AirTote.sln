@@ -3,11 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31611.283
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirTote", "AirTote\AirTote.csproj", "{93A0B8C2-B818-4D74-8901-15058519FC4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote", "AirTote\AirTote.csproj", "{93A0B8C2-B818-4D74-8901-15058519FC4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.TwoPaneView.MAUI", "AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj", "{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Tests", "AirTote.Tests\AirTote.Tests.csproj", "{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services", "AirTote.Services\AirTote.Services.csproj", "{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services.Tests", "AirTote.Services.Tests\AirTote.Services.Tests.csproj", "{45C972CB-BFDB-4997-86CE-181B2EB18FB4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +40,18 @@ Global
 		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
 		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
