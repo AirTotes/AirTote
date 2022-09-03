@@ -55,9 +55,6 @@ public class LowerATSRoute
 						nextLine.NextRoute = line;
 					}
 				}
-
-				if (string.IsNullOrWhiteSpace(line.Name))
-					line.Name = lineList.Key;
 			}
 		}
 	}

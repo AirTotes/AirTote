@@ -3,6 +3,7 @@ using System.Text.Json.Serialization;
 namespace AirTote.Services.Types;
 
 public record RouteInfo(
+	string Name,
 	string? PreviousPointName,
 	string? NextPointName,
 	string? TrackingMagneticCourse,
@@ -16,9 +17,6 @@ public record RouteInfo(
 	string? RemarksControllingUnitFrequency
 )
 {
-	[JsonIgnore]
-	public string? Name { get; set; }
-
 	[JsonIgnore]
 	public PointInfo? PreviousPoint { get; set; }
 	[JsonIgnore]
