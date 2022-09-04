@@ -25,7 +25,7 @@ public class AirRouteProviderTests
 
 		Assert.That(exception, Is.Not.Null);
 
-		Assert.That(exception.ParamName, Is.EqualTo("PointList"));
+		Assert.That(exception.ParamName, Is.EqualTo(nameof(Types.LowerATSRoute.PointList)));
 	}
 
 	[Test]
@@ -35,7 +35,7 @@ public class AirRouteProviderTests
 
 		Assert.That(exception, Is.Not.Null);
 
-		Assert.That(exception.ParamName, Is.EqualTo("RouteDict"));
+		Assert.That(exception.ParamName, Is.EqualTo(nameof(Types.LowerATSRoute.RouteDict)));
 	}
 
 	[Test]
