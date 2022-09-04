@@ -55,6 +55,11 @@ public partial class AirRouteLayer : MemoryLayer
 			foreach (var pt in ptList)
 				features.Add(new PointObject(pt));
 
+		if (result?.RouteDict is not null)
+			foreach (var lines in result.RouteDict.Values)
+				foreach (var lineInfo in lines)
+					features.Add(new RouteLine(lineInfo));
+
 		Features = features;
 	}
 }
