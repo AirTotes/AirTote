@@ -7,6 +7,7 @@ namespace AirTote.Pages;
 public partial class ThirdPartyLicenses
 {
 	public const string LICENSE_INFO_DIR = "ThirdPartyLicenses";
+	public const string ADDITIONAL_LICENSES_DIR = "AdditionalLicenses";
 	public const string LICENSE_LIST_FILE_NAME = "license_list.json";
 
 	public ThirdPartyLicenses()
@@ -15,7 +16,7 @@ public partial class ThirdPartyLicenses
 
 		TwoPaneView.RightPaneContent = new Label()
 		{
-			Text = "Select package to check license",
+			Text = "Select name to check license",
 			HorizontalOptions = LayoutOptions.Center,
 			VerticalOptions = LayoutOptions.Center
 		};
@@ -27,6 +28,7 @@ public partial class ThirdPartyLicenses
 	{
 		List<LicenseJsonSchema> licenseList = new();
 		await LoadJson(Path.Combine(LICENSE_INFO_DIR, LICENSE_LIST_FILE_NAME), licenseList);
+		await LoadJson(Path.Combine(ADDITIONAL_LICENSES_DIR, LICENSE_LIST_FILE_NAME), licenseList);
 
 		licenseList.Sort((x, y) => string.Compare(x.id, y.id));
 
