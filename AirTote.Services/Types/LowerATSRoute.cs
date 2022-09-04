@@ -7,6 +7,7 @@ namespace AirTote.Services.Types;
 
 public class LowerATSRoute
 {
+	public Dictionary<string, int> PointTypeDict { get; }
 	public PointInfo[] PointList { get; }
 	public Dictionary<string, RouteInfo[]> RouteDict { get; }
 
@@ -14,17 +15,24 @@ public class LowerATSRoute
 	public Dictionary<string, PointInfo> PointDict { get; }
 
 	[JsonConstructor]
-	public LowerATSRoute(PointInfo[] PointList, Dictionary<string, RouteInfo[]> RouteDict)
+	public LowerATSRoute(Dictionary<string, int> PointTypeDict, PointInfo[] PointList, Dictionary<string, RouteInfo[]> RouteDict)
 	{
+		if (PointTypeDict is null)
+			throw new ArgumentNullException(nameof(PointTypeDict));
+
 		if (PointList is null)
 			throw new ArgumentNullException(nameof(PointList));
 
 		if (RouteDict is null)
 			throw new ArgumentNullException(nameof(RouteDict));
 
+		this.PointTypeDict = PointTypeDict;
 		this.PointList = PointList;
 		this.PointDict = PointList.ToDictionary(v => v.Name);
 		this.RouteDict = RouteDict;
+
+		foreach (var pt in PointList)
+			pt.PointTypeDict = PointTypeDict;
 
 		foreach (var lineList in RouteDict)
 		{
