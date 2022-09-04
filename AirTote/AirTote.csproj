@@ -81,6 +81,7 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Include="System.Text.Json" Version="6.0.5" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
