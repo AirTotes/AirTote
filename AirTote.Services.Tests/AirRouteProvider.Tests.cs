@@ -19,9 +19,19 @@ public class AirRouteProviderTests
 	}
 
 	[Test]
+	public void SimpleJsonTest_PointTypeDictNull()
+	{
+		ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => AirRouteProvider.ParseLowerATSRouteJson("{\"PointTypeDict\": null,\"PointList\": null,\"RouteDict\": {}}"));
+
+		Assert.That(exception, Is.Not.Null);
+
+		Assert.That(exception.ParamName, Is.EqualTo(nameof(Types.LowerATSRoute.PointTypeDict)));
+	}
+
+	[Test]
 	public void SimpleJsonTest_PointListNull()
 	{
-		ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => AirRouteProvider.ParseLowerATSRouteJson("{\"PointList\": null,\"RouteDict\": {}}"));
+		ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => AirRouteProvider.ParseLowerATSRouteJson("{\"PointTypeDict\": {},\"PointList\": null,\"RouteDict\": {}}"));
 
 		Assert.That(exception, Is.Not.Null);
 
@@ -31,7 +41,7 @@ public class AirRouteProviderTests
 	[Test]
 	public void SimpleJsonTest_RouteDictNull()
 	{
-		ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => AirRouteProvider.ParseLowerATSRouteJson("{\"PointList\": [],\"RouteDict\": null}"));
+		ArgumentNullException? exception = Assert.Throws<ArgumentNullException>(() => AirRouteProvider.ParseLowerATSRouteJson("{\"PointTypeDict\": {},\"PointList\": [],\"RouteDict\": null}"));
 
 		Assert.That(exception, Is.Not.Null);
 
@@ -41,7 +51,7 @@ public class AirRouteProviderTests
 	[Test]
 	public void SimpleJsonTest_EmptyElem()
 	{
-		var result = AirRouteProvider.ParseLowerATSRouteJson("{\"PointList\": [],\"RouteDict\": {}}");
+		var result = AirRouteProvider.ParseLowerATSRouteJson("{\"PointTypeDict\": {},\"PointList\": [],\"RouteDict\": {}}");
 
 		Assert.That(result, Is.Not.Null);
 
