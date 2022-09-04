@@ -62,6 +62,10 @@ public partial class ThirdPartyLicenses
 		if (obj is not LicenseJsonSchema[] arr)
 			return;
 
+		if (System.IO.Path.GetDirectoryName(path) is string baseDir)
+			foreach (LicenseJsonSchema data in arr)
+				data.BaseDirectory = baseDir;
+
 		licenses.AddRange(arr);
 	}
 

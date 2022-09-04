@@ -22,7 +22,7 @@ public partial class LicenseView : ContentView
 		string fileContent = "";
 		try
 		{
-			using (var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(ThirdPartyLicenses.LICENSE_INFO_DIR, license.license)))
+			using (var stream = await FileSystem.OpenAppPackageFileAsync(Path.Combine(license.BaseDirectory, license.license)))
 			{
 				if (stream is null)
 					return;
