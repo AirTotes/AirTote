@@ -36,11 +36,27 @@ public partial class ThirdPartyLicenses
 	static async Task LoadJson(string path, List<LicenseJsonSchema> licenses)
 	{
 		object? obj;
-		using (var stream = await FileSystem.OpenAppPackageFileAsync(path))
+		try
 		{
-			if (stream is null)
-				return;
-			obj = await System.Text.Json.JsonSerializer.DeserializeAsync(stream, typeof(LicenseJsonSchema[]));
+			using (var stream = await FileSystem.OpenAppPackageFileAsync(path))
+			{
+				if (stream is null)
+					return;
+				obj = await System.Text.Json.JsonSerializer.DeserializeAsync(stream, typeof(LicenseJsonSchema[]));
+			}
+		}
+		catch (DirectoryNotFoundException)
+		{
+			return;
+		}
+		catch (FileNotFoundException)
+		{
+			return;
+		}
+		catch (Exception ex)
+		{
+			AirTote.Services.MsgBox.DisplayAlert("Load / Parse License Json Error", $"Cannot load file ({path})\n{ex}", "OK");
+			return;
 		}
 
 		if (obj is not LicenseJsonSchema[] arr)
