@@ -16,7 +16,7 @@ CSPROJ_PATH = dirname(__file__) + "/../AirTote/AirTote.csproj"
 TIMEOUT_SEC = 2
 ENC = "utf-8"
 
-LICENSE_INFO_LIST_FILE_NAME = "third_party_license_list.json"
+LICENSE_INFO_LIST_FILE_NAME = "license_list.json"
 
 LICENSE_TYPE_EXPRESSION = 'expression'
 # `{PackageID}/{FilePath(Name)}`にライセンスファイルが配置されていることを示す
@@ -61,7 +61,7 @@ async def getLicenseInfo(globalPackagesDir: str, packageInfo: PackageInfo) -> Li
     if root.tag.find('{') >= 0:
       NUSPEC_XML_NAMESPACE[''] = root.tag.removeprefix('{').removesuffix('}package')
     metadata = root.find("metadata", NUSPEC_XML_NAMESPACE)
-  
+
   licenseElem = metadata.find("license", namespaces=NUSPEC_XML_NAMESPACE)
   licenseText: str = None
   licenseDataType: str = None
@@ -194,7 +194,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
     if len(v) <= 0 or v[0] != b'>':
       continue
     packages.append(PackageInfo(v[1].decode(ENC), v[-1].decode(ENC)))
-  
+
   globalPackagesDir = getNugetGlobalPackagesDir()
   packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages if not v.PackageName.startswith("AirTote")])
 
