@@ -22,7 +22,8 @@ public record PointInfo(
 	int Type,
 	string Name,
 	float? Latitude_Deg,
-	float? Longitude_Deg
+	float? Longitude_Deg,
+	bool HasRemarks
 )
 {
 	[JsonIgnore]
