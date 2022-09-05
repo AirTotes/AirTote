@@ -20,6 +20,7 @@ concurrency:
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
+  FIREBASE_PLIST_PATH: ./AirTote/Platforms/iOS/GoogleService-Info.plist
   THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
@@ -197,6 +198,9 @@ jobs:
         path: ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
         retention-days: 3
 
+    - name: Import Firebase Setting plist
+      run: echo "${{ secrets.FIREBASE_PLIST }}" > ${{ env.FIREBASE_PLIST_PATH }}
+
     - name: Check Configuration
       id: chk-cfg
       run: |
@@ -217,6 +221,7 @@ jobs:
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
         /p:CodesignKey="${{ secrets.CODESIGN_KEY_NAME_IOS }}"
         /p:CodesignProvision="${{ secrets.CODESIGN_PROVISION_NAME_IOS }}"
+        /p:FirebaseCrashlyticsUploadSymbolsEnabled=True
 
     - name: validate
       run: >
