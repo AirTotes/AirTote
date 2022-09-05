@@ -20,7 +20,7 @@ concurrency:
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
-  THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
+  THIRD_PARTY_LICENSE_LIST_NAME: license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
   OUTPUT_DIR: ./out

@@ -1,3 +1,5 @@
+using System.Text.Json.Serialization;
+
 namespace AirTote.Models;
 
 public interface ILicenseJsonSchema
@@ -24,4 +26,7 @@ public class LicenseJsonSchema : ILicenseJsonSchema
 	public string? author { get; set; }
 	public string? projectUrl { get; set; }
 	public string? copyrightText { get; set; }
+
+	[JsonIgnore]
+	public string BaseDirectory { get; set; } = "";
 }
