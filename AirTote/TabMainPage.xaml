@@ -10,7 +10,7 @@
 		<Tab
 			Title="Airports"
 			Icon ="local_airport_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:Airport}"/>
+			<!--<ShellContent ContentTemplate="{DataTemplate TabChild:Airport}"/>-->
 		</Tab>
 		<Tab
 			Title="Maps"
@@ -25,7 +25,7 @@
 		<Tab
 			Title="Documents"
 			Icon ="description_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:Documents}"/>
+			<!--<ShellContent ContentTemplate="{DataTemplate TabChild:Documents}"/>-->
 		</Tab>
 		<Tab
 			Title="Plates"
@@ -40,7 +40,7 @@
 		<Tab
 			Title="ScratchPads"
 			Icon ="edit_note_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>
+			<!--<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>-->
 		</Tab>
 		<Tab
 			Title="More"
