@@ -7,40 +7,45 @@
 	x:Class="AirTote.TabMainPage">
 	
 	<TabBar>
-		<Tab Title="Airports"
-             Icon ="local_airport_black_24dp.png">
+		<Tab
+			Title="Airports"
+			Icon ="local_airport_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:Airport}"/>
 		</Tab>
-		<Tab Title="Maps"
-             Icon ="explore_black_24dp.png">
+		<Tab
+			Title="Maps"
+			Icon ="explore_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:TopPage}"/>
 		</Tab>
-		<Tab Title="Imagery"
-             Icon ="thermostat_black_24dp.png">
+		<Tab
+			Title="Imagery"
+			Icon ="thermostat_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:Imagery}"/>
 		</Tab>
-		<Tab Title="Documents"
-             Icon ="description_black_24dp.png">
+		<Tab
+			Title="Documents"
+			Icon ="description_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:Documents}"/>
 		</Tab>
-		<Tab Title="Plates"
-             Icon ="book_black_24dp.png">
+		<Tab
+			Title="Plates"
+			 Icon ="book_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:aero}"/>
 		</Tab>
-		<Tab Title="Flights"
-             Icon ="flight_takeoff_black_24dp.png">
+		<Tab
+			Title="Flights"
+			Icon ="flight_takeoff_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
 		</Tab>
-		<Tab Title="ScratchPads"
-             Icon ="edit_note_black_24dp.png">
+		<Tab
+			Title="ScratchPads"
+			Icon ="edit_note_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>
 		</Tab>
-		<Tab Title="More"
-             Icon ="read_more_black_24dp.png">
+		<Tab
+			Title="More"
+			Icon ="read_more_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:More}"/>
 		</Tab>
-		<!--<Tab Icon ="settings_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate pages:SettingPage}"/>
-		</Tab>-->
 	</TabBar>
 </Shell>
