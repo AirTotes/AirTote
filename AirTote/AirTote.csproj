@@ -81,8 +81,12 @@
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
 		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
+		<PackageReference Configuration="$(TargetFramework.Contains('-ios'))" Include="Xamarin.Firebase.iOS.Crashlytics" Version="8.10.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<BundleResource Include="Platforms\iOS\GoogleService-Info.plist" Configuration="$(TargetFramework.Contains('-ios'))" />
 	</ItemGroup>
 </Project>
