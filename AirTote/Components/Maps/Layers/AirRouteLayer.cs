@@ -19,6 +19,8 @@ public partial class AirRouteLayer : MemoryLayer
 		Name = "Air Routes";
 		IsMapInfoLayer = true;
 
+		this.Style = null;
+
 		Map.Info += Map_OnInfo;
 
 		Task.Run(LoadLowerATSRoute);
