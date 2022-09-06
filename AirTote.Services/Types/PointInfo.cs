@@ -9,7 +9,6 @@ namespace AirTote.Services.Types;
 public enum PointTypes
 {
 	UNKNOWN,
-	VORTAC,
 	CRP,
 	ORRP,
 	VOR,
