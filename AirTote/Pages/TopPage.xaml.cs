@@ -47,6 +47,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		Map.Map?.Layers.Add(MVA);
 		Map.Map?.Layers.Add(MVAText);
 
+		Map.Map?.Layers.Add(new AirRouteLayer(Map.Map));
+
 		Map.Renderer.WidgetRenders[typeof(InfoWidget)] = new InfoWidgetRenderer();
 		Map.Renderer.WidgetRenders[typeof(ButtonWidget)] = new ButtonWidgetRenderer();
 		Map.Renderer.WidgetRenders[typeof(StatusBarBGWidget)] = new StatusBarBGWidgetRenderer();

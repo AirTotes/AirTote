@@ -20,12 +20,6 @@ public class CustomTextCalloutPin : Pin
 		TextColor = SKColors.Black,
 	};
 
-	public TextPaintOptions TextPaintOptions { get; } = new()
-	{
-		IsAntialias = true,
-		LcdRenderText = true,
-	};
-
 	public CustomTextCalloutPin(MapView view) : base(view)
 	{
 		Callout.RectRadius = 5;
@@ -57,35 +51,5 @@ public class CustomTextCalloutPin : Pin
 	}
 
 	public void SetCalloutText(RichString richText)
-	{
-		if (Callout.Content > 0)
-			BitmapRegistry.Instance.Unregister(Callout.Content);
-		Callout.Content = -1;
-
-		richText.DefaultStyle = DefaultTextStyle;
-
-		var width = richText.MeasuredWidth;
-		if (width * 1.1 < richText.MaxWidth)
-		{
-			width *= 1.1f;
-			richText.MaxWidth = width;
-		}
-
-		MemoryStream memStream = new();
-		using (SKBitmap bitmap = new(
-			(int)width,
-			(int)richText.MeasuredHeight)
-		)
-		using (SKCanvas canvas = new(bitmap))
-		{
-			canvas.Clear();
-			richText.Paint(canvas, TextPaintOptions);
-
-			using var wStream = new SKManagedWStream(memStream);
-			bitmap.Encode(wStream, SKEncodedImageFormat.Png, 100);
-		}
-
-		Callout.Content = BitmapRegistry.Instance.Register(memStream);
-		Callout.Type = CalloutType.Custom;
-	}
+		=> Utils.SetCalloutText(Callout, richText, DefaultTextStyle);
 }
