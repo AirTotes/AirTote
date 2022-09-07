@@ -10,6 +10,8 @@ public interface IScratchPadView
 
 [DependencyProperty<Page>("HostPage")]
 [DependencyProperty<bool>("IsToolPickerVisible", DefaultValue = true)]
+[DependencyProperty<float>("CanvasHeight", DefaultValue = -1)]
+[DependencyProperty<float>("CanvasWidth", DefaultValue = -1)]
 public partial class ScratchPadView : View, IScratchPadView
 {
 	partial void OnHostPageChanging(Page? oldValue, Page? newValue)

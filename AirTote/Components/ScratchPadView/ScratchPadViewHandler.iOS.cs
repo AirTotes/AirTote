@@ -12,4 +12,12 @@ public partial class ScratchPadViewHandler : ViewHandler<ScratchPadView, MauiScr
 
 	public static partial void MapIsToolPickerVisible(ScratchPadViewHandler handler, ScratchPadView scratchPad)
 		=> handler?.PlatformView.UpdateIsToolPickerVisible();
+	public static partial void MapCanvasHeight(ScratchPadViewHandler handler, ScratchPadView scratchPad)
+		=> handler?.PlatformView.UpdateCanvasHeight();
+	public static partial void MapCanvasWidth(ScratchPadViewHandler handler, ScratchPadView scratchPad)
+		=> handler?.PlatformView.UpdateCanvasWidth();
+	public static partial void MapHeight(ScratchPadViewHandler handler, ScratchPadView scratchPad)
+		=> handler?.PlatformView.UpdateCanvasHeight();
+	public static partial void MapWidth(ScratchPadViewHandler handler, ScratchPadView scratchPad)
+		=> handler?.PlatformView.UpdateCanvasWidth();
 }
