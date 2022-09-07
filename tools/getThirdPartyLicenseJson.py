@@ -113,7 +113,7 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
       await result.wait_for_close()
 
     if not result.ok:
-      raise EOFError()
+      raise EOFError(f"HEAD request to {url} failed")
 
     url = result.url.human_repr()
 
@@ -131,7 +131,7 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
     text = ''
     async with session.get(url) as result:
       if not result.ok:
-        raise EOFError()
+        raise EOFError(f'GET Request to {url} failed')
 
       text = await result.text()
 
@@ -153,7 +153,7 @@ async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licen
       text = ''
       async with session.get(url) as result:
         if not result.ok:
-          raise EOFError()
+          raise EOFError(f'GET Request to {url} failed')
 
         text = await result.text()
 

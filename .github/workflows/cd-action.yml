@@ -183,6 +183,13 @@ jobs:
         python -m pip install aiofiles aiohttp
 
     - name: Dump Third Party License Info
+      id: dump-third-party-license-info
+      continue-on-error: true
+      run: |
+        python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+    - name: Dump Third Party License Info (Retry)
+      if: steps.dump-third-party-license-info.outcome == 'failure'
       run: |
         python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
         ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
@@ -202,6 +209,7 @@ jobs:
       run: |
         if [ '${{ github.event_name == 'pull_request' }}' == 'true' -a '${{ !contains(github.event.pull_request.labels.*.name, 'Release Candidate') }}' == 'true' ]; then
           echo "::set-output name=cfg::Debug"
+          plutil -insert NSBluetoothAlwaysUsageDescription -string 'We use this feature to connect to your Debugger' ./AirTote/Platforms/iOS/Info.plist
         else
           echo "::set-output name=cfg::Release"
         fi
