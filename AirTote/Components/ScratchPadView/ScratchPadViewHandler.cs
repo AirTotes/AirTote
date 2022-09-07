@@ -4,7 +4,7 @@ namespace AirTote.Components;
 
 public partial class ScratchPadViewHandler
 {
-	public static IPropertyMapper<ScratchPadView, ScratchPadViewHandler> PropertyMapper = new PropertyMapper<ScratchPadView, ScratchPadViewHandler>(ViewHandler.ViewMapper)
+	static readonly IPropertyMapper<ScratchPadView, ScratchPadViewHandler> PropertyMapper = new PropertyMapper<ScratchPadView, ScratchPadViewHandler>(ViewHandler.ViewMapper)
 	{
 		[nameof(ScratchPadView.IsToolPickerVisible)] = MapIsToolPickerVisible,
 	};
