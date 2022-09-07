@@ -14,8 +14,17 @@ public static class BitmapIdManager
 
 	static public async Task<int> GetSvgFromMauiAssetAsync(string filePath)
 	{
-		if (LockObj.TryGetValue(filePath, out Task<int>? otherTask) && otherTask is not null)
-			return await otherTask;
+		try
+		{
+			if (LockObj.TryGetValue(filePath, out Task<int>? otherTask) && otherTask is not null)
+				return await otherTask;
+		}
+		catch (IndexOutOfRangeException)
+		{
+		}
+		catch (KeyNotFoundException)
+		{
+		}
 
 		if (BitmapRegistry.Instance.TryGetBitmapId(filePath, out int value))
 			return value;
