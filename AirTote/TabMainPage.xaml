@@ -5,7 +5,7 @@
 	xmlns:pages="clr-namespace:AirTote.Pages"
 	xmlns:TabChild="clr-namespace:AirTote.Pages.TabChild"
 	x:Class="AirTote.TabMainPage">
-	
+
 	<TabBar>
 		<Tab
 			Title="Airports"
@@ -29,7 +29,7 @@
 		</Tab>
 		<Tab
 			Title="Plates"
-			 Icon ="book_black_24dp.png">
+			Icon ="book_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:aero}"/>
 		</Tab>
 		<Tab

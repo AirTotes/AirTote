@@ -84,7 +84,6 @@
 		<PackageReference Include="System.Text.Json" Version="6.0.5" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
-	  <ProjectReference Include="..\AirTote.Services\AirTote.Services.csproj" />
+		<ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
 	</ItemGroup>
 </Project>
