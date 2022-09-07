@@ -26,8 +26,6 @@ public class MauiScratchPadView : PKCanvasView
 		this.Tool = new PKInkingTool(PKInkType.Pencil, UIColor.Red);
 		_toolPicker?.AddObserver(this);
 
-		ShowToolPicker(null, null);
-
 		this.MaximumZoomScale = new(4.0);
 		this.MinimumZoomScale = new(0.2);
 
@@ -39,6 +37,8 @@ public class MauiScratchPadView : PKCanvasView
 
 		this.ContentSize = new(canvasHeightWidth, canvasHeightWidth);
 		this.ContentOffset = new(canvasHeightWidth / 2, canvasHeightWidth / 2);
+
+		UpdateIsToolPickerVisible();
 	}
 
 	protected override void Dispose(bool disposing)
@@ -54,31 +54,16 @@ public class MauiScratchPadView : PKCanvasView
 		base.Dispose(disposing);
 	}
 
-	public void UpdateHostPage()
+	public void UpdateIsToolPickerVisible()
 	{
-		if (_hostPage is not null)
+		if (_VirtualView.IsToolPickerVisible)
 		{
-			_hostPage.Appearing -= ShowToolPicker;
-			_hostPage.Disappearing -= HideToolPicker;
+			_toolPicker?.SetVisible(true, this);
+			this.BecomeFirstResponder();
 		}
-
-		_hostPage = _VirtualView.HostPage;
-
-		if (_hostPage is not null)
+		else
 		{
-			_hostPage.Appearing += ShowToolPicker;
-			_hostPage.Disappearing += HideToolPicker;
+			_toolPicker?.SetVisible(false, this);
 		}
-	}
-
-	private void ShowToolPicker(object? sender, EventArgs? e)
-	{
-		_toolPicker?.SetVisible(true, this);
-		this.BecomeFirstResponder();
-	}
-
-	private void HideToolPicker(object? sender, EventArgs? e)
-	{
-		_toolPicker?.SetVisible(false, this);
 	}
 }
