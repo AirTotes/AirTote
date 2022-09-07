@@ -2,12 +2,9 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:c="clr-namespace:AirTote.Components"
 	x:Class="AirTote.Pages.TabChild.ScratchPads"
 	Title="ScratchPads">
-	<VerticalStackLayout>
-		<Label
-			Text="This is just a HARIBOTE page!"
-			VerticalOptions="Center"
-			HorizontalOptions="Center"/>
-	</VerticalStackLayout>
+	<c:ScratchPadView
+		HostPage="{Binding Source={RelativeSource AncestorType={Type Page}, Mode=FindAncestor}, Path=.}"/>
 </ContentPage>
