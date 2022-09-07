@@ -10,6 +10,6 @@ public partial class ScratchPadViewHandler : ViewHandler<ScratchPadView, MauiScr
 
 	protected override void ConnectHandler(MauiScratchPadView platformView) => base.ConnectHandler(platformView);
 
-	public static partial void MapHostPage(ScratchPadViewHandler handler, ScratchPadView video)
-		=> handler?.PlatformView.UpdateHostPage();
+	public static partial void MapIsToolPickerVisible(ScratchPadViewHandler handler, ScratchPadView scratchPad)
+		=> handler?.PlatformView.UpdateIsToolPickerVisible();
 }

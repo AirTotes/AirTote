@@ -9,6 +9,6 @@ public partial class ScratchPadViewHandler : ViewHandler<ScratchPadView, MauiScr
 {
 	protected override MauiScratchPadView CreatePlatformView() => new(Context, VirtualView);
 
-	public static partial void MapHostPage(ScratchPadViewHandler handler, ScratchPadView video)
+	public static partial void MapIsToolPickerVisible(ScratchPadViewHandler handler, ScratchPadView scratchPad)
 		=> throw new NotImplementedException();
 }
