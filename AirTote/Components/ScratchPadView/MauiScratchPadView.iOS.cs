@@ -33,6 +33,8 @@ public class MauiScratchPadView : PKCanvasView
 		this.ContentOffset = new(CanvasWidth * 1.5, CanvasWidth * 1.5);
 
 		UpdateIsToolPickerVisible();
+
+		BackgroundColor = UIColor.SystemGray6;
 	}
 
 	protected override void Dispose(bool disposing)
