@@ -209,6 +209,7 @@ jobs:
       run: |
         if [ '${{ github.event_name == 'pull_request' }}' == 'true' -a '${{ !contains(github.event.pull_request.labels.*.name, 'Release Candidate') }}' == 'true' ]; then
           echo "::set-output name=cfg::Debug"
+          plutil -insert NSBluetoothAlwaysUsageDescription -string 'We use this feature to connect to your Debugger' ./AirTote/Platforms/iOS/Info.plist
         else
           echo "::set-output name=cfg::Release"
         fi
