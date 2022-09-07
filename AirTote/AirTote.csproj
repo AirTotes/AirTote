@@ -82,6 +82,6 @@
 		<PackageReference Include="Csv" Version="2.0.84" />
 	</ItemGroup>
 	<ItemGroup>
-	  <ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
+		<ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
 	</ItemGroup>
 </Project>
