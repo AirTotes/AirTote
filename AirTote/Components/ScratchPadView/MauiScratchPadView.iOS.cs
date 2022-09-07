@@ -27,6 +27,18 @@ public class MauiScratchPadView : PKCanvasView
 		_toolPicker?.AddObserver(this);
 
 		ShowToolPicker(null, null);
+
+		this.MaximumZoomScale = new(4.0);
+		this.MinimumZoomScale = new(0.2);
+
+		double dispHeight = DeviceDisplay.MainDisplayInfo.Height;
+		double dispWidth = DeviceDisplay.MainDisplayInfo.Width;
+		double maxHeightWidth = Math.Max(dispHeight, dispWidth);
+
+		double canvasHeightWidth = maxHeightWidth * 4;
+
+		this.ContentSize = new(canvasHeightWidth, canvasHeightWidth);
+		this.ContentOffset = new(canvasHeightWidth / 2, canvasHeightWidth / 2);
 	}
 
 	protected override void Dispose(bool disposing)
