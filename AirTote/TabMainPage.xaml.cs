@@ -7,7 +7,8 @@ public partial class TabMainPage : Shell
 		InitializeComponent();
 
 #if IOS
-		ScratchPadTab.IsVisible = true;
+		if (new Version(13, 0) <= DeviceInfo.Version)
+			ScratchPadTab.IsVisible = true;
 #endif
 	}
 }

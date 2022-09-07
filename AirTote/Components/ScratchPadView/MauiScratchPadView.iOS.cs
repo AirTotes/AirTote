@@ -16,6 +16,9 @@ public class MauiScratchPadView : PKCanvasView
 
 	public MauiScratchPadView(ScratchPadView virtualView)
 	{
+		if (DeviceInfo.Version < new Version(13, 0))
+			throw new NotSupportedException("PencilKit only supported iOS 12 or above");
+
 		_VirtualView = virtualView;
 
 		_toolPicker = new();
