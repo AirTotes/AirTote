@@ -1,3 +1,5 @@
+using System;
+
 using AirTote.SketchPad.Controls;
 
 using Microsoft.Maui.Controls;
@@ -5,11 +7,9 @@ using Microsoft.Maui.Devices;
 
 using PencilKit;
 
-using System;
-
 using UIKit;
 
-namespace AirTote.PlatformSpecific;
+namespace AirTote.SketchPad.NativeControls;
 
 public class MauiSketchPadView : PKCanvasView
 {
