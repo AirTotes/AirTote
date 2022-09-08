@@ -8,7 +8,7 @@ public partial class TabMainPage : Shell
 
 #if IOS
 		if (new Version(13, 0) <= DeviceInfo.Version)
-			ScratchPadTab.IsVisible = true;
+			SketchPadTab.IsVisible = true;
 #endif
 	}
 }

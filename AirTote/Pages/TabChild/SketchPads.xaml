@@ -2,9 +2,9 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-	xmlns:c="clr-namespace:AirTote.Components"
-	x:Class="AirTote.Pages.TabChild.ScratchPads"
-	Title="ScratchPads">
-	<c:ScratchPadView
+	xmlns:c="clr-namespace:AirTote.SketchPad.Controls;assembly=AirTote.SketchPad.MAUI"
+	x:Class="AirTote.Pages.TabChild.SketchPads"
+	Title="Sketch Pads">
+	<c:SketchPadView
 		HostPage="{Binding Source={RelativeSource AncestorType={Type Page}, Mode=FindAncestor}, Path=.}"/>
 </ContentPage>

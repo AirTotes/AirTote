@@ -1,8 +1,12 @@
 using DependencyPropertyGenerator;
 
-namespace AirTote.Components;
+using Microsoft.Maui.Controls;
 
-public interface IScratchPadView
+using System;
+
+namespace AirTote.SketchPad.Controls;
+
+public interface ISketchPadView
 {
 	Page? HostPage { get; set; }
 	bool IsToolPickerVisible { get; set; }
@@ -12,7 +16,7 @@ public interface IScratchPadView
 [DependencyProperty<bool>("IsToolPickerVisible", DefaultValue = true)]
 [DependencyProperty<float>("CanvasHeight", DefaultValue = -1)]
 [DependencyProperty<float>("CanvasWidth", DefaultValue = -1)]
-public partial class ScratchPadView : View, IScratchPadView
+public partial class SketchPadView : View, ISketchPadView
 {
 	partial void OnHostPageChanging(Page? oldValue, Page? newValue)
 	{
