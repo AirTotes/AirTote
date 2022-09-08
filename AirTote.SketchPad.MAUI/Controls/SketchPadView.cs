@@ -10,12 +10,14 @@ public interface ISketchPadView
 {
 	Page? HostPage { get; set; }
 	bool IsToolPickerVisible { get; set; }
+	double CanvasHeight { get; set; }
+	double CanvasWidth { get; set; }
 }
 
 [DependencyProperty<Page>("HostPage")]
 [DependencyProperty<bool>("IsToolPickerVisible", DefaultValue = true)]
-[DependencyProperty<float>("CanvasHeight", DefaultValue = -1)]
-[DependencyProperty<float>("CanvasWidth", DefaultValue = -1)]
+[DependencyProperty<double>("CanvasHeight", DefaultValue = -1)]
+[DependencyProperty<double>("CanvasWidth", DefaultValue = -1)]
 public partial class SketchPadView : View, ISketchPadView
 {
 	partial void OnHostPageChanging(Page? oldValue, Page? newValue)
