@@ -6,5 +6,6 @@
 	x:Class="AirTote.Pages.TabChild.SketchPads"
 	Title="Sketch Pads">
 	<c:SketchPadView
+		x:Name="sketchPad"
 		HostPage="{Binding Source={RelativeSource AncestorType={Type Page}, Mode=FindAncestor}, Path=.}"/>
 </ContentPage>
