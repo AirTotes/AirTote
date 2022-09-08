@@ -1,8 +1,8 @@
 namespace AirTote.Pages.TabChild;
 
-public partial class ScratchPads : ContentPage
+public partial class SketchPads : ContentPage
 {
-	public ScratchPads()
+	public SketchPads()
 	{
 		InitializeComponent();
 	}

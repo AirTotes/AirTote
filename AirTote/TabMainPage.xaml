@@ -38,11 +38,11 @@
 			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
 		</Tab>
 		<Tab
-			x:Name="ScratchPadTab"
+			x:Name="SketchPadTab"
 			IsVisible="False"
-			Title="ScratchPads"
+			Title="SketchPads"
 			Icon ="edit_note_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>
+			<ShellContent ContentTemplate="{DataTemplate TabChild:SketchPads}"/>
 		</Tab>
 		<Tab
 			Title="More"

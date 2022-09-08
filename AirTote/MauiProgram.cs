@@ -1,4 +1,5 @@
 using AirTote.Components;
+using AirTote.SketchPad;
 
 using CommunityToolkit.Maui;
 
@@ -15,10 +16,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseSkiaSharp()
 			.UseMauiCommunityToolkit()
-			.ConfigureMauiHandlers(h =>
-			{
-				h.AddHandler<ScratchPadView, ScratchPadViewHandler>();
-			})
+			.UseAirToteSketchPad()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("BIZUDGothic-Bold.ttf", "BIZ UDGothic Bold");

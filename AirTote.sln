@@ -7,11 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote", "AirTote\AirTote.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.TwoPaneView.MAUI", "AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj", "{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Tests", "AirTote.Tests\AirTote.Tests.csproj", "{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services", "AirTote.Services\AirTote.Services.csproj", "{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services.Tests", "AirTote.Services.Tests\AirTote.Services.Tests.csproj", "{45C972CB-BFDB-4997-86CE-181B2EB18FB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.SketchPad.MAUI", "AirTote.SketchPad.MAUI\AirTote.SketchPad.MAUI.csproj", "{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,24 +30,12 @@ Global
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
 		{6CFF73AE-AD57-42EF-BC7B-CAD9824B8FBA}.Publish|Any CPU.Build.0 = Debug|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
-		{A93DEB44-ACF2-4930-BEB8-0723EB8BCD48}.Publish|Any CPU.Build.0 = Debug|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
-		{A125ED0A-6C80-4967-AF7F-0BF3CEC57F64}.Publish|Any CPU.Build.0 = Debug|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
-		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E1267E0-DB2E-4FDD-AFC8-1904225F6155}.Publish|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

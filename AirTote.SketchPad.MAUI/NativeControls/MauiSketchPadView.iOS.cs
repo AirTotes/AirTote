@@ -1,20 +1,25 @@
-using AirTote.Components;
+using AirTote.SketchPad.Controls;
+
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Devices;
 
 using PencilKit;
+
+using System;
 
 using UIKit;
 
 namespace AirTote.PlatformSpecific;
 
-public class MauiScratchPadView : PKCanvasView
+public class MauiSketchPadView : PKCanvasView
 {
 	PKToolPicker? _toolPicker;
 
-	ScratchPadView _VirtualView { get; }
+	SketchPadView _VirtualView { get; }
 
 	Page? _hostPage;
 
-	public MauiScratchPadView(ScratchPadView virtualView)
+	public MauiSketchPadView(SketchPadView virtualView)
 	{
 		if (DeviceInfo.Version < new Version(13, 0))
 			throw new NotSupportedException("PencilKit only supported iOS 12 or above");
