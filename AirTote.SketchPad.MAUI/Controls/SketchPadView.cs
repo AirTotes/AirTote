@@ -24,6 +24,8 @@ public interface ISketchPadView
 [DependencyProperty<double>("MinimumZoomScale", DefaultValue = 0.5)]
 public partial class SketchPadView : View, ISketchPadView
 {
+	public IDrawingData? DrawingData { get; internal set; }
+
 	partial void OnHostPageChanging(Page? oldValue, Page? newValue)
 	{
 		if (oldValue is not null)

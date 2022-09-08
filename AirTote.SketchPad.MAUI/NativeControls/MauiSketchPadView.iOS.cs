@@ -46,6 +46,8 @@ public class MauiSketchPadView : PKCanvasView
 		UpdateIsToolPickerVisible();
 
 		BackgroundColor = UIColor.SystemGray6;
+
+		_VirtualView.DrawingData = new DrawingData(this);
 	}
 
 	protected override void Dispose(bool disposing)
