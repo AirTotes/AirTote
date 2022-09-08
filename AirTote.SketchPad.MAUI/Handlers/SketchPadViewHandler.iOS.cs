@@ -21,4 +21,8 @@ public partial class SketchPadViewHandler : ViewHandler<SketchPadView, MauiSketc
 		=> handler?.PlatformView.UpdateCanvasHeight();
 	public static partial void MapWidth(SketchPadViewHandler handler, SketchPadView sketchPad)
 		=> handler?.PlatformView.UpdateCanvasWidth();
+	public static partial void MapMaximumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad)
+		=> handler?.PlatformView.UpdateMaximumZoomScale();
+	public static partial void MapMinimumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad)
+		=> handler?.PlatformView.UpdateMinimumZoomScale();
 }

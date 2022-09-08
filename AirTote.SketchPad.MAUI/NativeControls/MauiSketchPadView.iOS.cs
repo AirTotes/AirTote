@@ -31,11 +31,11 @@ public class MauiSketchPadView : PKCanvasView
 		this.Tool = new PKInkingTool(PKInkType.Pencil, UIColor.Red);
 		_toolPicker?.AddObserver(this);
 
-		this.MaximumZoomScale = new(4.0);
-		this.MinimumZoomScale = new(0.5);
+		UpdateMaximumZoomScale();
+		UpdateMinimumZoomScale();
 
-		this.ContentSize = new(CanvasHeight * 3, CanvasHeight * 3);
-		this.ContentOffset = new(CanvasWidth * 1.5, CanvasWidth * 1.5);
+		UpdateCanvasSize();
+		this.ContentOffset = new(_CanvasWidth * 1.5, _CanvasWidth * 1.5);
 
 		UpdateIsToolPickerVisible();
 
@@ -71,15 +71,22 @@ public class MauiSketchPadView : PKCanvasView
 	double _DefaultHeight => _VirtualView.Height * 2;
 	double _DefaultWidth => _VirtualView.Width * 2;
 
-	double CanvasHeight => _VirtualView.CanvasHeight < 0
+	double _CanvasHeight => _VirtualView.CanvasHeight < 0
 		? (this.ContentSize.Height > _DefaultHeight ? this.ContentSize.Height : _DefaultHeight)
 		: _VirtualView.CanvasHeight;
-	double CanvasWidth => _VirtualView.CanvasWidth < 0
+	double _CanvasWidth => _VirtualView.CanvasWidth < 0
 		? (this.ContentSize.Width > _DefaultWidth ? this.ContentSize.Width : _DefaultWidth)
 		: _VirtualView.CanvasWidth;
 
 	public void UpdateCanvasHeight()
-		=> this.ContentSize = new(this.ContentSize.Width, CanvasHeight);
+		=> this.ContentSize = new(this.ContentSize.Width, _CanvasHeight);
 	public void UpdateCanvasWidth()
-		=> this.ContentSize = new(CanvasWidth, this.ContentSize.Height);
+		=> this.ContentSize = new(_CanvasWidth, this.ContentSize.Height);
+	public void UpdateCanvasSize()
+		=> this.ContentSize = new(_CanvasWidth, _CanvasHeight);
+
+	public void UpdateMaximumZoomScale()
+		=> this.MaximumZoomScale = new(_VirtualView.MaximumZoomScale);
+	public void UpdateMinimumZoomScale()
+		=> this.MinimumZoomScale = new(_VirtualView.MinimumZoomScale);
 }

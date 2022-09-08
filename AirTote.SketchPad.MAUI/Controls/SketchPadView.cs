@@ -12,12 +12,16 @@ public interface ISketchPadView
 	bool IsToolPickerVisible { get; set; }
 	double CanvasHeight { get; set; }
 	double CanvasWidth { get; set; }
+	double MaximumZoomScale { get; set; }
+	double MinimumZoomScale { get; set; }
 }
 
 [DependencyProperty<Page>("HostPage")]
 [DependencyProperty<bool>("IsToolPickerVisible", DefaultValue = true)]
 [DependencyProperty<double>("CanvasHeight", DefaultValue = -1)]
 [DependencyProperty<double>("CanvasWidth", DefaultValue = -1)]
+[DependencyProperty<double>("MaximumZoomScale", DefaultValue = 4.0)]
+[DependencyProperty<double>("MinimumZoomScale", DefaultValue = 0.5)]
 public partial class SketchPadView : View, ISketchPadView
 {
 	partial void OnHostPageChanging(Page? oldValue, Page? newValue)

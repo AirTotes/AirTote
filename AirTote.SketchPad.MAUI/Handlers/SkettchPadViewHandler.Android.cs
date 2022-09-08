@@ -21,4 +21,8 @@ public partial class SketchPadViewHandler : ViewHandler<SketchPadView, MauiSketc
 		=> throw new NotImplementedException();
 	public static partial void MapWidth(SketchPadViewHandler handler, SketchPadView sketchPad)
 		=> throw new NotImplementedException();
+	public static partial void MapMaximumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad)
+		=> throw new NotImplementedException();
+	public static partial void MapMinimumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad)
+		=> throw new NotImplementedException();
 }
