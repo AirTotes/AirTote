@@ -26,7 +26,13 @@ public class MauiSketchPadView : PKCanvasView
 
 		_VirtualView = virtualView;
 
-		_toolPicker = new();
+		if (DeviceInfo.Version < new Version(14, 0))
+		{
+			Console.WriteLine("iOS 13.0 Detected and Launching ToolPicker...");
+			_toolPicker = PKToolPicker.GetSharedToolPicker(Window);
+		}
+		else
+			_toolPicker = new();
 
 		this.Tool = new PKInkingTool(PKInkType.Pencil, UIColor.Red);
 		_toolPicker?.AddObserver(this);
