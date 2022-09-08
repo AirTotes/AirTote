@@ -26,4 +26,10 @@ public partial class SketchPadViewHandler
 	public static partial void MapWidth(SketchPadViewHandler handler, SketchPadView sketchPad);
 	public static partial void MapMaximumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad);
 	public static partial void MapMinimumZoomScale(SketchPadViewHandler handler, SketchPadView sketchPad);
+
+	protected override void DisconnectHandler(MauiSketchPadView platformView)
+	{
+		platformView.Dispose();
+		base.DisconnectHandler(platformView);
+	}
 }
