@@ -9,11 +9,8 @@ using AngleSharp.Io;
 
 namespace AirTote.Services
 {
-	internal class AISJapan : IDisposable
+	public class AISJapan : IDisposable
 	{
-		public const string SEC_STORAGE_KEY_USER = "AIS_JAPAN_USERNAME";
-		public const string SEC_STORAGE_KEY_PASS = "AIS_JAPAN_PASSWORD";
-
 		public bool IsOutdated { get; private set; }
 
 		// AngleSharp login ref : https://neue.cc/2021/12/04.html
@@ -26,25 +23,8 @@ namespace AirTote.Services
 		private string ID { get; }
 		private string Password { get; }
 
-		static public Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
-			=> FromSecureStorageIfNeededAsync(secureStorage, null);
-
-		static public async Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage, AISJapan? aisJapan)
-		{
-			string? id = await secureStorage.GetAsync(SEC_STORAGE_KEY_USER);
-			string? pass = await secureStorage.GetAsync(SEC_STORAGE_KEY_PASS);
-
-			if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(pass))
-				throw new InvalidOperationException("ID or Password was not in the provided SecureStorage");
-
-			if (aisJapan is not null && id == aisJapan.ID && pass == aisJapan.Password)
-				return aisJapan;
-
-			return new(id, pass);
-		}
-
-		public Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage)
-			=> AISJapan.FromSecureStorageIfNeededAsync(secureStorage, this);
+		public bool IsReLoginNeeded(string id, string password)
+			=> ID != id || Password != password;
 
 		public AISJapan(in string id, in string password)
 		{
@@ -140,5 +120,8 @@ namespace AirTote.Services
 			var result = await Ctx.OpenAsync(url);
 			return result.ToHtml();
 		}
+
+		public Task<IDocument> GetPageDocument(string url)
+			=> Ctx.OpenAsync(url);
 	}
 }
