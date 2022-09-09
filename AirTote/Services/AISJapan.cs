@@ -21,9 +21,15 @@ namespace AirTote.Services
 		IBrowsingContext Ctx { get; } = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithDefaultCookies());
 		Task<IDocument> WhatsNew { get; }
 
-		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/Login.do");
+		static Url LoginPageUrl { get; } = new("https://aisjapan.mlit.go.jp/LoginAction.do");
 
-		static public async Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
+		private string ID { get; }
+		private string Password { get; }
+
+		static public Task<AISJapan> FromSecureStorageAsync(ISecureStorage secureStorage)
+			=> FromSecureStorageIfNeededAsync(secureStorage, null);
+
+		static public async Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage, AISJapan? aisJapan)
 		{
 			string? id = await secureStorage.GetAsync(SEC_STORAGE_KEY_USER);
 			string? pass = await secureStorage.GetAsync(SEC_STORAGE_KEY_PASS);
@@ -31,11 +37,20 @@ namespace AirTote.Services
 			if (string.IsNullOrWhiteSpace(id) || string.IsNullOrWhiteSpace(pass))
 				throw new InvalidOperationException("ID or Password was not in the provided SecureStorage");
 
+			if (aisJapan is not null && id == aisJapan.ID && pass == aisJapan.Password)
+				return aisJapan;
+
 			return new(id, pass);
 		}
 
+		public Task<AISJapan> FromSecureStorageIfNeededAsync(ISecureStorage secureStorage)
+			=> AISJapan.FromSecureStorageIfNeededAsync(secureStorage, this);
+
 		public AISJapan(in string id, in string password)
 		{
+			ID = id;
+			Password = password;
+
 			WhatsNew = Ctx.OpenAsync(
 				DocumentRequest.PostAsUrlencoded(
 					LoginPageUrl,
@@ -74,8 +89,9 @@ namespace AirTote.Services
 		public async Task<string?> GetSignInError()
 		{
 			var whatsnew = await WhatsNew;
-			if (whatsnew.Url != LoginPageUrl.ToString())
-				return null;
+
+			if (whatsnew.StatusCode != System.Net.HttpStatusCode.OK)
+				return $"StatusCode was {whatsnew.StatusCode} (Sign in failed)";
 
 			List<string> list = new();
 

@@ -10,13 +10,17 @@ on:
     types:
       - opened
       - synchronize
+      - labeled
       - unlabeled
   workflow_dispatch:
+
+concurrency:
+  cd-action-${{ github.ref }}
 
 env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
-  THIRD_PARTY_LICENSE_LIST_NAME: third_party_license_list
+  THIRD_PARTY_LICENSE_LIST_NAME: license_list
   TARGET_FRAMEWORK: net6.0-ios15.4
   TARGET_RUNTIME: ios-arm64
   OUTPUT_DIR: ./out
@@ -28,8 +32,9 @@ jobs:
       !startsWith(github.ref, 'refs/tags/bundle')
       && (
         github.event_name != 'pull_request'
-        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action != 'unlabeled' && github.event.action != 'labeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+        || (github.event.action == 'labeled' && github.event.label.name == 'Release Candidate')
       )
       && !cancelled()
 
@@ -97,8 +102,9 @@ jobs:
       )
       && (
         github.event_name != 'pull_request'
-        || (github.event.action != 'unlabeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
+        || (github.event.action != 'unlabeled' && github.event.action != 'labeled' && !contains(github.event.pull_request.labels.*.name, 'WIP'))
         || (github.event.action == 'unlabeled' && github.event.label.name == 'WIP')
+        || (github.event.action == 'labeled' && github.event.label.name == 'Release Candidate')
       )
       && !cancelled()
 
@@ -177,6 +183,13 @@ jobs:
         python -m pip install aiofiles aiohttp
 
     - name: Dump Third Party License Info
+      id: dump-third-party-license-info
+      continue-on-error: true
+      run: |
+        python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
+    - name: Dump Third Party License Info (Retry)
+      if: steps.dump-third-party-license-info.outcome == 'failure'
       run: |
         python ./tools/getThirdPartyLicenseJson.py ${{ env.TARGET_FRAMEWORK }} ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
         ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
@@ -194,8 +207,9 @@ jobs:
     - name: Check Configuration
       id: chk-cfg
       run: |
-        if [ '${{ github.event_name == 'pull_request' }}' == 'true' ]; then
+        if [ '${{ github.event_name == 'pull_request' }}' == 'true' -a '${{ !contains(github.event.pull_request.labels.*.name, 'Release Candidate') }}' == 'true' ]; then
           echo "::set-output name=cfg::Debug"
+          plutil -insert NSBluetoothAlwaysUsageDescription -string 'We use this feature to connect to your Debugger' ./AirTote/Platforms/iOS/Info.plist
         else
           echo "::set-output name=cfg::Release"
         fi
@@ -292,7 +306,10 @@ jobs:
     if: |
       !(
         github.event_name == 'pull_request'
-        && contains(github.event.pull_request.labels.*.name, 'WIP')
+        && (
+          contains(github.event.pull_request.labels.*.name, 'WIP')
+          || (github.event.action == 'labeled' && github.event.label.name != 'Release Candidate')
+        )
       )
 
     runs-on: ubuntu-latest

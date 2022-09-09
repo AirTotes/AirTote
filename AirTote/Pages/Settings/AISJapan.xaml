@@ -2,6 +2,7 @@
 <ContentPage
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:c="clr-namespace:AirTote.Components"
 	xmlns:ViewModels="clr-namespace:AirTote.ViewModels.SettingPages"
 	x:DataType="ViewModels:AISJapanViewModel"
 	x:Class="AirTote.Pages.Settings.AISJapan"
@@ -9,7 +10,7 @@
 	<ContentPage.Resources>
 		<Thickness x:Key="CellMargin">4</Thickness>
 	</ContentPage.Resources>
-	<TableView
+	<c:TableView
 		HasUnevenRows="True"
 		Intent="Data">
 		<TableRoot>
@@ -117,5 +118,5 @@
 				</ViewCell>
 			</TableSection>
 		</TableRoot>
-	</TableView>
+	</c:TableView>
 </ContentPage>

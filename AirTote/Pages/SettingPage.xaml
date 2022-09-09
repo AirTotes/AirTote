@@ -5,6 +5,7 @@
 	xmlns:ViewModels="clr-namespace:AirTote.ViewModels"
 	xmlns:tpv="clr-namespace:AirTote.TwoPaneView;assembly=AirTote.TwoPaneView.MAUI"
 	xmlns:p="clr-namespace:AirTote.Pages.Settings"
+	xmlns:c="clr-namespace:AirTote.Components"
 	x:DataType="ViewModels:SettingPageViewModel"
 	Title="{Binding Title}"
 	x:Class="AirTote.Pages.SettingPage">
@@ -13,7 +14,7 @@
 		LeftPaneWidth="300"
 		RightPaneWidth="*"
 		MinimumTwoPaneWidth="500">
-		<TableView
+		<c:TableView
 			Intent="Settings">
 			<TableRoot>
 				<TableSection
@@ -22,10 +23,15 @@
 						Text="AIS Japan"
 						Command="{Binding ChangeRightPaneViewCommand}"
 						CommandParameter="{Type p:AISJapan}"/>
+					<TextCell
+						Text="Top Page"
+						Detail="Map General Settings"
+						Command="{Binding ChangeRightPaneViewCommand}"
+						CommandParameter="{Type p:TopPage}"/>
 				</TableSection>
 
 			</TableRoot>
 
-		</TableView>
+		</c:TableView>
 	</tpv:TwoPaneView>
 </ContentPage>

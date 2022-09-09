@@ -7,7 +7,8 @@ namespace AirTote.Pages;
 public partial class ThirdPartyLicenses
 {
 	public const string LICENSE_INFO_DIR = "ThirdPartyLicenses";
-	public const string THIRD_PARTY_LICENSE_LIST_FILE_NAME = "third_party_license_list.json";
+	public const string ADDITIONAL_LICENSES_DIR = "AdditionalLicenses";
+	public const string LICENSE_LIST_FILE_NAME = "license_list.json";
 
 	public ThirdPartyLicenses()
 	{
@@ -15,7 +16,7 @@ public partial class ThirdPartyLicenses
 
 		TwoPaneView.RightPaneContent = new Label()
 		{
-			Text = "Select package to check license",
+			Text = "Select name to check license",
 			HorizontalOptions = LayoutOptions.Center,
 			VerticalOptions = LayoutOptions.Center
 		};
@@ -26,7 +27,8 @@ public partial class ThirdPartyLicenses
 	async Task Init()
 	{
 		List<LicenseJsonSchema> licenseList = new();
-		await LoadJson(Path.Combine(LICENSE_INFO_DIR, THIRD_PARTY_LICENSE_LIST_FILE_NAME), licenseList);
+		await LoadJson(Path.Combine(LICENSE_INFO_DIR, LICENSE_LIST_FILE_NAME), licenseList);
+		await LoadJson(Path.Combine(ADDITIONAL_LICENSES_DIR, LICENSE_LIST_FILE_NAME), licenseList);
 
 		licenseList.Sort((x, y) => string.Compare(x.id, y.id));
 
@@ -36,15 +38,35 @@ public partial class ThirdPartyLicenses
 	static async Task LoadJson(string path, List<LicenseJsonSchema> licenses)
 	{
 		object? obj;
-		using (var stream = await FileSystem.OpenAppPackageFileAsync(path))
+		try
 		{
-			if (stream is null)
-				return;
-			obj = await System.Text.Json.JsonSerializer.DeserializeAsync(stream, typeof(LicenseJsonSchema[]));
+			using (var stream = await FileSystem.OpenAppPackageFileAsync(path))
+			{
+				if (stream is null)
+					return;
+				obj = await System.Text.Json.JsonSerializer.DeserializeAsync(stream, typeof(LicenseJsonSchema[]));
+			}
+		}
+		catch (DirectoryNotFoundException)
+		{
+			return;
+		}
+		catch (FileNotFoundException)
+		{
+			return;
+		}
+		catch (Exception ex)
+		{
+			AirTote.Services.MsgBox.DisplayAlert("Load / Parse License Json Error", $"Cannot load file ({path})\n{ex}", "OK");
+			return;
 		}
 
 		if (obj is not LicenseJsonSchema[] arr)
 			return;
+
+		if (System.IO.Path.GetDirectoryName(path) is string baseDir)
+			foreach (LicenseJsonSchema data in arr)
+				data.BaseDirectory = baseDir;
 
 		licenses.AddRange(arr);
 	}
