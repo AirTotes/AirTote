@@ -164,7 +164,7 @@ SNOWTAM滑走路面状態,,SNOWTAM滑走路面状態,https://ok0358.com/snowtam/
 PM2.5情報,,PM2.5拡散予想,https://www.tono2.net/skew/,false
 PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 黄砂解析予測図,,大気中の黄砂の総量,https://www.data.jma.go.jp/gmd/env/kosa/fcst/fcst-c_jp.html,true
-ライブカメラ,,ライブカメラ,http://weather.jal.co.jp/livecam/index.html,false
+ライブカメラ,,各地のライブカメラ,http://weather.jal.co.jp/livecam/index.html,false
 ライブカメラ,RJCW,稚内市内,http://www.stv.jp/webcam/wakkanai/index.html,false
 ライブカメラ,RJEC,旭川市内,http://www.stv.jp/webcam/asahikawa/index.html,false
 ライブカメラ,RJCH,函館山,http://www.stv.jp/webcam/asahikawa/index.html,false
