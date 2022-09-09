@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+	xmlns:map="clr-namespace:AirTote.Components.Maps"
+	xmlns:aerodromeinfo="clr-namespace:AirTote.ViewModels.AerodromeInfo"
+	x:DataType="aerodromeinfo:AerodromeViewModel"
+	x:Class="AirTote.Pages.AerodromeInfo.Aerodrome"
+	Title="{Binding Title}">
+	<ScrollView>
+		<VerticalStackLayout>
+			<map:AirportMap
+				x:Name="APMap"
+				HorizontalOptions="FillAndExpand"
+				HeightRequest="400"/>
+			<FlexLayout
+				Direction="Row"
+				Wrap="Wrap">
+				<VerticalStackLayout
+					FlexLayout.AlignSelf="Center">
+					<Label
+						Text="{Binding AerodromeName, StringFormat='Name: {0}'}" />
+					<Label
+						Text="{Binding IcaoCode, StringFormat='ICAO: {0}'}" />
+					<Label
+						Text="{Binding IataCode, StringFormat='IATA: {0}'}" />
+					<Label
+						Text="{Binding Coordinate, StringFormat='Coordinate: {0}'}"/>
+				</VerticalStackLayout>
+			</FlexLayout>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
