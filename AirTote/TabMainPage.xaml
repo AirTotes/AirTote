@@ -5,7 +5,7 @@
 	xmlns:pages="clr-namespace:AirTote.Pages"
 	xmlns:TabChild="clr-namespace:AirTote.Pages.TabChild"
 	x:Class="AirTote.TabMainPage">
-	
+
 	<TabBar>
 		<Tab
 			Title="Airports"
@@ -29,7 +29,7 @@
 		</Tab>
 		<Tab
 			Title="Plates"
-			 Icon ="book_black_24dp.png">
+			Icon ="book_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:aero}"/>
 		</Tab>
 		<Tab
@@ -38,9 +38,11 @@
 			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
 		</Tab>
 		<Tab
-			Title="ScratchPads"
+			x:Name="SketchPadTab"
+			IsVisible="False"
+			Title="SketchPads"
 			Icon ="edit_note_black_24dp.png">
-			<!--<ShellContent ContentTemplate="{DataTemplate TabChild:ScratchPads}"/>-->
+			<ShellContent ContentTemplate="{DataTemplate TabChild:SketchPads}"/>
 		</Tab>
 		<Tab
 			Title="More"

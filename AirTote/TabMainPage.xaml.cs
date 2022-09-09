@@ -21,6 +21,11 @@ public partial class TabMainPage : Shell
 	public TabMainPage()
 	{
 		InitializeComponent();
+
+#if IOS
+		if (new Version(13, 0) <= DeviceInfo.Version)
+			SketchPadTab.IsVisible = true;
+#endif
 	}
 
 	public static new TabMainPage? Current => Shell.Current as TabMainPage;
