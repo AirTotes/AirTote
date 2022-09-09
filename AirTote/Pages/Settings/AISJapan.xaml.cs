@@ -5,8 +5,8 @@ namespace AirTote.Pages.Settings;
 
 public partial class AISJapan : ContentPage
 {
-	public const string SEC_STORAGE_KEY_USER = AirTote.Services.AISJapan.SEC_STORAGE_KEY_USER;
-	public const string SEC_STORAGE_KEY_PASS = AirTote.Services.AISJapan.SEC_STORAGE_KEY_PASS;
+	public const string SEC_STORAGE_KEY_USER = AirTote.AISJapanUtils.SEC_STORAGE_KEY_USER;
+	public const string SEC_STORAGE_KEY_PASS = AirTote.AISJapanUtils.SEC_STORAGE_KEY_PASS;
 	public const string AIS_JAPAN_CREATE_ACCOUNT = "https://aisjapan.mlit.go.jp/ShowAccount.do";
 
 	AISJapanViewModel ViewModel { get; } = new();

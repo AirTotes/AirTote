@@ -29,9 +29,8 @@ public static class BitmapIdManager
 		if (BitmapRegistry.Instance.TryGetBitmapId(filePath, out int value))
 			return value;
 
-		LockObj[filePath] = GenerateSvgBitmapIdFromMauiAssetAsync(filePath);
-
-		Task<int> task = LockObj[filePath];
+		Task<int> task = GenerateSvgBitmapIdFromMauiAssetAsync(filePath);
+		LockObj[filePath] = task;
 		int id = await task;
 		_ = LockObj.TryRemove(filePath, out var _);
 

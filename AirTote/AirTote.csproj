@@ -87,6 +87,7 @@
 		<ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
 		<ProjectReference Include="..\AirTote.SketchPad.MAUI\AirTote.SketchPad.MAUI.csproj" />
 		<ProjectReference Include="..\AirTote.Services\AirTote.Services.csproj" />
+	  <ProjectReference Include="..\AirTote.AISJapanParser\AirTote.AISJapanParser.csproj" />
 	</ItemGroup>
 	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
 		<Compile Remove="**\**\*.Android.cs" />

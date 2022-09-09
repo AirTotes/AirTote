@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services.Tests", "A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Tests", "AirTote.Tests\AirTote.Tests.csproj", "{02CD0757-7D0E-4CD3-99FF-07FB7AD5B382}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.AISJapanParser", "AirTote.AISJapanParser\AirTote.AISJapanParser.csproj", "{49D3D80F-F265-4182-AFA8-BF2F569D9D61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.AISJapanParser.Tests", "AirTote.AISJapanParser.Tests\AirTote.AISJapanParser.Tests.csproj", "{0231AB6F-4A44-48A8-B255-B129C1C303B8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

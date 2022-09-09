@@ -173,7 +173,12 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		Task.Run(StartGPS);
 
 		Map.MyLocationLayer.Clicked += (_, _) => Map.MyLocationFollow = true;
+
+		Map.AirportSelected += Map_AirportSelected;
 	}
+
+	private async void Map_AirportSelected(object? sender, AirportSelectedEventArgs e)
+		=> await Navigation.PushAsync(new AerodromeInfo.Aerodrome(e.SelectedAP));
 
 	private Task OnMenuButtonClicked()
 		=> this.ShowPopupAsync(new FlyoutMenuPopup());
