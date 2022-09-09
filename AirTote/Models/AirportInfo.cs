@@ -3,7 +3,7 @@ using System.IO;
 using System.Reflection;
 using System.Threading.Tasks;
 
-using Newtonsoft.Json;
+using System.Text.Json;
 
 namespace AirTote.Models
 {
@@ -23,19 +23,15 @@ namespace AirTote.Models
 			if (AirportInfoDic.Keys.Count > 0)
 				return AirportInfoDic;
 
-			var asm = IntrospectionExtensions.GetTypeInfo(typeof(AirportInfo)).Assembly;
-
 			using var stream = await FileSystem.OpenAppPackageFileAsync("airport_list.json");
 			if (stream is null)
-				return new();
-			using StreamReader reader = new(stream);
-
-			string json = await reader.ReadToEndAsync();
-			var json_obj = JsonConvert.DeserializeObject<APInfo[]>(json);
-			if (json_obj is null)
 				return AirportInfoDic;
 
-			foreach (var d in json_obj)
+			var json_obj = await JsonSerializer.DeserializeAsync(stream, typeof(APInfo[]));
+			if (json_obj is not APInfo[] arr)
+				return AirportInfoDic;
+
+			foreach (var d in arr)
 				AirportInfoDic[d.icao] = d;
 
 			return AirportInfoDic;
