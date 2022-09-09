@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services", "AirTote
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.Services.Tests", "AirTote.Services.Tests\AirTote.Services.Tests.csproj", "{45C972CB-BFDB-4997-86CE-181B2EB18FB4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTote.AISJapanParser", "AirTote.AISJapanParser\AirTote.AISJapanParser.csproj", "{49D3D80F-F265-4182-AFA8-BF2F569D9D61}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -52,6 +54,12 @@ Global
 		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
 		{45C972CB-BFDB-4997-86CE-181B2EB18FB4}.Publish|Any CPU.Build.0 = Debug|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Publish|Any CPU.ActiveCfg = Debug|Any CPU
+		{49D3D80F-F265-4182-AFA8-BF2F569D9D61}.Publish|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
