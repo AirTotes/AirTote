@@ -120,5 +120,8 @@ namespace AirTote.Services
 			var result = await Ctx.OpenAsync(url);
 			return result.ToHtml();
 		}
+
+		public Task<IDocument> GetPageDocument(string url)
+			=> Ctx.OpenAsync(url);
 	}
 }
