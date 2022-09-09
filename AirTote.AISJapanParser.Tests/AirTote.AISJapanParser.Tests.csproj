@@ -17,4 +17,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\AirTote.AISJapanParser\AirTote.AISJapanParser.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Update="TestCaseFiles\DomesticAIP.html">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	</ItemGroup>
 </Project>
