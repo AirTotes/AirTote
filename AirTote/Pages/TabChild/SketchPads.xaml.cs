@@ -7,8 +7,8 @@ public partial class SketchPads : ContentPage
 	{
 		InitializeComponent();
 
-		this.Appearing += SketchPads_Appearing;
-		this.Disappearing += SketchPads_Disappearing;
+		//this.Appearing += SketchPads_Appearing;
+		//this.Disappearing += SketchPads_Disappearing;
 	}
 
 	private void SketchPads_Disappearing(object? sender, EventArgs e)
