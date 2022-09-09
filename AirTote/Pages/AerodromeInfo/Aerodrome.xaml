@@ -4,29 +4,75 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:map="clr-namespace:AirTote.Components.Maps"
 	xmlns:aerodromeinfo="clr-namespace:AirTote.ViewModels.AerodromeInfo"
+	xmlns:eaip="clr-namespace:AirTote.AISJapanParser.EAIP;assembly=AirTote.AISJapanParser"
 	x:DataType="aerodromeinfo:AerodromeViewModel"
 	x:Class="AirTote.Pages.AerodromeInfo.Aerodrome"
 	Title="{Binding Title}">
 	<ScrollView>
 		<VerticalStackLayout>
-			<map:AirportMap
-				x:Name="APMap"
-				HorizontalOptions="FillAndExpand"
-				HeightRequest="400"/>
+			<Frame
+				Margin="4"
+				HorizontalOptions="Fill"
+				BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+				BorderColor="{AppThemeBinding Light={StaticResource DarkBackgroundColor}, Dark={StaticResource LightBackgroundColor}}">
+				<map:AirportMap
+					x:Name="APMap"
+					HorizontalOptions="FillAndExpand"
+					HeightRequest="400"/>
+			</Frame>
+
 			<FlexLayout
+				Margin="4"
 				Direction="Row"
 				Wrap="Wrap">
-				<VerticalStackLayout
-					FlexLayout.AlignSelf="Center">
-					<Label
-						Text="{Binding AerodromeName, StringFormat='Name: {0}'}" />
-					<Label
-						Text="{Binding IcaoCode, StringFormat='ICAO: {0}'}" />
-					<Label
-						Text="{Binding IataCode, StringFormat='IATA: {0}'}" />
-					<Label
-						Text="{Binding Coordinate, StringFormat='Coordinate: {0}'}"/>
-				</VerticalStackLayout>
+
+				<Frame
+					Margin="4"
+					FlexLayout.AlignSelf="Start"
+					BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+					BorderColor="{AppThemeBinding Light={StaticResource DarkBackgroundColor}, Dark={StaticResource LightBackgroundColor}}">
+					<VerticalStackLayout>
+						<Label
+							Text="{Binding AerodromeName, StringFormat='Name: {0}'}" />
+						<Label
+							Text="{Binding IcaoCode, StringFormat='ICAO: {0}'}" />
+						<Label
+							Text="{Binding IataCode, StringFormat='IATA: {0}'}" />
+						<Label
+							Text="{Binding Coordinate, StringFormat='Coordinate: {0}'}"/>
+					</VerticalStackLayout>
+				</Frame>
+
+				<Frame
+					Margin="4"
+					FlexLayout.AlignSelf="End"
+					HorizontalOptions="End"
+					BackgroundColor="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+					BorderColor="{AppThemeBinding Light={StaticResource DarkBackgroundColor}, Dark={StaticResource LightBackgroundColor}}">
+					<VerticalStackLayout>
+						<Label
+							Text="AIP Contents"
+							HorizontalOptions="Center"
+							FontSize="Subtitle"/>
+
+						<ListView
+							Margin="8"
+							MinimumHeightRequest="400"
+							VerticalScrollBarVisibility="Always"
+							SelectionMode="None"
+							ItemsSource="{Binding AIPItems}"
+							ItemTapped="ListView_ItemTapped">
+							<ListView.ItemTemplate>
+								<DataTemplate
+									x:DataType="eaip:MenuItem_Aerodrome">
+									<TextCell
+										Text="{Binding Title}">
+									</TextCell>
+								</DataTemplate>
+							</ListView.ItemTemplate>
+						</ListView>
+					</VerticalStackLayout>
+				</Frame>
 			</FlexLayout>
 		</VerticalStackLayout>
 	</ScrollView>
