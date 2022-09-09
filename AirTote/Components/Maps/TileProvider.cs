@@ -71,4 +71,18 @@ public static class TileProvider
 
 		return layer;
 	}
+
+	public static TileLayer Create_JMA_NOWC_Layer(DateTime UTCDateTime)
+	{
+		DateTime dateTime = new(UTCDateTime.Year, UTCDateTime.Month, UTCDateTime.Day, UTCDateTime.Hour, UTCDateTime.Minute - (UTCDateTime.Minute % 5), 0, DateTimeKind.Utc);
+
+		TileLayer layer = CreateLayer(new MapTileSourceInfo(
+				@$"https://www.jma.go.jp/bosai/jmatile/data/nowc/{dateTime:yyyyMMddhhmmss}/none/{dateTime:yyyyMMddhhmmss}/surf/hrpns/" + "{z}/{x}/{y}.png",
+				"雨雲の動き (高解像度降水ナウキャスト)",
+				new("出典: 気象庁 ナウキャスト", "https://www.jma.go.jp/bosai/nowc/")
+			));
+		layer.IsMapInfoLayer = true;
+
+		return layer;
+	}
 }

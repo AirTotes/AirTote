@@ -39,6 +39,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		ResetCalloutText();
 
+		Map.Map?.Layers.Add(TileProvider.Create_JMA_NOWC_Layer(DateTime.UtcNow));
 		Map.Map?.Layers.Add(MVA);
 		Map.Map?.Layers.Add(MVAText);
 
