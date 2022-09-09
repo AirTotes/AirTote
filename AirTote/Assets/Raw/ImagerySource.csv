@@ -160,7 +160,7 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 アジア乱気流マップ,,(24h)FL350-400,,false
 アジア乱気流マップ,,(24h)FL400-450,,false
 大気追跡風,,大気追跡風,https://www.data.jma.go.jp/mscweb/en/product/aswind_fn.php,true
-SNOWTAM滑走路面状態,,SNOWTAM滑走路面状態,https://ok0358.com/snowtam/index.php,false
+空港の情報,SNOWTAM,滑走路面状態,https://ok0358.com/snowtam/index.php,false
 PM2.5情報,,PM2.5拡散予想,https://www.tono2.net/skew/,false
 PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 黄砂解析予測図,,大気中の黄砂の総量,https://www.data.jma.go.jp/gmd/env/kosa/fcst/fcst-c_jp.html,true
