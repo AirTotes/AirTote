@@ -13,18 +13,25 @@ public partial class SketchPads : ContentPage
 
 	private void SketchPads_Disappearing(object? sender, EventArgs e)
 	{
+		Console.WriteLine($"~~~~~~~~~ {nameof(SketchPads_Disappearing)} START ~~~~~~~~~~~~~~");
+		Console.WriteLine($"~~~~~~~~~ => {filePath}");
 		if (sketchPad.DrawingData is null)
 			return;
 
 		try
 		{
 			Directory.CreateDirectory(filePath);
-			sketchPad.DrawingData.SaveToFile(filePath);
+			File.WriteAllBytes(filePath, sketchPad.DrawingData.GetBytes());
+
+			Console.WriteLine($"~~~~~~~~~ {nameof(SketchPads_Disappearing)} TASK COMPLETE ~~~~~~~~~~~~~~");
 		}
 		catch (Exception ex)
 		{
 			Console.WriteLine(ex);
+
+			AirTote.Services.MsgBox.DisplayAlert("Canvas Save Failed", ex.ToString(), "OK");
 		}
+		Console.WriteLine($"~~~~~~~~~ {nameof(SketchPads_Disappearing)} FINISH ~~~~~~~~~~~~~~");
 	}
 
 	private void SketchPads_Appearing(object? sender, EventArgs e)
@@ -32,7 +39,8 @@ public partial class SketchPads : ContentPage
 		if (!File.Exists(filePath) || sketchPad.DrawingData is null)
 			return;
 
-		sketchPad.DrawingData.FromFile(filePath);
+		var bytes = File.ReadAllBytes(filePath);
+		sketchPad.DrawingData.FromBytes(bytes);
 	}
 
 }
