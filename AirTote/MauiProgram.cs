@@ -1,3 +1,6 @@
+using AirTote.Components;
+using AirTote.SketchPad;
+
 using CommunityToolkit.Maui;
 
 using SkiaSharp.Views.Maui.Controls.Hosting;
@@ -13,6 +16,7 @@ public static class MauiProgram
 			.UseMauiApp<App>()
 			.UseSkiaSharp()
 			.UseMauiCommunityToolkit()
+			.UseAirToteSketchPad()
 			.ConfigureFonts(fonts =>
 			{
 				fonts.AddFont("BIZUDGothic-Bold.ttf", "BIZ UDGothic Bold");
