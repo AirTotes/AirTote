@@ -10,7 +10,11 @@ using AngleSharp.Html.Parser;
 
 namespace AirTote.AISJapanParser.EAIP;
 
-public record AIPDateInfo(DateOnly PublicationDate, DateOnly EffectuveDate, bool IsAIRAC = false);
+public record AIPDateInfo(DateOnly PublicationDate, DateOnly EffectuveDate, bool IsAIRAC = false)
+{
+	public string GetUrl(string fname)
+		=> $"https://aisjapan.mlit.go.jp/html/AIP/html/{PublicationDate:yyyyMMdd}/eAIP/{PublicationDate:yyyyMMdd}/{fname}";
+}
 
 public class InfoDates
 {
