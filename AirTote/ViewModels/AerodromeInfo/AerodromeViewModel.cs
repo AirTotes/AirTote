@@ -1,3 +1,4 @@
+using AirTote.AISJapanParser.EAIP;
 using AirTote.Models;
 
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -8,6 +9,9 @@ public partial class AerodromeViewModel : ObservableObject
 {
 	[ObservableProperty]
 	private string _Title = "Aerodrome";
+
+	[ObservableProperty]
+	private List<MenuItem_Aerodrome> _AIPItems = new();
 
 	public AirportInfo.APInfo ApInfo { get; }
 
