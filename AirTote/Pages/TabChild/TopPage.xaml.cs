@@ -1,4 +1,3 @@
-using AirTote.Components.FlyoutMenu;
 using AirTote.Components.Maps;
 using AirTote.Components.Maps.Layers;
 using AirTote.Components.Maps.Widgets;
@@ -10,10 +9,6 @@ using AirTote.ViewModels.SettingPages;
 using CommunityToolkit.Maui.Views;
 
 using Mapsui.Extensions;
-using Mapsui.Layers;
-using Mapsui.Projections;
-
-using SkiaSharp;
 
 using Topten.RichTextKit;
 
@@ -66,25 +61,9 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Task.Run(async () =>
 		{
-			ButtonWidget widget = await ButtonWidget.FromAppPackageFileAsync("Open Menu Button", "menu_FILL0_wght700_GRAD0_opsz48.svg");
-			widget.MarginX = 0;
-			widget.MarginY = StatusBarBGWidgetRenderer.Height;
-			widget.Size = new(BUTTON_HEIGHT_WIDTH, BUTTON_HEIGHT_WIDTH);
-
-			widget.WidgetTouched += (_, e) =>
-			{
-				OnMenuButtonClicked();
-				e.Handled = true;
-			};
-
-			Map.Map?.Widgets.Add(widget);
-		});
-
-		Task.Run(async () =>
-		{
 			ButtonWidget widget = await ButtonWidget.FromAppPackageFileAsync("Open Menu Button", "settings_FILL0_wght400_GRAD0_opsz48.svg");
 			widget.MarginX = 0;
-			widget.MarginY = StatusBarBGWidgetRenderer.Height + BUTTON_HEIGHT_WIDTH;
+			widget.MarginY = StatusBarBGWidgetRenderer.Height;
 			widget.Size = new(BUTTON_HEIGHT_WIDTH, BUTTON_HEIGHT_WIDTH);
 
 			widget.WidgetTouched += (_, e) =>
@@ -179,9 +158,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	private async void Map_AirportSelected(object? sender, AirportSelectedEventArgs e)
 		=> await Navigation.PushAsync(new AerodromeInfo.Aerodrome(e.SelectedAP));
-
-	private Task OnMenuButtonClicked()
-		=> this.ShowPopupAsync(new FlyoutMenuPopup());
 
 	bool ResetCalloutTextRunning = false;
 	private async void ResetCalloutText()
