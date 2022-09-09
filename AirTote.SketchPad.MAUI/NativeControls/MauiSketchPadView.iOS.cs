@@ -17,8 +17,6 @@ public class MauiSketchPadView : PKCanvasView
 
 	SketchPadView _VirtualView { get; }
 
-	Page? _hostPage;
-
 	public MauiSketchPadView(SketchPadView virtualView)
 	{
 		if (DeviceInfo.Version < new Version(13, 0))
