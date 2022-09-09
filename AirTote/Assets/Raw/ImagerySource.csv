@@ -20,8 +20,8 @@ GroupName,ShortTitle,FullTitle,URL,IsPublic
 数値天気予報図,,[12UTC]極東850hPa気温・風、700hPa上昇流／700hPa湿数、500hPa気温予想図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/fxfe5782_12.pdf,true
 数値天気予報図,,[12UTC]極東地上気圧・風・降水量／500hPa高度・渦度予想図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/fxfe502_12.pdf,true
 数値天気予報図,,[12UTC]日本850hPa相当温位・風予想図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/fxjp854_12.pdf,true
-FXFE FUFE 00Z,,FXFE FUFE 00Z,https://www.jma.go.jp/jmh/wmapimgs/fxfe57782_00_large.png,true
-FXFE FUFE 12Z,,FXFE FUFE 12Z,https://www.jma.go.jp/jmh/wmapimgs/fxfe57782_12_large.png,true
+FXFE,,FXFE572/FXFE782 [00UTC],https://www.jma.go.jp/jmh/wmapimgs/fxfe57782_00_large.png,true
+FXFE,,FXFE572/FXFE782[12UTC],https://www.jma.go.jp/jmh/wmapimgs/fxfe57782_12_large.png,true
 高層天気図,AUXN50 [12UTC],北半球500hPa高度・気温天気図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/auxn50_12.pdf,true
 高層天気図,FEAS50 [12UTC],アジア地上気圧、850hPa気温／500hPa高度・渦度天気図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/feas50_12.pdf,true
 高層天気図,AUPA20 [00UTC],アジア太平洋200hPa高度・気温・風・圏界面天気図,https://www.jma.go.jp/bosai/numericmap/data/nwpmap/aupa20_00.pdf,true
