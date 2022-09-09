@@ -24,7 +24,7 @@ namespace AirTote.Pages.TabChild
 
 			try
 			{
-				ais = await AISJapan.FromSecureStorageIfNeededAsync(SecureStorage.Default, ais);
+				ais = await AISJapanUtils.FromSecureStorageIfNeededAsync(SecureStorage.Default, ais);
 			}
 			catch (Exception ex)
 			{
