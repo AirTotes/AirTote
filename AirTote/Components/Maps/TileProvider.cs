@@ -53,6 +53,21 @@ public static class TileProvider
 		return CreateLayer(value);
 	}
 
+	static async Task<byte[]> GetByteArrayAsync(Uri uri)
+	{
+		try
+		{
+			using HttpResponseMessage res = await HttpService.HttpClient.GetAsync(uri);
+
+			return res.IsSuccessStatusCode ? await res.Content.ReadAsByteArrayAsync() : Array.Empty<byte>();
+		}
+		catch (TaskCanceledException)
+		{
+			// When Timeout
+			return Array.Empty<byte>();
+		}
+	}
+
 	public static TileLayer CreateLayer(MapTileSourceInfo value)
 	{
 		TileLayer layer = new(new HttpTileSource(
@@ -60,6 +75,7 @@ public static class TileProvider
 				value.UrlFormatter,
 				name: value.Name,
 				persistentCache: DefaultCache,
+				tileFetcher: GetByteArrayAsync,
 				userAgent: USER_AGENT,
 				attribution: AttributionInfo
 			))
