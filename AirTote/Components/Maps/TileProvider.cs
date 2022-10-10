@@ -53,13 +53,34 @@ public static class TileProvider
 		return CreateLayer(value);
 	}
 
+	static async Task<byte[]> GetByteArrayAsync(Uri uri)
+	{
+		try
+		{
+			using HttpResponseMessage res = await HttpService.HttpClient.GetAsync(uri);
+
+			return res.IsSuccessStatusCode ? await res.Content.ReadAsByteArrayAsync() : Array.Empty<byte>();
+		}
+		catch (TaskCanceledException)
+		{
+			// When Timeout
+			return Array.Empty<byte>();
+		}
+	}
+
 	public static TileLayer CreateLayer(MapTileSourceInfo value)
+		=> CreateLayer(value, null);
+	public static TileLayer CreateJMALayer(MapTileSourceInfo value)
+		=> CreateLayer(value, new GlobalSphericalMercator(4, 10));
+
+	public static TileLayer CreateLayer(MapTileSourceInfo value, ITileSchema? tileSchema)
 	{
 		TileLayer layer = new(new HttpTileSource(
-				new GlobalSphericalMercator(),
+				tileSchema ?? new GlobalSphericalMercator(4, 10),
 				value.UrlFormatter,
 				name: value.Name,
 				persistentCache: DefaultCache,
+				tileFetcher: GetByteArrayAsync,
 				userAgent: USER_AGENT,
 				attribution: AttributionInfo
 			))
@@ -76,7 +97,7 @@ public static class TileProvider
 	{
 		DateTime dateTime = new(UTCDateTime.Year, UTCDateTime.Month, UTCDateTime.Day, UTCDateTime.Hour, UTCDateTime.Minute - (UTCDateTime.Minute % 5), 0, DateTimeKind.Utc);
 
-		TileLayer layer = CreateLayer(new MapTileSourceInfo(
+		TileLayer layer = CreateJMALayer(new MapTileSourceInfo(
 				@$"https://www.jma.go.jp/bosai/jmatile/data/nowc/{dateTime:yyyyMMddhhmmss}/none/{dateTime:yyyyMMddhhmmss}/surf/hrpns/" + "{z}/{x}/{y}.png",
 				"雨雲の動き (高解像度降水ナウキャスト)",
 				new("出典: 気象庁 ナウキャスト", "https://www.jma.go.jp/bosai/nowc/")
