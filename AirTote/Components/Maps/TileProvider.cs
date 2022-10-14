@@ -52,19 +52,14 @@ public static class TileProvider
 	}
 
 	public static TileLayer CreateLayer(MapTileSourceInfo value)
-		=> CreateLayer(value, null);
-	public static TileLayer CreateJMALayer(MapTileSourceInfo value)
-		=> CreateLayer(value, new GlobalSphericalMercator(4, 10));
-
-	public static TileLayer CreateLayer(MapTileSourceInfo value, ITileSchema? tileSchema)
 	{
 		TileLayer layer = new(new HttpTileSource(
-				tileSchema ?? new GlobalSphericalMercator(4, 10),
+				new GlobalSphericalMercator(),
 				value.UrlFormatter,
 				name: value.Name,
 				persistentCache: DefaultCache,
 				tileFetcher: HttpService.GetByteArrayAsync,
-				userAgent: USER_AGENT,
+				userAgent: HttpService.USER_AGENT,
 				attribution: AttributionInfo
 			))
 		{
@@ -72,20 +67,6 @@ public static class TileProvider
 		};
 
 		layer.Attribution.Enabled = false;
-
-		return layer;
-	}
-
-	public static TileLayer Create_JMA_NOWC_Layer(DateTime UTCDateTime)
-	{
-		DateTime dateTime = new(UTCDateTime.Year, UTCDateTime.Month, UTCDateTime.Day, UTCDateTime.Hour, UTCDateTime.Minute - (UTCDateTime.Minute % 5), 0, DateTimeKind.Utc);
-
-		TileLayer layer = CreateJMALayer(new MapTileSourceInfo(
-				@$"https://www.jma.go.jp/bosai/jmatile/data/nowc/{dateTime:yyyyMMddhhmmss}/none/{dateTime:yyyyMMddhhmmss}/surf/hrpns/" + "{z}/{x}/{y}.png",
-				"雨雲の動き (高解像度降水ナウキャスト)",
-				new("出典: 気象庁 ナウキャスト", "https://www.jma.go.jp/bosai/nowc/")
-			));
-		layer.IsMapInfoLayer = true;
 
 		return layer;
 	}
