@@ -23,6 +23,8 @@ public class HttpService
 			));
 	}
 
+	static public string USER_AGENT => HttpService.HttpClient.DefaultRequestHeaders.UserAgent.ToString();
+
 	static public async Task<byte[]> GetByteArrayAsync(Uri uri)
 	{
 		try

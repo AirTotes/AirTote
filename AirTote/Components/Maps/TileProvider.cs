@@ -21,8 +21,6 @@ public static class TileProvider
 
 	public static Attribution AttributionInfo { get; } = new("出典: 地理院タイル\n" + MAP_ADDITIONAL_ATTR, "https://maps.gsi.go.jp/development/ichiran.html");
 
-	static string USER_AGENT => HttpService.HttpClient.DefaultRequestHeaders.UserAgent.ToString();
-
 	static Dictionary<string, MapTileSourceInfo> _TileSources { get; } = new();
 	public static IReadOnlyDictionary<string, MapTileSourceInfo> TileSources => _TileSources;
 	public const string DEFAULT_MAP_SOURCE_KEY = "gsi_jp_pale";
