@@ -5,6 +5,7 @@ using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
 using AirTote.Services.JMA;
+using AirTote.Services.JMA.Models;
 using AirTote.ViewModels.SettingPages;
 
 using CommunityToolkit.Maui.Views;
@@ -33,8 +34,25 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	TopPageSettingViewModel Settings { get; } = new();
 
-	JMATilesProvider? JMATiles { get; set; }
-	TileLayer? JMATileLayer { get; set; }
+	public JMATilesProvider? JMATiles { get; set; }
+	public NowC_Types CurrentNowC_Type { get; private set; }
+	TileLayer? _JMATileLayer = null;
+	public TileLayer? JMATileLayer
+	{
+		get => _JMATileLayer;
+		set
+		{
+			if (_JMATileLayer == value)
+				return;
+
+			if (_JMATileLayer is not null)
+				Map.Map?.Layers.Remove(_JMATileLayer);
+
+			_JMATileLayer = value;
+			if (value is not null)
+				Map.Map?.Layers.Insert(1, value);
+		}
+	}
 
 	public TopPage()
 	{
@@ -198,7 +216,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		Settings.LoadValues();
 		StartGPS();
 
-		ReloadJMATiles();
+		ReloadJMATileProvider();
 	}
 
 	protected override void OnDisappearing()
@@ -227,22 +245,19 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		return str;
 	}
 
-	async void ReloadJMATiles()
+	async void ReloadJMATileProvider()
 	{
 		JMATiles = await JMATilesProvider.Init();
 
-		if (JMATileLayer is not null)
-			Map.Map?.Layers.Remove(JMATileLayer);
-
-		if (JMATiles.HRPNs_Latest is not null)
-		{
-			JMATileLayer = JMATiles.GetLayer(JMATiles.HRPNs_Latest, NowC_Types.HRPNs);
-			Map.Map?.Layers.Insert(1, JMATileLayer);
-		}
-		else
-			JMATileLayer = null;
-
 		System.Diagnostics.Debug.WriteLine($"ReloadJMATiles() JMATileLayer: {JMATiles.HRPNs_Latest}");
+	}
+
+	public void SetLayer(TargetTimes time, NowC_Types type)
+	{
+		JMATileLayer = JMATilesProvider.GetLayer(time, type);
+		CurrentNowC_Type = type;
+
+		System.Diagnostics.Debug.WriteLine($"{nameof(TopPage)}.{nameof(SetLayer)}({time}, {type})");
 	}
 
 	void OnSettingButtonClicked()
