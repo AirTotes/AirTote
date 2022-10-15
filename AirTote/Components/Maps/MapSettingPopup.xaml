@@ -3,7 +3,10 @@
 	xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+	xmlns:local="clr-namespace:AirTote.Components.Maps"
+	xmlns:jmaModel="clr-namespace:AirTote.Services.JMA.Models;assembly=AirTote.Services.JMA"
 	Color="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
+	x:Name="this"
 	x:Class="AirTote.Components.Maps.MapSettingPopup">
 	<Grid>
 		<Grid.RowDefinitions>
@@ -29,6 +32,25 @@
 				<TableSection
 					Title="Map Types"
 					x:Name="MapTypeSection" />
+				<TableSection
+					Title="気象庁ナウキャスト">
+					<local:JMATileSelectingViewCell
+						Top="{Binding Source={x:Reference this}, Path=Top}"
+						Value="none"
+						Text="なし"/>
+					<local:JMATileSelectingViewCell
+						Top="{Binding Source={x:Reference this}, Path=Top}"
+						Value="{x:Static jmaModel:TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS}"
+						Text="雨雲の動き"/>
+					<local:JMATileSelectingViewCell
+						Top="{Binding Source={x:Reference this}, Path=Top}"
+						Value="{x:Static jmaModel:TargetTimes.TYPE_THUNDER_NOWCASTS}"
+						Text="雷活動度"/>
+					<local:JMATileSelectingViewCell
+						Top="{Binding Source={x:Reference this}, Path=Top}"
+						Value="{x:Static jmaModel:TargetTimes.TYPE_TORNADO_NOWCASTS}"
+						Text="竜巻発生確度"/>
+				</TableSection>
 				<TableSection
 					Title="Layers"
 					x:Name="LayersSection" />
