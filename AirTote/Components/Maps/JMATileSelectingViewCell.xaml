@@ -9,6 +9,5 @@
 		CheckedChanged="RadioButton_CheckedChanged"
 		GroupName="JMATileSelectingViewCell"
 		IsChecked="{Binding Source={x:Reference this}, Path=IsChecked}"
-		Value="{Binding Source={x:Reference this}, Path=Value}"
 		Content="{Binding Source={x:Reference this}, Path=Text}"/>
 </ViewCell>

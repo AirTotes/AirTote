@@ -36,6 +36,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	public JMATilesProvider? JMATiles { get; set; }
 	public NowC_Types CurrentNowC_Type { get; private set; }
+	public TargetTimes CurrentTargetTimes { get; private set; }
 	TileLayer? _JMATileLayer = null;
 	public TileLayer? JMATileLayer
 	{
@@ -254,8 +255,12 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	public void SetLayer(TargetTimes time, NowC_Types type)
 	{
-		JMATileLayer = JMATilesProvider.GetLayer(time, type);
-		CurrentNowC_Type = type;
+		if (time != CurrentTargetTimes || type != CurrentNowC_Type)
+		{
+			JMATileLayer = JMATilesProvider.GetLayer(time, type);
+			CurrentTargetTimes = time;
+			CurrentNowC_Type = type;
+		}
 
 		System.Diagnostics.Debug.WriteLine($"{nameof(TopPage)}.{nameof(SetLayer)}({time}, {type})");
 	}

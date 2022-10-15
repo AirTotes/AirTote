@@ -35,21 +35,36 @@
 				<TableSection
 					Title="気象庁ナウキャスト">
 					<local:JMATileSelectingViewCell
+						CurrentTimeTextCell="{x:Reference JMATileTimeTextCell}"
+						CurrentTimeSlider="{x:Reference JMATileTimeSlider}"
 						Top="{Binding Source={x:Reference this}, Path=Top}"
-						Value="none"
+						NowCTypes="{x:Null}"
 						Text="なし"/>
 					<local:JMATileSelectingViewCell
+						CurrentTimeTextCell="{x:Reference JMATileTimeTextCell}"
+						CurrentTimeSlider="{x:Reference JMATileTimeSlider}"
 						Top="{Binding Source={x:Reference this}, Path=Top}"
-						Value="{x:Static jmaModel:TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS}"
+						NowCTypes="HRPNs"
 						Text="雨雲の動き"/>
 					<local:JMATileSelectingViewCell
+						CurrentTimeTextCell="{x:Reference JMATileTimeTextCell}"
+						CurrentTimeSlider="{x:Reference JMATileTimeSlider}"
 						Top="{Binding Source={x:Reference this}, Path=Top}"
-						Value="{x:Static jmaModel:TargetTimes.TYPE_THUNDER_NOWCASTS}"
+						NowCTypes="THNs"
 						Text="雷活動度"/>
 					<local:JMATileSelectingViewCell
+						CurrentTimeTextCell="{x:Reference JMATileTimeTextCell}"
+						CurrentTimeSlider="{x:Reference JMATileTimeSlider}"
 						Top="{Binding Source={x:Reference this}, Path=Top}"
-						Value="{x:Static jmaModel:TargetTimes.TYPE_TORNADO_NOWCASTS}"
+						NowCTypes="TRNs"
 						Text="竜巻発生確度"/>
+
+					<TextCell
+						x:Name="JMATileTimeTextCell"/>
+					<ViewCell>
+						<Slider
+							x:Name="JMATileTimeSlider"/>
+					</ViewCell>
 				</TableSection>
 				<TableSection
 					Title="Layers"

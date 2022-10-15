@@ -7,11 +7,15 @@ using DependencyPropertyGenerator;
 namespace AirTote.Components.Maps;
 
 [DependencyProperty<TopPage>("Top")]
-[DependencyProperty<string>("Value")]
+[DependencyProperty<NowC_Types?>("NowCTypes")]
 [DependencyProperty<string>("Text")]
 [DependencyProperty<bool>("IsChecked", DefaultBindingMode = DefaultBindingMode.TwoWay)]
+[DependencyProperty<TextCell>("CurrentTimeTextCell")]
+[DependencyProperty<Slider>("CurrentTimeSlider")]
 public partial class JMATileSelectingViewCell : ViewCell
 {
+	IReadOnlyList<TargetTimes>? TargetTimeList { get; set; }
+
 	public JMATileSelectingViewCell()
 	{
 		InitializeComponent();
@@ -24,14 +28,27 @@ public partial class JMATileSelectingViewCell : ViewCell
 
 	partial void OnTopChanged()
 		=> UpdateIsChecked();
-	partial void OnValueChanged()
+	partial void OnNowCTypesChanged()
 		=> UpdateIsChecked();
+
+	void SetCurrentTimeText(string s)
+	{
+		if (CurrentTimeTextCell is not null)
+			CurrentTimeTextCell.Text = s;
+	}
+
+	void ExecWhenNotNull<T>(T? v, Action<T> action)
+	{
+		if (v is not null)
+			action.Invoke(v);
+	}
 
 	void UpdateIsChecked()
 	{
-		if (Top is null || string.IsNullOrEmpty(Value))
+		if (Top is null)
 		{
 			IsEnabled = false;
+			SetCurrentTimeText("Disabled");
 			return;
 		}
 
@@ -39,17 +56,11 @@ public partial class JMATileSelectingViewCell : ViewCell
 
 		if (Top.JMATileLayer is null)
 		{
-			IsChecked = (Value == "none");
+			IsChecked = (NowCTypes is null);
 			return;
 		}
 
-		IsChecked = Value switch
-		{
-			TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS => Top.CurrentNowC_Type == NowC_Types.HRPNs,
-			TargetTimes.TYPE_THUNDER_NOWCASTS => Top.CurrentNowC_Type == NowC_Types.THNs,
-			TargetTimes.TYPE_TORNADO_NOWCASTS => Top.CurrentNowC_Type == NowC_Types.TRNs,
-			_ => false
-		};
+		IsChecked = (Top.CurrentNowC_Type == NowCTypes);
 	}
 
 	async void RadioButton_CheckedChanged(object sender, CheckedChangedEventArgs e)
@@ -62,27 +73,107 @@ public partial class JMATileSelectingViewCell : ViewCell
 		if (Top.JMATiles is null)
 			return;
 
-		switch (radioButton.Value)
+		// 既にJMA TileLayerを表示しているのであれば、再度の表示更新は行わない
+		TargetTimes? time = null;
+		if (NowCTypes is not null && Top.JMATileLayer is not null)
 		{
-			case TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS:
-				if (Top.JMATiles.HRPNs_Latest is not null)
-					Top.SetLayer(Top.JMATiles.HRPNs_Latest, NowC_Types.HRPNs);
+			if (Top.CurrentNowC_Type == NowCTypes)
+				time = Top.CurrentTargetTimes;
+		}
+
+		switch (NowCTypes)
+		{
+			case NowC_Types.HRPNs:
+				time ??= Top.JMATiles.HRPNs_Latest;
+				SetSlider(Top.JMATiles.HRPNsTimeList, time);
 				break;
 
-			case TargetTimes.TYPE_THUNDER_NOWCASTS:
-				if (Top.JMATiles.THNsTimeList.FirstOrDefault() is TargetTimes thns)
-					Top.SetLayer(thns, NowC_Types.THNs);
+			case NowC_Types.THNs:
+				SetSlider(Top.JMATiles.THNsTimeList, time);
 				break;
 
-			case TargetTimes.TYPE_TORNADO_NOWCASTS:
-				if (Top.JMATiles.TRNsTimeList.FirstOrDefault() is TargetTimes trns)
-					Top.SetLayer(trns, NowC_Types.TRNs);
+			case NowC_Types.TRNs:
+				SetSlider(Top.JMATiles.TRNsTimeList, time);
 				break;
 
 			default:
 				Top.JMATileLayer = null;
+				SetCurrentTimeText("非表示中");
+
+				ExecWhenNotNull(CurrentTimeSlider, v => v.IsEnabled = false);
 				break;
 		}
+	}
+
+	void SetSlider(IReadOnlyList<TargetTimes> timesList, TargetTimes? time)
+	{
+		if (CurrentTimeSlider is null)
+			return;
+
+		if (timesList.Count <= 0)
+		{
+			CurrentTimeSlider.IsEnabled = false;
+			SetCurrentTimeText("時刻データ取得失敗");
+			return;
+		}
+
+		TargetTimeList = timesList;
+
+		CurrentTimeSlider.IsEnabled = true;
+		CurrentTimeSlider.Minimum = 0;
+		CurrentTimeSlider.Maximum = timesList.Count - 1;
+
+		int index = -1;
+		if (time is not null)
+		{
+			for (int i = 0; i < timesList.Count; i++)
+			{
+				if (timesList[i] == time)
+				{
+					index = i;
+					break;
+				}
+			}
+		}
+
+		if (index < 0)
+		{
+			index = timesList.Count - 1;
+			time = timesList[index];
+		}
+
+		CurrentTimeSlider.Value = index;
+
+		SetLayer(time!);
+	}
+
+	partial void OnCurrentTimeSliderChanged(Slider? oldValue, Slider? newValue)
+	{
+		if (oldValue is not null)
+			oldValue.ValueChanged -= SliderValueChanged;
+		if (newValue is not null)
+			newValue.ValueChanged += SliderValueChanged;
+	}
+
+	private void SliderValueChanged(object? sender, ValueChangedEventArgs e)
+	{
+		if (!IsChecked || TargetTimeList is null || NowCTypes is null)
+			return;
+
+		if ((int)e.OldValue != (int)e.NewValue)
+			SetLayer(TargetTimeList[(int)e.NewValue]);
+	}
+	private void SetLayer(TargetTimes time)
+	{
+		if (NowCTypes is null)
+			return;
+
+		Top?.SetLayer(time, NowCTypes.Value);
+
+		if (DateTime.TryParse(time.validtime, out var value))
+			SetCurrentTimeText(value.ToLongDateString());
+		else
+			SetCurrentTimeText(time.validtime);
 	}
 
 	async Task ReloadJMATiles()
