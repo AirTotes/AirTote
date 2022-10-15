@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
@@ -49,6 +50,27 @@ public class JMATilesProvider
 		LIDENTimeList = liden;
 	}
 
+	static async Task<TargetTimes[]> GetTargetTimes(string fileName)
+	{
+		try
+		{
+			using Stream stream = await HttpService.HttpClient.GetStreamAsync("https://www.jma.go.jp/bosai/jmatile/data/nowc/" + fileName);
+
+			if (stream.CanRead)
+				return await JsonSerializer.DeserializeAsync<TargetTimes[]>(stream) ?? Array.Empty<TargetTimes>();
+		}
+		catch (TaskCanceledException)
+		{
+			System.Diagnostics.Debug.WriteLine($"{nameof(JMATilesProvider)}.{nameof(GetTargetTimes)}({fileName}): Http Request Timeout");
+		}
+		catch (Exception ex)
+		{
+			Console.WriteLine(ex);
+		}
+
+		return Array.Empty<TargetTimes>();
+	}
+
 	public static async Task<JMATilesProvider> Init()
 	{
 		TargetTimes? latest = null;
@@ -58,42 +80,34 @@ public class JMATilesProvider
 		List<TargetTimes> liden = new();
 
 		// HRPNs history
-		using (var stream = await HttpService.HttpClient.GetStreamAsync("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N1.json"))
+		TargetTimes[] targetTimes_N1 = await GetTargetTimes("targetTimes_N1.json");
+
+		if (targetTimes_N1 is not null)
 		{
-			var result = await JsonSerializer.DeserializeAsync<TargetTimes[]>(stream);
+			hrpns = targetTimes_N1
+				.Where(v => v.elements.Contains(TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS))
+				.ToList();
 
-			if (result is not null)
-			{
-				hrpns = result
-					.Where(v => v.elements.Contains(TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS))
-					.ToList();
-
-				latest = hrpns.MaxBy(v => v.validtime);
-			}
+			latest = hrpns.MaxBy(v => v.validtime);
 		}
 
-		using (var stream = await HttpService.HttpClient.GetStreamAsync("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N2.json"))
-		{
-			var result = await JsonSerializer.DeserializeAsync<TargetTimes[]>(stream);
+		TargetTimes[] targetTimes_N2 = await GetTargetTimes("targetTimes_N2.json");
 
-			if (result is not null)
-			{
-				hrpns.AddRange(result.Where(v => v.elements.Contains(TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS)));
-			}
+		if (targetTimes_N2 is not null)
+		{
+			hrpns.AddRange(targetTimes_N2.Where(v => v.elements.Contains(TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS)));
 		}
 
-		hrpns.Sort((a, b) => DateTime.Compare(a.validtime, b.validtime));
 
-		using (var stream = await HttpService.HttpClient.GetStreamAsync("https://www.jma.go.jp/bosai/jmatile/data/nowc/targetTimes_N3.json"))
+		hrpns.Sort((a, b) => string.Compare(a.validtime, b.validtime));
+
+		TargetTimes[] targetTimes_N3 = await GetTargetTimes("targetTimes_N3.json");
+
+		if (targetTimes_N3 is not null)
 		{
-			var result = await JsonSerializer.DeserializeAsync<TargetTimes[]>(stream);
-
-			if (result is not null)
-			{
-				thns = result.Where(v => v.elements.Contains(TargetTimes.TYPE_THUNDER_NOWCASTS)).ToList();
-				trns = result.Where(v => v.elements.Contains(TargetTimes.TYPE_TORNADO_NOWCASTS)).ToList();
-				liden = result.Where(v => v.elements.Contains(TargetTimes.TYPE_LIGHTNING_DETECTION_NETWORK_SYSTEM)).ToList();
-			}
+			thns = targetTimes_N3.Where(v => v.elements.Contains(TargetTimes.TYPE_THUNDER_NOWCASTS)).ToList();
+			trns = targetTimes_N3.Where(v => v.elements.Contains(TargetTimes.TYPE_TORNADO_NOWCASTS)).ToList();
+			liden = targetTimes_N3.Where(v => v.elements.Contains(TargetTimes.TYPE_LIGHTNING_DETECTION_NETWORK_SYSTEM)).ToList();
 		}
 
 		return new(latest, hrpns, thns, trns, liden);
@@ -119,7 +133,7 @@ public class JMATilesProvider
 
 		TileLayer layer = new(new HttpTileSource(
 				new GlobalSphericalMercator(4, 10),
-				@$"https://www.jma.go.jp/bosai/jmatile/data/nowc/{targetTime.basetime:yyyyMMddhhmmss}/none/{targetTime.validtime:yyyyMMddhhmmss}/surf/{type_name}/" + "{z}/{x}/{y}.png",
+				@$"https://www.jma.go.jp/bosai/jmatile/data/nowc/{targetTime.basetime}/none/{targetTime.validtime}/surf/{type_name}/" + "{z}/{x}/{y}.png",
 				name: name,
 				tileFetcher: HttpService.GetByteArrayAsync,
 				userAgent: HttpService.USER_AGENT,

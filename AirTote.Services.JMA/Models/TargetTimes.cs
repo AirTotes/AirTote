@@ -1,9 +1,8 @@
-using System;
 namespace AirTote.Services.JMA.Models;
 
 public record TargetTimes(
-	DateTime basetime,
-	DateTime validtime,
+	string basetime,
+	string validtime,
 	string[] elements
 )
 {
