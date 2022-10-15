@@ -113,7 +113,7 @@ public class JMATilesProvider
 		return new(latest, hrpns, thns, trns, liden);
 	}
 
-	public TileLayer GetLayer(TargetTimes targetTime, NowC_Types type)
+	public static TileLayer GetLayer(TargetTimes targetTime, NowC_Types type)
 	{
 		string type_name = type switch
 		{
