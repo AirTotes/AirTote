@@ -250,7 +250,7 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		if (Map.Map is null)
 			return;
 
-		this.ShowPopup(new MapSettingPopup(this.Map, Map.RefreshGraphics));
+		this.ShowPopup(new MapSettingPopup(this, Map.RefreshGraphics));
 	}
 
 	void UpdateMyLocation(Location loc)
