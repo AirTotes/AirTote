@@ -4,13 +4,13 @@ using Mapsui.Utilities;
 using SkiaSharp;
 
 using System.Collections.Concurrent;
-using System.Threading;
 
 namespace AirTote.Services;
 
 public static class BitmapIdManager
 {
 	static ConcurrentDictionary<string, Task<int>> LockObj { get; } = new();
+	static SemaphoreSlim BitmapRegistryInstanceLock { get; } = new(1, 1);
 
 	static public async Task<int> GetSvgFromMauiAssetAsync(string filePath)
 	{
@@ -43,6 +43,14 @@ public static class BitmapIdManager
 
 		SKPicture pict = SvgHelper.LoadSvgPicture(stream);
 
-		return BitmapRegistry.Instance.Register(pict, filePath);
+		try
+		{
+			await BitmapRegistryInstanceLock.WaitAsync();
+			return BitmapRegistry.Instance.Register(pict, filePath);
+		}
+		finally
+		{
+			BitmapRegistryInstanceLock.Release();
+		}
 	}
 }

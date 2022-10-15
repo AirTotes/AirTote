@@ -48,9 +48,15 @@ public static class MinimumVectoringAltitude
 				return _OnlineSourceRecordDic;
 		}
 
-		Dictionary<string, MVASourceRecord>? result;
-		using (var stream = await GetAssetStreamAsync(isOffline, "mva.json"))
+		Dictionary<string, MVASourceRecord>? result = null;
+		try
+		{
+			using Stream stream = await GetAssetStreamAsync(isOffline, "mva.json");
 			result = await JsonSerializer.DeserializeAsync(stream, typeof(Dictionary<string, MVASourceRecord>)) as Dictionary<string, MVASourceRecord>;
+		}
+		catch (TaskCanceledException)
+		{
+		}
 
 		if (isOffline)
 			_OfflineSourceRecordDic = result;
@@ -86,23 +92,24 @@ public static class MinimumVectoringAltitude
 			if (string.IsNullOrWhiteSpace(kvp.Value.Chart))
 				return;
 
-			using (var stream = await GetAssetStreamAsync(isOffline, kvp.Value.Chart, cToken))
+			try
 			{
-				try
-				{
-					if (kvp.Value.Chart.EndsWith(".bin"))
-						geometry = WKBReader.Read(stream);
-					else
-						geometry = WKTReader.Read(stream);
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine($"Failed to load '{kvp.Key}' Texts (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
-					return;
-				}
-			}
+				using var stream = await GetAssetStreamAsync(isOffline, kvp.Value.Chart, cToken);
 
-			MVALines.Add(new(kvp.Key, geometry.ToFeature()));
+				if (kvp.Value.Chart.EndsWith(".bin"))
+					geometry = WKBReader.Read(stream);
+				else
+					geometry = WKTReader.Read(stream);
+
+				MVALines.Add(new(kvp.Key, geometry.ToFeature()));
+			}
+			catch (TaskCanceledException)
+			{
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Failed to load '{kvp.Key}' Texts (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
+			}
 		});
 
 		return MVALines.ToDictionary(kvp => kvp.Key, kvp => kvp.Value);
@@ -148,32 +155,33 @@ public static class MinimumVectoringAltitude
 			if (string.IsNullOrWhiteSpace(kvp.Value.Label))
 				return;
 
-			using (var stream = await GetAssetStreamAsync(isOffline, kvp.Value.Label, cToken))
+			try
 			{
-				try
-				{
-					labelsRecord = await JsonSerializer.DeserializeAsync(stream, typeof(LabelTextsRecord[]), cancellationToken: cToken) as LabelTextsRecord[];
-				}
-				catch (Exception ex)
-				{
-					Console.WriteLine($"Failed to load '{kvp.Key}' Labels JSON (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
-					return;
-				}
-
-				if (labelsRecord is null)
-					return;
-
-				await Parallel.ForEachAsync(labelsRecord, (v, cToken) =>
-				{
-					var feature = CreateLabelFeature(v);
-
-					feature["ICAO"] = kvp.Key;
-
-					MVALabels.Add(feature);
-					return ValueTask.CompletedTask;
-				});
-
+				using Stream stream = await GetAssetStreamAsync(isOffline, kvp.Value.Label, cToken);
+				labelsRecord = await JsonSerializer.DeserializeAsync(stream, typeof(LabelTextsRecord[]), cancellationToken: cToken) as LabelTextsRecord[];
 			}
+			catch (TaskCanceledException)
+			{
+				return;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Failed to load '{kvp.Key}' Labels JSON (at {kvp.Value}) (isOffline?: {isOffline})\n{ex}");
+				return;
+			}
+
+			if (labelsRecord is null)
+				return;
+
+			await Parallel.ForEachAsync(labelsRecord, (v, cToken) =>
+			{
+				var feature = CreateLabelFeature(v);
+
+				feature["ICAO"] = kvp.Key;
+
+				MVALabels.Add(feature);
+				return ValueTask.CompletedTask;
+			});
 		});
 
 		return MVALabels.ToArray();
