@@ -4,11 +4,13 @@ using AirTote.Components.Maps.Widgets;
 using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
+using AirTote.Services.JMA;
 using AirTote.ViewModels.SettingPages;
 
 using CommunityToolkit.Maui.Views;
 
 using Mapsui.Extensions;
+using Mapsui.Tiling.Layers;
 
 using Topten.RichTextKit;
 
@@ -31,6 +33,9 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	TopPageSettingViewModel Settings { get; } = new();
 
+	JMATilesProvider? JMATiles { get; set; }
+	TileLayer? JMATileLayer { get; set; }
+
 	public TopPage()
 	{
 		InitializeComponent();
@@ -39,7 +44,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		ResetCalloutText();
 
-		Map.Map?.Layers.Add(TileProvider.Create_JMA_NOWC_Layer(DateTime.UtcNow));
 		Map.Map?.Layers.Add(MVA);
 		Map.Map?.Layers.Add(MVAText);
 
@@ -193,6 +197,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Settings.LoadValues();
 		StartGPS();
+
+		ReloadJMATiles();
 	}
 
 	protected override void OnDisappearing()
@@ -219,6 +225,24 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 			.Add($"  TAF: {_taf?.FirstOrDefault() ?? "N/A"}", fontSize: 14);
 
 		return str;
+	}
+
+	async void ReloadJMATiles()
+	{
+		JMATiles = await JMATilesProvider.Init();
+
+		if (JMATileLayer is not null)
+			Map.Map?.Layers.Remove(JMATileLayer);
+
+		if (JMATiles.HRPNs_Latest is not null)
+		{
+			JMATileLayer = JMATiles.GetLayer(JMATiles.HRPNs_Latest, NowC_Types.HRPNs);
+			Map.Map?.Layers.Insert(1, JMATileLayer);
+		}
+		else
+			JMATileLayer = null;
+
+		System.Diagnostics.Debug.WriteLine($"ReloadJMATiles() JMATileLayer: {JMATiles.HRPNs_Latest}");
 	}
 
 	void OnSettingButtonClicked()
