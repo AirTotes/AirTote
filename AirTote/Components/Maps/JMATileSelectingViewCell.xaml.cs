@@ -170,8 +170,8 @@ public partial class JMATileSelectingViewCell : ViewCell
 
 		Top?.SetLayer(time, NowCTypes.Value);
 
-		if (DateTime.TryParse(time.validtime, out var value))
-			SetCurrentTimeText(value.ToLongDateString());
+		if (DateTime.TryParseExact(time.validtime, "yyyyMMddHHmmss", null, System.Globalization.DateTimeStyles.None, out var value))
+			SetCurrentTimeText($"{value:yyyy/MM/dd HH:mm} UTC");
 		else
 			SetCurrentTimeText(time.validtime);
 	}
