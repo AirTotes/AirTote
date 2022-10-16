@@ -98,8 +98,8 @@ public class JMATilesProvider
 			hrpns.AddRange(targetTimes_N2.Where(v => v.elements.Contains(TargetTimes.TYPE_HIGH_RESOLUTION_PRECIPITATION_NOWCASTS)));
 		}
 
-
-		hrpns.Sort((a, b) => string.Compare(a.validtime, b.validtime));
+		// [0]が最新(Max)、[Last]が過去(Min)にする
+		hrpns.Sort((a, b) => string.Compare(b.validtime, a.validtime));
 
 		TargetTimes[] targetTimes_N3 = await GetTargetTimes("targetTimes_N3.json");
 
