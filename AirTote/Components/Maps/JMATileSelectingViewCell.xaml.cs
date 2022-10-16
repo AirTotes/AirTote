@@ -138,11 +138,13 @@ public partial class JMATileSelectingViewCell : ViewCell
 
 		if (index < 0)
 		{
-			index = timesList.Count - 1;
+			// 0寄りがLatest or Feature
+			// `time`指定が無い場合は、最新の情報を表示するようにする。
+			index = 0;
 			time = timesList[index];
 		}
 
-		CurrentTimeSlider.Value = index;
+		CurrentTimeSlider.Value = timesList.Count - index - 1;
 
 		SetLayer(time!);
 	}
@@ -161,7 +163,7 @@ public partial class JMATileSelectingViewCell : ViewCell
 			return;
 
 		if ((int)e.OldValue != (int)e.NewValue)
-			SetLayer(TargetTimeList[(int)e.NewValue]);
+			SetLayer(TargetTimeList[TargetTimeList.Count - (int)e.NewValue - 1]);
 	}
 	private void SetLayer(TargetTimes time)
 	{
