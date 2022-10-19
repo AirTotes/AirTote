@@ -4,7 +4,7 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	xmlns:mct="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
 	xmlns:local="clr-namespace:AirTote.Components.Maps"
-	xmlns:jmaModel="clr-namespace:AirTote.Services.JMA.Models;assembly=AirTote.Services.JMA"
+	xmlns:services="clr-namespace:AirTote.Services"
 	Color="{AppThemeBinding Light={StaticResource LightBackgroundColor}, Dark={StaticResource DarkBackgroundColor}}"
 	x:Name="this"
 	x:Class="AirTote.Components.Maps.MapSettingPopup">
@@ -34,6 +34,24 @@
 					x:Name="MapTypeSection" />
 				<TableSection
 					Title="気象庁ナウキャスト">
+					<ViewCell>
+						<VerticalStackLayout>
+							<Label
+								Text="気象庁のWebサイトで確認する"
+								TextColor="{AppThemeBinding Default=#07E, Dark=#49F}"
+								Margin="2"/>
+							<Label
+								FontSize="10"
+								Text="本機能は、上記ページをCC-BY-4.0に基づいて利用しています。"
+								TextColor="#888"/>
+							<VerticalStackLayout.GestureRecognizers>
+								<TapGestureRecognizer
+									Command="{x:Static services:OpenBrowserCommand.Default}"
+									CommandParameter="https://www.jma.go.jp/bosai/nowc/"/>
+							</VerticalStackLayout.GestureRecognizers>
+						</VerticalStackLayout>
+					</ViewCell>
+
 					<local:JMATileSelectingViewCell
 						CurrentTimeTextCell="{x:Reference JMATileTimeTextCell}"
 						CurrentTimeSlider="{x:Reference JMATileTimeSlider}"
