@@ -4,11 +4,14 @@ using AirTote.Components.Maps.Widgets;
 using AirTote.Interfaces;
 using AirTote.Models;
 using AirTote.Services;
+using AirTote.Services.JMA;
+using AirTote.Services.JMA.Models;
 using AirTote.ViewModels.SettingPages;
 
 using CommunityToolkit.Maui.Views;
 
 using Mapsui.Extensions;
+using Mapsui.Tiling.Layers;
 
 using Topten.RichTextKit;
 
@@ -31,6 +34,27 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 	TopPageSettingViewModel Settings { get; } = new();
 
+	public JMATilesProvider? JMATiles { get; set; }
+	public NowC_Types CurrentNowC_Type { get; private set; }
+	public TargetTimes CurrentTargetTimes { get; private set; }
+	TileLayer? _JMATileLayer = null;
+	public TileLayer? JMATileLayer
+	{
+		get => _JMATileLayer;
+		set
+		{
+			if (_JMATileLayer == value)
+				return;
+
+			if (_JMATileLayer is not null)
+				Map.Map?.Layers.Remove(_JMATileLayer);
+
+			_JMATileLayer = value;
+			if (value is not null)
+				Map.Map?.Layers.Insert(1, value);
+		}
+	}
+
 	public TopPage()
 	{
 		InitializeComponent();
@@ -39,7 +63,6 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		ResetCalloutText();
 
-		Map.Map?.Layers.Add(TileProvider.Create_JMA_NOWC_Layer(DateTime.UtcNow));
 		Map.Map?.Layers.Add(MVA);
 		Map.Map?.Layers.Add(MVAText);
 
@@ -193,6 +216,8 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 
 		Settings.LoadValues();
 		StartGPS();
+
+		ReloadJMATileProvider();
 	}
 
 	protected override void OnDisappearing()
@@ -221,12 +246,31 @@ public partial class TopPage : ContentPage, IContainFlyoutPageInstance
 		return str;
 	}
 
+	async void ReloadJMATileProvider()
+	{
+		JMATiles = await JMATilesProvider.Init();
+
+		System.Diagnostics.Debug.WriteLine($"ReloadJMATiles() JMATileLayer: {JMATiles.HRPNs_Latest}");
+	}
+
+	public void SetLayer(TargetTimes time, NowC_Types type)
+	{
+		if (time != CurrentTargetTimes || type != CurrentNowC_Type)
+		{
+			JMATileLayer = JMATilesProvider.GetLayer(time, type);
+			CurrentTargetTimes = time;
+			CurrentNowC_Type = type;
+		}
+
+		System.Diagnostics.Debug.WriteLine($"{nameof(TopPage)}.{nameof(SetLayer)}({time}, {type})");
+	}
+
 	void OnSettingButtonClicked()
 	{
 		if (Map.Map is null)
 			return;
 
-		this.ShowPopup(new MapSettingPopup(this.Map, Map.RefreshGraphics));
+		this.ShowPopup(new MapSettingPopup(this, Map.RefreshGraphics));
 	}
 
 	void UpdateMyLocation(Location loc)

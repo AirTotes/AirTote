@@ -6,5 +6,6 @@
 	x:Class="AirTote.Pages.TabChild.TopPage"
 	Title="Flight Information">
 	<maps:AirportMap
+		x:FieldModifier="public"
 		x:Name="Map"/>
 </ContentPage>

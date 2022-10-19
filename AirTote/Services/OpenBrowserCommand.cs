@@ -4,6 +4,8 @@ namespace AirTote.Services;
 
 internal class OpenBrowserCommand : ICommand
 {
+	public static readonly OpenBrowserCommand Default = new();
+
 	public event EventHandler? CanExecuteChanged;
 
 	public bool CanExecute(object? parameter)
