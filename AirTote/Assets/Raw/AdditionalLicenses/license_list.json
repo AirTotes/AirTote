@@ -4,5 +4,11 @@
 		"license": "Apache-2.0",
 		"author": "Google",
 		"projectUrl": "https://github.com/google/material-design-icons"
+	},
+	{
+		"id": "気象庁公開のリソース",
+		"license": "CC-BY-4.0",
+		"author": "気象庁",
+		"projectUrl": "https://www.jma.go.jp/"
 	}
 ]
