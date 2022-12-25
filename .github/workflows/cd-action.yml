@@ -21,7 +21,8 @@ env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
   THIRD_PARTY_LICENSE_LIST_NAME: license_list
-  TARGET_FRAMEWORK: net6.0-ios
+  SDK_VERSION: '7.0.x'
+  TARGET_FRAMEWORK: net7.0-ios
   TARGET_RUNTIME: ios-arm64
   OUTPUT_DIR: ./out
   IPA_PATH: ./out/AirTote.ipa
@@ -167,7 +168,7 @@ jobs:
 
     - uses: actions/setup-dotnet@v2
       with:
-        dotnet-version: '6.0.x'
+        dotnet-version: ${{ env.SDK_VERSION }}
     - name: Install dotnet workloads
       run: dotnet workload install maui-ios maui-android
 

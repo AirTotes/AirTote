@@ -93,5 +93,5 @@ else
 fi
 
 if [ ! -z "$DeviceName" ]; then
-  dotnet build -t:Run ./AirTote/AirTote.csproj -f net6.0 -r $RUNTIME_IDENTIFIER --self-contained --nologo "/p:_DeviceName=$DeviceName" ${ARGS[@]}
+  dotnet build -t:Run ./AirTote/AirTote.csproj -f net7.0 -r $RUNTIME_IDENTIFIER --self-contained --nologo "/p:_DeviceName=$DeviceName" ${ARGS[@]}
 fi
