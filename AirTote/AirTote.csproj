@@ -75,13 +75,14 @@
 	<ItemGroup>
 		<PackageReference Include="AngleSharp" Version="0.17.1" />
 		<PackageReference Include="Mapsui.Maui" Version="4.0.0-beta.5" />
-		<PackageReference Include="Topten.RichTextKit" Version="0.4.151" />
-		<PackageReference Include="HarfBuzzSharp" Version="2.8.2" />
+		<PackageReference Include="Topten.RichTextKit" Version="0.4.165" />
+		<PackageReference Include="HarfBuzzSharp" Version="2.8.2.3" />
 		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
-		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
+		<PackageReference Include="DependencyPropertyGenerator" Version="1.0.3" PrivateAssets="all" ExcludeAssets="runtime"><IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+</PackageReference>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-		<PackageReference Include="Csv" Version="2.0.84" />
-		<PackageReference Include="System.Text.Json" Version="6.0.5" />
+		<PackageReference Include="Csv" Version="2.0.93" />
+		<PackageReference Include="System.Text.Json" Version="7.0.1" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
