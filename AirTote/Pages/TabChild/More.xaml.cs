@@ -14,16 +14,6 @@ public partial class More : ContentPage
 		Navigation.PushAsync(new Pages.IcaoPage());
 	}
 
-	private void Button_Clicked_1(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new Pages.ReservePages.ReserveSpotAndFuel());
-	}
-
-	private void Button_Clicked_2(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new Pages.PayLandingFee.CalcFee());
-	}
-
 	private void Button_Clicked_3(object sender, EventArgs e)
 	{
 		Navigation.PushAsync(new Pages.ThirdPartyLicenses());

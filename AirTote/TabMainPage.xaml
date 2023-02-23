@@ -30,7 +30,7 @@
 		<Tab
 			Title="Flights"
 			Icon ="flight_takeoff_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
+			<ShellContent ContentTemplate="{DataTemplate pages:FlightPlan}"/>
 		</Tab>
 		<Tab
 			x:Name="SketchPadTab"
