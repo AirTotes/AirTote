@@ -1,6 +1,7 @@
 from dataclasses import asdict, dataclass
 import json
 from os import makedirs
+from shutil import copyfile
 from subprocess import PIPE, Popen
 from os.path import dirname, basename, exists, join as joinPath
 from sys import argv, stderr
@@ -15,6 +16,7 @@ from hashlib import sha256
 CSPROJ_PATH = dirname(__file__) + "/../AirTote/AirTote.csproj"
 TIMEOUT_SEC = 2
 ENC = "utf-8"
+IGNORE_NS = "AirTote"
 
 LICENSE_INFO_LIST_FILE_NAME = "license_list.json"
 
@@ -97,6 +99,20 @@ def getAndTrySetUniqueKey(dic: Dict[str, str], key: str) -> str:
   dic[key] = hashStr
   return hashStr
 
+async def getAndWriteFile(session: ClientSession, srcUrl: str, targetPath: str):
+  async with aio_open(targetPath, 'w') as f:
+    text = ''
+    async with session.get(srcUrl) as result:
+      if not result.ok:
+        raise EOFError(f'GET Request to {srcUrl} failed')
+
+      text = await result.text()
+
+      result.close()
+      if not result.closed:
+        await result.wait_for_close()
+    await f.write(text)
+
 async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: str, licenseInfo: LicenseInfo, urlDic: Dict[str, str]):
   url = licenseInfo.licenseUrl
 
@@ -126,20 +142,7 @@ async def dumpLicenseTextFileFromLicenseUrl(session: ClientSession, targetDir: s
     for v in dirs[4:]:
       path = '/' + v
     url = f"https://raw.githubusercontent.com/{userName}/{repoName}/{refName}{path}"
-
-  async with aio_open(licenseFilePath, 'w') as f:
-    text = ''
-    async with session.get(url) as result:
-      if not result.ok:
-        raise EOFError(f'GET Request to {url} failed')
-
-      text = await result.text()
-
-      result.close()
-      if not result.closed:
-        await result.wait_for_close()
-    await f.write(text)
-
+  await getAndWriteFile(session, url, licenseFilePath)
 
 async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licenseInfo: LicenseInfo, targetDir: str):
   licenseList = [str(v) for v in re.split("\(|\)| ", licenseInfo.license) if (v != '' or v.isspace()) and v != "OR" and v != "AND"]
@@ -149,37 +152,42 @@ async def dumpLicenseTextFileFromLicenseExpression(session: ClientSession, licen
       continue
 
     url = f'https://raw.githubusercontent.com/spdx/license-list-data/master/text/{licenseId}.txt'
-    async with aio_open(licenseFilePath, 'w') as f:
-      text = ''
-      async with session.get(url) as result:
-        if not result.ok:
-          raise EOFError(f'GET Request to {url} failed')
+    await getAndWriteFile(session, url, licenseFilePath)
 
-        text = await result.text()
-
-        result.close()
-        if not result.closed:
-          await result.wait_for_close()
-      await f.write(text)
-
-async def dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir: str, targetDir: str, licenseInfo: LicenseInfo):
+def dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir: str, targetDir: str, licenseInfo: LicenseInfo):
   packageNameLower = str.lower(licenseInfo.id)
   resourceDir = f'{globalPackagesDir}{packageNameLower}/{licenseInfo.resolvedVersion}/'
-  print(f'\t[FIL]: {basename(licenseInfo.license)} (exists?: {exists(resourceDir + licenseInfo.license)})')
-  raise NotImplementedError()
+  targetDir = f'{targetDir}/{licenseInfo.id}'
+  if not exists(targetDir):
+    makedirs(targetDir)
+  copyfile(resourceDir + licenseInfo.license, f'{targetDir}/{licenseInfo.license}')
+  licenseInfo.license = f'{licenseInfo.id}/{licenseInfo.license}'
+
 
 async def dumpLicenseTextFile(session: ClientSession, targetDir: str, globalPackagesDir: str, licenseInfo: LicenseInfo, urlDic: Dict[str, str]):
   if licenseInfo.licenseDataType is None:
     await dumpLicenseTextFileFromLicenseUrl(session, targetDir, licenseInfo, urlDic)
   elif licenseInfo.licenseDataType == LICENSE_TYPE_EXPRESSION:
     await dumpLicenseTextFileFromLicenseExpression(session, licenseInfo, targetDir)
-  elif licenseInfo.licenseDataType == LICENSE_INFO_LIST_FILE_NAME:
-    await dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir, targetDir, licenseInfo)
+  elif licenseInfo.licenseDataType == LICENSE_TYPE_FILE:
+    dumpLicenseTextFileFromLicenseFilePath(globalPackagesDir, targetDir, licenseInfo)
 
-async def main(targetFramework: str, targetDir: str) -> int:
+def getFrameworkVersion(platform: str) -> str:
+  with Popen(["dotnet", "list", CSPROJ_PATH, "package"], stdout=PIPE) as p:
+    for line in p.stdout.readlines():
+      lineStr = line.decode(ENC)
+      frameworkVersionCheckResult = re.search(r"\[net\d+\.\d+-" + platform + r"\d+.\d+\]", lineStr)
+
+      if not frameworkVersionCheckResult:
+        continue
+
+      return frameworkVersionCheckResult.group().removeprefix('[').removesuffix(']')
+
+async def main(platform: str, targetDir: str) -> int:
   if not exists(targetDir):
     makedirs(targetDir)
 
+  targetFramework = getFrameworkVersion(platform)
   lines: List[List[bytes]]
   with Popen(["dotnet", "list", CSPROJ_PATH, "package", "--framework", targetFramework, '--include-transitive'], stdout=PIPE) as p:
     lines = [line.split() for line in p.stdout.readlines()]
@@ -196,7 +204,7 @@ async def main(targetFramework: str, targetDir: str) -> int:
     packages.append(PackageInfo(v[1].decode(ENC), v[-1].decode(ENC)))
 
   globalPackagesDir = getNugetGlobalPackagesDir()
-  packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages if not v.PackageName.startswith("AirTote")])
+  packageInfoList = await asyncio.gather(*[getLicenseInfo(globalPackagesDir, v) for v in packages if not v.PackageName.startswith(IGNORE_NS)])
 
   urlDic = {}
   async with ClientSession(connector = TCPConnector(limit = 2, force_close = True)) as session:
