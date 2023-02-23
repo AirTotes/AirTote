@@ -199,7 +199,7 @@ jobs:
         -c Release
         -o "${{ env.OUTPUT_DIR }}"
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
-        /p:ApplicationVersion={{ steps.get-version.outputs.bundle_version }}
+        /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
         /p:CodesignKey="${{ secrets.CODESIGN_KEY_NAME_IOS }}"
         /p:CodesignProvision="${{ secrets.CODESIGN_PROVISION_NAME_IOS }}"
 
@@ -282,7 +282,7 @@ jobs:
         -c Release
         -o "${{ env.OUTPUT_DIR }}"
         /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
-        /p:ApplicationVersion={{ steps.get-version.outputs.bundle_version }}
+        /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
 
     - name: Upload AAB
       uses: actions/upload-artifact@v3.0.0
