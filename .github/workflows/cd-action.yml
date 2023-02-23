@@ -23,7 +23,7 @@ env:
   TARGET_RUNTIME: ios-arm64
   TARGET_FRAMEWORK_ANDROID: net7.0-android
   OUTPUT_DIR: ./out
-  IPA_PATH: ./out/TRViS.ipa
+  IPA_PATH: ./out/AirTote.ipa
   AAB_PATH: ./out/com.technotter.fis-j-Signed.aab
   APK_PATH: ./out/com.technotter.fis-j-Signed.apk
   SDK_VERSION: '7.0.x'
