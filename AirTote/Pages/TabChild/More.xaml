@@ -10,15 +10,6 @@
 			VerticalOptions="FillAndExpand"
 			Orientation="Vertical">
 			<Button
-				Text="IcaoPage"
-				Clicked="Button_Clicked"/>
-			<Button
-				Text="PPR(書類提出)"
-				Clicked="Button_Clicked_1"/>
-			<Button
-				Text="FeeCalculator"
-				Clicked="Button_Clicked_2"/>
-			<Button
 				Text="ThirdPartyLicenses"
 				Clicked="Button_Clicked_3"/>
 			<Button
