@@ -3,8 +3,6 @@ using AirTote.SketchPad;
 
 using CommunityToolkit.Maui;
 
-using SkiaSharp.Views.Maui.Controls.Hosting;
-
 namespace AirTote;
 
 public static class MauiProgram
@@ -14,7 +12,6 @@ public static class MauiProgram
 		var builder = MauiApp.CreateBuilder();
 		builder
 			.UseMauiApp<App>()
-			.UseSkiaSharp()
 			.UseMauiCommunityToolkit()
 			.UseAirToteSketchPad()
 			.ConfigureFonts(fonts =>

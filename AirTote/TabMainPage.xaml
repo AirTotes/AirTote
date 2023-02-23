@@ -13,11 +13,6 @@
 			<!--<ShellContent ContentTemplate="{DataTemplate TabChild:Airport}"/>-->
 		</Tab>
 		<Tab
-			Title="Maps"
-			Icon ="explore_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:TopPage}"/>
-		</Tab>
-		<Tab
 			Title="Imagery"
 			Icon ="thermostat_black_24dp.png">
 			<ShellContent ContentTemplate="{DataTemplate TabChild:Imagery}"/>
@@ -35,7 +30,7 @@
 		<Tab
 			Title="Flights"
 			Icon ="flight_takeoff_black_24dp.png">
-			<ShellContent ContentTemplate="{DataTemplate TabChild:SubmitReport}"/>
+			<ShellContent ContentTemplate="{DataTemplate pages:FlightPlan}"/>
 		</Tab>
 		<Tab
 			x:Name="SketchPadTab"
