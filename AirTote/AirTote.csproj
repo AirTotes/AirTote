@@ -91,11 +91,11 @@
 	  <ProjectReference Include="..\AirTote.AISJapanParser\AirTote.AISJapanParser.csproj" />
 	  <ProjectReference Include="..\AirTote.Services.JMA\AirTote.Services.JMA.csproj" />
 	</ItemGroup>
-	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-android')) != true">
+	<ItemGroup Condition="$(TargetFramework.Contains('-android')) != true">
 		<Compile Remove="**\**\*.Android.cs" />
 		<None Include="**\**\*.Android.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
-	<ItemGroup Condition="$(TargetFramework.StartsWith('net6.0-ios')) != true AND $(TargetFramework.StartsWith('net6.0-maccatalyst')) != true">
+	<ItemGroup Condition="$(TargetFramework.Contains('-ios')) != true AND $(TargetFramework.Contains('-maccatalyst')) != true">
 		<Compile Remove="**\**\*.iOS.cs" />
 		<None Include="**\*.iOS.cs" Exclude="$(DefaultItemExcludes);$(DefaultExcludesInProjectFolder)" />
 	</ItemGroup>
