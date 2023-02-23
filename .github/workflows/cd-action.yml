@@ -214,90 +214,6 @@ jobs:
       if: always() && steps.import-code-sign-cert.conclusion == 'success'
       run: /usr/bin/security delete-keychain ${{ steps.gen-keychain-name.outputs.keychain-name }}.keychain
 
-  build-android:
-    if: |
-      !failure()
-      && !cancelled()
-      && (
-        github.event_name != 'pull_request'
-        || github.event.pull_request.draft == false
-      )
-
-    runs-on: ubuntu-latest
-    timeout-minutes: 30
-    needs:
-      - generate-bundle-version
-
-    steps:
-    - name: get version
-      id: get-version
-      run: |
-        if [ '${{ startsWith(github.ref, 'refs/tags/bundle') }}' == 'true' ]; then
-          VERSION=`echo '${{ github.ref }}' | tr -d 'refs/tags/bundle'`
-          echo "bundle_version=$VERSION" >> $GITHUB_OUTPUT
-          echo "display_version=$(echo $VERSION | awk -F '.' '{print $1 "." $2}')" >> $GITHUB_OUTPUT
-        else
-          echo "bundle_version=${{ needs.generate-bundle-version.outputs.bundle_version }}" >> $GITHUB_OUTPUT
-          echo "display_version=${{ needs.generate-bundle-version.outputs.display_version }}" >> $GITHUB_OUTPUT
-        fi
-
-    - uses: actions/checkout@v3
-
-    - uses: actions/setup-dotnet@v2
-      with:
-        dotnet-version: ${{ env.SDK_VERSION }}
-    - name: Install dotnet workloads
-      run: dotnet workload install maui-android
-
-    - name: Install dependencies
-      run: dotnet restore ${{ env.CSPROJ_PATH }}
-
-    - uses: actions/setup-python@v4
-      with:
-        python-version: '3.10'
-    - name: Prapare Python Package
-      run: |
-        python --version
-        python -m pip install aiofiles aiohttp
-
-    - name: Dump Third Party License Info
-      id: dump-third-party-license-info
-      continue-on-error: true
-      run: |
-        python ./tools/getThirdPartyLicenseJson.py android ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
-        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
-    - name: Dump Third Party License Info (Retry)
-      if: steps.dump-third-party-license-info.outcome == 'failure'
-      run: |
-        python ./tools/getThirdPartyLicenseJson.py android ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
-        ls -l ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}
-
-    - name: Print Third Party License Info Files
-      run: cat ${{ env.THIRD_PARTY_LICENSE_INFO_DIR }}/${{ env.THIRD_PARTY_LICENSE_LIST_NAME }}.json
-
-    - name: Build
-      run: >
-        dotnet publish ${{ env.CSPROJ_PATH }}
-        -f ${{ env.TARGET_FRAMEWORK_ANDROID }}
-        -c Release
-        -o "${{ env.OUTPUT_DIR }}"
-        /p:ApplicationDisplayVersion=${{ steps.get-version.outputs.display_version }}
-        /p:ApplicationVersion=${{ steps.get-version.outputs.bundle_version }}
-
-    - name: Upload AAB
-      uses: actions/upload-artifact@v3.0.0
-      with:
-        name: aab
-        path: ${{ env.AAB_PATH }}
-        retention-days: 3
-
-    - name: Upload APK
-      uses: actions/upload-artifact@v3.0.0
-      with:
-        name: apk
-        path: ${{ env.APK_PATH }}
-        retention-days: 3
-
   publish-ios:
     if: |
       !failure()
@@ -397,33 +313,5 @@ jobs:
         echo Tag \`${{ steps.tag-name.outputs.tag-name }}\` was automatically created and pushed with
         ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}
         | gh pr comment ${{ github.event.number }} -F -
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  create-release:
-    runs-on: ubuntu-latest
-    if: |
-      github.event_name == 'push'
-      && github.ref_name == 'main'
-    timeout-minutes: 5
-    needs:
-      - set-tag
-      - build-android
-
-    steps:
-    - name: Download APK
-      uses: actions/download-artifact@v3.0.0
-      with:
-        name: apk
-        path: ${{ env.OUTPUT_DIR }}
-
-    - name: Create Release
-      run: >
-        gh release create ${{ needs.set-tag.outputs.tag-name }}
-        --draft
-        --generate-notes
-        ${{ env.OUTPUT_DIR }}/*.apk
-        --repo ${{ github.repository }}
-        --notes 'This release is automatically created by actions ... https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}'
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
