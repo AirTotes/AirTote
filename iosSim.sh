@@ -16,7 +16,7 @@ iOS Simulator Launcher
 If you don't specify UDID/DeviceName, you can select Device from available device list.
 
 dotnet command will executed like below ...
-	dotnet build -t:Run ./AirTote/AirTote.csproj -f net6.0-ios -r iossimulator-x64 --no-self-contained --nologo "/p:_DeviceName=[DeviceName|:v2:udid=UDID]" [dotnet command options]
+	dotnet build -t:Run ./AirTote/AirTote.csproj -f net7.0-ios -r iossimulator-x64 --no-self-contained --nologo "/p:_DeviceName=[DeviceName|:v2:udid=UDID]" [dotnet command options]
 
 ---
 
@@ -93,5 +93,5 @@ else
 fi
 
 if [ ! -z "$DeviceName" ]; then
-  dotnet build -t:Run ./AirTote/AirTote.csproj -f net6.0-ios -r $RUNTIME_IDENTIFIER --self-contained --nologo "/p:_DeviceName=$DeviceName" ${ARGS[@]}
+  dotnet build -t:Run ./AirTote/AirTote.csproj -f net7.0-ios -r $RUNTIME_IDENTIFIER --self-contained --nologo "/p:_DeviceName=$DeviceName" ${ARGS[@]}
 fi

@@ -19,14 +19,14 @@ env:
   CSPROJ_PATH: ./AirTote/AirTote.csproj
   THIRD_PARTY_LICENSE_INFO_DIR: ./AirTote/Assets/Raw/ThirdPartyLicenses
   THIRD_PARTY_LICENSE_LIST_NAME: license_list
-  TARGET_FRAMEWORK: net6.0-ios
+  TARGET_FRAMEWORK: net7.0-ios
   TARGET_RUNTIME: ios-arm64
-  TARGET_FRAMEWORK_ANDROID: net6.0-android
+  TARGET_FRAMEWORK_ANDROID: net7.0-android
   OUTPUT_DIR: ./out
   IPA_PATH: ./out/TRViS.ipa
   AAB_PATH: ./out/com.technotter.fis-j-Signed.aab
   APK_PATH: ./out/com.technotter.fis-j-Signed.apk
-  SDK_VERSION: '6.0.x'
+  SDK_VERSION: '7.0.x'
 
 jobs:
   generate-bundle-version:
