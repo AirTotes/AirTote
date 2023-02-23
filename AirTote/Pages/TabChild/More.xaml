@@ -10,9 +10,6 @@
 			VerticalOptions="FillAndExpand"
 			Orientation="Vertical">
 			<Button
-				Text="IcaoPage"
-				Clicked="Button_Clicked"/>
-			<Button
 				Text="ThirdPartyLicenses"
 				Clicked="Button_Clicked_3"/>
 			<Button

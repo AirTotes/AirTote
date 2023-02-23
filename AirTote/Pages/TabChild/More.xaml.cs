@@ -9,11 +9,6 @@ public partial class More : ContentPage
 		InitializeComponent();
 	}
 
-	private void Button_Clicked(object sender, EventArgs e)
-	{
-		Navigation.PushAsync(new Pages.IcaoPage());
-	}
-
 	private void Button_Clicked_3(object sender, EventArgs e)
 	{
 		Navigation.PushAsync(new Pages.ThirdPartyLicenses());
