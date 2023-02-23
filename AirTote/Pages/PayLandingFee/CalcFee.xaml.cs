@@ -1,4 +1,3 @@
-using AirTote.Components.Maps;
 using AirTote.Models;
 using AirTote.Services;
 using AirTote.ViewModels.PayLandingFee;
@@ -33,7 +32,6 @@ namespace AirTote.Pages.PayLandingFee
 
 		async void Button_Clicked(object sender, System.EventArgs e)
 		{
-			await this.ShowPopupAsync(new SelectAirport(viewModel));
 		}
 	}
 }

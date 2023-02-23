@@ -1,6 +1,5 @@
 using System;
 
-using AirTote.Components.Maps;
 using AirTote.Pages.PayLandingFee;
 using AirTote.ViewModels.ReservePages;
 
@@ -20,7 +19,6 @@ namespace AirTote.Pages.ReservePages
 
 		private async void ShowAirportSelectPage(object sender, EventArgs e)
 		{
-			await this.ShowPopupAsync(new SelectAirport(viewModel));
 		}
 	}
 }
