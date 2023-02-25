@@ -12,8 +12,14 @@ namespace AirTote.AISJapanParser.EAIP;
 
 public record AIPDateInfo(DateOnly PublicationDate, DateOnly EffectuveDate, bool IsAIRAC = false)
 {
+	private string? _PublicationDateString = null;
+	public string PublicationDateString => _PublicationDateString ??= PublicationDate.ToString("yyyyMMdd");
+
+	private string? _EffectiveDateString = null;
+	public string EffectiveDateString => _EffectiveDateString ??= EffectuveDate.ToString("yyyyMMdd");
+
 	public string GetUrl(string fname)
-		=> $"https://aisjapan.mlit.go.jp/html/AIP/html/{PublicationDate:yyyyMMdd}/eAIP/{PublicationDate:yyyyMMdd}/{fname}";
+		=> $"https://aisjapan.mlit.go.jp/html/AIP/html/{PublicationDateString}/eAIP/{PublicationDateString}/{fname}";
 }
 
 public class InfoDates
