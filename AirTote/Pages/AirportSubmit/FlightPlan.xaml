@@ -6,6 +6,6 @@
 	x:Class="AirTote.Pages.FlightPlan"
 	Title="飛行計画書の提出">
 	<WebView
-		Source="https://airtotes.github.io/FlightPlanGenerator/flight_plan_sheet.html"
+		Source="https://FlightPlan.airtote.jp/flight_plan_sheet.html"
 		VerticalOptions="FillAndExpand"/>
 </ContentPage>
