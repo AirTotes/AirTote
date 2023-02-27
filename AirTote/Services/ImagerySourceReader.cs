@@ -49,7 +49,7 @@ public class ImagerySourceReader
 	}
 
 	private object? _CommandParameter = null;
-	public object CommandParametor
+	public object? CommandParametor
 	{
 		get
 		{
@@ -58,10 +58,20 @@ public class ImagerySourceReader
 
 			if (IsPublic && tpv is not null)
 			{
-				Microsoft.Maui.Controls.WebView webView = new()
+				Microsoft.Maui.Controls.WebView? webView;
+
+				try
 				{
-					Source = URL
-				};
+					webView = new()
+					{
+						Source = URL
+					};
+				}
+				catch (Exception ex)
+				{
+					MsgBox.DisplayAlert("Imagery Show Error", "内部エラーが発生しました\n(Generate Command Parametor with public url)\n" + ex.Message, "OK");
+					return null;
+				}
 
 				webView.On<Microsoft.Maui.Controls.PlatformConfiguration.Android>()
 						.EnableZoomControls(true);
