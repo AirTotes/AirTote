@@ -48,7 +48,7 @@ FXFE,,FXFE572/FXFE782[12UTC],https://www.jma.go.jp/jmh/wmapimgs/fxfe57782_12_lar
 SSI,,SSI,http://weather-gpv.info/,true
 SSI,,不安定度,https://www.tono2.net/stab/,false
 解析情報,,雷監視システム,https://www.jma.go.jp/bosai/nowc/#lat:34.016242/lon:134.978027/zoom:5/colordepth:normal/elements:hrpns&slmcs,true
-解析情報,,雷発生確率,http://www.imocwx.com/guid.php?Type=3,false
+解析情報,,雷発生確率,https://www.imocwx.com/guid.php?Type=3,false
 解析情報,,積乱雲情報,https://www.data.jma.go.jp/omaad/aviation/jp/cci/#zoom:6/lat:28.052591/lon:136.999512/colordepth:normal/elements:cci,true
 解析情報,,毎時大気解析,https://www.data.jma.go.jp/airinfo/data/awfo_maiji.html#contents_area2,true
 解析情報,,ウィンドプロファイラ,https://www.jma.go.jp/bosai/map.html#5/34.5/137/&contents=windprofiler,true
@@ -67,7 +67,7 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 衛星画像,TSAS1,広域雲解析情報図（北半球）,https://n-kishou.com/ee/exp/exp01.html?cd=tsas1&cat=a,false
 衛星画像,TSAS2,広域雲解析情報図（南半球）,https://n-kishou.com/ee/exp/exp01.html?cd=tsas2&cat=a,false
 衛星画像,HCAI,High-resolution Cloud Analysis Index,https://www.data.jma.go.jp/omaad/rsmc_nowcast/en/hcai/#zoom:3/lat:15.707663/lon:140.097656/colordepth:normal/elements:htc,true
-衛星画像,,雲時間変化,http://smilebb5.web.fc2.com/tsas/,false
+衛星画像,,雲時間変化,https://smilebb5.web.fc2.com/tsas/,false
 衛星画像,,気象レーダー,https://n-kishou.com/ee/radar/radar.html,false
 アメダス,,10分間降水量,https://www.jma.go.jp/bosai/map.html#5/34.416/141.592/&elem=precipitation10m&contents=amedas&interval=60,true
 アメダス,,1時間降水量,https://www.jma.go.jp/bosai/map.html#5/34.47/141.987/&elem=precipitation1h&contents=amedas&interval=60,true
@@ -96,23 +96,23 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 降灰予想,,降灰予想,https://www.jma.go.jp/bosai/map.html#contents=ashfall,true
 降灰予想,,噴煙方向,https://ds.data.jma.go.jp/svd/vaac/data/VAGFNR/html/VAAC_QH25.html,true
 降灰予想,,桜島（通常のカメラ）,https://373news.com/_sakucap/,false
-降灰予想,,桜島噴煙状況,http://www.qsr.mlit.go.jp/osumi/bousai/top.html,true
+降灰予想,,桜島噴煙状況,https://www.qsr.mlit.go.jp/osumi/bousai/top.html,true
 降灰予想,,阿蘇山ライブカメラ,http://w3.vgs.kyoto-u.ac.jp/camera/index.html,false
 降灰予想,,阿蘇山火山噴火／爆発情報および地上・上空風向きマップ,http://agora.ex.nii.ac.jp/eruption/volcano/asosan/,false
 降灰予想,,桜島火山噴火／爆発情報および地上・上空風向きマップ,http://agora.ex.nii.ac.jp/eruption/volcano/sakurajima/,false
 週間,FXXN519,週間予報支援図,https://n-kishou.com/ee/exp/exp01.html?cd=fxxn519&amp;cat=e3,false
 週間,FZCX50,週間予報支援図（アンサンブル）,https://n-kishou.com/ee/exp/exp01.html?cd=fzcx50&amp;cat=e3,false
 週間,FEFE19,週間アンサンブル予想図,https://n-kishou.com/ee/exp/exp01.html?cd=fefe19&amp;cat=e3,false
-エマグラム,,北アメリカ,http://weather.uwyo.edu/upperair/naconf.html,false
-エマグラム,,(University of wayoming)南アメリカ,http://weather.uwyo.edu/upperair/samer.html,false
-エマグラム,,(University of wayoming)南太平洋,http://weather.uwyo.edu/upperair/pac.html,false
-エマグラム,,(University of wayoming)ニュージーランド,http://weather.uwyo.edu/upperair/nz.html,false
-エマグラム,,(University of wayoming)南極,http://weather.uwyo.edu/upperair/ant.html,false
-エマグラム,,(University of wayoming)北極,http://weather.uwyo.edu/upperair/np.html,false
-エマグラム,,(University of wayoming)ヨーロッパ,http://weather.uwyo.edu/upperair/europe.html,false
-エマグラム,,(University of wayoming)アフリカ,http://weather.uwyo.edu/upperair/africa.html,false
-エマグラム,,(University of wayoming)中央アジア,http://weather.uwyo.edu/upperair/africa.html,false
-エマグラム,,(University of wayoming)南東アジア,http://weather.uwyo.edu/upperair/seasia.html,false
+エマグラム,,北アメリカ,https://weather.uwyo.edu/upperair/naconf.html,false
+エマグラム,,(University of wayoming)南アメリカ,https://weather.uwyo.edu/upperair/samer.html,false
+エマグラム,,(University of wayoming)南太平洋,https://weather.uwyo.edu/upperair/pac.html,false
+エマグラム,,(University of wayoming)ニュージーランド,https://weather.uwyo.edu/upperair/nz.html,false
+エマグラム,,(University of wayoming)南極,https://weather.uwyo.edu/upperair/ant.html,false
+エマグラム,,(University of wayoming)北極,https://weather.uwyo.edu/upperair/np.html,false
+エマグラム,,(University of wayoming)ヨーロッパ,https://weather.uwyo.edu/upperair/europe.html,false
+エマグラム,,(University of wayoming)アフリカ,https://weather.uwyo.edu/upperair/africa.html,false
+エマグラム,,(University of wayoming)中央アジア,https://weather.uwyo.edu/upperair/africa.html,false
+エマグラム,,(University of wayoming)南東アジア,https://weather.uwyo.edu/upperair/seasia.html,false
 エマグラム,,(SunnySpot)全国,https://www.sunny-spot.net/emagram/index.html?area=0,false
 エマグラム,,(SunnySpot)北海道,https://www.sunny-spot.net/emagram/index.html?area=1,false
 エマグラム,,(SunnySpot)東北,https://www.sunny-spot.net/emagram/index.html?area=2,false
@@ -164,59 +164,59 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 PM2.5情報,,PM2.5拡散予想,https://www.tono2.net/skew/,false
 PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 黄砂解析予測図,,大気中の黄砂の総量,https://www.data.jma.go.jp/gmd/env/kosa/fcst/fcst-c_jp.html,true
-ライブカメラ,,各地のライブカメラ,http://weather.jal.co.jp/livecam/index.html,false
-ライブカメラ,RJCW,稚内市内,http://www.stv.jp/webcam/wakkanai/index.html,false
-ライブカメラ,RJEC,旭川市内,http://www.stv.jp/webcam/asahikawa/index.html,false
-ライブカメラ,RJCH,函館山,http://www.stv.jp/webcam/asahikawa/index.html,false
-ライブカメラ,RJCK,釧路空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000164,false
-ライブカメラ,RJCC,新千歳空港,http://www.stv.jp/webcam/shinchitose/index.html,false
-ライブカメラ,RJCC（滑走路側）,新千歳空港（滑走路側）,http://www.stv.jp/webcam/shinchitose2/index.html,false
-ライブカメラ,RJCC2,新千歳空港,http://www.hbc.jp/info-cam/shinchitose.html,false
-ライブカメラ,RJSA,青森空港,http://www.pref.aomori.lg.jp/soshiki/kendo/airport/APwebcam.html,false
+ライブカメラ,,各地のライブカメラ,https://weather.jal.co.jp/livecam/index.html,false
+ライブカメラ,RJCW,稚内市内,https://www.stv.jp/webcam/wakkanai/index.html,false
+ライブカメラ,RJEC,旭川市内,https://www.stv.jp/webcam/asahikawa/index.html,false
+ライブカメラ,RJCH,函館山,https://www.stv.jp/webcam/asahikawa/index.html,false
+ライブカメラ,RJCK,釧路空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000164,false
+ライブカメラ,RJCC,新千歳空港,https://www.stv.jp/webcam/shinchitose/index.html,false
+ライブカメラ,RJCC（滑走路側）,新千歳空港（滑走路側）,https://www.stv.jp/webcam/shinchitose2/index.html,false
+ライブカメラ,RJCC2,新千歳空港,https://www.hbc.jp/info-cam/shinchitose.html,false
+ライブカメラ,RJSA,青森空港,https://www.pref.aomori.lg.jp/soshiki/kendo/airport/APwebcam.html,false
 ライブカメラ,RJSM,三沢飛行場,http://www.misawa-airport.co.jp/livecamera2/,false
-ライブカメラ,RJSK,秋田空港,http://www.akita-airport.com/front/livecamera,false
-ライブカメラ,RJSY,庄内空港,http://www.shonai-airport.co.jp/flight_info/live_view/,false
+ライブカメラ,RJSK,秋田空港,https://www.akita-airport.com/front/livecamera,false
+ライブカメラ,RJSY,庄内空港,https://www.shonai-airport.co.jp/flight_info/live_view/,false
 ライブカメラ,RJSF,福島空港,http://www.pref.fukushima.jp/kukouoffice/infomation.HTM,false
-ライブカメラ,RJTT1,羽田空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000160,false
+ライブカメラ,RJTT1,羽田空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000160,false
 ライブカメラ,RJTT2,羽田空港,http://www.aeif.or.jp/haneda/live_camera/,false
 ライブカメラ,RJAA1,成田空港,http://www.ustream.tv/channel/narita-live-asahi-north-camera,false
 ライブカメラ,RJAA2,成田空港,http://www.ustream.tv/channel/narita-asahi-south-camera#utm_campaign=unknown&utm_source=11865965&utm_medium=social,false
 ライブカメラ,RJNT,富山空港,https://www.hrr.mlit.go.jp/bosai/img/751042.jpg,true
-ライブカメラ,RJNK,小松飛行場,http://www.live.citykomatsu.jp/webcamera/kanko/public.html,false
+ライブカメラ,RJNK,小松飛行場,https://www.live.citykomatsu.jp/webcamera/kanko/public.html,false
 ライブカメラ,RJGG(周辺),中部空港(周辺),http://www.onizaki-yc.com:8080/viewer/live/ja/live.html,false
-ライブカメラ,RJOO,伊丹空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000153,false
-ライブカメラ,RJBB,関西空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000158,false
-ライブカメラ,RJBT,但馬空港,http://www.tajima-airport.jp/livecamera/,false
+ライブカメラ,RJOO,伊丹空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000153,false
+ライブカメラ,RJBB,関西空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000158,false
+ライブカメラ,RJBT,但馬空港,https://www.tajima-airport.jp/livecamera/,false
 ライブカメラ,RJOA,広島空港,https://webcam.wni.co.jp/GZW22253/loop.html,false
-ライブカメラ,RJOC,出雲空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000169,false
-ライブカメラ,RJOK,高知空港,http://sky.kochi-ct.jp/,false
-ライブカメラ,RJFF,福岡空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000155,false
-ライブカメラ,RJFO,大分空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000168,false
-ライブカメラ,RJFT,熊本空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000175,false
-ライブカメラ,RJFM,宮崎空港,http://www.kouku-dai.ac.jp/liveimage/,false
-ライブカメラ,RJFK,鹿児島空港,http://koj-ab.co.jp/relax-and-enjoy/livecam.html,false
-ライブカメラ,,鹿児島各地,http://www.mbc.co.jp/web-cam/,false
+ライブカメラ,RJOC,出雲空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000169,false
+ライブカメラ,RJOK,高知空港,https://sky.kochi-ct.jp/,false
+ライブカメラ,RJFF,福岡空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000155,false
+ライブカメラ,RJFO,大分空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000168,false
+ライブカメラ,RJFT,熊本空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000175,false
+ライブカメラ,RJFM,宮崎空港,https://www.kouku-dai.ac.jp/liveimage/,false
+ライブカメラ,RJFK,鹿児島空港,https://koj-ab.co.jp/relax-and-enjoy/livecam.html,false
+ライブカメラ,,鹿児島各地,https://www.mbc.co.jp/web-cam/,false
 ライブカメラ,,桜島,https://s3-ap-northeast-1.amazonaws.com/idea.bioweather.camera/kazan/sakurajima_now.jpg,false
-ライブカメラ,,桜島赤外,http://www.qsr.mlit.go.jp/osumi/bousai/top.html?gmn=mapSK2,true
-ライブカメラ,ROAH,那覇空港,http://weather.jal.co.jp/livecam/spot.html?camid=410000154,false
+ライブカメラ,,桜島赤外,https://www.qsr.mlit.go.jp/osumi/bousai/top.html?gmn=mapSK2,true
+ライブカメラ,ROAH,那覇空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000154,false
 東アジア,,東南アジア可視,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
 東アジア,,東南アジア赤外,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
-東アジア,,東南アジア水蒸気,http://en.allmetsat.com/images/met5_cimss_wv-large.php,false
+東アジア,,東南アジア水蒸気,https://en.allmetsat.com/images/met5_cimss_wv-large.php,false
 東アジア,,東南アジア赤外+可視,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
 東アジア,,フィリピン時間変化,https://www.tono2.net/sat/irv/phi/,false
 東アジア,,インドシナ時間変化,https://www.tono2.net/sat/irv/indochine/,false
 東アジア,,カリマンタン時間変化,https://www.tono2.net/sat/irv/kalimantan/,false
 東アジア,【PGGE】Ｅ領域,アジア、オーストラリア２４時間予想図,,false
-東アジア,,東南アジア雲頂温度,http://www.cpc.ncep.noaa.gov/products/international/easia/irloop_sea.html,true
+東アジア,,東南アジア雲頂温度,https://www.cpc.ncep.noaa.gov/products/international/easia/irloop_sea.html,true
 東アジア,,時間変化,https://www.tono2.net/sat/uncho/north,false
 東アジア,,大気追跡風,https://www.data.jma.go.jp/mscweb/en/product/aswind_fn.php,true
-SIGチャート２４時間予想図,【PGBE】Ｉ領域,北太平洋,http://aviationweather.gov/data/iffdp/2133.gif,true
-SIGチャート２４時間予想図,【PGCE】Ｇ領域,ヨーロッパ、アジア,http://aviationweather.gov/data/iffdp/2107.gif,true
-SIGチャート２４時間予想図,【PGDE】Ｍ領域,太平洋,http://aviationweather.gov/data/iffdp/2128.gif,true
-SIGチャート２４時間予想図,【PGEE】Ａ領域,アメリカ,http://aviationweather.gov/data/iffdp/2129.gif,true
-SIGチャート２４時間予想図,【PGGE】Ｅ領域,アジア、オーストラリア,http://aviationweather.gov/data/iffdp/2106.gif,true
-SIGチャート２４時間予想図,【PGGE】Ｆ領域,太平洋,http://aviationweather.gov/data/iffdp/2131.gif,true
-SIGチャート２４時間予想図,【PGZE】Ｄ領域,ヨーロッパ、中央アジア,http://aviationweather.gov/data/iffdp/2105.gif,true
+SIGチャート２４時間予想図,【PGBE】Ｉ領域,北太平洋,https://aviationweather.gov/data/iffdp/2133.gif,true
+SIGチャート２４時間予想図,【PGCE】Ｇ領域,ヨーロッパ、アジア,https://aviationweather.gov/data/iffdp/2107.gif,true
+SIGチャート２４時間予想図,【PGDE】Ｍ領域,太平洋,https://aviationweather.gov/data/iffdp/2128.gif,true
+SIGチャート２４時間予想図,【PGEE】Ａ領域,アメリカ,https://aviationweather.gov/data/iffdp/2129.gif,true
+SIGチャート２４時間予想図,【PGGE】Ｅ領域,アジア、オーストラリア,https://aviationweather.gov/data/iffdp/2106.gif,true
+SIGチャート２４時間予想図,【PGGE】Ｆ領域,太平洋,https://aviationweather.gov/data/iffdp/2131.gif,true
+SIGチャート２４時間予想図,【PGZE】Ｄ領域,ヨーロッパ、中央アジア,https://aviationweather.gov/data/iffdp/2105.gif,true
 SIGチャート２４時間予想図,,SIGWXCHARTS,http://www.bom.gov.au/aviation/charts/sigwx/,false
 台風予想,,米国 TYPHOON予想,https://www.metoc.navy.mil/jtwc/jtwc.html,true
 AWC,North Polar Stereographic,ICAO Area H Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_h.gif,true
