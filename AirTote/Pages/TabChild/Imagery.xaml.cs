@@ -53,6 +53,7 @@ public partial class Imagery : ContentPage
 				try
 				{
 					ImageryList.ItemsSource = text
+						.Where(v => !string.IsNullOrEmpty(v.URL))
 						.GroupBy(v => v.GroupName)
 						.Select(v => new ImageryList(v.Key, v.ToList()));
 				}
