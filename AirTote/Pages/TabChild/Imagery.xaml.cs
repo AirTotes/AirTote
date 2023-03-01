@@ -48,29 +48,13 @@ public partial class Imagery : ContentPage
 		{
 			List<ImagerySourceReader> text = await ImagerySourceReader.ReadCsvFileAsync("ImagerySource.csv");
 
-			string FullName = string.Empty;
-
-			Dictionary<string, List<ImagerySourceReader>> GroupNameKeyDic = new();
-			foreach (var textItem in text)
-			{
-				textItem.tpv = TPV;
-				if (!GroupNameKeyDic.ContainsKey(textItem.GroupName))
-					GroupNameKeyDic[textItem.GroupName] = new();
-
-				GroupNameKeyDic[textItem.GroupName].Add(textItem);
-			}
-			List<ImageryList> imageryGroup = new();
-
-			foreach (KeyValuePair<string, List<ImagerySourceReader>> textItem in GroupNameKeyDic)
-			{
-				ImageryList imageryList = new(textItem.Key, textItem.Value);
-				imageryGroup.Add(imageryList);
-			}
 			MainThread.BeginInvokeOnMainThread(() =>
 			{
 				try
 				{
-					ImageryList.ItemsSource = imageryGroup;
+					ImageryList.ItemsSource = text
+						.GroupBy(v => v.GroupName)
+						.Select(v => new ImageryList(v.Key, v.ToList()));
 				}
 				catch (Exception ex)
 				{
