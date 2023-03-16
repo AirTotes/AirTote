@@ -74,12 +74,14 @@
 		<MauiAsset Remove="Assets\Raw\MapIcons\*.md" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="AngleSharp" Version="0.17.1" />
-		<PackageReference Include="CommunityToolkit.Maui" Version="1.2.0" />
-		<PackageReference Include="DependencyPropertyGenerator" Version="0.52.2" PrivateAssets="all" ExcludeAssets="runtime" />
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.0.0" />
-		<PackageReference Include="Csv" Version="2.0.84" />
-		<PackageReference Include="System.Text.Json" Version="6.0.5" />
+		<PackageReference Include="AngleSharp" Version="1.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui" Version="5.0.0" />
+		<PackageReference Include="DependencyPropertyGenerator" Version="1.2.4" PrivateAssets="all" ExcludeAssets="runtime">
+			<IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+		<PackageReference Include="Csv" Version="2.0.93" />
+		<PackageReference Include="System.Text.Json" Version="7.0.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\AirTote.TwoPaneView.MAUI\AirTote.TwoPaneView.MAUI.csproj" />
