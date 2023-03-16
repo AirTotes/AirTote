@@ -103,16 +103,16 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 週間,FXXN519,週間予報支援図,https://n-kishou.com/ee/exp/exp01.html?cd=fxxn519&amp;cat=e3,false
 週間,FZCX50,週間予報支援図（アンサンブル）,https://n-kishou.com/ee/exp/exp01.html?cd=fzcx50&amp;cat=e3,false
 週間,FEFE19,週間アンサンブル予想図,https://n-kishou.com/ee/exp/exp01.html?cd=fefe19&amp;cat=e3,false
-エマグラム,,北アメリカ,https://weather.uwyo.edu/upperair/naconf.html,false
-エマグラム,,(University of wayoming)南アメリカ,https://weather.uwyo.edu/upperair/samer.html,false
-エマグラム,,(University of wayoming)南太平洋,https://weather.uwyo.edu/upperair/pac.html,false
-エマグラム,,(University of wayoming)ニュージーランド,https://weather.uwyo.edu/upperair/nz.html,false
-エマグラム,,(University of wayoming)南極,https://weather.uwyo.edu/upperair/ant.html,false
-エマグラム,,(University of wayoming)北極,https://weather.uwyo.edu/upperair/np.html,false
-エマグラム,,(University of wayoming)ヨーロッパ,https://weather.uwyo.edu/upperair/europe.html,false
-エマグラム,,(University of wayoming)アフリカ,https://weather.uwyo.edu/upperair/africa.html,false
-エマグラム,,(University of wayoming)中央アジア,https://weather.uwyo.edu/upperair/africa.html,false
-エマグラム,,(University of wayoming)南東アジア,https://weather.uwyo.edu/upperair/seasia.html,false
+エマグラム,,北アメリカ,http://weather.uwyo.edu/upperair/naconf.html,false
+エマグラム,,(University of wayoming)南アメリカ,http://weather.uwyo.edu/upperair/samer.html,false
+エマグラム,,(University of wayoming)南太平洋,http://weather.uwyo.edu/upperair/pac.html,false
+エマグラム,,(University of wayoming)ニュージーランド,http://weather.uwyo.edu/upperair/nz.html,false
+エマグラム,,(University of wayoming)南極,http://weather.uwyo.edu/upperair/ant.html,false
+エマグラム,,(University of wayoming)北極,http://weather.uwyo.edu/upperair/np.html,false
+エマグラム,,(University of wayoming)ヨーロッパ,http://weather.uwyo.edu/upperair/europe.html,false
+エマグラム,,(University of wayoming)アフリカ,http://weather.uwyo.edu/upperair/africa.html,false
+エマグラム,,(University of wayoming)中央アジア,http://weather.uwyo.edu/upperair/africa.html,false
+エマグラム,,(University of wayoming)南東アジア,http://weather.uwyo.edu/upperair/seasia.html,false
 エマグラム,,(SunnySpot)全国,https://www.sunny-spot.net/emagram/index.html?area=0,false
 エマグラム,,(SunnySpot)北海道,https://www.sunny-spot.net/emagram/index.html?area=1,false
 エマグラム,,(SunnySpot)東北,https://www.sunny-spot.net/emagram/index.html?area=2,false
@@ -127,7 +127,7 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 エマグラム,,(SunnySpot)南西諸島,https://www.sunny-spot.net/emagram/index.html?area=11,false
 エマグラム,,(Skew-T)エマグラム ,https://www.tono2.net/skew/,false
 風情報,,Windy,"https://www.windy.com/?34.398,132.452,5",false
-雷情報,,東京電力雷情報,https://thunder.tepco.co.jp/index.html,false
+雷情報,,東京電力雷情報,http://thunder.tepco.co.jp/index.html,false
 雷情報,,東北電力雷情報,,false
 雷情報,,北陸電力雷情報中部電力雷情報,https://www.rikuden.co.jp/kaminari/,false
 雷情報,,関西地方降雨情報,https://tenki.jp/radar/3/,false
@@ -171,7 +171,7 @@ PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 ライブカメラ,RJCK,釧路空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000164,false
 ライブカメラ,RJCC,新千歳空港,https://www.stv.jp/webcam/shinchitose/index.html,false
 ライブカメラ,RJCC（滑走路側）,新千歳空港（滑走路側）,https://www.stv.jp/webcam/shinchitose2/index.html,false
-ライブカメラ,RJCC2,新千歳空港,https://www.hbc.jp/info-cam/shinchitose.html,false
+ライブカメラ,RJCC2,新千歳空港,http://www.hbc.jp/info-cam/shinchitose.html,false
 ライブカメラ,RJSA,青森空港,https://www.pref.aomori.lg.jp/soshiki/kendo/airport/APwebcam.html,false
 ライブカメラ,RJSM,三沢飛行場,http://www.misawa-airport.co.jp/livecamera2/,false
 ライブカメラ,RJSK,秋田空港,https://www.akita-airport.com/front/livecamera,false
@@ -181,7 +181,7 @@ PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 ライブカメラ,RJTT2,羽田空港,http://www.aeif.or.jp/haneda/live_camera/,false
 ライブカメラ,RJAA1,成田空港,,false
 ライブカメラ,RJAA2,成田空港,,false
-ライブカメラ,RJNT,富山空港,https://www.hrr.mlit.go.jp/bosai/img/751042.jpg,true
+ライブカメラ,RJNT,富山空港,http://www.hrr.mlit.go.jp/bosai/img/751042.jpg,true
 ライブカメラ,RJNK,小松飛行場,https://www.live.citykomatsu.jp/webcamera/kanko/public.html,false
 ライブカメラ,RJGG(周辺),中部空港(周辺),http://www.onizaki-yc.com:8080/viewer/live/ja/live.html,false
 ライブカメラ,RJOO,伊丹空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000153,false
@@ -189,11 +189,11 @@ PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 ライブカメラ,RJBT,但馬空港,https://www.tajima-airport.jp/livecamera/,false
 ライブカメラ,RJOA,広島空港,https://webcam.wni.co.jp/GZW22253/loop.html,false
 ライブカメラ,RJOC,出雲空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000169,false
-ライブカメラ,RJOK,高知空港,https://sky.kochi-ct.jp/,false
+ライブカメラ,RJOK,高知空港,http://sky.kochi-ct.jp/,false
 ライブカメラ,RJFF,福岡空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000155,false
 ライブカメラ,RJFO,大分空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000168,false
 ライブカメラ,RJFT,熊本空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000175,false
-ライブカメラ,RJFM,宮崎空港,https://www.kouku-dai.ac.jp/liveimage/,false
+ライブカメラ,RJFM,宮崎空港,http://www.kouku-dai.ac.jp/liveimage/,false
 ライブカメラ,RJFK,鹿児島空港,https://koj-ab.co.jp/relax-and-enjoy/livecam.html,false
 ライブカメラ,,鹿児島各地,https://www.mbc.co.jp/web-cam/,false
 ライブカメラ,,桜島,https://s3-ap-northeast-1.amazonaws.com/idea.bioweather.camera/kazan/sakurajima_now.jpg,false
