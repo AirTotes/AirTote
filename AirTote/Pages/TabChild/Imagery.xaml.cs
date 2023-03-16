@@ -55,7 +55,13 @@ public partial class Imagery : ContentPage
 					ImageryList.ItemsSource = text
 						.Where(v => !string.IsNullOrEmpty(v.URL))
 						.GroupBy(v => v.GroupName)
-						.Select(v => new ImageryList(v.Key, v.ToList()));
+						.Select(v =>
+						{
+							foreach (var textItem in v)
+								textItem.tpv = TPV;
+
+							return new ImageryList(v.Key, v.ToList());
+						});
 				}
 				catch (Exception ex)
 				{
