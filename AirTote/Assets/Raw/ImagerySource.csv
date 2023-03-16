@@ -1,7 +1,7 @@
 GroupName,ShortTitle,FullTitle,URL,IsPublic
-実況,ASAS,アジア地上解析図,https://www.data.jma.go.jp/fcd/yoho/data/wxchart/quick/202208/ASAS_COLOR_202208251200.svgz?sanitize=true,true
+実況,ASAS,アジア地上解析図,,true
 実況,ASAS 過去,アジア地上解析図過去,https://www.data.jma.go.jp/fcd/yoho/wxchart/quickmonthly.html,true
-実況,,High Level Siginificant Weather Charts,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_m.gif,true
+実況,,High Level Siginificant Weather Charts,,true
 実況,,日本周辺気圧配置図＆降水,https://www.tropicaltidbits.com/analysis/models/?model=gfs&region=wpac&pkg=mslp_pcpn&fh=6,false
 実況,AUXN50,北半球500hPa高度・気温,https://n-kishou.com/ee/exp/exp01.html?cd=auxn50,false
 実況,AXFE578,極東850hPa気温・風/700hPa上昇流/500hPa高度・渦度,https://n-kishou.com/ee/exp/exp01.html?cd=axfe578,false
@@ -128,7 +128,7 @@ SSI,,不安定度,https://www.tono2.net/stab/,false
 エマグラム,,(Skew-T)エマグラム ,https://www.tono2.net/skew/,false
 風情報,,Windy,"https://www.windy.com/?34.398,132.452,5",false
 雷情報,,東京電力雷情報,https://thunder.tepco.co.jp/index.html,false
-雷情報,,東北電力雷情報,https://nw.tohoku-epco.co.jp/thunderbolt/,false
+雷情報,,東北電力雷情報,,false
 雷情報,,北陸電力雷情報中部電力雷情報,https://www.rikuden.co.jp/kaminari/,false
 雷情報,,関西地方降雨情報,https://tenki.jp/radar/3/,false
 雷情報,,中国地方雷情報,https://tenki.jp/thunder/7/,false
@@ -179,8 +179,8 @@ PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 ライブカメラ,RJSF,福島空港,http://www.pref.fukushima.jp/kukouoffice/infomation.HTM,false
 ライブカメラ,RJTT1,羽田空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000160,false
 ライブカメラ,RJTT2,羽田空港,http://www.aeif.or.jp/haneda/live_camera/,false
-ライブカメラ,RJAA1,成田空港,http://www.ustream.tv/channel/narita-live-asahi-north-camera,false
-ライブカメラ,RJAA2,成田空港,http://www.ustream.tv/channel/narita-asahi-south-camera#utm_campaign=unknown&utm_source=11865965&utm_medium=social,false
+ライブカメラ,RJAA1,成田空港,,false
+ライブカメラ,RJAA2,成田空港,,false
 ライブカメラ,RJNT,富山空港,https://www.hrr.mlit.go.jp/bosai/img/751042.jpg,true
 ライブカメラ,RJNK,小松飛行場,https://www.live.citykomatsu.jp/webcamera/kanko/public.html,false
 ライブカメラ,RJGG(周辺),中部空港(周辺),http://www.onizaki-yc.com:8080/viewer/live/ja/live.html,false
@@ -201,7 +201,7 @@ PM2.5情報,,PM2.5長期予想,https://venus.nies.go.jp/,true
 ライブカメラ,ROAH,那覇空港,https://weather.jal.co.jp/livecam/spot.html?camid=410000154,false
 東アジア,,東南アジア可視,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
 東アジア,,東南アジア赤外,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
-東アジア,,東南アジア水蒸気,https://en.allmetsat.com/images/met5_cimss_wv-large.php,false
+東アジア,,東南アジア水蒸気,,false
 東アジア,,東南アジア赤外+可視,https://www.data.jma.go.jp/mscweb/data/himawari/sat_hrp.php?area=r2s,true
 東アジア,,フィリピン時間変化,https://www.tono2.net/sat/irv/phi/,false
 東アジア,,インドシナ時間変化,https://www.tono2.net/sat/irv/indochine/,false
@@ -217,20 +217,20 @@ SIGチャート２４時間予想図,【PGEE】Ａ領域,アメリカ,https://av
 SIGチャート２４時間予想図,【PGGE】Ｅ領域,アジア、オーストラリア,https://aviationweather.gov/data/iffdp/2106.gif,true
 SIGチャート２４時間予想図,【PGGE】Ｆ領域,太平洋,https://aviationweather.gov/data/iffdp/2131.gif,true
 SIGチャート２４時間予想図,【PGZE】Ｄ領域,ヨーロッパ、中央アジア,https://aviationweather.gov/data/iffdp/2105.gif,true
-SIGチャート２４時間予想図,,SIGWXCHARTS,http://www.bom.gov.au/aviation/charts/sigwx/,false
-台風予想,,米国 TYPHOON予想,https://www.metoc.navy.mil/jtwc/jtwc.html,true
-AWC,North Polar Stereographic,ICAO Area H Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_h.gif,true
-AWC,North Polar Stereographic,ICAO Area H B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_h.gif,true
-AWC,North Polar Stereographic,ICAO Area I Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_i.gif,true
-AWC,North Polar Stereographic,ICAO Area I B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_i.gif,true
-AWC,Central Mercator,ICAO Area A Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_a.gif,true
-AWC,Central Mercator,ICAO Area A B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_a.gif,true
-AWC,Central Mercator,ICAO Area B1 Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_b1.gif,true
-AWC,Central Mercator,ICAO Area B1 B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_b1.gif,true
-AWC,Central Mercator,ICAO Area F Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_f.gif,true
-AWC,Central Mercator,ICAO Area F B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_f.gif,true
-AWC,Central Mercator,ICAO Area M Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_m.gif,true
-AWC,Central Mercator,ICAO Area M B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_m.gif,true
-AWC,South Polar Stereographic,ICAO Area J Color,https://www.aviationweather.gov/data/products//swh/20220825/20220825_06_F24_sigwx_hi_j.gif,true
-AWC,South Polar Stereographic,ICAO Area J B&W,https://www.aviationweather.gov/data/products/fax/20220825/20220825_0600_F24_sigwx_hi_j.gif,true
+SIGチャート２４時間予想図,,SIGWXCHARTS,,false
+台風予想,,米国 TYPHOON予想,,true
+AWC,North Polar Stereographic,ICAO Area H Color,,true
+AWC,North Polar Stereographic,ICAO Area H B&W,,true
+AWC,North Polar Stereographic,ICAO Area I Color,,true
+AWC,North Polar Stereographic,ICAO Area I B&W,,true
+AWC,Central Mercator,ICAO Area A Color,,true
+AWC,Central Mercator,ICAO Area A B&W,,true
+AWC,Central Mercator,ICAO Area B1 Color,,true
+AWC,Central Mercator,ICAO Area B1 B&W,,true
+AWC,Central Mercator,ICAO Area F Color,,true
+AWC,Central Mercator,ICAO Area F B&W,,true
+AWC,Central Mercator,ICAO Area M Color,,true
+AWC,Central Mercator,ICAO Area M B&W,,true
+AWC,South Polar Stereographic,ICAO Area J Color,,true
+AWC,South Polar Stereographic,ICAO Area J B&W,,true
 AWC,,Unofficial World Area Forecast System Display,https://www.aviationweather.gov/wafs,true
