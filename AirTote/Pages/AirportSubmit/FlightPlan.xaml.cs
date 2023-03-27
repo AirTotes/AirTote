@@ -40,7 +40,7 @@ namespace AirTote.Pages
 			FPWebView.Source = new HtmlWebViewSource()
 			{
 				Html = fpHtml,
-				BaseUrl = "https://flightplan.airtote.jp/flight_plan_sheet.html?DLBtnHidden",
+				BaseUrl = "https://flightplan.airtote.jp/flight_plan_sheet.html",
 			};
 
 			await FPWebView.EvaluateJavaScriptAsync("document.getElementById('GenPdfButton').style.visibility = 'hidden';");
