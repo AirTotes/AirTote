@@ -20,7 +20,8 @@ namespace AirTote.Pages
 			InitializeComponent();
 
 			Loaded += FlightPlan_Loaded;
-			FPWebView.Navigating += (s, e) => System.Diagnostics.Debug.WriteLine(e.Url);
+
+			FPWebView.Navigated += async (s, e) => await FPWebView.EvaluateJavaScriptAsync("window.isDownloadButtonHidden = true; window.HideDownloadButton();");
 		}
 
 		static private Task<string> getFlightPlanHtml()
@@ -42,8 +43,6 @@ namespace AirTote.Pages
 				Html = fpHtml,
 				BaseUrl = "https://flightplan.airtote.jp/flight_plan_sheet.html",
 			};
-
-			await FPWebView.EvaluateJavaScriptAsync("document.getElementById('GenPdfButton').style.visibility = 'hidden';");
 		}
 
 		async void Button_Clicked(object sender, EventArgs e)
