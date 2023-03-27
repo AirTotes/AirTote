@@ -23,7 +23,7 @@ public partial class TabMainPage : Shell
 		InitializeComponent();
 
 #if IOS
-		if (new Version(13, 0) <= DeviceInfo.Version)
+		if (new Version(13, 0) <= DeviceInfo.Version && DeviceInfo.Current.Idiom != DeviceIdiom.Phone)
 			SketchPadTab.IsVisible = true;
 #endif
 	}
