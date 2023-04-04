@@ -9,10 +9,14 @@
 		<WebView
 			x:Name="FPWebView"
 			VerticalOptions="FillAndExpand"/>
-		<Button
-			Text="Generate PDF"
+
+		<HorizontalStackLayout
 			HorizontalOptions="Start"
 			VerticalOptions="Start"
-			Clicked="Button_Clicked"/>
+			>
+			<Button
+				Text="Save PDF"
+				Clicked="Button_Clicked"/>
+		</HorizontalStackLayout>
 	</Grid>
 </ContentPage>
