@@ -45,13 +45,25 @@ namespace AirTote.Pages
 			};
 		}
 
+		async Task<string?> GetFPDataUriString()
+		{
+			string? s = null;
+			await FPWebView.EvaluateJavaScriptAsync("setTimeout(async()=>await GetFlightPlanPdfDataUri(),0)");
+
+			for (int i = 0; s is null && i < 10; i++)
+			{
+				await Task.Delay(200);
+				s = await FPWebView.EvaluateJavaScriptAsync("GetFlightPlanPdfDataUriResult");
+			}
+
+			return s;
+		}
+
 		async void Button_Clicked(object sender, EventArgs e)
 		{
 			try
 			{
-				string? s = null;
-				await FPWebView.EvaluateJavaScriptAsync("setTimeout(async()=>await GetFlightPlanPdfDataUri(),0)");
-				for (int i = 0; s is null && i < 10; i++)
+				string? s = await GetFPDataUriString();
 				{
 					await Task.Delay(200);
 					s = await FPWebView.EvaluateJavaScriptAsync("GetFlightPlanPdfDataUriResult");
