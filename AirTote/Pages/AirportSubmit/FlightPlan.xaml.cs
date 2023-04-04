@@ -69,7 +69,7 @@ namespace AirTote.Pages
 		[GeneratedRegex(@"^data:application/pdf;filename=.{1,256}\.pdf;base64,[\w\+/=]+$")]
 		static private partial Regex pdfDataUriCheckRegex();
 
-		async void SavePDF(string datauri)
+		async Task<string?> SavePDF(string datauri)
 		{
 			PdfDataUri pdf;
 
@@ -80,7 +80,7 @@ namespace AirTote.Pages
 			catch (Exception ex)
 			{
 				MsgBox.DisplayAlert("Generate PDF", "Cannot generate PDF\n" + ex.ToString(), "OK");
-				return;
+				return null;
 			}
 
 			string fpath;
@@ -99,25 +99,13 @@ namespace AirTote.Pages
 				fpath = Path.Combine(dir.FullName, fname);
 
 				await File.WriteAllBytesAsync(fpath, pdf.data);
+
+				return fpath;
 			}
 			catch (Exception ex)
 			{
 				MsgBox.DisplayAlert("Save PDF", "Cannot save PDF\n" + ex.ToString(), "OK");
-				return;
-			}
-
-			try
-			{
-				await Share.Default.RequestAsync(new ShareFileRequest()
-				{
-					Title = "Open FLIGHT PLAN with...",
-					File = new ShareFile(fpath)
-				});
-			}
-			catch (Exception ex)
-			{
-				MsgBox.DisplayAlert("Open PDF", "Cannot open PDF\n" + ex.ToString(), "OK");
-				return;
+				return null;
 			}
 		}
 	}
