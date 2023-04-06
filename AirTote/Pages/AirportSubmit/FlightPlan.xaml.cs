@@ -43,6 +43,8 @@ namespace AirTote.Pages
 				Html = fpHtml,
 				BaseUrl = "https://flightplan.airtote.jp/flight_plan_sheet.html",
 			};
+
+			SubmitToOfficeButton.IsEnabled = Email.Default.IsComposeSupported;
 		}
 
 		async Task<string?> GetFPDataUriString()
@@ -64,17 +66,103 @@ namespace AirTote.Pages
 			try
 			{
 				string? s = await GetFPDataUriString();
-				{
-					await Task.Delay(200);
-					s = await FPWebView.EvaluateJavaScriptAsync("GetFlightPlanPdfDataUriResult");
-				}
 				// PDF保存処理
-				if (s is not null)
-					SavePDF(s);
+				if (s is not null && await SavePDF(s) is string fpath)
+				{
+					try
+					{
+						await Share.Default.RequestAsync(new ShareFileRequest()
+						{
+							Title = "Open FLIGHT PLAN with...",
+							File = new ShareFile(fpath)
+						});
+					}
+					catch (Exception ex)
+					{
+						MsgBox.DisplayAlert("Open PDF", "Cannot open PDF\n" + ex.ToString(), "OK");
+					}
+				}
 			}
 			catch (Exception ex)
 			{
 				Console.WriteLine(ex);
+				return;
+			}
+
+		}
+
+		async void OpenMailApp(object? sender, EventArgs e)
+		{
+			if (!Email.Default.IsComposeSupported)
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "This feature is not supported on this device.\nMaybe: Mail App is not configured?.", "OK");
+				return;
+			}
+
+			string? dataUri;
+			try
+			{
+				dataUri = await GetFPDataUriString();
+			}
+			catch (Exception ex)
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "Generate PDF Failed.\n" + ex.ToString(), "OK");
+				return;
+			}
+
+			if (string.IsNullOrEmpty(dataUri))
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "Generate PDF Failed.\nThe return value was NULL or Empty.", "OK");
+				return;
+			}
+
+			string? fpath;
+			try
+			{
+				fpath = await SavePDF(dataUri);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "Save PDF Failed.\n" + ex.ToString(), "OK");
+				return;
+			}
+
+			if (string.IsNullOrEmpty(fpath))
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "Save PDF Failed.\nThe return value was NULL or Empty.", "OK");
+				return;
+			}
+
+			EmailMessage emailMessage = new()
+			{
+				Subject = "飛行計画書の提出",
+				Body = """
+東京空港事務所
+羽田空港 航空管制運航情報官 様
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~
+Powered by: AirTote
+https://airtote.jp
+""",
+				To = new List<string>()
+				{
+				},
+				BodyFormat = EmailBodyFormat.PlainText,
+				Attachments = new List<EmailAttachment>()
+				{
+					new EmailAttachment(fpath, "application/pdf")
+				},
+			};
+
+			try
+			{
+				await Email.Default.ComposeAsync(emailMessage);
+			}
+			catch (Exception ex)
+			{
+				MsgBox.DisplayAlert("Submit to Office Failed", "Open Mail App Failed.\n" + ex.ToString(), "OK");
+				return;
 			}
 		}
 

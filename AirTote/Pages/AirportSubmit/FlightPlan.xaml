@@ -17,6 +17,10 @@
 			<Button
 				Text="Save PDF"
 				Clicked="Button_Clicked"/>
+			<Button
+				x:Name="SubmitToOfficeButton"
+				Text="Submit To Offoce"
+				Clicked="OpenMailApp"/>
 		</HorizontalStackLayout>
 	</Grid>
 </ContentPage>
