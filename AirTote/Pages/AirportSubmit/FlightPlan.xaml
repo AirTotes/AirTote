@@ -5,7 +5,22 @@
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 	x:Class="AirTote.Pages.FlightPlan"
 	Title="飛行計画書の提出">
-	<WebView
-		Source="https://FlightPlan.airtote.jp/flight_plan_sheet.html"
-		VerticalOptions="FillAndExpand"/>
+	<Grid>
+		<WebView
+			x:Name="FPWebView"
+			VerticalOptions="FillAndExpand"/>
+
+		<HorizontalStackLayout
+			HorizontalOptions="Start"
+			VerticalOptions="Start"
+			>
+			<Button
+				Text="Save PDF"
+				Clicked="Button_Clicked"/>
+			<Button
+				x:Name="SubmitToOfficeButton"
+				Text="Submit To Offoce"
+				Clicked="OpenMailApp"/>
+		</HorizontalStackLayout>
+	</Grid>
 </ContentPage>
